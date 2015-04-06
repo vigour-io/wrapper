@@ -34,6 +34,7 @@
     "promise": "^6.1.0",
     "source-map": "0.1.32",
     "through": "^2.3.4",
+    "xcode": "^0.6.7",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master"
   },
   "optionalDependencies": {
