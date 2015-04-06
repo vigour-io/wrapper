@@ -16,5 +16,6 @@ if( !exports.util.isNode ) {
 
 } 
 
-exports.hub = require('./hub')
-
+exports.build = {
+  android: require('./android')
+}
