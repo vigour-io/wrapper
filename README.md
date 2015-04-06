@@ -38,7 +38,6 @@ examples pck.json vigour-facebook
   }
 ```
 
-
 example install project X
 ```
   //this gets added by vigour dev tools ( just some run scripts )
@@ -52,9 +51,27 @@ example install project X
   vigour-dev-tools build -android
 ```
 
+example install project X
+```
+  //this gets added by vigour dev tools ( just some run scripts )
+  npm run build --android --ios
+```
 
-
-
+pck.json settings project X
+```
+  vigour: {
+    native: {
+      ios: {
+          
+      },
+      android: {
+        
+      }
+    }
+  }
+```
+}
+  
 
 ios
 
