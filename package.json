@@ -22,18 +22,19 @@
     "test": "test"
   },
   "dependencies": {
-    "express": "4.12.3",
-    "body-parser":"1.12.2",
-    "source-map": "0.1.32",
+    "body-parser": "1.12.2",
     "browserify": "^5.11.1",
-    "cli-spinner":"0.2.0",
-    "through": "^2.3.4",
-    "promise": "^6.0.1",
+    "chai": "2.1.x",
+    "cli-spinner": "0.2.0",
+    "colors": "1.0.x",
+    "express": "4.12.3",
+    "mocha": "2.2.x",
+    "mocha-phantomjs": "*",
     "npmlog": "0.1.x",
-    "mocha-phantomjs":"*",
-    "colors":"1.0.x",
-    "mocha":"2.2.x",
-    "chai": "2.1.x"
+    "promise": "^6.0.1",
+    "source-map": "0.1.32",
+    "through": "^2.3.4",
+    "xcode": "^0.6.7"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
