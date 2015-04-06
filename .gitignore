@@ -13,3 +13,4 @@ test/mocha.css
 test/mocha.js
 test/chai.js
 templates/ios/vigour-native/vigour-native.xcodeproj/project.xcworkspace/xcuserdata/alexandervanderwerff.xcuserdatad/UserInterfaceState.xcuserstate
+build/

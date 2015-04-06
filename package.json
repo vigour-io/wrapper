@@ -1,39 +1,40 @@
 {
-  "name": "vigour-dev-tools",
+  "name": "vigour-native",
   "version": "0.0.1",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/vigour-io/vigour-dev-tools"
+    "url": "https://github.com/vigour-io/vigour-native"
   },
   "main": "./index.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "./test/test.js"
   },
-  "description": "Tools that make installing, testing and other dev stuff easy to do",
+  "description": "The native code to wrap vigour apps",
   "bugs": {
-    "url": "https://github.com/vigour-io/vigour-dev-tools/issues"
+    "url": "https://github.com/vigour-io/vigour-native/issues"
   },
-  "homepage": "https://github.com/vigour-io/vigour-dev-tools",
+  "homepage": "https://github.com/vigour-io/vigour-native",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "express": "4.12.3",
-    "body-parser":"1.12.2",
-    "source-map": "0.1.32",
+    "body-parser": "1.12.2",
     "browserify": "^5.11.1",
-    "cli-spinner":"0.2.0",
-    "through": "^2.3.4",
-    "promise": "^6.0.1",
+    "chai": "2.1.x",
+    "cli-spinner": "0.2.0",
+    "colors": "1.0.x",
+    "express": "4.12.3",
+    "mocha": "2.2.x",
+    "mocha-phantomjs": "*",
+    "ncp": "2.0.x",
     "npmlog": "0.1.x",
-    "mocha-phantomjs":"*",
-    "colors":"1.0.x",
-    "mocha":"2.2.x",
-    "chai": "2.1.x"
+    "promise": "^6.1.0",
+    "source-map": "0.1.32",
+    "through": "^2.3.4",
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
