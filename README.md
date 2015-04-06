@@ -1,4 +1,16 @@
 # native
+
+
+example of how to do the functions (check vigour-dev-tools)
+```
+#!/usr/bin/env node
+var tools = require('vigour-dev-tools')
+
+tools.test.run()
+
+```
+
+
 repo to do the native stuff
 
 biggest challenges :
