@@ -90,6 +90,15 @@ pck.json settings project X
 ```
 }
   
+Icons etc
+```
+{
+  native: {
+    icon: '../icon'
+  }
+}
+```
+
 
 ios
 
