@@ -1,7 +1,7 @@
 # native
 
 
-example of how to do the functions (check vigour-dev-tools)
+example of how to do the functions (check [vigour-dev-tools](https://github.com/vigour-io/vigour-dev-tools))
 ```
 #!/usr/bin/env node
 var tools = require('vigour-dev-tools')
