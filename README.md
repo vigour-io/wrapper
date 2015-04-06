@@ -62,10 +62,16 @@ pck.json settings project X
   vigour: {
     native: {
       ios: {
-          
+        bundle-id: "io.vigour.x"
+        version: 2.0.11,
+        facebook-key: "123123123123",
+        store-key: "acbdbcadbcbadbc"
       },
       android: {
-        
+        package: "io.vigour.x"
+        version: 2.1.3,
+        facebook-key: "9ae87f9a8e7f98a7f",
+        store-key: "bbed9c87ed9c87e9b98b7ed"
       }
     }
   }
