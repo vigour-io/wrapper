@@ -1,0 +1,14 @@
+npm-debug.log
+node_modules
+content/img
+.DS_Store
+.*.sw[op]
+*.mp4
+test/data.json
+test/data-small.json
+bundle.js
+bundle.css
+test/test.html
+test/mocha.css
+test/mocha.js
+test/chai.js
