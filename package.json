@@ -33,14 +33,9 @@
     "promise": "^6.1.0",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-<<<<<<< HEAD
     "xcode": "^0.6.7",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
     "android": "git+ssh://git@github.com:benmonro/android.git#master"
-=======
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
-    "xcode": "^0.6.7"
->>>>>>> 71302de1a7ffbe54402022d0ecf8a4f459d64aa6
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
