@@ -13,7 +13,7 @@ vNative.build({
           src: './img/splash-ios.png'
         }
       }
-      , android: true
+      // , android: true
       , wp8: true
       , chromecast: true
       , "LG TV": true
