@@ -8,7 +8,6 @@ var fs = require('vigour-fs')
     var args = Array.prototype.slice.call(arguments)
     return new Promise(function(resolve, reject) {
       try {
-        console.log("args", args)
         args.push(function(err) {
           if (err) {
             reject(err)
@@ -16,11 +15,9 @@ var fs = require('vigour-fs')
             resolve()
           }
         })
-        console.log('ncp', args)
         ncp.apply(this, args)
-        console.log("WHA")
       } catch (e) {
-        console.log("ERRRRR", e, e.stack)
+        console.log("ncp fails", e, e.stack)
         reject(e)
       }
     })}
@@ -28,22 +25,24 @@ var fs = require('vigour-fs')
 function installTemplate() {
   // if(!fs.existsSync('build/android')) {
     console.log('- Copying android template')
-    var dst = path.join(process.cwd(), 'build/android')
-      , src = path.join(__dirname, '..', '..', 'templates', 'android')
+    var src = path.join(__dirname, '..', '..', 'templates', 'android')
+      , dst = path.join(process.cwd(), 'build/android')
 
-    console.log(typeof src, typeof dst)
+    console.log("from", src)
+    console.log("to", dst)
     return _mkdir(dst)
-           .then(_ncp( src
-                     , dst
-                     , {clobber: true}))
-  // }
-  // return new Promise(function(resolve, reject) {
-    // resolve('huppeldepup')
-  // })
+      .then(function () {
+        _ncp(src
+          , dst 
+          , {clobber: true})
+      })
+      .catch(function (reason) {
+        console.error("Oops", reason)
+      })
 }
 
 function compile() {
-  console.log("we should be compiling now")
+  console.log("Compiling (coming soon)")
   return true;
 }
 
