@@ -11,13 +11,18 @@
 
     <org.xwalk.core.XWalkView
         android:id="@+id/webview"
-        android:layout_marginTop="40dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/versionView"
+        android:text="the version should go here"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3000"
+        android:textColor="#fff"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:padding="8dp"/>
 
 </merge>

@@ -1,9 +1,14 @@
 package io.vigour.cloudandroidwrapper;
 
+import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
@@ -23,6 +28,23 @@ public class MainActivity extends ActionBarActivity {
         webview = (XWalkView) findViewById(R.id.webview);
         webview.addJavascriptInterface(new NativeInterface(this, webview), "NativeInterface");
         webview.load("file:///android_asset/index.html", null);
+
+        // show the version for debugging
+        TextView versionView = (TextView) findViewById(R.id.versionView);
+        if (BuildConfig.DEBUG) {
+            PackageInfo pInfo = null;
+            try {
+                String name = getPackageName();
+                pInfo = getPackageManager().getPackageInfo(name, 0);
+                String info = String.format("%s version %s (%d)", name, pInfo.versionName, pInfo.versionCode);
+                versionView.setText(info);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+                versionView.setText("can't find version: " + e.getCause().getMessage());
+            }
+        } else {
+            versionView.setVisibility(View.GONE);
+        }
     }
 
 
