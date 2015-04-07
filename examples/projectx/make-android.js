@@ -11,7 +11,10 @@ vNative.build({
       , android: {
         splash: {
           src: './img/splash-ios.png'
-        }
+        },
+				productName: '',
+				organizationName: '',
+				organizationIdentifier: ''
       }
       // , android: true
       , wp8: true
