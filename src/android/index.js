@@ -4,23 +4,7 @@ var fs = require('vigour-fs')
   , Promise = require('promise')
   
   , _mkdir = Promise.denodeify(fs.mkdirp)
-  , _ncp = function() {
-    var args = Array.prototype.slice.call(arguments)
-    return new Promise(function(resolve, reject) {
-      try {
-        args.push(function(err) {
-          if (err) {
-            reject(err)
-          } else {
-            resolve()
-          }
-        })
-        ncp.apply(this, args)
-      } catch (e) {
-        console.log("ncp fails", e, e.stack)
-        reject(e)
-      }
-    })}
+  , _ncp = Promise.denodeify(ncp)
 
 function installTemplate() {
   // if(!fs.existsSync('build/android')) {
@@ -33,7 +17,7 @@ function installTemplate() {
     return _mkdir(dst)
       .then(function () {
         _ncp(src
-          , dst 
+          , dst
           , {clobber: true})
       })
       .catch(function (reason) {
@@ -56,4 +40,3 @@ exports.build = function() {
         console.error(reason)
     })
 }
-
