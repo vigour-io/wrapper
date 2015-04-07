@@ -10,8 +10,7 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "description": "The native code to wrap vigour apps",
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native/issues"
@@ -34,8 +33,8 @@
     "promise": "^6.1.0",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "xcode": "^0.6.7",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master"
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
+    "xcode": "^0.6.7"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",

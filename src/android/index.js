@@ -47,9 +47,10 @@ function compile() {
   return true;
 }
 
-module.exports = exports = function() {
+module.exports = exports = {}
+exports.build = function() {
   console.log('start android build')
-  installTemplate()
+  return installTemplate()
     .then(compile)
     .then(console.log('end android build'))
     .catch(function(reason) {
