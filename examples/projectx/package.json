@@ -22,5 +22,20 @@
   },
   "devDependencies": {
     "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev"
+  },
+  "vigour": {
+    "native": {
+      "platforms":
+      {
+        "web": true
+        , "ios": true
+        , "android": true
+        , "wp8": true
+        , "chromecast": true
+        , "LG TV": true
+        , "Samsung TV": true
+        , "iWatch": true
+      }
+    }
   }
 }

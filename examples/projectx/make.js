@@ -2,7 +2,7 @@
 
 var vNative = require('../../')
 vNative.build({
-  src: './src'
+  src: './lib'
   , dest: './build'
   , splash: './img/splash.png'
   , platforms:
