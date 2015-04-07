@@ -8,7 +8,7 @@ vNative.build({
   , platforms:
     {
       web: true
-      , ios: {
+      , android: {
         splash: {
           src: './img/splash-ios.png'
         }
