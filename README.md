@@ -1,23 +1,57 @@
-# native
+# vigour-native
 
+Builds a set of native apps from a single javascript codebase.
 
-example of how to do the functions (check [vigour-dev-tools](https://github.com/vigour-io/vigour-dev-tools))
+##Install
+- Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
+- `npm i vigour-native --save` (Coming soon)
+
+##Build
 ```
-#!/usr/bin/env node
-var tools = require('vigour-dev-tools')
-
-tools.test.run()
-
+var vNative = require('vigour-native')
+vNative.build({
+  src: './src'
+  , dest: './build'
+  , splash: './img/splash.png'
+  , platforms:
+    {
+      "web": true
+      , "ios": {
+        splash: {
+          src: './img/splash-ios.png'
+        }
+      }
+      , "android"
+      , "wp8"
+      , "chromecast"
+      , "LG TV"
+      , "Samsung TV"
+      , "iWatch"
+    }
+  , plugins: [
+    "https://github.com/vigour-io/vigour-native-statusBar#master"
+    //, "vigour-native-statusBar" // Coming Soon: via npm
+  ]
+  , ignoreBuilds: true // Git only
+}, function (err, meta) {
+    console.log("Build done in " + meta.time "ms")
+  })
 ```
 
+**Or with promises**
+```
+var vNative = require('vigour-native')
+  , Promise = require('promise') // `npm i promise`
+  , build = Promise.denodeify(vNative.build)
+build({...})
+.then(function (meta) {
+  console.log("Build done in " + meta.time + "ms")
+})
+.catch(function (reason) {
+  console.error(reason)
+})
+```
 
-repo to do the native stuff
-
-biggest challenges :
-  get a system thats integrated with npm
-  
-  
-  
 usecase 
   client - project X
     requires -- vigour-facebook
@@ -27,21 +61,9 @@ usecase
                   web
                   and the V.Value wrapped api (this is what is exposed)
                   
-                  
 
-examples pck.json project X
-```
-  {
-    dependencies: {
-      vigour-facebook: 'x.x.x'
-    }
-  , devDependencies: {
-      vigour-dev-tools: 'x.x.x.
-    }
-  }
-```
 
-examples pck.json vigour-facebook
+examples package.json vigour-facebook
 ```
   {
     dependencies: {
@@ -100,9 +122,11 @@ Icons etc
 ```
 
 
-ios
-
-
-android
-
-
+**Currently supports**:
+  - [X] web browsers
+  - [_] iOS
+  - [_] android
+  - [_] lg TV
+  - [_] samsung TV
+  - [_] chromecast
+  - [_] iWatch

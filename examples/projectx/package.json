@@ -2,25 +2,25 @@
   "name": "projectx",
   "version": "0.0.1",
   "author": "Vigour.io <dev@vigour.io>",
-  "repository": { },
-  "main": "./make-android.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/vigour-native/examples/projectx"
+  },
+  "main": "./make.js",
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
     "test": "./test/test.js"
   },
-  "description": "eample project that uses vigour-native",
+  "description": "example project that uses vigour-native plugins",
   "bugs": {
-    "url": "https://github.com/vigour-io/vigour-dev-tools/issues"
-  },
-  "homepage": "",
-  "directories": {
+    "url": "https://github.com/vigour-io/vigour-native/issues"
   },
   "dependencies": {
-   },
-  "optionalDependencies": {
+    "vigour-native-statusBar": "git+ssh://@github.com:vigour-io/vigour-native-statusBar.git#master"
   },
-  "keywords": [
-  ],
+  "devDependencies": {
+    "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev"
+  }
 }

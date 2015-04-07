@@ -2,4 +2,4 @@
 
 var native = require('../..')
 
-native.build.android()
+native.build.ios()
