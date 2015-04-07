@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity {
 
         webview = (XWalkView) findViewById(R.id.webview);
         webview.addJavascriptInterface(new NativeInterface(this, webview), "NativeInterface");
-        webview.load("file:///android_asset/test.html", null);
+        webview.load("file:///android_asset/index.html", null);
     }
 
 
