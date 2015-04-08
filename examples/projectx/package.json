@@ -33,11 +33,11 @@
 	        "splash": {
 	          "src": "./img/splash-ios.png"
 	        },
-					"productName": "",
-					"organizationName": "",
-					"organizationIdentifier": ""
+					"productName": "Vigour test app",
+					"organizationName": "Vigour",
+					"organizationIdentifier": "io.vigour.vigourTestApp"
         }
-        , "android": true
+        , "android": false
         , "wp8": true
         , "chromecast": true
         , "LG TV": true
