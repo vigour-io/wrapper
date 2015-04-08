@@ -26,15 +26,23 @@
   },
   "vigour": {
     "native": {
-      "platforms": {
-        "web": true,
-        "ios": true,
-        "android": true,
-        "wp8": true,
-        "chromecast": true,
-        "LG TV": true,
-        "Samsung TV": true,
-        "iWatch": true
+      "platforms":
+      {
+        "web": true
+        , "ios": {
+	        "splash": {
+	          "src": "./img/splash-ios.png"
+	        },
+					"productName": "",
+					"organizationName": "",
+					"organizationIdentifier": ""
+        }
+        , "android": true
+        , "wp8": true
+        , "chromecast": true
+        , "LG TV": true
+        , "Samsung TV": true
+        , "iWatch": true
       }
     }
   }
