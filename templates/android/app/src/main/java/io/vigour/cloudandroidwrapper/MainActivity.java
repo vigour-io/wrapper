@@ -1,6 +1,5 @@
 package io.vigour.cloudandroidwrapper;
 
-import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -12,6 +11,10 @@ import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
+
+import io.vigour.cloudandroidwrapper.plugin.NativeInterface;
+import io.vigour.cloudandroidwrapper.plugin.PluginManager;
+import io.vigour.cloudandroidwrapper.plugin.VigourPlugin;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -25,8 +28,11 @@ public class MainActivity extends ActionBarActivity {
 
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
 
+        PluginManager pluginManager = new PluginManager();
+        pluginManager.register(new ScrollbarPlugin(this));
+
         webview = (XWalkView) findViewById(R.id.webview);
-        webview.addJavascriptInterface(new NativeInterface(this, webview), "NativeInterface");
+        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
         webview.load("file:///android_asset/index.html", null);
 
         // show the version for debugging

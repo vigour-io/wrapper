@@ -1,9 +1,7 @@
-package io.vigour.cloudandroidwrapper;
+package io.vigour.cloudandroidwrapper.plugin;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Vibrator;
 import android.util.Log;
 
@@ -13,9 +11,6 @@ import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -24,11 +19,13 @@ import java.util.List;
 public class NativeInterface {
     private final Activity context;
     private final XWalkView webView;
+    private PluginManager pluginManager;
     private static int callId = 0;
 
-    public NativeInterface(Activity context, XWalkView webView) {
+    public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager) {
         this.context = context;
         this.webView = webView;
+        this.pluginManager = pluginManager;
     }
 
     @JavascriptInterface
@@ -58,11 +55,12 @@ public class NativeInterface {
                 respondError(id, "wrong number of arguments, we expect 4: " + params);
             }
         } catch (IOException e) {
-            respondError(-1, "can not parse params: " + params + "\\nbecause:\\n" + e.getMessage().replace('\'', '"').replace("\n", ""));
+            respondError(-1, "can not parse params: " + params + " because: " + e.getMessage().replace('\'', '"').replace("\n", ""));
         }
     }
 
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
+        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, this));
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
         if (callId % 2 == 0) {
             respondError(callId, "I do not like even numbers... >-(");
@@ -77,7 +75,7 @@ public class NativeInterface {
         vibrator.vibrate(200);
     }
 
-    private void respond(final int id, final String message) {
+    void respond(final int id, final String message) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -86,7 +84,7 @@ public class NativeInterface {
         });
     }
 
-    private void respondError(final int id, final String error) {
+    void respondError(final int id, final String error) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {

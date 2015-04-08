@@ -38,7 +38,7 @@
 					"organizationIdentifier": "io.vigour.vigourTestApp",
 					"buildNumber": "10"
         }
-        , "android": false
+        , "android": true
         , "wp8": true
         , "chromecast": true
         , "LG TV": true
