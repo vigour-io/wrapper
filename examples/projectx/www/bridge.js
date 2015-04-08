@@ -8,10 +8,10 @@ var Platform = 'android'
 
 switch (Platform) {
   case 'android':
-    send = send_android
+    send = sendAndroid
     break
   case 'android':
-    send = send_ios
+    send = sendIos
     break
 
 } 
@@ -30,7 +30,7 @@ switch (Platform) {
 function callNative(pluginId, fnName, params, cb) {
   var id = messageId++
   callbackMap[id] = cb
-  send([id, pluginId, fnName, param])
+  send([id, pluginId, fnName, params])
 }
 
 function testSend(str) {
@@ -68,11 +68,11 @@ function popCallback(id) {
 
   @param {Object} message
 **/
-function send_android(message) {
+function sendAndroid(message) {
   NativeInterface.send(JSON.stringify(message))
 }
 
-function send_ios(message) {
+function sendIos(message) {
 
 }
 
@@ -80,15 +80,17 @@ function send_ios(message) {
  * called by the android counterpart
  * expects a serialised array with [id,result,error]
 **/
-function receive_android_result(result) {
+function receiveAndroidResult(result) {
   receiveNativeResult(JSON.parse(result))
 }
 
-function receive_android_error(error) {
+function receiveAndroidError(error) {
   receiveNativeError(JSON.parse(error))
 }
 
-function receive_ios(message) {
+// TODO implement this
+// I don't know if iOS will have one entry point for both success and failure or not
+function receiveIos(message) {
 
 }
 

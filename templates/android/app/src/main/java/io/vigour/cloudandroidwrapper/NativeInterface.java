@@ -31,8 +31,8 @@ public class NativeInterface {
     }
 
     @JavascriptInterface
-    public void log(String params) {
-        Log.d("NativeInterface", params);
+    public void send(String params) {
+        Log.d("NativeInterface/send", params);
     }
 
     @JavascriptInterface
@@ -41,58 +41,21 @@ public class NativeInterface {
         vibrator.vibrate(200);
     }
 
-    @JavascriptInterface
-    public int immediate(String params) {
-        final int id = callId++;
+    private void respond(final int id, final String message) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.evaluateJavascript("result(\""+ id +"\")", null);
+                webView.evaluateJavascript(String.format("receive_android_result(%d, '%s')", id, message), null);
             }
         });
-        return id;
     }
 
-    @JavascriptInterface
-    public int slow(String params) {
-        final int id = callId++;
-        webView.postDelayed(new Runnable() {
+    private void respondError(final int id, final String error) {
+        context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.evaluateJavascript("result(\""+ id +"\")", null);
+                webView.evaluateJavascript(String.format("receive_android_error(%d, '%s')", id, error), null);
             }
-        }, 1200);
-        return id;
-    }
-
-    @JavascriptInterface
-    public int fast(String params) {
-        final int id = callId++;
-        webView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                webView.evaluateJavascript("result(\""+ id +"\")", null);
-            }
-        }, 300);
-        return id;
-    }
-
-    @JavascriptInterface
-    public String getInterface() {
-        try {
-            List<FunctionInfo> interfaceDescription = new ArrayList<>();
-            Method[] methods = getClass().getMethods();
-            for (Method m : methods) {
-                if (m.getDeclaringClass() != getClass()) {
-                    continue;
-                }
-                interfaceDescription.add(new FunctionInfo(m));
-            }
-
-            return JSON.std.asString(interfaceDescription);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "[]";
-        }
+        });
     }
 }

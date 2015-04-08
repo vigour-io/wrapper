@@ -5,12 +5,14 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
-    <title>It works!</title>
+    <title>Bridge Test</title>
 </head>
 <body>
-    <h1>Testing</h1>
-    <button id="thebutton">go!</button>
+    <h1>Testing the native bridge</h1>
+    <button onclick="testOneWay('test message')">send 'test message'</button>
+    <button onclick="testSimple()">call dummy/dummy without args and print result</button>
     <div id="container"/>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./bridge.js"></script>
+    <script type="text/javascript" src="./test.js"></script>
 </body>
 </html>
