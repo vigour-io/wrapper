@@ -20,12 +20,14 @@
     "test": "test"
   },
   "dependencies": {
+    "android": "git+ssh://git@github.com:benmonro/android.git#master",
     "body-parser": "1.12.2",
     "browserify": "^5.11.1",
     "chai": "2.1.x",
     "cli-spinner": "0.2.0",
     "colors": "1.0.x",
     "express": "4.12.3",
+    "fs-sync": "^0.2.5",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "ncp": "2.0.x",
@@ -33,9 +35,8 @@
     "promise": "^6.1.0",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "xcode": "^0.6.7",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
-    "android": "git+ssh://git@github.com:benmonro/android.git#master"
+    "xcode": "^0.6.7"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
