@@ -45,15 +45,27 @@ module.exports.call = callNative
 
 function receiveNativeResult(id, result) {
   var cb = popCallback(id)
-  cb(null, result)
+  if (cb) {
+    cb(null, result)
+  } else {
+    addToDom("result without cb: " + error)
+  }
 }
 
 function receiveNativeError(id, error) {
   var cb = popCallback(id)
-  cb(error)
+  if (cb) {
+    cb(error)
+  } else {
+    addToDom("error without cb: " + error)
+  }
 }
 
 function popCallback(id) {
+  if (!callbackMap.[id]) {
+     addToDom("illegal id: "+id) 
+     return
+  }
   var cb = callbackMap[id]
   delete callbackMap[id]
   return cb
@@ -80,12 +92,12 @@ function sendIos(message) {
  * called by the android counterpart
  * expects a serialised array with [id,result,error]
 **/
-function receiveAndroidResult(result) {
-  receiveNativeResult(JSON.parse(result))
+function receiveAndroidResult(id, result) {
+  receiveNativeResult(id, result)
 }
 
-function receiveAndroidError(error) {
-  receiveNativeError(JSON.parse(error))
+function receiveAndroidError(id, error) {
+  receiveNativeError(id, error)
 }
 
 // TODO implement this

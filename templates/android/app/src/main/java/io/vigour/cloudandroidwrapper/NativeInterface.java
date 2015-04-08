@@ -12,6 +12,7 @@ import com.fasterxml.jackson.jr.ob.JSON;
 import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkView;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,41 @@ public class NativeInterface {
     @JavascriptInterface
     public void send(String params) {
         Log.d("NativeInterface/send", params);
+        try {
+            Object[] array = JSON.std.arrayFrom(params);
+            int id = -1;
+            if (array.length == 0) {
+                throw new IOException("we need 4 arguments, first needs to be an integer");
+            }
+
+            Object first = array[0];
+            if (first instanceof Integer) {
+                id = (Integer) first;
+            } else if (first instanceof String) {
+                id = Integer.valueOf((String) first);
+            } else {
+                throw new IOException("first argument is not a number (or parsable string): " + params);
+            }
+
+            if (array.length == 4
+                && array[1] instanceof String
+                && array[2] instanceof String) {
+                handleJsMessage(id, (String)array[1], (String)array[2], array[3]);
+            } else {
+                respondError(id, "wrong number of arguments, we expect 4: " + params);
+            }
+        } catch (IOException e) {
+            respondError(-1, "couldn't parse params: " + params + "\nbecause:\n" + e.getMessage());
+        }
+    }
+
+    private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
+        Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
+        if (callId % 2 == 0) {
+            respondError(callId, "I don't like even numbers... >-(");
+        } else {
+            respond(callId, "I DO like even numbers! :D");
+        }
     }
 
     @JavascriptInterface
@@ -45,7 +81,7 @@ public class NativeInterface {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.evaluateJavascript(String.format("receive_android_result(%d, '%s')", id, message), null);
+                webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", id, message), null);
             }
         });
     }
@@ -54,7 +90,7 @@ public class NativeInterface {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                webView.evaluateJavascript(String.format("receive_android_error(%d, '%s')", id, error), null);
+                webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", id, error), null);
             }
         });
     }
