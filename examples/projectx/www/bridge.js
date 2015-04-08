@@ -62,7 +62,7 @@ function receiveNativeError(id, error) {
 }
 
 function popCallback(id) {
-  if (!callbackMap.[id]) {
+  if (!callbackMap[id]) {
      addToDom("illegal id: "+id) 
      return
   }
