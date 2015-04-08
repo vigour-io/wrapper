@@ -10,7 +10,7 @@ import WebKit
 import UIKit
 
 class MainViewController: UIViewController, WKScriptMessageHandler {
-
+    
     //wrapper for web app
     var webView: WKWebView
     
@@ -23,11 +23,11 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
         super.viewDidLoad()
         setup()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     private func setup() {
         view.addSubview(webView)
         webView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -35,12 +35,23 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
         let width = NSLayoutConstraint(item: webView, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
         view.addConstraints([height, width])
         
-        //test
-        let url = NSURL(string:"http://www.vigour.io")
-        let request = NSURLRequest(URL:url!)
-        webView.loadRequest(request)
+        configureWebView()
+        
+        loadApp()
+        
     }
-
+    
+    private func configureWebView() {
+        
+    }
+    
+    private func loadApp() {
+        let path = NSBundle.mainBundle().pathForResource("www/index",
+            ofType: "html")
+        let url = NSURL(fileURLWithPath: path!)
+        webView.loadRequest(NSURLRequest(URL: url!))
+    }
+    
     //MARK: - WKScriptMessageHandler
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
@@ -50,4 +61,3 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     }
     
 }
-
