@@ -1,16 +1,16 @@
 // for now just use global namespace
 // TODO make a module and build with browserify
 
-var Platform = 'android'
+var platform = window.platform || 'android'
   , send
   , messageId = 1
   , callbackMap = {}
 
-switch (Platform) {
+switch (platform) {
   case 'android':
     send = sendAndroid
     break
-  case 'android':
+  case 'ios':
     send = sendIos
     break
 
