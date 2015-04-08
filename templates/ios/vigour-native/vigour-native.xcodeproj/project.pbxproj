@@ -14,6 +14,8 @@
 		4926A2361AD2C637000FDF43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4926A2341AD2C637000FDF43 /* LaunchScreen.xib */; };
 		4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */; };
 		4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
+		49C5ED8A1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
+		49C5ED8B1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,7 @@
 		4926A2401AD2C637000FDF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vigour_nativeTests.swift; sourceTree = "<group>"; };
 		4926A24B1AD2CCEF000FDF43 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		49C5ED891AD559F800DA670C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,7 @@
 		4926A21D1AD2C637000FDF43 = {
 			isa = PBXGroup;
 			children = (
+				49C5ED891AD559F800DA670C /* www */,
 				4926A2281AD2C637000FDF43 /* vigour-native */,
 				4926A23E1AD2C637000FDF43 /* vigour-nativeTests */,
 				4926A2271AD2C637000FDF43 /* Products */,
@@ -195,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C5ED8A1AD559F800DA670C /* www in Resources */,
 				4926A2311AD2C637000FDF43 /* Main.storyboard in Resources */,
 				4926A2361AD2C637000FDF43 /* LaunchScreen.xib in Resources */,
 				4926A2331AD2C637000FDF43 /* Images.xcassets in Resources */,
@@ -205,6 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C5ED8B1AD559F800DA670C /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +419,7 @@
 				4926A2471AD2C637000FDF43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4926A2481AD2C637000FDF43 /* Build configuration list for PBXNativeTarget "vigour-nativeTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +428,7 @@
 				4926A24A1AD2C637000FDF43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

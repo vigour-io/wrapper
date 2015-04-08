@@ -34,6 +34,7 @@
     "npmlog": "0.1.x",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
+    "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
