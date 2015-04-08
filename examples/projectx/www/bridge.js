@@ -13,7 +13,6 @@ switch (platform) {
   case 'ios':
     send = sendIos
     break
-
 } 
 
 ///////////////////

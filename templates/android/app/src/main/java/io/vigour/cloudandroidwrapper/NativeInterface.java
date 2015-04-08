@@ -58,14 +58,14 @@ public class NativeInterface {
                 respondError(id, "wrong number of arguments, we expect 4: " + params);
             }
         } catch (IOException e) {
-            respondError(-1, "couldn't parse params: " + params + "\nbecause:\n" + e.getMessage());
+            respondError(-1, "can not parse params: " + params + "\\nbecause:\\n" + e.getMessage().replace('\'', '"').replace("\n", ""));
         }
     }
 
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
         if (callId % 2 == 0) {
-            respondError(callId, "I don't like even numbers... >-(");
+            respondError(callId, "I do not like even numbers... >-(");
         } else {
             respond(callId, "I DO like even numbers! :D");
         }
