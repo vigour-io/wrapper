@@ -5,7 +5,7 @@ var path = require('path')
   , Promise = require('promise')
 
   , fs = require('vigour-fs')
-  , vNative = require('../../../')
+  , vBuild = require('../../../lib/build')
 
   , readFile = Promise.denodeify(fs.readFile)
   , fs_exists = function (p) {
@@ -13,7 +13,6 @@ var path = require('path')
       fs.exists(p, resolve)
     })
   }
-  , vBuild = Promise.denodeify(vNative.build)
   
   , buildFactory = function (cwd) {
     return function (platforms) {
@@ -57,8 +56,7 @@ function build (platforms, cwd) {
     })
     .then(function (meta) {
       console.log("Build done in " + meta.time + "ms")
-    })
-    .catch(function (reason) {
-      console.error("Failure", reason)
+    }, function (reason) {
+      console.error("Failure", reason, reason.stack)
     })
 }
