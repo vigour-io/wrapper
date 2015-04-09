@@ -1,20 +1,16 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Build;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
-
-import io.vigour.cloudandroidwrapper.plugin.PluginFunction;
-import io.vigour.cloudandroidwrapper.plugin.VigourPlugin;
+import io.vigour.nativewrapper.plugin.core.Plugin;
 
 /**
  * Created by michielvanliempt on 08/04/15.
  */
-public class StatusBarPlugin extends VigourPlugin implements View.OnSystemUiVisibilityChangeListener {
+public class StatusBarPlugin extends Plugin implements View.OnSystemUiVisibilityChangeListener {
 
     private final Activity context;
     private final View webView;

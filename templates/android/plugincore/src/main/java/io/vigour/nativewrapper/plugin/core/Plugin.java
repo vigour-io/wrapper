@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin.core;
 
 import java.lang.reflect.Method;
 import java.util.AbstractMap;
@@ -7,11 +7,11 @@ import java.util.TreeMap;
 /**
  * Created by michielvanliempt on 08/04/15.
  */
-public class VigourPlugin {
+public class Plugin {
     private String name;
     private AbstractMap<String, PluginFunction> functions = new TreeMap<>();
 
-    public VigourPlugin(String name) {
+    public Plugin(String name) {
         this.name = name;
         for (Method m : getClass().getMethods()) {
             if (m.getDeclaringClass() == getClass()) {

@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin.core;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,9 +10,9 @@ public class ReflectivePluginFunction implements PluginFunction {
 
     String name;
     Method method;
-    VigourPlugin plugin;
+    Plugin plugin;
 
-    public ReflectivePluginFunction(String name, Method method, VigourPlugin plugin) {
+    public ReflectivePluginFunction(String name, Method method, Plugin plugin) {
         this.name = name;
         this.method = method;
         this.plugin = plugin;

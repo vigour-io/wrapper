@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,12 +8,12 @@ import android.util.Log;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
-import io.vigour.cloudandroidwrapper.MainActivity;
+import io.vigour.nativewrapper.plugin.core.Plugin;
 
 /**
  * Created by michielvanliempt on 09/04/15.
  */
-public class TestPlugin extends VigourPlugin {
+public class TestPlugin extends Plugin {
     private final Activity context;
 
     public TestPlugin(Activity context) {

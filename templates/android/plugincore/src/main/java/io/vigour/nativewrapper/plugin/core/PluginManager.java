@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin.core;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -8,14 +8,14 @@ import java.util.TreeMap;
  */
 public class PluginManager {
 
-    private Map<String, VigourPlugin> plugins = new TreeMap<>();
+    private Map<String, Plugin> plugins = new TreeMap<>();
 
-    public void register(VigourPlugin plugin) {
+    public void register(Plugin plugin) {
         plugins.put(plugin.getName(), plugin);
     }
 
     public void execute(CallContext context) {
-        VigourPlugin plugin = plugins.get(context.pluginId);
+        Plugin plugin = plugins.get(context.pluginId);
 
         if (plugin == null) {
             context.error(String.format("plugin %s not registered on native side", context.pluginId));

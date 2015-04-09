@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper;
+package io.vigour.nativewrapper;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,10 +12,10 @@ import android.widget.TextView;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
-import io.vigour.cloudandroidwrapper.plugin.NativeInterface;
-import io.vigour.cloudandroidwrapper.plugin.PluginManager;
-import io.vigour.cloudandroidwrapper.plugin.StatusBarPlugin;
-import io.vigour.cloudandroidwrapper.plugin.TestPlugin;
+import io.vigour.nativewrapper.plugin.NativeInterface;
+import io.vigour.nativewrapper.plugin.core.PluginManager;
+import io.vigour.nativewrapper.plugin.core.StatusBarPlugin;
+import io.vigour.nativewrapper.plugin.core.TestPlugin;
 
 
 public class MainActivity extends ActionBarActivity {
