@@ -1,1 +1,1 @@
-here we have the projects (exmaple projects)
+These are the templates for the native builds. Upon building for native the correct template is copied, modified and build.
