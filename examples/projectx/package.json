@@ -19,12 +19,11 @@
     "url": "https://github.com/vigour-io/vigour-native/issues"
   },
   "dependencies": {
-    "vigour-native-statusBar": "git+ssh://@github.com:vigour-io/vigour-native-statusBar.git#master"
+   
   },
   "devDependencies": {
-    "commander": "^2.7.1",
-    "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev",
-    "gaston": "git+ssh://@github.com:vigour-io/gaston.git#master"
+    "commander": "^2.7.1"
+    
   },
   "vigour": {
     "native": {

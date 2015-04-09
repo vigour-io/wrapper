@@ -14,8 +14,8 @@ import org.xwalk.core.XWalkView;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
 import io.vigour.nativewrapper.plugin.core.PluginManager;
-import io.vigour.nativewrapper.plugin.core.StatusBarPlugin;
-import io.vigour.nativewrapper.plugin.core.TestPlugin;
+import io.vigour.nativewrapper.plugin.StatusBarPlugin;
+import io.vigour.nativewrapper.plugin.TestPlugin;
 
 
 public class MainActivity extends ActionBarActivity {
