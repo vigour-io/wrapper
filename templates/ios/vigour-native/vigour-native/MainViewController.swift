@@ -6,35 +6,32 @@
 //  Copyright (c) 2015 Vigour.io. All rights reserved.
 //
 
-// WKWebView has an issue not able load html files from local disk
-// http://openradar.appspot.com/20160687
-// https://issues.apache.org/jira/browse/CB-7539
-
-// two options to bypass the issue:
-//  - user a server like: https://github.com/robbiehanson/CocoaHTTPServer
-//    or https://developer.apple.com/legacy/library/samplecode/CocoaHTTPServer/Listings/CocoaHTTPServer_m.html
-// - workaround is to copy www folder to tmp folder in de apps sandbox
 
 
 import WebKit
 import UIKit
+
+let scriptMessageHandlerName = "vigourBridgeHandler"
 
 class MainViewController: UIViewController, WKScriptMessageHandler {
     
     //wrapper for web app
     var webView: WKWebView?
     
+    lazy var userContentController: WKUserContentController = {
+        let controller = WKUserContentController()
+        controller.addScriptMessageHandler(self, name: scriptMessageHandlerName)
+        return controller
+    }()
     
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
-        
+        config.allowsInlineMediaPlayback = true
+        config.mediaPlaybackRequiresUserAction = true
+        config.userContentController = self.userContentController
         return config
-        }()
-    
-    lazy var tmpFolder: String = {
-        return NSTemporaryDirectory()
-        }()
-    
+    }()
+
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -51,9 +48,6 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     
     private func setup() {
         
-        //wkwebview fix for referencing assets
-        copyFolderToFolder(NSBundle.mainBundle().pathForResource("www", ofType: nil)!, tmpFolder)
-        
         webView = WKWebView(frame: CGRectZero, configuration: configuration)
         
         loadApp()
@@ -68,7 +62,8 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     
     private func loadApp() {
         //NOTE: - we asume index.html is there..
-        let path = "\(tmpFolder)index.html"
+        let path = "\(webAplicationFolderPath)/index.html"
+        //println(path)
         let url = NSURL(fileURLWithPath: path)
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
@@ -77,9 +72,11 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     //MARK: - WKScriptMessageHandler
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        if(message.name == "callbackHandler") {
-            println("JavaScript is sending a message \(message.body)")
-        }
+        
+        println(message.name)
+        println(message.body)
+
     }
+    
     
 }
