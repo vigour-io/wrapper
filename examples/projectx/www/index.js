@@ -9,114 +9,106 @@ var app = new Element({
     node: 'h1'
     , text: "Testing the native bridge"
   }
-  , ios:
-  { node: 'h2'
-    , text: "iOS"
-    , werf:
-    { node: 'button'
-      , text: "tap me"
-      , events:
-      { click: function () {
-          doSome()
-        }
+  , werf:
+  { node: 'button'
+    , text: "tap me"
+    , events:
+    { click: function () {
+        doSome()
       }
     }
   }
-  , android:
-  { node: 'h2'
-    , text: "Android"
-    , t1:
+  , t1:
+  {
+    node: 'button'
+    , text: "send 'test message'"
+    , events:
     {
-      node: 'button'
-      , text: "send 'test message'"
-      , events:
-      {
-        click: function () {
-          testOneWay('test message')
-        }
+      click: function () {
+        testOneWay('test message')
       }
     }
-    , t2:
+  }
+  , t2:
+  {
+    node: 'button'
+    , text: "dummy/dummy()"
+    , events:
     {
-      node: 'button'
-      , text: "dummy/dummy()"
-      , events:
-      {
-        click: function () {
-          testSimple()
-        }
+      click: function () {
+        testSimple()
       }
     }
-    , t3:
+  }
+  , t3:
+  {
+    node: 'button'
+    , text: "statusbar/hide()"
+    , events:
     {
-      node: 'button'
-      , text: "statusbar/hide()"
-      , events:
-      {
-         click: function () {
-          testSimple('statusbar','hide')
-        }
+       click: function () {
+        testSimple('statusbar','hide')
       }
     }
-    , t4:
+  }
+  , t4:
+  {
+    node: 'button'
+    , text: "statusbar/show()"
+    , events:
     {
-      node: 'button'
-      , text: "statusbar/show()"
-      , events:
-      {
-         click: function () {
-          testSimple('statusbar','show')
-        }
+       click: function () {
+        testSimple('statusbar','show')
       }
     }
-    , t5:
+  }
+  , t5:
+  {
+    node: 'button'
+    , text: "test/log('test log message')"
+    , events:
     {
-      node: 'button'
-      , text: "test/log('test log message')"
-      , events:
-      {
-         click: function () {
-          testSimple('test', 'log', 'test log message')
-        }
+       click: function () {
+        testSimple('test', 'log', 'test log message')
       }
     }
-    , t6:
+  }
+  , t6:
+  {
+    node: 'button'
+    , text: "test/echo('test echo message')"
+    , events:
     {
-      node: 'button'
-      , text: "test/echo('test echo message')"
-      , events:
-      {
-         click: function () {
-          testSimple('test', 'echo', 'test echo message')
-        }
+       click: function () {
+        testSimple('test', 'echo', 'test echo message')
       }
     }
-    , t7:
+  }
+  , t7:
+  {
+    node: 'button'
+    , text: "test/vibrate()"
+    , events:
     {
-      node: 'button'
-      , text: "test/vibrate()"
-      , events:
-      {
-         click: function () {
-          testSimple('test', 'vibrate')
-        }
+       click: function () {
+        testSimple('test', 'vibrate')
       }
     }
-    , t8:
+  }
+  , t8:
+  {
+    node: 'button'
+    , text: "test/getTime()"
+    , events:
     {
-      node: 'button'
-      , text: "test/getTime()"
-      , events:
-      {
-         click: function () {
-          testSimple('test', 'getTime')
-        }
+       click: function () {
+        testSimple('test', 'getTime')
       }
     }
-    , container:
-    {
-      attr: { id: "container" }
-    }
+  }
+  , container:
+  {
+    attr: { id: "container" }
   }
 })
 
