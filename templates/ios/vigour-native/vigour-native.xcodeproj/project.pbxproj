@@ -16,6 +16,9 @@
 		4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
 		49C5ED8A1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
 		49C5ED8B1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
+		49C5ED941AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
+		49C5ED951AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
+		49C5ED981AD5AFFC00DA670C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C5ED971AD5AFFC00DA670C /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,8 @@
 		4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vigour_nativeTests.swift; sourceTree = "<group>"; };
 		4926A24B1AD2CCEF000FDF43 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		49C5ED891AD559F800DA670C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
+		49C5ED931AD5ACAB00DA670C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		49C5ED971AD5AFFC00DA670C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49C5ED981AD5AFFC00DA670C /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +74,7 @@
 				4926A2281AD2C637000FDF43 /* vigour-native */,
 				4926A23E1AD2C637000FDF43 /* vigour-nativeTests */,
 				4926A2271AD2C637000FDF43 /* Products */,
+				49C5ED9B1AD5B12100DA670C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +90,7 @@
 		4926A2281AD2C637000FDF43 /* vigour-native */ = {
 			isa = PBXGroup;
 			children = (
+				49C5ED961AD5AEE100DA670C /* NativeBridge */,
 				4926A22B1AD2C637000FDF43 /* AppDelegate.swift */,
 				4926A22D1AD2C637000FDF43 /* MainViewController.swift */,
 				4926A22F1AD2C637000FDF43 /* Main.storyboard */,
@@ -90,6 +98,7 @@
 				4926A2341AD2C637000FDF43 /* LaunchScreen.xib */,
 				4926A2291AD2C637000FDF43 /* Supporting Files */,
 				4926A24B1AD2CCEF000FDF43 /* MainController.swift */,
+				49C5ED931AD5ACAB00DA670C /* Utils.swift */,
 			);
 			path = "vigour-native";
 			sourceTree = "<group>";
@@ -117,6 +126,21 @@
 				4926A2401AD2C637000FDF43 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49C5ED961AD5AEE100DA670C /* NativeBridge */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NativeBridge;
+			sourceTree = "<group>";
+		};
+		49C5ED9B1AD5B12100DA670C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49C5ED971AD5AFFC00DA670C /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +248,7 @@
 				4926A22E1AD2C637000FDF43 /* MainViewController.swift in Sources */,
 				4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */,
 				4926A22C1AD2C637000FDF43 /* AppDelegate.swift in Sources */,
+				49C5ED941AD5ACAB00DA670C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */,
+				49C5ED951AD5ACAB00DA670C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

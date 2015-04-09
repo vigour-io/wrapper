@@ -24,6 +24,7 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     //wrapper for web app
     var webView: WKWebView?
     
+    
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         
@@ -50,8 +51,8 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     
     private func setup() {
         
-        //wkwebview fix
-        copyBundleWWWFolderToFolder()
+        //wkwebview fix for referencing assets
+        copyFolderToFolder(NSBundle.mainBundle().pathForResource("www", ofType: nil)!, tmpFolder)
         
         webView = WKWebView(frame: CGRectZero, configuration: configuration)
         
@@ -66,21 +67,12 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     }
     
     private func loadApp() {
-        let path = "\(tmpFolder)www/index.html"
+        //NOTE: - we asume index.html is there..
+        let path = "\(tmpFolder)index.html"
         let url = NSURL(fileURLWithPath: path)
-        println(path)
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
     
-    private func copyBundleWWWFolderToFolder() {
-        let src = NSBundle.mainBundle().pathForResource("www", ofType: nil)
-        println(src)
-        if NSFileManager.defaultManager().copyItemAtPath(src!, toPath: tmpFolder, error: NSErrorPointer()) {
-            
-            println("crap")
-            
-        }
-    }
     
     //MARK: - WKScriptMessageHandler
     
