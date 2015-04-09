@@ -11,7 +11,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "./bin/bin.js"
+    "start": "gaston -d",
+    "build": "./bin/bin.js build"
   },
   "description": "example project that uses vigour-native plugins",
   "bugs": {
@@ -22,7 +23,8 @@
   },
   "devDependencies": {
     "commander": "^2.7.1",
-    "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev"
+    "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev",
+    "gaston": "git+ssh://@github.com:vigour-io/gaston.git#master"
   },
   "vigour": {
     "native": {
@@ -38,7 +40,9 @@
 					"organizationIdentifier": "io.vigour.vigourTestApp",
 					"buildNumber": "10"
         }
-        , "android": true
+        , "android": {
+          "packageName": "io.vigour.cloudandroidwrapper"
+        }
         , "wp8": true
         , "chromecast": true
         , "LG TV": true
