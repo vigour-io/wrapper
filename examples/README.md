@@ -1,1 +1,2 @@
-here we have the projects (exmaple projects)
+Examples
+===
