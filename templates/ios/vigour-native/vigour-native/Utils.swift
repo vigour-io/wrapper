@@ -29,4 +29,6 @@ func copyFolderToFolder(source: String, destination: String) {
         println("\(e.localizedDescription)")
     }
     
+    println(destination)
+    
 }
