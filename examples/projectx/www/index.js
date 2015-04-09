@@ -1,4 +1,4 @@
-
+require('./styles.less')
 var bridge = require('../../../lib/bridge')
   , Element = require('vigour-js/ui/element')
 
@@ -9,29 +9,45 @@ var app = new Element({
     node: 'h1'
     , text: "Testing the native bridge"
   }
-  , t1:
-  {
-    node: 'button'
-    , text: "send 'test message'"
-    , events:
-    {
-      click: function () {
-        testOneWay('test message')
+  , ios:
+  { node: 'h2'
+    , text: "iOS"
+    , werf:
+    { node: 'button'
+      , text: "tap me"
+      , events:
+      { click: function () {
+          doSome()
+        }
       }
     }
   }
-  , t2:
-  {
-    node: 'button'
-    , text: "dummy/dummy()"
-    , events:
+  , android:
+  { node: 'h2'
+    , text: "Android"
+    , t1:
     {
-      click: function () {
-        testSimple()
+      node: 'button'
+      , text: "send 'test message'"
+      , events:
+      {
+        click: function () {
+          testOneWay('test message')
+        }
       }
     }
-  }
-  , t3:
+    , t2:
+    {
+      node: 'button'
+      , text: "dummy/dummy()"
+      , events:
+      {
+        click: function () {
+          testSimple()
+        }
+      }
+    }
+    , t3:
     {
       node: 'button'
       , text: "statusbar/hide()"
@@ -101,8 +117,22 @@ var app = new Element({
     {
       attr: { id: "container" }
     }
+  }
 })
 
+function doSome() {
+  var div = document.createElement('div')
+  div.innerHTML = "tap tap"
+  document.body.appendChild(div)
+  try {
+    window.webkit.messageHandlers.vigourBridgeHandler.postMessage([1,2,3])
+    window.webkit.messageHandlers.vigourBridgeHandler.postMessage({"a":[1,2], "b":"c"})
+    //ignores funcs passing
+    window.webkit.messageHandlers.vigourBridgeHandler.postMessage({"a":[1,2], "b":function(){return 1}})
+  } catch(err) {
+    console.log('The native context does not exist yet');
+  }
+}
 
 function testSend (msg) {
   bridge.send(msg)
