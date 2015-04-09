@@ -1,13 +1,14 @@
 package io.vigour.cloudandroidwrapper.plugin;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by michielvanliempt on 08/04/15.
  */
 public class PluginManager {
 
-    private Map<String, VigourPlugin> plugins;
+    private Map<String, VigourPlugin> plugins = new TreeMap<>();
 
     public void register(VigourPlugin plugin) {
         plugins.put(plugin.getName(), plugin);

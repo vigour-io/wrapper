@@ -31,9 +31,9 @@ public class NativeInterface {
     @JavascriptInterface
     public void send(String params) {
         Log.d("NativeInterface/send", params);
+        int id = -1;
         try {
             Object[] array = JSON.std.arrayFrom(params);
-            int id = -1;
             if (array.length == 0) {
                 throw new IOException("we need 4 arguments, first needs to be an integer");
             }
@@ -55,24 +55,13 @@ public class NativeInterface {
                 respondError(id, "wrong number of arguments, we expect 4: " + params);
             }
         } catch (IOException e) {
-            respondError(-1, "can not parse params: " + params + " because: " + e.getMessage().replace('\'', '"').replace("\n", ""));
+            respondError(id, "exception handling message: " + params + " because: " + e.getMessage().replace('\'', '"').replace("\n", ""));
         }
     }
 
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
-        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, this));
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
-        if (callId % 2 == 0) {
-            respondError(callId, "I do not like even numbers... >-(");
-        } else {
-            respond(callId, "I DO like even numbers! :D");
-        }
-    }
-
-    @JavascriptInterface
-    public void vibrate(String params) {
-        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
+        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, this));
     }
 
     void respond(final int id, final String message) {

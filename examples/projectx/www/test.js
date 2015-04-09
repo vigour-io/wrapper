@@ -4,7 +4,10 @@ function testOneWay(message) {
 }
 
 function testSimple() {
-    wrapTry(callNative)('dummy', 'dummy', [], function(error, value) {
+    var plugin = arguments[0] || 'dummy'
+    var fnName = arguments[1] || 'dummy'
+    var args = arguments[2] || []
+    wrapTry(callNative)(plugin, fnName, args, function(error, value) {
         if (error) {
             addToDom("error: " + error)
         } else {

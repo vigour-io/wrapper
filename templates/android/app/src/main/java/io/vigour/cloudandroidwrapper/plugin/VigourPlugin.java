@@ -11,7 +11,8 @@ public class VigourPlugin {
     private String name;
     private AbstractMap<String, PluginFunction> functions = new TreeMap<>();
 
-    public VigourPlugin() {
+    public VigourPlugin(String name) {
+        this.name = name;
         for (Method m : getClass().getMethods()) {
             if (m.getDeclaringClass() == getClass()) {
                 register(new ReflectivePluginFunction(m.getName(), m, this));
@@ -21,10 +22,6 @@ public class VigourPlugin {
     
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public PluginFunction getFunction(String functionName) {

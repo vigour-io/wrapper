@@ -22,7 +22,8 @@ public class CallContext {
         try {
             respond(function.run(arguments));
         } catch (Exception e) {
-            error(e.getMessage());
+            e.printStackTrace();
+            error(e.toString());
         }
     }
 
