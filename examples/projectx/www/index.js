@@ -1,4 +1,6 @@
+
 var bridge = require('../../../lib/bridge')
+document.getElementById('thebutton').addEventListener("click", start)
 
 function testSend (msg) {
   bridge.send(msg)
