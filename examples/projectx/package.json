@@ -11,7 +11,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gaston",
+    "start": "gaston -d",
     "build": "./bin/bin.js build"
   },
   "description": "example project that uses vigour-native plugins",
