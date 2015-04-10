@@ -4,8 +4,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,11 +12,6 @@ import org.xwalk.core.XWalkView;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
 import io.vigour.nativewrapper.plugin.core.PluginManager;
-
-//-- plugins import start
-import io.vigour.plugin.statusbar.StatusBarPlugin;
-import io.vigour.plugin.test.TestPlugin;
-//-- plugins import end
 
 public class MainActivity extends ActionBarActivity {
 
@@ -34,10 +27,8 @@ public class MainActivity extends ActionBarActivity {
         webview = (XWalkView) findViewById(R.id.webview);
 
         PluginManager pluginManager = new PluginManager();
-        //-- plugins registration start
-        pluginManager.register(new StatusBarPlugin(this, webview));
-        pluginManager.register(new TestPlugin(this));
-        //-- plugins registration end
+        registerPlugins(pluginManager);
+
 
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
         webview.load("file:///android_asset/index.html", null);
@@ -58,6 +49,11 @@ public class MainActivity extends ActionBarActivity {
         } else {
             versionView.setVisibility(View.GONE);
         }
+    }
+
+    private void registerPlugins(PluginManager pluginManager) {
+        pluginManager.register(new io.vigour.plugin.statusbar.StatusBarPlugin(this, webview));
+        pluginManager.register(new io.vigour.plugin.test.TestPlugin(this));
     }
 
     @Override
