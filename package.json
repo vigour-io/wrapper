@@ -10,7 +10,12 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {},
+  "bin": {
+    "build": "bin/build.js"
+  },
+  "scripts": {
+    "build": "bin/build.js"
+  },
   "description": "The native code to wrap vigour apps",
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native/issues"

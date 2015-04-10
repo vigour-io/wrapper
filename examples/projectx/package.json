@@ -23,8 +23,8 @@
   },
   "devDependencies": {
     "commander": "^2.7.1",
-    "vigour-dev-tools": "git+ssh://@github.com:vigour-io/vigour-dev-tools.git#dev",
-    "gaston": "git+ssh://@github.com:vigour-io/gaston.git#master"
+    "vigour-dev-tools": "git+ssh://git@github.com:vigour-io/vigour-dev-tools.git#dev",
+    "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#master"
   },
   "vigour": {
     "native": {
