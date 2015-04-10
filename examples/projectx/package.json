@@ -19,7 +19,8 @@
     "url": "https://github.com/vigour-io/vigour-native/issues"
   },
   "dependencies": {
-   
+    "testplugin": "git+ssh://git@github.com:vigour-io/vigour-native-plugintest.git",
+    "statusbarplugin": "git+ssh://git@github.com:vigour-io/vigour-native-statusBar.git"
   },
   "devDependencies": {
     "commander": "^2.7.1"
@@ -27,27 +28,30 @@
   },
   "vigour": {
     "native": {
-      "platforms":
+      "plugins": [ "vigour-native-plugintest"
+                 , "vigour-native-statusBar" ]
+    , "platforms":
       {
         "web": true
-        , "ios": {
-	        "splash": {
-	          "src": "./img/splash-ios.png"
-	        },
-					"productName": "Vigour Test App",
-					"organizationName": "Vigour",
-					"organizationIdentifier": "io.vigour.vigourTestApp",
-					"buildNumber": "10"
+      , "ios": {
+          "splash": {
+            "src": "./img/splash-ios.png"
+          },
+  				"productName": "Vigour Test App",
+  				"organizationName": "Vigour",
+  				"organizationIdentifier": "io.vigour.vigourTestApp",
+  				"buildNumber": "10"
         }
-        , "android": {
+      , "android": {
           "packageName": "io.vigour.cloudandroidwrapper"
         }
-        , "wp8": true
-        , "chromecast": true
-        , "LG TV": true
-        , "Samsung TV": true
-        , "iWatch": true
+      , "wp8": true
+      , "chromecast": true
+      , "LG TV": true
+      , "Samsung TV": true
+      , "iWatch": true
       }
+    
     }
   }
 }
