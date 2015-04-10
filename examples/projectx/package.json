@@ -43,7 +43,8 @@
   				"buildNumber": "10"
         }
       , "android": {
-          "packageName": "io.vigour.cloudandroidwrapper"
+          "packageName": "io.vigour.cloudandroidwrapper",
+          "rebuildPlugins": false
         }
       , "wp8": true
       , "chromecast": true
