@@ -42,7 +42,8 @@ dependencies {
     compile 'com.fasterxml.jackson.jr:jackson-jr-objects:2.5.1'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'joda-time:joda-time:2.7'
-    compile(name:'test-plugin-debug', ext:'aar')
-    compile(name:'statusbar-plugin-debug', ext:'aar')
-//    compile project(':plugincore')
+
+    //-- start plugin dependencies
+    compile project(':plugincore')
+    //-- end plugin dependencies
 }

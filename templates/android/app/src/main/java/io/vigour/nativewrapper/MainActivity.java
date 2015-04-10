@@ -13,6 +13,9 @@ import org.xwalk.core.XWalkView;
 import io.vigour.nativewrapper.plugin.NativeInterface;
 import io.vigour.nativewrapper.plugin.core.PluginManager;
 
+//-- start plugin imports
+//-- end plugin imports
+
 public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
@@ -52,8 +55,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void registerPlugins(PluginManager pluginManager) {
-        pluginManager.register(new io.vigour.plugin.statusbar.StatusBarPlugin(this, webview));
-        pluginManager.register(new io.vigour.plugin.test.TestPlugin(this));
     }
 
     @Override
