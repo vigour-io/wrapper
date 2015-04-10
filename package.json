@@ -7,11 +7,11 @@
     "url": "https://github.com/vigour-io/vigour-native"
   },
   "main": "./index.js",
+  "scripts": {
+    "test": "test/index.js"
+  },
   "engines": {
     "node": ">=0.10.0"
-  },
-  "bin": {
-    "build": "bin/build.js"
   },
   "description": "The native code to wrap vigour apps",
   "bugs": {
@@ -54,5 +54,8 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "npm": "^2.7.6"
+  }
 }
