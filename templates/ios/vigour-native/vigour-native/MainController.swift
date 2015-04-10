@@ -40,7 +40,7 @@ class MainController {
     //MARK: - Setup
     
     func setup() {
-        contentViewNavController = mainStoryboard.instantiateInitialViewController() as MainViewController
+        contentViewNavController = mainStoryboard.instantiateInitialViewController() as! MainViewController
     }
 
     
