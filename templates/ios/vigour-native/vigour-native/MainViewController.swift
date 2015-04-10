@@ -11,16 +11,16 @@
 import WebKit
 import UIKit
 
-let scriptMessageHandlerName = "vigourBridgeHandler"
-
-class MainViewController: UIViewController, WKScriptMessageHandler {
+class MainViewController: UIViewController {
+    
+    let vigourBridge = VigourBridge()
     
     //wrapper for web app
     var webView: WKWebView?
     
     lazy var userContentController: WKUserContentController = {
         let controller = WKUserContentController()
-        controller.addScriptMessageHandler(self, name: scriptMessageHandlerName)
+        controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         return controller
     }()
     
@@ -62,21 +62,15 @@ class MainViewController: UIViewController, WKScriptMessageHandler {
     
     private func loadApp() {
         //NOTE: - we asume index.html is there..
-        let path = "\(webAplicationFolderPath)/index.html"
+       // let path = "\(webAplicationFolderPath)/index.html"
+        let path = NSBundle.mainBundle().pathForResource("www/index", ofType: "html")!
         //println(path)
         let url = NSURL(fileURLWithPath: path)
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
     
     
-    //MARK: - WKScriptMessageHandler
-    
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        
-        println(message.name)
-        println(message.body)
 
-    }
     
     
 }
