@@ -62,8 +62,8 @@ class MainViewController: UIViewController {
     
     private func loadApp() {
         //NOTE: - we asume index.html is there..
-       // let path = "\(webAplicationFolderPath)/index.html"
-        let path = NSBundle.mainBundle().pathForResource("www/index", ofType: "html")!
+        let path = "\(webAplicationFolderPath)/index.html"
+//        let path = NSBundle.mainBundle().pathForResource("www/index", ofType: "html")!
         //println(path)
         let url = NSURL(fileURLWithPath: path)
         webView!.loadRequest(NSURLRequest(URL: url!))

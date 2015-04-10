@@ -26,4 +26,8 @@ class VigourPluginManager {
         plugins[id] = plugin
     }
     
+    func callPlugin(name: String, method: String, params: Array<AnyObject>) {
+        
+    }
+    
 }

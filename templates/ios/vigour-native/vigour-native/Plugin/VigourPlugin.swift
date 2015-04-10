@@ -8,7 +8,10 @@
 
 import Foundation
 
-//for runtime inspection we need to extend from NSObject to allow introspection on its sub classes, e.g. plugins
+
+protocol VigourPluginMethod {
+    func shouldCallMehtodWithName(name: String, andArguments args:[AnyObject]?)
+}
 
 class VigourPlugin : NSObject {
     
@@ -18,6 +21,14 @@ class VigourPlugin : NSObject {
     required init(id: String) {
         self.id = id
         super.init()
+    }
+    
+    func register() {
+    }
+    
+    /// this method can't be overridden
+    final func callMethod(name: String, args: Array<AnyObject>?) {
+        
     }
     
 }

@@ -46,18 +46,19 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
-        // [callbackId, pluginName, mehtod, args]
+        // [callbackId: Int, pluginName: String, mehtod: String, args: AnyObject]
         if message.name == self.dynamicType.scriptMessageHandlerName() {
-            if let m = message.body as? NSArray {
-                if m.count >= 3 {
-                    let pluginName = m.objectAtIndex(1) as! String
-                    let pluginFunc = m.objectAtIndex(2) as! String
-                    if let plugInstance = pluginManager.plugins[pluginName] {
-                        if plugInstance.respondsToSelector(Selector(pluginFunc)) {
-                            println("jep")
-                        }
+            if let m = message.body as? NSArray where m.count >= 3 {
+
+                let callbackId = m.objectAtIndex(1) as! Int
+                let pluginName = m.objectAtIndex(1) as! String
+                let pluginFunc = m.objectAtIndex(2) as! String
+                if let plugInstance = pluginManager.plugins[pluginName] {
+                    if plugInstance.respondsToSelector(Selector(pluginFunc)) {
+                        println("jep")
                     }
                 }
+
             }
         }
         
