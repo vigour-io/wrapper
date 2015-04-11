@@ -10,6 +10,7 @@ import Foundation
 
 class TestPlugin: VigourPlugin, VigourPluginMethod {
     
+    
     func log(message: String) {
         println(message)
     }

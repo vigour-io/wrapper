@@ -8,11 +8,15 @@
 
 import Foundation
 
+enum MessageRestult {
+    case Success, Failure
+}
+
 struct Message {
     let calbackId: Int
     let pluginName: String
     let pluginMethod: String
-    let arguments: AnyObject?
+    let arguments:[T]
     
 //    init() {
 //        

@@ -6,9 +6,13 @@ protocol test {
     func isMethodForName(name: String) -> ()->()
 }
 
-struct Message {
+class Message: NSObject {
     let value: String
     let type: Int
+    init(value: String, type: Int) {
+        self.value = value
+        self.type = type
+    }
 }
 
 class A : NSObject {
@@ -20,23 +24,17 @@ class A : NSObject {
     var functions:Dictionary<String, ()->()> = [:]
 }
 
-class B: A, test {
+class B: A {
     
     func a() -> Void {
         println(name)
     }
     
-    func b(index:Message) -> Message {
-        return Message(value: "top", type: 1)
+    dynamic func b(index:Message) -> AnyObject {
+        return Message(value: "", type: 1)
     }
-    func isMethodForName(name: String) -> ((Message) -> (Message)) {
-        switch(name) {
-            case "b": return b
-        default:return {Message(value: "", type: 1)}
-        }
-    }
+
 }
 
-let b = B(name: "yoho")
-b.isMethodForName("a")()
-b.isMethodForName("")()
+Swift.Int
+
