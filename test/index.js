@@ -12,7 +12,7 @@ npm.load(function (err, npm) {
     if (npm.config.get('user-agent')
         .split(' ')[0]
         .split('/')[1][0] !== "2") {
-      log.warn('sudo npm update npm@^2 -g')
+      log.warn('`sudo npm update npm@^2 -g` OR use `./node_modules/.bin/npm')
       warnings += 1
     }
   }
