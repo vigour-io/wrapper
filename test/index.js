@@ -22,7 +22,7 @@ npm.load(function (err, npm) {
   if (warnings) {
     log.warn(warnings, "warnings")
   }
-  if (!errors & !warnings) {
+  if (!errors && !warnings) {
     log.info("PASS")
   }
 })
