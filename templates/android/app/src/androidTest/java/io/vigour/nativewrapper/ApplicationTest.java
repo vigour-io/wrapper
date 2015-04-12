@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper;
+package io.vigour.nativewrapper;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

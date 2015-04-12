@@ -1,8 +1,6 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Vibrator;
 import android.util.Log;
 
 import com.fasterxml.jackson.jr.ob.JSON;
@@ -11,6 +9,10 @@ import org.xwalk.core.JavascriptInterface;
 import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
+
+import io.vigour.nativewrapper.plugin.core.BridgeInterface;
+import io.vigour.nativewrapper.plugin.core.CallContext;
+import io.vigour.nativewrapper.plugin.core.PluginManager;
 
 
 /**
@@ -52,33 +54,39 @@ public class NativeInterface {
                 && array[2] instanceof String) {
                 handleJsMessage(id, (String)array[1], (String)array[2], array[3]);
             } else {
-                respondError(id, "wrong number of arguments, we expect 4: " + params);
+                bridgeInterface.respondError(id, "wrong number of arguments, we expect 4: " + params);
             }
         } catch (IOException e) {
-            respondError(id, "exception handling message: " + params + " because: " + e.getMessage().replace('\'', '"').replace("\n", ""));
+            String errorMessage = "exception handling message: " + params + " because: " + e.getMessage();
+            errorMessage = errorMessage.replace('\'', '"').replace("\n", "");
+            bridgeInterface.respondError(id, errorMessage);
         }
     }
 
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
-        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, this));
+        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, bridgeInterface));
     }
 
-    void respond(final int id, final String message) {
-        context.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", id, message), null);
-            }
-        });
-    }
+    private BridgeInterface bridgeInterface = new BridgeInterface() {
+        @Override
+        public void respondError(final int callId, final String errorMessage) {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", callId, errorMessage), null);
+                }
+            });
+        }
 
-    void respondError(final int id, final String error) {
-        context.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", id, error), null);
-            }
-        });
-    }
+        @Override
+        public void respond(final int callId, final String response) {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", callId, response), null);
+                }
+            });
+        }
+    };
 }

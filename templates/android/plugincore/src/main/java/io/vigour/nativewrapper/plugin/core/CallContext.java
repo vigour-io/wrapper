@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin.core;
 
 /**
  * Created by michielvanliempt on 08/04/15.
@@ -8,14 +8,14 @@ public class CallContext {
     String pluginId;
     String functionName;
     Object arguments;
-    NativeInterface nativeInterface;
+    BridgeInterface bridge;
 
-    public CallContext(int callId, String pluginId, String functionName, Object arguments, NativeInterface nativeInterface) {
+    public CallContext(int callId, String pluginId, String functionName, Object arguments, BridgeInterface bridge) {
         this.callId = callId;
         this.pluginId = pluginId;
         this.functionName = functionName;
         this.arguments = arguments;
-        this.nativeInterface = nativeInterface;
+        this.bridge = bridge;
     }
 
     public void execute(PluginFunction function) {
@@ -28,10 +28,10 @@ public class CallContext {
     }
 
     public void error(String errorMessage) {
-        nativeInterface.respondError(callId, errorMessage);
+        bridge.respondError(callId, errorMessage);
     }
 
     public void respond(String response) {
-        nativeInterface.respond(callId, response);
+        bridge.respond(callId, response);
     }
 }

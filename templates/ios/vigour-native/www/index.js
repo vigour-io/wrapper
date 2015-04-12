@@ -1,5 +1,5 @@
 require('./styles.less')
-var bridge = require('../../../lib/bridge')
+var bridge = require('../../../../lib/bridge')
   , Element = require('vigour-js/ui/element')
 
 var app = new Element({
@@ -114,13 +114,13 @@ var app = new Element({
 
 function doSome() {
   var div = document.createElement('div')
-  div.innerHTML = "tap tap"
+  div.innerHTML = "tap tap tap"
   document.body.appendChild(div)
   try {
     window.webkit.messageHandlers.vigourBridgeHandler.postMessage([1,2,3])
     window.webkit.messageHandlers.vigourBridgeHandler.postMessage({"a":[1,2], "b":"c"})
     //ignores funcs passing
-    window.webkit.messageHandlers.vigourBridgeHandler.postMessage({"a":[1,2], "b":function(){return 1}})
+    // window.webkit.messageHandlers.vigourBridgeHandler.postMessage({"a":[1,2], "b":function(){return 1}})
   } catch(err) {
     console.log('The native context does not exist yet');
   }

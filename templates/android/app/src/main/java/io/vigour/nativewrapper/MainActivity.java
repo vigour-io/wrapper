@@ -1,22 +1,20 @@
-package io.vigour.cloudandroidwrapper;
+package io.vigour.nativewrapper;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
-import io.vigour.cloudandroidwrapper.plugin.NativeInterface;
-import io.vigour.cloudandroidwrapper.plugin.PluginManager;
-import io.vigour.cloudandroidwrapper.plugin.StatusBarPlugin;
-import io.vigour.cloudandroidwrapper.plugin.TestPlugin;
+import io.vigour.nativewrapper.plugin.NativeInterface;
+import io.vigour.nativewrapper.plugin.core.PluginManager;
 
+//-- start plugin imports
+//-- end plugin imports
 
 public class MainActivity extends ActionBarActivity {
 
@@ -32,8 +30,8 @@ public class MainActivity extends ActionBarActivity {
         webview = (XWalkView) findViewById(R.id.webview);
 
         PluginManager pluginManager = new PluginManager();
-        pluginManager.register(new StatusBarPlugin(this, webview));
-        pluginManager.register(new TestPlugin(this));
+        registerPlugins(pluginManager);
+
 
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
         webview.load("file:///android_asset/index.html", null);
@@ -56,27 +54,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    private void registerPlugins(PluginManager pluginManager) {
     }
 
     @Override

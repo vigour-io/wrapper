@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "io.vigour.cloudandroidwrapper"
@@ -24,6 +24,15 @@ android {
         exclude 'META-INF/NOTICE'
     }
 
+//    dexOptions {
+//        preDexLibraries = false
+//    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -33,4 +42,9 @@ dependencies {
     compile 'com.fasterxml.jackson.jr:jackson-jr-objects:2.5.1'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'joda-time:joda-time:2.7'
+
+    //-- start plugin dependencies
+    compile(name:'statusbar-debug', ext:'aar')
+            //    compile project(':plugincore'),
+    //-- end plugin dependencies
 }

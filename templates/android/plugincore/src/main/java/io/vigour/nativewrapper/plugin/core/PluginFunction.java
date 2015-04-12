@@ -1,4 +1,4 @@
-package io.vigour.cloudandroidwrapper.plugin;
+package io.vigour.nativewrapper.plugin.core;
 
 import java.lang.reflect.InvocationTargetException;
 
