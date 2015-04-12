@@ -50,8 +50,8 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         if message.name == self.dynamicType.scriptMessageHandlerName() {
             if let m = message.body as? NSArray {
                 if m.count >= 3 {
-                    let pluginName = m.objectAtIndex(1) as String
-                    let pluginFunc = m.objectAtIndex(2) as String
+                    let pluginName = m.objectAtIndex(1) as! String
+                    let pluginFunc = m.objectAtIndex(2) as! String
                     if let plugInstance = pluginManager.plugins[pluginName] {
                         if plugInstance.respondsToSelector(Selector(pluginFunc)) {
                             println("jep")
