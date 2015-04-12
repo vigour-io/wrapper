@@ -19,7 +19,7 @@ var path = require('path')
       build(platforms, cwd)
     }
   }
-console.log("oooo", process.argv)
+
 program
   .version('0.0.1')
   .command('build [platforms...]')
