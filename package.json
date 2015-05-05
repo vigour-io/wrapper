@@ -60,6 +60,6 @@
   ],
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "npm": "^2.7.6"
+    "npm": "^2.9.0"
   }
 }
