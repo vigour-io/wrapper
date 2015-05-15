@@ -45,7 +45,7 @@ function build (platforms, cwd) {
     .then(function (contents) {
       var parsed = JSON.parse(contents)
         , key
-      if (!parsed.vigour || !parsed.vigour.native) {
+      if (!parsed.vigour || !parsed.vigour.native || !parsed.vigour.packer.assets) {
         throw new Error("package.json must contain vigour.native, see README.md")
       }
       parsed.vigour.native.root = cwd
@@ -56,6 +56,8 @@ function build (platforms, cwd) {
           }
         }
       }
+      parsed.vigour.native.cwd = cwd  // TODO Document this
+      parsed.vigour.native.packer = parsed.vigour.packer
       return vBuild(parsed.vigour.native)
     })
     .then(function (meta) {
