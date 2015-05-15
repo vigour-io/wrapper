@@ -43,11 +43,11 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
     "xcode": "^0.6.7"
   },
   "optionalDependencies": {
-    "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
+    "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git",
     "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev"
   },
   "keywords": [
