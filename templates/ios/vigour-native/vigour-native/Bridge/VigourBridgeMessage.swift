@@ -16,10 +16,5 @@ struct Message {
     let calbackId: Int
     let pluginName: String
     let pluginMethod: String
-    let arguments:[T]
-    
-//    init() {
-//        
-//    }
-    
+    let arguments: [String]
 }
