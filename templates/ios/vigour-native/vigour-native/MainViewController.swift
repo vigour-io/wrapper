@@ -11,7 +11,7 @@
 import WebKit
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, WKUIDelegate {
     
     let vigourBridge = VigourBridge()
     
@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        loadApp()
     }
     
     override func didReceiveMemoryWarning() {
@@ -59,10 +60,10 @@ class MainViewController: UIViewController {
     private func setup() {
         
         webView = WKWebView(frame: CGRectZero, configuration: configuration)
-        
-        loadApp()
-        
+        webView?.UIDelegate = self
+        webView?.scrollView.bounces = false
         view.addSubview(webView!)
+        
         webView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
@@ -78,7 +79,11 @@ class MainViewController: UIViewController {
     }
     
     
-
+    //MARK: - WKUIDelegate
     
+    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+        print("\(message)")
+        completionHandler()
+    }
     
 }
