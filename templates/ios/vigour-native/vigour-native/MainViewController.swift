@@ -31,6 +31,16 @@ class MainViewController: UIViewController {
         config.userContentController = self.userContentController
         return config
     }()
+    
+    lazy var appplicationIndexPath: String = {
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+            let dict = NSDictionary(contentsOfFile: path)
+            if let path = dict?.objectForKey("appIndexPath") as? String {
+                return path
+            }
+        }
+        return "index.html"
+    }()
 
     
     required init(coder aDecoder: NSCoder) {
@@ -61,10 +71,8 @@ class MainViewController: UIViewController {
     }
     
     private func loadApp() {
-        //NOTE: - we asume index.html is there..
-        let path = "\(webAplicationFolderPath)/index.html"
-//        let path = NSBundle.mainBundle().pathForResource("www/index", ofType: "html")!
-        //println(path)
+        let path = "\(webAplicationFolderPath)/\(appplicationIndexPath)"
+        println(path)
         let url = NSURL(fileURLWithPath: path)
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
