@@ -15,6 +15,12 @@ class MainViewController: UIViewController, WKUIDelegate {
     
     let vigourBridge = VigourBridge()
     
+    var statusBarHidden = true {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     //wrapper for web app
     var webView: WKWebView?
     
@@ -78,6 +84,13 @@ class MainViewController: UIViewController, WKUIDelegate {
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return statusBarHidden
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return UIStatusBarAnimation.Slide
+    }
     
     //MARK: - WKUIDelegate
     
