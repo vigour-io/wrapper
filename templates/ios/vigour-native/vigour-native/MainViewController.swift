@@ -24,11 +24,12 @@ class MainViewController: UIViewController, WKUIDelegate {
     //wrapper for web app
     var webView: WKWebView?
     
-    lazy var userContentController: WKUserContentController = {
+    lazy var userContentController: WKUserContentController = { [unowned self] in
         let controller = WKUserContentController()
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
+        self.vigourBridge.delegate = self
         return controller
-    }()
+        }()
     
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
@@ -36,7 +37,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         config.mediaPlaybackRequiresUserAction = true
         config.userContentController = self.userContentController
         return config
-    }()
+        }()
     
     lazy var appplicationIndexPath: String = {
         if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
@@ -46,8 +47,8 @@ class MainViewController: UIViewController, WKUIDelegate {
             }
         }
         return "index.html"
-    }()
-
+        }()
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
