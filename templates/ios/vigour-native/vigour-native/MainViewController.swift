@@ -21,6 +21,12 @@ class MainViewController: UIViewController, WKUIDelegate {
         }
     }
     
+    var statusBarStyle: UIStatusBarStyle = .Default {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     //wrapper for web app
     var webView: WKWebView?
     
@@ -91,6 +97,10 @@ class MainViewController: UIViewController, WKUIDelegate {
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return UIStatusBarAnimation.Slide
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return statusBarStyle
     }
     
     //MARK: - WKUIDelegate

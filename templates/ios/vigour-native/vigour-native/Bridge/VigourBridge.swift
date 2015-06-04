@@ -64,17 +64,30 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                         
                     })
                 }
-                else if pluginName == "statusbar" && pluginFunc == "set", let d = delegate, let status = args.objectForKey("visibility") as? String {
-                    if status == "overlay" {
-                        d.statusBarHidden = false
+                else if pluginName == "statusbar" && pluginFunc == "set", let d = delegate {
+                    if let status = args.objectForKey("visibility") as? String {
+                        if status == "overlay" {
+                            d.statusBarHidden = false
+                        }
+                        else {
+                            d.statusBarHidden = true
+                        }
+                    }
+                    if let status = args.objectForKey("style") as? String where status == "light" {
+                        d.statusBarStyle = UIStatusBarStyle.LightContent
                     }
                     else {
-                        d.statusBarHidden = true
+                        d.statusBarStyle = UIStatusBarStyle.Default
                     }
-                    let js = "window.receiveNativeResult(\(callbackId), {visibility:'\(status)'})"
+                    
+                    let visibilityStatus = d.statusBarHidden ? "hidden" : "overlay"
+                    let style = d.statusBarStyle == .Default ? "dark" : "light"
+                    let dict = "{visibility:'\(visibilityStatus)',style:'\(style)'}"
+                    let js = "window.receiveNativeResult(\(callbackId), \(dict))"
                     d.webView?.evaluateJavaScript(js, completionHandler: { (res, error) -> Void in
                         
                     })
+                    
                 }
                 
                 /*if let plugInstance = pluginManager.plugins[pluginName] {
