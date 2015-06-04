@@ -40,7 +40,7 @@ class MainViewController: UIViewController, WKUIDelegate {
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        config.mediaPlaybackRequiresUserAction = true
+        config.mediaPlaybackRequiresUserAction = false
         config.userContentController = self.userContentController
         return config
         }()
