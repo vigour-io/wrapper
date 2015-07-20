@@ -2,11 +2,19 @@
 
 Builds a set of native apps from a single javascript codebase.
 
-##Install
+
+## Install
 - Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
 - `npm i vigour-native --save` (Coming soon)
 
-##Build
+
+## Usage
+
+Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build --<platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json.
+
+
+## In-script usage
+
 ```
 var vNative = require('vigour-native')
 vNative.build({
@@ -38,7 +46,7 @@ vNative.build({
   })
 ```
 
-**Or with promises**
+**Also works with promises**
 ```
 var vNative = require('vigour-native')
   , Promise = require('promise') // `npm i promise`
@@ -51,6 +59,18 @@ build({...})
   console.error(reason)
 })
 ```
+
+<a name='platforms'></a>
+## Supported Platforms
+  - [X] web browsers
+  - [X] iOS
+  - [X] android
+  - [_] lg TV
+  - [_] samsung TV
+  - [_] chromecast
+  - [_] iWatch
+
+## More
 
 usecase 
   client - project X
@@ -120,13 +140,3 @@ Icons etc
   }
 }
 ```
-
-
-**Currently supports**:
-  - [X] web browsers
-  - [_] iOS
-  - [_] android
-  - [_] lg TV
-  - [_] samsung TV
-  - [_] chromecast
-  - [_] iWatch
