@@ -46,7 +46,7 @@ function build (platforms, cwd) {
       var parsed = JSON.parse(contents)
         , key
       if (!parsed.vigour || !parsed.vigour.native || !parsed.vigour.packer.assets) {
-        throw new Error("package.json must contain vigour.native, see README.md")
+        throw new Error("package.json must contain vigour.native and vigour.packer.assets, see README.md")
       }
       parsed.vigour.native.root = cwd
       if (platforms.length > 0) {
