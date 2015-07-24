@@ -10,7 +10,7 @@ Builds a set of native apps from a single javascript codebase.
 
 ## Usage
 
-Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build --<platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json.
+Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build --<platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
 
 
 ## In-script usage
@@ -69,6 +69,7 @@ build({...})
   - [_] samsung TV
   - [_] chromecast
   - [_] iWatch
+  - [_] windows phone
 
 ## More
 
