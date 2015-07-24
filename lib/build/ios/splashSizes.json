@@ -1,0 +1,36 @@
+[
+
+{ "iPhone 2G, 3G, 3GS":
+	{ "w": 320, "h": 480 }
+, "iPhone 4, 4s":
+	{ "w": 640, "h": 960 }
+, "iPhone 5, 5s; iPhone 6 display zoom":
+	{ "w": 640, "h": 1136 }
+, "iPhone 6":
+	{ "w": 750, "h": 1334 }
+, "iPhone 6 Plus display zoom":
+	{ "w": 1125, "h": 2001 }
+, "iPhone 6 Plus":
+	{ "w": 1242, "h": 2208 }
+}
+
+,
+
+
+{ "/splash/Default-568h@2x~iphone.png":
+	{ "w": 640, "h": 1136 }
+, "/splash/Default-Landscape@2x~ipad.png":
+	{ "w": 2048, "h": 1536 }
+, "/splash/Default-Landscape~ipad.png":
+	{ "w": 1024, "h": 768 }
+, "/splash/Default-Portrait@2x~ipad.png":
+	{ "w": 1536, "h": 2048 }
+, "/splash/Default-Portrait~ipad.png":
+	{ "w": 768, "h": 1024 }
+, "/splash/Default@2x~iphone.png":
+	{ "w": 640, "h": 960 }
+, "/splash/Default~iphone.png":
+	{ "w": 320, "h": 480 }
+}
+
+]
