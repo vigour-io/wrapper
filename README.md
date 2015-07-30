@@ -2,6 +2,9 @@
 
 Builds a set of native apps from a single javascript codebase.
 
+## Dependencies
+
+- npm 2@ˆ2
 
 ## Install
 - Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
