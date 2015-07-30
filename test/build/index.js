@@ -23,7 +23,6 @@ describe("build", function () {
 		var _options = JSON.parse(options)
 		this.timeout(timeout)
 		_options.platforms.android = false
-		console.log('iOS options', JSON.stringify(_options, null, 2))
 		build(_options)
 			.then(function (result) {
 				console.log("Result", result)
@@ -35,7 +34,6 @@ describe("build", function () {
 		var _options = JSON.parse(options)
 		this.timeout(timeout)
 		_options.platforms.ios = false
-		console.log('Android options', JSON.stringify(_options, null, 2))
 		build(_options)
 			.then(function (result) {
 				console.log("Result", result)
