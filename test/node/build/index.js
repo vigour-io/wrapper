@@ -2,11 +2,11 @@ var chai = require('chai') // TODO Remove this when gaston allows it
 var expect = chai.expect	// TODO Remove this when gaston allows it
 
 var path = require('path')
-var build = require('../../lib/build')
+var build = require('../../../lib/build')
 
 // TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native
 var repo = path.join(__dirname
-	, '..', '..', '..', 'vigour-example')
+	, '..', '..', '..', '..', 'vigour-example')
 var pkgPath = path.join(repo, 'package.json')
 var pkg = require(pkgPath)
 var opts = pkg.vigour.native

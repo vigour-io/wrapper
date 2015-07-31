@@ -11,7 +11,7 @@
     "vNative": "bin/index.js"
   },
   "scripts": {
-    "test": "test/index.js"
+    "test": "gaston tests node"
   },
   "engines": {
     "node": ">=0.10.0"
