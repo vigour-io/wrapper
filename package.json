@@ -6,9 +6,9 @@
     "type": "git",
     "url": "https://github.com/vigour-io/vigour-native"
   },
-  "main": "./index.js",
+  "main": "./lib",
   "bin": {
-    "vNative": "bin/index.js"
+    "vNative": "bin/build.js"
   },
   "scripts": {
     "test": "gaston tests node"
@@ -44,6 +44,7 @@
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
     "xcode": "^0.6.7"
   },
   "optionalDependencies": {

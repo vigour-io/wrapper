@@ -1,43 +1,45 @@
-var chai = require('chai') // TODO Remove this when gaston allows it
-var expect = chai.expect	// TODO Remove this when gaston allows it
-
 var path = require('path')
 var build = require('../../../lib/build')
 
-// TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native
+// TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname
 	, '..', '..', '..', '..', 'vigour-example')
 var pkgPath = path.join(repo, 'package.json')
-var pkg = require(pkgPath)
-var opts = pkg.vigour.native
-opts.packer = pkg.vigour.packer
-opts.cwd = repo
-opts.root = repo
-var options = JSON.stringify(opts)
+var opts =
+	{ configFiles: pkgPath
+	, vigour:
+		{ native:
+			{
+				root: repo
+			}
+		}
+	}
 
-var timeout = 30000
+var options = JSON.stringify(opts)
+var timeout = 20000
 
 describe("build", function () {
 	it("ios should succeed in under " + timeout +  " milliseconds!"
-	, function (done) {
-		var _options = JSON.parse(options)
+	, function () {
 		this.timeout(timeout)
-		_options.platforms.android = false
-		build(_options)
-			.then(function (result) {
-				console.log("Result", result)
-				done()
-			})
+		var _options = JSON.parse(options)
+		var platform = 'ios'
+		_options.vigour.native.selectedPlatforms = platform
+		return build(_options)
+			.then(checkSuccess)
 	})
 	it("android should succeed in under " + timeout + " milliseconds!"
-	, function (done) {
-		var _options = JSON.parse(options)
+	, function () {
 		this.timeout(timeout)
-		_options.platforms.ios = false
-		build(_options)
-			.then(function (result) {
-				console.log("Result", result)
-				done()
-			})
+		var _options = JSON.parse(options)
+		var platform = 'android'
+		_options.vigour.native.selectedPlatforms = platform
+		return build(_options)
+			.then(checkSuccess)
 	})
+	
 })
+
+function checkSuccess (success) {
+	expect(success).to.equal(true)
+}
