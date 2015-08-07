@@ -1,17 +1,17 @@
 {
   "name": "vigour-native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
     "url": "https://github.com/vigour-io/vigour-native"
   },
-  "main": "./index.js",
+  "main": "./lib",
   "bin": {
-    "vNative": "bin/index.js"
+    "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "test/index.js"
+    "test": "gaston tests node"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -44,6 +44,7 @@
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
     "xcode": "^0.6.7"
   },
   "optionalDependencies": {
