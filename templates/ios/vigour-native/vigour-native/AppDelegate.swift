@@ -20,7 +20,9 @@ import UIKit
 
 
 let webApplicationRootFolderName = "www"
-let webAplicationFolderPath = NSTemporaryDirectory().stringByAppendingPathComponent(webApplicationRootFolderName)
+
+let webAplicationFolderPath = NSTemporaryDirectory().stringByAppendingString(webApplicationRootFolderName)
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,14 +56,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var error: NSError?
         if filemgr.fileExistsAtPath(webAplicationFolderPath) && !force {
             if let e = error {
-                println("\(e.localizedDescription)")
+                print("\(e.localizedDescription)")
                 return
             }
             return
         }
+        
+        if #available(iOS 9, *) {
+            // use UIStackView
+        } else {
+            // show sad face emoji
+        }
 
         //wkwebview fix for referencing to www folder
-        copyFolderToFolder(NSBundle.mainBundle().pathForResource("www", ofType: nil)!, webAplicationFolderPath)
+        copyFolderToFolder(NSBundle.mainBundle().pathForResource("www", ofType: nil)!, destination: webAplicationFolderPath)
     }
     
 }

@@ -11,7 +11,6 @@
 		4926A22E1AD2C637000FDF43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22D1AD2C637000FDF43 /* MainViewController.swift */; };
 		4926A2311AD2C637000FDF43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4926A22F1AD2C637000FDF43 /* Main.storyboard */; };
 		4926A2331AD2C637000FDF43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4926A2321AD2C637000FDF43 /* Images.xcassets */; };
-		4926A2361AD2C637000FDF43 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4926A2341AD2C637000FDF43 /* LaunchScreen.xib */; };
 		4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */; };
 		4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
 		49423C3C1AD689CC00B53589 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C391AD689CC00B53589 /* VigourBridge.swift */; };
@@ -50,7 +49,6 @@
 		4926A22D1AD2C637000FDF43 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4926A2301AD2C637000FDF43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4926A2321AD2C637000FDF43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4926A2351AD2C637000FDF43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4926A23B1AD2C637000FDF43 /* vigour-nativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "vigour-nativeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4926A2401AD2C637000FDF43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vigour_nativeTests.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				4926A22D1AD2C637000FDF43 /* MainViewController.swift */,
 				4926A22F1AD2C637000FDF43 /* Main.storyboard */,
 				4926A2321AD2C637000FDF43 /* Images.xcassets */,
-				4926A2341AD2C637000FDF43 /* LaunchScreen.xib */,
 				4926A2291AD2C637000FDF43 /* Supporting Files */,
 				4926A24B1AD2CCEF000FDF43 /* MainController.swift */,
 				49C5ED931AD5ACAB00DA670C /* Utils.swift */,
@@ -223,6 +220,8 @@
 		4926A21E1AD2C637000FDF43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = Vigour.io;
 				TargetAttributes = {
@@ -261,7 +260,6 @@
 			files = (
 				49C5ED8A1AD559F800DA670C /* www in Resources */,
 				4926A2311AD2C637000FDF43 /* Main.storyboard in Resources */,
-				4926A2361AD2C637000FDF43 /* LaunchScreen.xib in Resources */,
 				49423C4E1AD6B4EA00B53589 /* Plugins.plist in Resources */,
 				4926A2331AD2C637000FDF43 /* Images.xcassets in Resources */,
 			);
@@ -326,14 +324,6 @@
 				4926A2301AD2C637000FDF43 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4926A2341AD2C637000FDF43 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4926A2351AD2C637000FDF43 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -422,8 +412,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vigour-native/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -433,8 +424,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vigour-native/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
