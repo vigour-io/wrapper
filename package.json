@@ -38,13 +38,13 @@
     "mocha-phantomjs": "*",
     "ncp": "2.0.x",
     "npmlog": "0.1.x",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
     "xcode": "^0.6.7"
   },
   "optionalDependencies": {
