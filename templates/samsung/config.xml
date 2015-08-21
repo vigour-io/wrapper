@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.samsung.com/">  
+  <ThumbIcon>icons/icon_106.png</ThumbIcon>
+  <BigThumbIcon>icons/icon_115.png</BigThumbIcon>
+  <ListIcon>icons/icon_85.png</ListIcon>
+  <BigListIcon>icons/icon_95.png</BigListIcon>
+	
+  <category>{{category}}</category>
+  <autoUpdate>y</autoUpdate>
+  <deleteJS>Uninstall</deleteJS>
+
+  <cpname>{{name}}</cpname>
+  <runTitle>{{name}}</runTitle>
+	<cpauthjs/>
+	<login>n</login>
+
+  <ver>{{version}}</ver>
+	<mgrver>2.250</mgrver>
+	
+	<fullwidget>y</fullwidget>
+	<srcctl>y</srcctl>
+	<ticker>n</ticker>
+	<childlock>n</childlock>
+	<audiomute>y</audiomute>
+	<videomute>y</videomute>
+	<dcont>y</dcont>
+	<movie>y</movie>
+	<mouse>y</mouse>
+
+  <widgetname>{{name}}</widgetname>
+  <description>{{description}}</description>
+
+	<width>1280</width>
+	<height>720</height>
+
+	<author>
+    <name>{{author}}</name>
+    <email>{{email}}</email>
+    <link>{{website}}</link>
+    <organization>{{organization}}</organization>
+	</author>
+</widget>
