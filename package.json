@@ -34,8 +34,10 @@
     "commander": "^2.7.1",
     "concat-stream": "^1.4.8",
     "express": "4.12.3",
+    "globby": "^2.1.0",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
+    "mustache": "~0.8.1",
     "ncp": "2.0.x",
     "npmlog": "0.1.x",
     "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
@@ -45,8 +47,7 @@
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "xcode": "^0.6.7",
-    "mustache": "~0.8.1"
+    "xcode": "^0.6.7"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git",
