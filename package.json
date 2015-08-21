@@ -11,7 +11,7 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "gaston tests node"
+    "test": "./node_modules/.bin/gaston tests node"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -50,7 +50,8 @@
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git",
-    "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev"
+    "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev",
+    "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev"
   },
   "keywords": [
     "gaston",
