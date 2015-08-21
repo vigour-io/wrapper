@@ -5,16 +5,16 @@
   <ListIcon>icons/icon_85.png</ListIcon>
   <BigListIcon>icons/icon_95.png</BigListIcon>
 	
-  <category>{{category}}</category>
+  <category>video</category>
   <autoUpdate>y</autoUpdate>
   <deleteJS>Uninstall</deleteJS>
 
-  <cpname>{{name}}</cpname>
-  <runTitle>{{name}}</runTitle>
+  <cpname>Vigour Example</cpname>
+  <runTitle>Vigour Example</runTitle>
 	<cpauthjs/>
 	<login>n</login>
 
-  <ver>{{version}}</ver>
+  <ver>1.0.0</ver>
 	<mgrver>2.250</mgrver>
 	
 	<fullwidget>y</fullwidget>
@@ -27,16 +27,16 @@
 	<movie>y</movie>
 	<mouse>y</mouse>
 
-  <widgetname>{{name}}</widgetname>
-  <description>{{description}}</description>
+  <widgetname>Vigour Example</widgetname>
+  <description>Samsung Build</description>
 
 	<width>1280</width>
 	<height>720</height>
 
 	<author>
-    <name>{{author}}</name>
-    <email>{{email}}</email>
-    <link>{{website}}</link>
-    <organization>{{organization}}</organization>
+    <name>Vigour</name>
+    <email></email>
+    <link></link>
+    <organization></organization>
 	</author>
 </widget>
