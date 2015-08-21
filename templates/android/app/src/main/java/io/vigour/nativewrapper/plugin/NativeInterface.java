@@ -74,7 +74,7 @@ public class NativeInterface {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", callId, errorMessage), null);
+                    webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", callId, errorMessage), null);
                 }
             });
         }
@@ -84,7 +84,7 @@ public class NativeInterface {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", callId, response), null);
+                    webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", callId, response), null);
                 }
             });
         }

@@ -1,16 +1,21 @@
 {
   "name": "vigour-native",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
     "url": "https://github.com/vigour-io/vigour-native"
   },
-  "main": "./index.js",
+  "main": "./lib",
+  "bin": {
+    "vNative": "bin/build.js"
+  },
+  "scripts": {
+    "test": "gaston tests node"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
-  "scripts": {},
   "description": "The native code to wrap vigour apps",
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native/issues"
@@ -22,12 +27,13 @@
   "dependencies": {
     "android": "git+ssh://git@github.com:benmonro/android.git#master",
     "body-parser": "1.12.2",
-    "browserify": "^5.11.1",
+    "browserify": "^9",
     "chai": "2.1.x",
     "cli-spinner": "0.2.0",
     "colors": "1.0.x",
+    "commander": "^2.7.1",
+    "concat-stream": "^1.4.8",
     "express": "4.12.3",
-    "fs-sync": "^0.2.5",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "ncp": "2.0.x",
@@ -37,11 +43,12 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git#master",
+    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
     "xcode": "^0.6.7"
   },
   "optionalDependencies": {
-    "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git#flux",
+    "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git",
     "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev"
   },
   "keywords": [
@@ -52,5 +59,8 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "npm": "^2.9.0"
+  }
 }

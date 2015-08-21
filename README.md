@@ -2,11 +2,25 @@
 
 Builds a set of native apps from a single javascript codebase.
 
-##Install
+## Dependencies
+
+- npm 2@ˆ2
+
+## Install
 - Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
 - `npm i vigour-native --save` (Coming soon)
 
-##Build
+
+## Usage
+
+Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
+
+## Tests
+
+Most of the tests expect to find the `vigour-example` repo in the same directory as `vigour-native`. If that is so, then `mocha test/` should do the rest. This of course should be improved eventually, either by making vigour-example a submodule, or by automating the cloning the first time tests are run, or perhaps even something entirely different...
+
+## In-script usage
+
 ```
 var vNative = require('vigour-native')
 vNative.build({
@@ -38,7 +52,7 @@ vNative.build({
   })
 ```
 
-**Or with promises**
+**Also works with promises**
 ```
 var vNative = require('vigour-native')
   , Promise = require('promise') // `npm i promise`
@@ -52,81 +66,13 @@ build({...})
 })
 ```
 
-usecase 
-  client - project X
-    requires -- vigour-facebook
-                  ios
-                  android
-                  native-bridge
-                  web
-                  and the V.Value wrapped api (this is what is exposed)
-                  
-
-
-examples package.json vigour-facebook
-```
-  {
-    dependencies: {
-      vigour-native:'x.x.x'
-    }
-  }
-```
-
-example install project X
-```
-  //this gets added by vigour dev tools ( just some run scripts )
-  npm run build --android --ios
-```
-
-example install project X
-```
-  //this gets added by vigour dev tools ( just some run scripts )
-  cd projectX
-  vigour-dev-tools build -android
-```
-
-example install project X
-```
-  //this gets added by vigour dev tools ( just some run scripts )
-  npm run build --android --ios
-```
-
-pck.json settings project X
-```
-  vigour: {
-    native: {
-      ios: {
-        bundle-id: "io.vigour.x"
-        version: 2.0.11,
-        facebook-key: "123123123123",
-        store-key: "acbdbcadbcbadbc"
-      },
-      android: {
-        package: "io.vigour.x"
-        version: 2.1.3,
-        facebook-key: "9ae87f9a8e7f98a7f",
-        store-key: "bbed9c87ed9c87e9b98b7ed"
-      }
-    }
-  }
-```
-}
-  
-Icons etc
-```
-{
-  native: {
-    icon: '../icon'
-  }
-}
-```
-
-
-**Currently supports**:
+<a name='platforms'></a>
+## Supported Platforms
   - [X] web browsers
-  - [_] iOS
-  - [_] android
+  - [X] iOS
+  - [X] android
   - [_] lg TV
   - [_] samsung TV
   - [_] chromecast
   - [_] iWatch
+  - [_] windows phone

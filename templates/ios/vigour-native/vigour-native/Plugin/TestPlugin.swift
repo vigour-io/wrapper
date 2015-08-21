@@ -8,10 +8,18 @@
 
 import Foundation
 
-class TestPlugin: VigourPlugin {
+class TestPlugin: VigourPlugin, VigourPluginMethod {
+    
     
     func log(message: String) {
         println(message)
+    }
+    
+    func shouldCallMehtodWithName(name: String, andArguments args: [AnyObject]?) {
+        switch(name) {
+        case "log":log("test")
+        default:return
+        }
     }
     
 }

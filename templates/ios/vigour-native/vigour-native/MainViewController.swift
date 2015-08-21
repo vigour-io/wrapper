@@ -11,27 +11,50 @@
 import WebKit
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, WKUIDelegate {
     
     let vigourBridge = VigourBridge()
+    
+    var statusBarHidden = true {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
+    var statusBarStyle: UIStatusBarStyle = .Default {
+        didSet {
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
     
     //wrapper for web app
     var webView: WKWebView?
     
-    lazy var userContentController: WKUserContentController = {
+    lazy var userContentController: WKUserContentController = { [unowned self] in
         let controller = WKUserContentController()
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
+        self.vigourBridge.delegate = self
         return controller
-    }()
+        }()
     
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        config.mediaPlaybackRequiresUserAction = true
+        config.mediaPlaybackRequiresUserAction = false
         config.userContentController = self.userContentController
         return config
-    }()
-
+        }()
+    
+    lazy var appplicationIndexPath: String = {
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+            let dict = NSDictionary(contentsOfFile: path)
+            if let path = dict?.objectForKey("appIndexPath") as? String {
+                return path
+            }
+        }
+        return "index.html"
+        }()
+    
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,6 +63,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        loadApp()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,10 +73,10 @@ class MainViewController: UIViewController {
     private func setup() {
         
         webView = WKWebView(frame: CGRectZero, configuration: configuration)
-        
-        loadApp()
-        
+        webView?.UIDelegate = self
+        webView?.scrollView.bounces = false
         view.addSubview(webView!)
+        
         webView!.setTranslatesAutoresizingMaskIntoConstraints(false)
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
@@ -61,16 +85,29 @@ class MainViewController: UIViewController {
     }
     
     private func loadApp() {
-        //NOTE: - we asume index.html is there..
-       // let path = "\(webAplicationFolderPath)/index.html"
-        let path = NSBundle.mainBundle().pathForResource("www/index", ofType: "html")!
-        //println(path)
+        let path = "\(webAplicationFolderPath)/\(appplicationIndexPath)"
+        println(path)
         let url = NSURL(fileURLWithPath: path)
         webView!.loadRequest(NSURLRequest(URL: url!))
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return statusBarHidden
+    }
     
-
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return UIStatusBarAnimation.Slide
+    }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return statusBarStyle
+    }
+    
+    //MARK: - WKUIDelegate
+    
+    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+        print("\(message)")
+        completionHandler()
+    }
     
 }
