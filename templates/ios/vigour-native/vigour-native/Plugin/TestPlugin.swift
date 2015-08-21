@@ -12,7 +12,7 @@ class TestPlugin: VigourPlugin, VigourPluginMethod {
     
     
     func log(message: String) {
-        println(message)
+        print(message)
     }
     
     func shouldCallMehtodWithName(name: String, andArguments args: [AnyObject]?) {
