@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "android": "git+ssh://git@github.com:benmonro/android.git#master",
+    "archiver": "^0.14.4",
     "body-parser": "1.12.2",
     "browserify": "^9",
     "chai": "2.1.x",

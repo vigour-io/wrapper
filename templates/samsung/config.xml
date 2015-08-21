@@ -9,12 +9,12 @@
   <autoUpdate>y</autoUpdate>
   <deleteJS>Uninstall</deleteJS>
 
-  <cpname>Vigour Example</cpname>
-  <runTitle>Vigour Example</runTitle>
+  <cpname>{{name}}</cpname>
+  <runTitle>{{name}}</runTitle>
 	<cpauthjs/>
 	<login>n</login>
 
-  <ver>1.0.0</ver>
+  <ver>0.0.0</ver>
 	<mgrver>2.250</mgrver>
 	
 	<fullwidget>y</fullwidget>
@@ -27,14 +27,14 @@
 	<movie>y</movie>
 	<mouse>y</mouse>
 
-  <widgetname>Vigour Example</widgetname>
-  <description>Samsung Build</description>
+  <widgetname>{{name}}</widgetname>
+  <description></description>
 
 	<width>1280</width>
 	<height>720</height>
 
 	<author>
-    <name>Vigour</name>
+    <name></name>
     <email></email>
     <link></link>
     <organization></organization>

@@ -3,9 +3,9 @@
   <list>
     <widget id="{{name}}">
       <title>{{name}}</title>
-      <compression size="{{filesize}}" type="zip"/>
+      <compression size="3405" type="zip"/>
       <description>{{name}}</description>
-      <download>{{{downloadurl}}}</download>
+      <download>http://192.168.1.19/samsung.zip</download>
     </widget>
 </list>
 </rsp>
