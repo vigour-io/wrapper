@@ -17,18 +17,26 @@ func copyFolderToFolder(source: String, destination: String) {
     var error: NSError?
     
     if filemgr.fileExistsAtPath(destination) {
-        filemgr.removeItemAtPath(destination, error: &error)
+        do {
+            try filemgr.removeItemAtPath(destination)
+        } catch let error1 as NSError {
+            error = error1
+        }
         if let e = error {
-            println("\(e.localizedDescription)")
+            print("\(e.localizedDescription)")
             return
         }
     }
     
-    filemgr.copyItemAtPath(source, toPath: destination, error: &error)
+    do {
+        try filemgr.copyItemAtPath(source, toPath: destination)
+    } catch let error1 as NSError {
+        error = error1
+    }
     if let e = error {
-        println("\(e.localizedDescription)")
+        print("\(e.localizedDescription)")
     }
     
-    println(destination)
+    print(destination)
     
 }
