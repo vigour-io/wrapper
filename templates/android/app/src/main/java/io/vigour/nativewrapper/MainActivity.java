@@ -45,7 +45,7 @@ public class MainActivity extends ActionBarActivity {
                 pInfo = getPackageManager().getPackageInfo(name, 0);
                 String info = String.format("%s version %s (%d)", name, pInfo.versionName, pInfo.versionCode);
                 versionView.setText(info);
-            } catch (PackageManager.NameNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 versionView.setText("can't find version: " + e.getCause().getMessage());
             }
