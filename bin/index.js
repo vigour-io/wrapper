@@ -1,24 +1,24 @@
 #!/usr/bin/env node
 var path = require('path')
 
-  , program = require('commander') 
-  , Promise = require('promise')
+var program = require('commander')
+var Promise = require('promise')
 
-  , fs = require('vigour-fs')
-  , vBuild = require('../lib/build')
+var fs = require('vigour-fs')
+var vBuild = require('../lib/build')
 
-  , readFile = Promise.denodeify(fs.readFile)
-  , fs_exists = function (p) {
-    return new Promise(function (resolve, reject) {
-      fs.exists(p, resolve)
-    })
+var readFile = Promise.denodeify(fs.readFile)
+var fs_exists = function (p) {
+  return new Promise(function (resolve, reject) {
+    fs.exists(p, resolve)
+  })
+}
+
+var buildFactory = function (cwd) {
+  return function (platforms) {
+    build(platforms, cwd)
   }
-  
-  , buildFactory = function (cwd) {
-    return function (platforms) {
-      build(platforms, cwd)
-    }
-  }
+}
 
 program
   .version('0.0.1')
@@ -29,7 +29,7 @@ program.parse(process.argv)
 
 function build (platforms, cwd) {
   var pkgPath = path.join(cwd, 'package.json')
-  console.log("arg")
+  console.log('arg')
   fs_exists(pkgPath)
     .then(function (exists) {
       var error
@@ -44,9 +44,9 @@ function build (platforms, cwd) {
     .then(readFile)
     .then(function (contents) {
       var parsed = JSON.parse(contents)
-        , key
+      var key
       if (!parsed.vigour || !parsed.vigour.native || !parsed.vigour.packer.assets) {
-        throw new Error("package.json must contain vigour.native and vigour.packer.assets, see README.md")
+        throw new Error('package.json must contain vigour.native and vigour.packer.assets, see README.md')
       }
       parsed.vigour.native.root = cwd
       if (platforms.length > 0) {
@@ -61,8 +61,8 @@ function build (platforms, cwd) {
       return vBuild(parsed.vigour.native)
     })
     .then(function (meta) {
-      console.log("Build done in " + meta.time + "ms")
+      console.log('Build done in ' + meta.time + 'ms')
     }, function (reason) {
-      console.error("Failure", reason, reason.stack)
+      console.error('Failure', reason, reason.stack)
     })
 }
