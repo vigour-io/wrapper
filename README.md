@@ -103,6 +103,45 @@ with error being either an error as described below, or an array of them:
 }
 ```
 
+### android
+
+- app does
+```javascript
+bridge.send(pluginId, fnName, opts, cb)
+```
+
+- bridge does
+```javascript
+window
+    .vigour
+    .native
+    .NativeInterface
+    .send(
+      JSON.stringify(
+        { pluginId: 1,
+          fnName: 'act',
+          opts: {},
+          cbId: 2
+        }
+      )
+    )
+```
+- native does its stuff, then calls
+```javascript
+window.vigour.native.bridgeResult(cbId, error)
+```
+  or
+```javascript
+window.vigour.native.bridgeResult(cbId, null, response)
+```
+
+with error being either an error as described below, or an array of them:
+```javascript
+{ message: "string",
+  info: {}
+}
+```
+
 <a name='platforms'></a>
 ## Supported Platforms
   - [X] web browsers

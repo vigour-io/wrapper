@@ -34,7 +34,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 for (id, plugin) in plugins {
                     //NOTE: - module name hard dependancy! , later init plugs lazy
                     if let VigourPluginType = NSClassFromString("vigour_native.\(plugin)") as? VigourPlugin.Type {
-                        pluginManager.registerPlugin(id.lowercaseString, plugin: VigourPluginType(id: id))
+                        pluginManager.registerPlugin(id.lowercaseString, plugin: VigourPluginType.init(id: id))
                     }
                 }
             }
@@ -54,6 +54,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 let callbackId = (m.objectAtIndex(0) as! NSNumber).integerValue
                 let pluginName = (m.objectAtIndex(1) as! String).lowercaseString
                 let pluginFunc = m.objectAtIndex(2) as! String
+                
                 let args = m.objectAtIndex(3) as! NSDictionary
                 
                 //FOR DEMO STATUSBAR IS DIRECTLY HANDLED HERE

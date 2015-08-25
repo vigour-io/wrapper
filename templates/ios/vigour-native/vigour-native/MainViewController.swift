@@ -56,7 +56,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         }()
     
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -77,7 +77,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         webView?.scrollView.bounces = false
         view.addSubview(webView!)
         
-        webView!.setTranslatesAutoresizingMaskIntoConstraints(false)
+        webView!.translatesAutoresizingMaskIntoConstraints = false
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
         view.addConstraints([height, width])
@@ -86,9 +86,9 @@ class MainViewController: UIViewController, WKUIDelegate {
     
     private func loadApp() {
         let path = "\(webAplicationFolderPath)/\(appplicationIndexPath)"
-        println(path)
+        print(path)
         let url = NSURL(fileURLWithPath: path)
-        webView!.loadRequest(NSURLRequest(URL: url!))
+        webView!.loadRequest(NSURLRequest(URL: url))
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -106,7 +106,7 @@ class MainViewController: UIViewController, WKUIDelegate {
     //MARK: - WKUIDelegate
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("\(message)")
+        print("\(message)", appendNewline: false)
         completionHandler()
     }
     
