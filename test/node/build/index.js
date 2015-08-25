@@ -16,7 +16,7 @@ var opts =
 	}
 
 var options = JSON.stringify(opts)
-var timeout = 20000
+var timeout = 1200000
 
 describe("build", function () {
 	it("ios should succeed in under " + timeout +  " milliseconds!"
@@ -37,7 +37,7 @@ describe("build", function () {
 		return build(_options)
 			.then(checkSuccess)
 	})
-	
+
 })
 
 function checkSuccess (success) {
