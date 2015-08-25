@@ -3,7 +3,7 @@
   <list>
     <widget id="{{name}}">
       <title>{{name}}</title>
-      <compression size="3405" type="zip"/>
+      <compression size="{{size}}" type="zip"/>
       <description>{{name}}</description>
       <download>http://192.168.1.19/vigour-native.zip</download>
     </widget>
