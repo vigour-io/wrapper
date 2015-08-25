@@ -37,6 +37,16 @@ describe("build", function () {
 		return build(_options)
 			.then(checkSuccess)
 	})
+
+	it("samsung Tv should succeed in under " + timeout + " milliseconds!"
+	, function () {
+		this.timeout(timeout)
+		var _options = JSON.parse(options)
+		var platform = 'samsungtv'
+		_options.vigour.native.selectedPlatforms = platform
+		return build(_options)
+			.then(checkSuccess)
+	})
 	
 })
 
