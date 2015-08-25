@@ -5,11 +5,11 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "io.vigour.cloudandroidwrapper"
-        minSdkVersion 14
-        targetSdkVersion 16
-        versionCode 1
-        versionName "1.0"
+        applicationId androidAppId
+        minSdkVersion androidMinSdk
+        targetSdkVersion androidTargetSdk
+        versionCode verCode.toInteger()
+        versionName verName
     }
 
     buildTypes {
