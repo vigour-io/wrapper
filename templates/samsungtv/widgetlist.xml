@@ -5,7 +5,7 @@
       <title>{{name}}</title>
       <compression size="3405" type="zip"/>
       <description>{{name}}</description>
-      <download>http://192.168.1.19/samsung.zip</download>
+      <download>http://192.168.1.19/vigour-native.zip</download>
     </widget>
 </list>
 </rsp>
