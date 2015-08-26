@@ -1,7 +1,8 @@
-/* global describe, it, expect */
+/* global describe, it, expect, assert, sinon */
 
 var path = require('path')
 var build = require('../../../../lib/build')
+var tasks = require('../../../../lib/build/android/tasks.js')
 
 // TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname
@@ -11,7 +12,15 @@ var opts =
 { configFiles: pkgPath,
   vigour: {
     native: {
-      root: repo
+      root: repo,
+      platforms: {
+        android: {
+          version: '2.1.4',
+          versionCode: 27,
+          packageName: 'org.test',
+          appIndexPath: 'src/index.html'
+        }
+      }
     }
   }
 }
@@ -28,7 +37,18 @@ describe('android-scripts', function () {
   })
 
   describe('assemble', function () {
-    it('should call gradle with params for the relevant options')
+    it('should call gradle with params for the relevant options', function () {
+      var exeStub = sinon.stub(tasks, 'exe').returns(Promise.resolve())
+      return tasks.assembleDebug(opts.vigour.native.platforms.android)
+        .then(function (opts) {
+          expect(exeStub.calledOnce).to.be.true
+          var command = exeStub.args[0][0]
+          expect(command).to.contain('-PverName=2.1.4')
+          expect(command).to.contain('-PverCode=27')
+          expect(command).to.contain('-PandroidAppId=org.test')
+          exeStub.restore()
+        })
+    })
   })
 
   describe('install & run', function () {
