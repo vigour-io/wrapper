@@ -33,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
         registerPlugins(pluginManager);
 
 
-        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "vigour.native.NativeInterface");
+        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
         webview.load("file:///android_asset/src/index.html", null);
 
         // show the version for debugging
