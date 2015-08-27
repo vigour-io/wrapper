@@ -1,13 +1,17 @@
-/* global describe, it, expect, assert, sinon */
+/* global describe, it, expect, sinon */
 
 var path = require('path')
 var build = require('../../../../lib/build')
 var tasks = require('../../../../lib/build/android/tasks.js')
-
-// TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native, perhaps by making vigour-example a submodule?
+var logStream = require('fs').createWriteStream('android-test.log')
+var log = require('npmlog')
+log.stream = logStream
+// TODO Remove dependency on vigour-example being checkout-out in same
+// directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname
   , '..', '..', '..', '..', '..', 'vigour-example')
 var pkgPath = path.join(repo, 'package.json')
+
 var opts =
 { configFiles: pkgPath,
   vigour: {
@@ -17,7 +21,8 @@ var opts =
         android: {
           version: '2.1.4',
           versionCode: 27,
-          packageName: 'org.test',
+          applicationId: 'org.test',
+          // logToFile: 1,
           appIndexPath: 'src/index.html'
         }
       }
@@ -25,7 +30,6 @@ var opts =
   }
 }
 
-var options = JSON.stringify(opts)
 var timeout = 60000
 
 describe('android-scripts', function () {
@@ -67,14 +71,13 @@ describe('android-scripts', function () {
   })
 })
 
-describe('build', function () {
-  it('android should succeed in under ' + timeout + ' milliseconds!'
+describe('android build', function () {
+  it('should succeed in under ' + timeout + ' milliseconds!'
     , function () {
       this.timeout(timeout)
-      var _options = JSON.parse(options)
       var platform = 'android'
-      _options.vigour.native.selectedPlatforms = platform
-      return build(_options)
+      opts.vigour.native.selectedPlatforms = platform
+      return build(opts)
         .then(checkSuccess)
     })
 })
