@@ -40,6 +40,15 @@ describe('android-scripts', function () {
     it('should overwrite newer files')
   })
 
+  describe('setAppIndexPath', function () {
+    it('should overwrite the file to load in java')
+  })
+
+  describe('installImages', function () {
+    it('should create launch icons from image')
+    it('should create splash screens from image')
+  })
+
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
       var exeStub = sinon.stub(tasks, 'exe').returns(Promise.resolve())
