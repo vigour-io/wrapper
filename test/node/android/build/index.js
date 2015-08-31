@@ -13,6 +13,7 @@ var remove = Promise.denodeify(fs.remove)
 
 var logStream = fs.createWriteStream('android-test.log')
 var log = require('npmlog')
+var log_stream = log.stream
 log.stream = logStream
 
 // TODO Remove dependency on vigour-example being checkout-out in same
@@ -32,7 +33,6 @@ var opts =
           version: '2.1.4',
           versionCode: 27,
           applicationId: 'org.test',
-          // logToFile: 1,
           appIndexPath: 'src/index.html'
         }
       }
@@ -141,6 +141,9 @@ describe('android build', function () {
       return build(opts)
         .then(checkSuccess)
     })
+  after(function () {
+    log.stream = log_stream
+  })
 })
 
 function checkSuccess (success) {
