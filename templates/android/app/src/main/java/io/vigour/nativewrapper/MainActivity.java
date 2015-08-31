@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
@@ -19,6 +21,22 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
+    private View splashView;
+
+    Runnable removeSplash = new Runnable() {
+        @Override
+        public void run() {
+            if (splashView == null) {
+                return;
+            }
+
+            ViewParent parent = splashView.getParent();
+            if (parent != null) {
+                ((ViewGroup) parent).removeView(splashView);
+                splashView = null;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
