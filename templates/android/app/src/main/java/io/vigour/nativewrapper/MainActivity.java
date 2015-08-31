@@ -27,14 +27,18 @@ public class MainActivity extends ActionBarActivity {
 
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, true);
 
-        webview = (XWalkView) findViewById(R.id.webview);
+        int delay = getResources().getInteger(R.integer.splashDuration);
+        String url = getResources().getString(R.string.index_path);
+
+        splashView = findViewById(R.id.splash);
+        splashView.postDelayed(removeSplash, delay);
 
         PluginManager pluginManager = new PluginManager();
         registerPlugins(pluginManager);
 
-
+        webview = (XWalkView) findViewById(R.id.webview);
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
-        webview.load("file:///android_asset/src/index.html", null);
+        webview.load(url, null);
 
         // show the version for debugging
         TextView versionView = (TextView) findViewById(R.id.versionView);
