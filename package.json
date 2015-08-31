@@ -11,15 +11,21 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gaston tests node",
-    "test-ios": "./node_modules/.bin/gaston tests node -f test/node/ios/",
-    "test-android": "./node_modules/.bin/gaston tests node -f test/node/android/",
-    "test-samsungtv": "./node_modules/.bin/gaston tests node -f test/node/samsungtv/"
+    "test": "./node_modules/.bin/gaston test node",
+    "test-ios": "./node_modules/.bin/gaston test node -f test/node/ios/",
+    "test-android": "./node_modules/.bin/gaston test node -f test/node/android/",
+    "test-samsungtv": "./node_modules/.bin/gaston test node -f test/node/samsungtv/"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "description": "The native code to wrap vigour apps",
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>",
+    "Alexander Van Der Werff <alex@vigour.io>",
+    "Michiel Van Liempt <michiel@vigour.io>",
+    "Ranan Carvalho <renan@vigour.io>"
+  ],
   "bugs": {
     "url": "https://github.com/vigour-io/vigour-native/issues"
   },
