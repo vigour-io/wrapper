@@ -3,7 +3,16 @@ apply plugin: 'java'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+apply plugin: 'maven'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://localhost" + System.getenv("ANDROID_HOME")
+                    + "/extras/android/m2repository/")
+            pom.version = '1.0-SNAPSHOT'
+            pom.groupId = 'io.vigour'
+            pom.artifactId = 'plugincore'
+        }
+    }
 }
