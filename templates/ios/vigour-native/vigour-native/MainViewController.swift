@@ -43,7 +43,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         config.mediaPlaybackRequiresUserAction = false
         config.userContentController = self.userContentController
         return config
-        }()
+    }()
     
     lazy var appplicationIndexPath: String = {
         if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
@@ -53,7 +53,7 @@ class MainViewController: UIViewController, WKUIDelegate {
             }
         }
         return "index.html"
-        }()
+    }()
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -106,7 +106,7 @@ class MainViewController: UIViewController, WKUIDelegate {
     //MARK: - WKUIDelegate
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("\(message)", appendNewline: false)
+        print("\(message)", terminator: "")
         completionHandler()
     }
     

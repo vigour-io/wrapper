@@ -10,24 +10,22 @@
 // way to know which methods are available in a plugin. We might could use some custom obj class, but initial we choose
 // for some conventions.
 
-// A plugin need to confirm to: f(message: Message) -> Message
-// A plugin should inherit from base class VigourPlugin
-// A plugin should add a mapping to an enumeration of type .Methods { methdod="methdod",
 
 
 import Foundation
 
+typealias bridgeMessage = (VigourBridgeMessage) -> Void
 
 protocol VigourPluginMethod {
-    func shouldCallMehtodWithName(name: String, andArguments args:[AnyObject]?)
+    func callMehtodWithName(name: String, andArguments args:[AnyObject]?, completionHandler:bridgeMessage)
 }
 
-class VigourPlugin : NSObject {
+public class VigourPlugin : NSObject {
     
     // plugin name
     let id: String
     
-    required init(id: String) {
+    required public init(id: String) {
         self.id = id
         super.init()
     }

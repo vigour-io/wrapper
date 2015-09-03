@@ -13,6 +13,7 @@
 		4926A2331AD2C637000FDF43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4926A2321AD2C637000FDF43 /* Images.xcassets */; };
 		4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */; };
 		4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
+		4938ECF01B95F92F0092CF80 /* VigourBridgeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9B3271AD7BDDC0088820E /* VigourBridgeMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		49423C3C1AD689CC00B53589 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C391AD689CC00B53589 /* VigourBridge.swift */; };
 		49423C411AD689E000B53589 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C401AD689E000B53589 /* VigourPlugin.swift */; };
 		49423C421AD689E000B53589 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C401AD689E000B53589 /* VigourPlugin.swift */; };
@@ -299,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */,
+				4938ECF01B95F92F0092CF80 /* VigourBridgeMessage.swift in Sources */,
 				49423C491AD6AFD100B53589 /* VigourPluginManager.swift in Sources */,
 				49423C421AD689E000B53589 /* VigourPlugin.swift in Sources */,
 				49423C4C1AD6B48F00B53589 /* StatusBarPlugin.swift in Sources */,

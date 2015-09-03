@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StatusBarPlugin: VigourPlugin, VigourPluginMethod {
+public class StatusBarPlugin: VigourPlugin, VigourPluginMethod {
  
     func showStatusBar() {
         
@@ -18,7 +18,10 @@ class StatusBarPlugin: VigourPlugin, VigourPluginMethod {
         
     }
     
-    func shouldCallMehtodWithName(name: String, andArguments args: [AnyObject]?) {
+    //MARK:- VigourPluginMethod
+
+    func callMehtodWithName(name: String, andArguments args: [AnyObject]?, completionHandler: bridgeMessage)  {
+    
         switch(name) {
         case "show": showStatusBar()
         case "hide": hudeStatusBar()

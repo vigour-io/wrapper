@@ -12,7 +12,7 @@ enum MessageRestult {
     case Success, Failure
 }
 
-struct Message {
+internal struct VigourBridgeMessage {
     let calbackId: Int
     let pluginName: String
     let pluginMethod: String
