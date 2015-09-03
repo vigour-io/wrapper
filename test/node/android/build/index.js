@@ -82,10 +82,10 @@ describe('android-scripts', function () {
     })
 
     it('should set path of js app', function () {
-      expect(values.resources.string[0]._).to.equal('path/to/app/index.js')
+      expect(values.resources.string[1]._).to.equal('path/to/app/index.js')
     })
     it('should set app name', function () {
-      expect(values.resources.string[1]._).to.equal('The Product!')
+      expect(values.resources.string[0]._).to.equal('The Product!')
     })
     it('should set splash timeout', function () {
       expect(values.resources.integer[0]._).to.equal('1234')

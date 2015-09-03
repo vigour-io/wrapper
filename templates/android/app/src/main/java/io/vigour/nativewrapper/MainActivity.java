@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
         webview = (XWalkView) findViewById(R.id.webview);
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
-        webview.load(url, null);
+        webview.load("file:///android_asset/" + url, null);
 
         // show the version for debugging
         TextView versionView = (TextView) findViewById(R.id.versionView);
