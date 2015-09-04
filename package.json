@@ -58,7 +58,8 @@
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "xcode": "^0.6.7"
+    "xcode": "^0.6.7",
+    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
   },
   "optionalDependencies": {
     "vigour-js": "git+ssh://git@github.com:vigour-io/vigour-js.git",
