@@ -20,14 +20,13 @@ protocol VigourPluginMethod {
     func callMehtodWithName(name: String, andArguments args:[AnyObject]?, completionHandler:bridgeMessage)
 }
 
-public class VigourPlugin : NSObject {
+public class VigourPlugin {
     
     // plugin name
     let id: String
     
     required public init(id: String) {
         self.id = id
-        super.init()
     }
     
     func register() {
@@ -37,5 +36,6 @@ public class VigourPlugin : NSObject {
     final func callMethod(name: String, args: Array<AnyObject>?) {
         
     }
+    
     
 }

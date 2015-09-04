@@ -10,19 +10,33 @@ import Foundation
 
 private let vigourPluginManager = VigourPluginManager()
 
-class VigourPluginManager {
+struct VigourPluginManager {
     
-    var plugins:[String:NSObject] = [:]
+    var plugins:[String:VigourPlugin] = [:]
     
-    class var sharedInstance: VigourPluginManager {
+    static var sharedInstance: VigourPluginManager {
         return vigourPluginManager
     }
     
     init() {
-        
+        setup()
     }
     
-    func registerPlugin(id: String, plugin: VigourPlugin) {
+    private mutating func setup() {
+        //register plugins
+        if let plugPath = NSBundle.mainBundle().pathForResource("Plugins", ofType: "plist") {
+            if let plugins = NSDictionary(contentsOfFile: plugPath) as? Dictionary<String, String> {
+                for (id, plugin) in plugins {
+                    //NOTE: - module name hard dependancy! , later init plugs lazy
+                    if let VigourPluginType = NSClassFromString("vigour_native.\(plugin)") as? VigourPlugin.Type {
+                        registerPlugin(id.lowercaseString, plugin: VigourPluginType.init(id: id))
+                    }
+                }
+            }
+        }
+    }
+    
+    mutating func registerPlugin(id: String, plugin: VigourPlugin) {
         plugins[id] = plugin
     }
     

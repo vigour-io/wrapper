@@ -11,9 +11,9 @@
 import WebKit
 import UIKit
 
-class MainViewController: UIViewController, WKUIDelegate {
+class VigourViewController: UIViewController, WKUIDelegate {
     
-    let vigourBridge = VigourBridge()
+    let vigourBridge = VigourBridge(pluginManager: VigourPluginManager())
     
     var statusBarHidden = true {
         didSet {
@@ -35,7 +35,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
         return controller
-        }()
+    }()
     
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
@@ -106,7 +106,7 @@ class MainViewController: UIViewController, WKUIDelegate {
     //MARK: - WKUIDelegate
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("\(message)", terminator: "")
+        print("\(message)", terminator: "!")
         completionHandler()
     }
     

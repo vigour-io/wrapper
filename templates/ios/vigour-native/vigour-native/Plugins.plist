@@ -4,7 +4,5 @@
 <dict>
 	<key>test</key>
 	<string>TestPlugin</string>
-	<key>statusBar</key>
-	<string>StatusBarPlugin</string>
 </dict>
 </plist>
