@@ -8,13 +8,10 @@
 
 import Foundation
 
-enum MessageRestult {
-    case Success, Failure
-}
 
 internal struct VigourBridgeMessage {
-    let calbackId: Int
-    let pluginName: String
+    let callbackId: Int
+    let pluginId: String
     let pluginMethod: String
-    let arguments: [String]
+    let arguments: NSDictionary?
 }

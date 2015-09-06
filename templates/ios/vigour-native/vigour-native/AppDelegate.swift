@@ -63,9 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         if #available(iOS 9, *) {
-            // use UIStackView
+           
         } else {
-            // show sad face emoji
+           
         }
 
         //wkwebview fix for referencing to www folder

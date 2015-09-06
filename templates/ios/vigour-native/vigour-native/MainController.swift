@@ -12,7 +12,6 @@ import Foundation
 import UIKit
 
 
-
 class MainController {
     
     var mainViewController: UIViewController {
