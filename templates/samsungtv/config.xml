@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns="http://www.samsung.com/">
-  <ThumbIcon>{{ThumbIcon}}</ThumbIcon>
-  <BigThumbIcon>{{BigThumbIcon}}</BigThumbIcon>
-  <ListIcon>{{ListIcon}}</ListIcon>
-  <BigListIcon>{{BigListIcon}}</BigListIcon>
+  <ThumbIcon>icons/ThumbIcon.png</ThumbIcon>
+  <BigThumbIcon>icons/BigThumbIcon.png</BigThumbIcon>
+  <ListIcon>icons/ListIcon.png</ListIcon>
+  <BigListIcon>icons/BigListIcon.png</BigListIcon>
 
   <category>video</category>
   <autoUpdate>y</autoUpdate>

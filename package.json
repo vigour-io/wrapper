@@ -60,7 +60,8 @@
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git",
     "vui": "git+ssh://git@github.com:vigour-io/vui.git",
-    "xcode": "^0.6.7"
+    "xcode": "^0.6.7",
+    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
   },
   "optionalDependencies": {
     "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev",
