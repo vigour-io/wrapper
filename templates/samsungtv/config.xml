@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.samsung.com/">  
-  <ThumbIcon>icons/icon_106.png</ThumbIcon>
-  <BigThumbIcon>icons/icon_115.png</BigThumbIcon>
-  <ListIcon>icons/icon_85.png</ListIcon>
-  <BigListIcon>icons/icon_95.png</BigListIcon>
-	
+<widget xmlns="http://www.samsung.com/">
+  <ThumbIcon>icons/ThumbIcon.png</ThumbIcon>
+  <BigThumbIcon>icons/BigThumbIcon.png</BigThumbIcon>
+  <ListIcon>icons/ListIcon.png</ListIcon>
+  <BigListIcon>icons/BigListIcon.png</BigListIcon>
+
   <category>video</category>
   <autoUpdate>y</autoUpdate>
   <deleteJS>Uninstall</deleteJS>
@@ -16,7 +16,7 @@
 
   <ver>0.0.0</ver>
 	<mgrver>2.250</mgrver>
-	
+
 	<fullwidget>y</fullwidget>
 	<srcctl>y</srcctl>
 	<ticker>n</ticker>
