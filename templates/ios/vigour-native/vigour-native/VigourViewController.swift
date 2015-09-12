@@ -106,8 +106,11 @@ class VigourViewController: UIViewController, WKUIDelegate {
     //MARK: - WKUIDelegate
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("\(message)", terminator: "!")
-        completionHandler()
+        let alertController = UIAlertController(title: webView.URL?.host, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+            completionHandler()
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }
