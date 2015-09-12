@@ -34,6 +34,12 @@ class VigourViewController: UIViewController, WKUIDelegate {
         let controller = WKUserContentController()
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
+        #if DEBUG
+        let source = "console.log = function(msg){window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
+        controller.addUserScript(script)
+        #endif
+        
         return controller
     }()
     
@@ -82,6 +88,8 @@ class VigourViewController: UIViewController, WKUIDelegate {
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
         view.addConstraints([height, width])
         
+//        add Script for catching console.log!!!!
+        
     }
     
     private func loadApp() {
@@ -107,7 +115,7 @@ class VigourViewController: UIViewController, WKUIDelegate {
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
         let alertController = UIAlertController(title: webView.URL?.host, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             completionHandler()
         }))
         presentViewController(alertController, animated: true, completion: nil)

@@ -51,12 +51,12 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         
         if let plug = VigourPluginManager.pluginTypeMap[message.pluginId] as? VigourPluginProtocol.Type {
             let p = plug.instance()
-            p.callMethodWithName("log", andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
+            p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
                 if error != nil {
                     print(error)
                 }
-                else {
-                    self?.sendJSMessage(message.callbackId, arguments:result, error: error)
+                else if let callbackId = message.callbackId {
+                    self?.sendJSMessage(callbackId, arguments:result, error: error)
                 }
             })
         }
@@ -66,17 +66,14 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     private final func processScriptMessage(message:WKScriptMessage) throws -> VigourBridgeMessage? {
         if let messageObject = message.body as? NSDictionary where messageObject.count >= 3 {
         
-            guard (messageObject.objectForKey("cbId") as? Int != nil) else { throw VigourBridgeError.BridgeError("Callback id of type number required for calling callback") }
-        
             guard (messageObject.objectForKey("pluginId") as? String != nil) else { throw VigourBridgeError.BridgeError("Plugin id required!") }
             
             guard (messageObject.objectForKey("fnName") as? String != nil) else { throw VigourBridgeError.BridgeError("Plugin id required!") }
             
-            if let cbId = messageObject.objectForKey("cbId") as? Int,
-                let pluginId = messageObject.objectForKey("pluginId") as? String,
+            if let pluginId = messageObject.objectForKey("pluginId") as? String,
                 let fnName = messageObject.objectForKey("fnName") as? String {
                     
-                return VigourBridgeMessage(callbackId:cbId, pluginId:pluginId, pluginMethod: fnName, arguments:messageObject.objectForKey("opts") as? NSDictionary)
+                return VigourBridgeMessage(callbackId: messageObject.objectForKey("cbId") as? Int, pluginId:pluginId, pluginMethod: fnName, arguments:messageObject.objectForKey("opts") as? NSDictionary)
                     
             }
         }
@@ -87,7 +84,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
-        if let messageObject = message.body as? NSDictionary where messageObject.count >= 3
+        if let messageObject = message.body as? NSDictionary where messageObject.count >= 2
             && message.name == self.dynamicType.scriptMessageHandlerName() {
             
             do {

@@ -2,6 +2,8 @@
     <body>
         <h1>Vigour.io</h1>
         <script>
+            
+            console.log("start tests.")
         
             function testCallback(cbId, err, response) {
                 if (err) {
@@ -10,6 +12,7 @@
                 else {
                     alert(response)
                     alert(cbId)
+                    console.log("back from callback.")
                 }
             }
             
@@ -42,7 +45,7 @@
             }
         
             window.webkit.messageHandlers.vigourBridgeHandler.postMessage(message)
-            //window.vigour.native.bridge.receive(0, null, {})
+
         </script>
     </body>
 </html>

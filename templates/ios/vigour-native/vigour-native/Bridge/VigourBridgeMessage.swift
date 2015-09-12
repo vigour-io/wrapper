@@ -10,7 +10,7 @@ import Foundation
 
 
 internal struct VigourBridgeMessage {
-    let callbackId: Int
+    let callbackId: Int?
     let pluginId: String
     let pluginMethod: String
     let arguments: NSDictionary?
