@@ -11,10 +11,10 @@ var writeFile = Promise.denodeify(fs.writeFile)
 var readXML = Promise.denodeify(fs.readXML)
 var remove = Promise.denodeify(fs.remove)
 
-var logStream = fs.createWriteStream('android-test.log')
+// var logStream = fs.createWriteStream('android-test.log')
 var log = require('npmlog')
-var log_stream = log.stream
-log.stream = logStream
+// var log_stream = log.stream
+// log.stream = logStream
 
 // TODO Remove dependency on vigour-example being checkout-out in same
 // directory as vigour-native, perhaps by making vigour-example a submodule?
@@ -40,7 +40,7 @@ var opts =
   }
 }
 
-var timeout = 60000
+var timeout = 120000
 
 describe('android-scripts', function () {
   describe('installTemplate', function () {
@@ -142,7 +142,7 @@ describe('android build', function () {
         .then(checkSuccess)
     })
   after(function () {
-    log.stream = log_stream
+    // log.stream = log_stream
   })
 })
 

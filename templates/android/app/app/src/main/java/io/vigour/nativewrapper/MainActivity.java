@@ -52,11 +52,12 @@ public class MainActivity extends ActionBarActivity {
         splashView.postDelayed(removeSplash, delay);
 
         PluginManager pluginManager = new PluginManager();
-        registerPlugins(pluginManager);
 
         webview = (XWalkView) findViewById(R.id.webview);
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
         webview.load("file:///android_asset/" + url, null);
+
+        registerPlugins(pluginManager);
 
         // show the version for debugging
         TextView versionView = (TextView) findViewById(R.id.versionView);

@@ -18,7 +18,7 @@ var opts =
   }
 
 var options = JSON.stringify(opts)
-var timeout = 5000
+var timeout = 30000
 
 describe('samsungtv build', function () {
   it('samsung Tv should succeed in under ' + timeout + ' milliseconds!'
