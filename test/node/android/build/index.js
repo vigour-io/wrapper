@@ -40,7 +40,7 @@ var opts =
   }
 }
 
-var timeout = 60000
+var timeout = 120000
 
 describe('android-scripts', function () {
   describe('installTemplate', function () {
