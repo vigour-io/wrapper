@@ -3,73 +3,85 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "/image/58/58?cache=false",
+      "width": 58,
+      "height": 58,
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
       "size" : "29x29",
-			"filename" : "/image/87/87?cache=false",
+      "width": 87,
+      "height": 87,
       "scale" : "3x"
     },
     {
       "idiom" : "iphone",
       "size" : "40x40",
-			"filename" : "/image/80/80?cache=false",
+      "width": 80,
+      "height": 80,
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
       "size" : "40x40",
-			"filename" : "/image/120/120?cache=false",
+      "width": 120,
+      "height": 120,
       "scale" : "3x"
     },
     {
       "idiom" : "iphone",
       "size" : "60x60",
-			"filename" : "/image/120/120?&cache=false",
+      "width": 120,
+      "height": 120,
       "scale" : "2x"
     },
     {
       "idiom" : "iphone",
       "size" : "60x60",
-			"filename" : "/image/180/180?cache=false",
+      "width": 180,
+      "height": 180,
       "scale" : "3x"
     },
     {
       "idiom" : "ipad",
       "size" : "29x29",
-			"filename" : "/image/29/29?cache=false",
+      "width": 29,
+      "height": 29,
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
       "size" : "29x29",
-			"filename" : "/image/58/58?&cache=false",
+      "width": 58,
+      "height": 58,
       "scale" : "2x"
     },
     {
       "idiom" : "ipad",
       "size" : "40x40",
-			"filename" : "/image/29/29?&cache=false",
+      "width": 29,
+      "height": 29,
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
       "size" : "40x40",
-			"filename" : "/image/80/80?&cache=false",
+      "width": 80,
+      "height": 80,
       "scale" : "2x"
     },
     {
       "idiom" : "ipad",
       "size" : "76x76",
-			"filename" : "/image/76/76?cache=false",
+      "width": 76,
+      "height": 76,
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
       "size" : "76x76",
-			"filename" : "/image/152/152?cache=false",
+      "width": 152,
+      "height": 152,
       "scale" : "2x"
     }
   ],
