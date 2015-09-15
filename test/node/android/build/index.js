@@ -40,7 +40,7 @@ var opts =
   }
 }
 
-var timeout = 120000
+var timeout = 5 * 60 * 1000
 
 describe('android-scripts', function () {
   describe('installTemplate', function () {
@@ -104,7 +104,7 @@ describe('android-scripts', function () {
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
       var exeStub = sinon.stub(tasks, 'exe').returns(Promise.resolve())
-      return tasks.assembleDebug(opts.vigour.native.platforms.android)
+      return tasks.assemble(opts.vigour.native.platforms.android)
         .then(function (opts) {
           expect(exeStub.calledOnce).to.be.true
           var command = exeStub.args[0][0]
