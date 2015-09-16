@@ -16,3 +16,7 @@ templates/ios/vigour-native/vigour-native.xcodeproj/project.xcworkspace/xcuserda
 Breakpoints_v2.xcbkptlist
 
 *.log
+
+templates/android/app/.idea/
+templates/android/plugincore/.idea/
+local.properties

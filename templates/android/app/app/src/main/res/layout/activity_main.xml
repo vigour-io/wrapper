@@ -31,7 +31,6 @@
         android:textColor="#fff"
         android:layout_gravity="bottom"
         android:gravity="center"
-        android:padding="8dp"
-        android:visibility="gone"/>
+        android:padding="8dp"/>
 
 </merge>
