@@ -104,15 +104,21 @@ describe('android-scripts', function () {
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
       var exeStub = sinon.stub(tasks, 'exe').returns(Promise.resolve())
-      return tasks.assembleDebug(opts.vigour.native.platforms.android)
-        .then(function (opts) {
-          expect(exeStub.calledOnce).to.be.true
-          var command = exeStub.args[0][0]
-          expect(command).to.contain('-PverName=2.1.4')
-          expect(command).to.contain('-PverCode=27')
-          expect(command).to.contain('-PandroidAppId=org.test')
-          exeStub.restore()
-        })
+      try {
+        return tasks.assemble(opts.vigour.native.platforms.android)
+          .then(function (opts) {
+            expect(exeStub.calledOnce).to.be.true
+            var command = exeStub.args[0][0]
+            expect(command).to.contain('-PverName=2.1.4')
+            expect(command).to.contain('-PverCode=27')
+            expect(command).to.contain('-PandroidAppId=org.test')
+            exeStub.restore()
+          })
+      } catch (error) {
+        log.warn(error, error)
+        exeStub.restore()
+        expect(error).to.not.exist
+      }
     })
   })
 
