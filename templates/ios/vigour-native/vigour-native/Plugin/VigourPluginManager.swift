@@ -8,26 +8,23 @@
 
 import Foundation
 
-private let vigourPluginManager = VigourPluginManager()
 
-class VigourPluginManager {
+struct VigourPluginManager {
     
-    var plugins:[String:NSObject] = [:]
+    var plugins:Dictionary<String, VigourPluginProtocol> = [:]
     
-    class var sharedInstance: VigourPluginManager {
-        return vigourPluginManager
-    }
+    static var pluginTypeMap:[String:Any] = [:]
     
     init() {
-        
+        setup()
+    }
+
+    private func setup() {
+        VigourPluginManager.register()
     }
     
-    func registerPlugin(id: String, plugin: VigourPlugin) {
-        plugins[id] = plugin
-    }
-    
-    func callPlugin(name: String, method: String, params: Array<AnyObject>) {
-        
+    static func registerPlugin(id: String, type: Any) {
+        VigourPluginManager.pluginTypeMap[id] = type
     }
     
 }

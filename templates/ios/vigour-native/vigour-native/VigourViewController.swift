@@ -11,9 +11,9 @@
 import WebKit
 import UIKit
 
-class MainViewController: UIViewController, WKUIDelegate {
+class VigourViewController: UIViewController, WKUIDelegate {
     
-    let vigourBridge = VigourBridge()
+    let vigourBridge = VigourBridge(pluginManager: VigourPluginManager())
     
     var statusBarHidden = true {
         didSet {
@@ -34,8 +34,14 @@ class MainViewController: UIViewController, WKUIDelegate {
         let controller = WKUserContentController()
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
+        #if DEBUG
+        let source = "console.log = function(msg){window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
+        controller.addUserScript(script)
+        #endif
+        
         return controller
-        }()
+    }()
     
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
@@ -43,7 +49,7 @@ class MainViewController: UIViewController, WKUIDelegate {
         config.mediaPlaybackRequiresUserAction = false
         config.userContentController = self.userContentController
         return config
-        }()
+    }()
     
     lazy var appplicationIndexPath: String = {
         if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
@@ -53,11 +59,11 @@ class MainViewController: UIViewController, WKUIDelegate {
             }
         }
         return "index.html"
-        }()
+    }()
     
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)        
     }
     
     override func viewDidLoad() {
@@ -81,6 +87,8 @@ class MainViewController: UIViewController, WKUIDelegate {
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
         view.addConstraints([height, width])
+        
+//        add Script for catching console.log!!!!
         
     }
     
@@ -106,8 +114,11 @@ class MainViewController: UIViewController, WKUIDelegate {
     //MARK: - WKUIDelegate
     
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        print("\(message)", appendNewline: false)
-        completionHandler()
+        let alertController = UIAlertController(title: webView.URL?.host, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            completionHandler()
+        }))
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

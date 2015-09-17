@@ -6,35 +6,31 @@ protocol test {
     func isMethodForName(name: String) -> ()->()
 }
 
-class Message: NSObject {
-    let value: String
-    let type: Int
-    init(value: String, type: Int) {
-        self.value = value
-        self.type = type
+class VigourPlugin {
+    static var pluginTypeMap:[String:Any] = [:]
+    required init() {
+        print("some plug is inited")
+    }
+    class func instance() -> VigourPlugin {
+        return VigourPlugin()
+    }
+    func test() {
+        print("crap")
     }
 }
+let b = VigourPlugin()
 
-class A : NSObject {
-    let name: String
-    required init(name: String) {
-        self.name = name
-    }
-    
-    var functions:Dictionary<String, ()->()> = [:]
-}
-
-class B: A {
-    
-    func a() -> Void {
-        println(name)
-    }
-    
-    dynamic func b(index:Message) -> AnyObject {
-        return Message(value: "", type: 1)
-    }
+VigourPlugin.pluginTypeMap["plug"] = VigourPlugin.self
+if let c = VigourPlugin.pluginTypeMap["plug"] as? VigourPlugin.Type {
+    print(c.dynamicType)
+    print(c.init())
+    print(c.instance())
 
 }
+let p = NSStringFromClass(VigourPlugin)
 
-Swift.Int
 
+if let aClass = NSClassFromString("VigourPlugin") as? VigourPlugin.Type {
+
+    print(aClass)
+}

@@ -1,0 +1,51 @@
+<html>
+    <body>
+        <h1>Vigour.io</h1>
+        <script>
+            
+            console.log("start tests.")
+        
+            function testCallback(cbId, err, response) {
+                if (err) {
+                    alert(err)
+                }
+                else {
+                    alert(response)
+                    alert(cbId)
+                    console.log("back from callback.")
+                }
+            }
+            
+            window.vigour = {}
+            window.vigour.native = {}
+            window.vigour.native.bridge = {}
+            window.vigour.native.bridge.receive = testCallback
+            window.vigour.native.bridge.ready = function(err, response) {
+                if (err) {
+                    alert(err)
+                }
+                else {
+                    alert(response)
+                }
+            }
+            
+
+        
+            var callbacks = [testCallback]
+            
+            function receive (cbId, err, response) {
+                callbacks[cbId](err, response)
+            }
+        
+            var message = {
+                pluginId: "vigour.logger",
+                fnName: "log",
+                opts: {},
+                cbId: 0
+            }
+        
+            window.webkit.messageHandlers.vigourBridgeHandler.postMessage(message)
+
+        </script>
+    </body>
+</html>

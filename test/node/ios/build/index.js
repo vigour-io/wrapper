@@ -18,7 +18,7 @@ var opts =
   }
 
 var options = JSON.stringify(opts)
-var timeout = 60000
+var timeout = 5 * 60 * 1000
 
 describe('ios build', function () {
   it('ios should succeed in under ' + timeout + ' milliseconds!'

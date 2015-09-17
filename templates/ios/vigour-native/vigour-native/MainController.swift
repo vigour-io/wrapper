@@ -12,7 +12,6 @@ import Foundation
 import UIKit
 
 
-
 class MainController {
     
     var mainViewController: UIViewController {
@@ -20,7 +19,7 @@ class MainController {
         return contentViewNavController
     }
     
-    private var contentViewNavController: MainViewController!
+    private var contentViewNavController: VigourViewController!
 
     
     private lazy var mainStoryboard: UIStoryboard = {
@@ -40,7 +39,7 @@ class MainController {
     //MARK: - Setup
     
     func setup() {
-        contentViewNavController = mainStoryboard.instantiateInitialViewController() as! MainViewController
+        contentViewNavController = mainStoryboard.instantiateInitialViewController() as! VigourViewController
     }
 
     
