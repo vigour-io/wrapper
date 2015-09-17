@@ -3,7 +3,7 @@
     <tizen:application id="{{tizenApp}}" package="{{packageVersion}}" required_version="2.3"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
-    <icon src={{icon}}/>
+    <icon src="icons/icon.ong"/>
     <name>{{productName}}</name>
     <tizen:profile name="tv"/>
 </widget>
