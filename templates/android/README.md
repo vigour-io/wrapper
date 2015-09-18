@@ -8,9 +8,9 @@ The notion of a Plugin and a PluginManager is central to this setup. They are de
 
 ## Building
 
-These app template is designed to compile and run as is from either command line or Android Studio. So you can build it from Android Studio or by going into the folder and run `./gradlew assemble`.
+This app template is designed to compile and run as is from either command line or Android Studio. So you can build it from Android Studio or by going into the folder and run `./gradlew assemble`.
 
-But the more logical thing to do is to run the npm script from a project that depends on vigour-native. Well call this the *user-project*. When this happens the scripts in lib/build/android will:
+But the more logical thing to do is to run the npm script from a project that depends on vigour-native. We'll call this the *user-project*. When this happens the scripts in lib/build/android will:
 1. Build options are set from the user-project's `package.json` and commandline options and env vars.
 1. Build plugincore
 1. Upload it to a local maven repository ()

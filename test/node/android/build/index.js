@@ -130,9 +130,8 @@ describe('android-scripts', function () {
 
   describe('installing plugins', function () {
     it('should init all plugins in main java file')
-    it('should build all plugins to .aar')
-    it('should add all .aar files to libs')
-    it('should add all .aar libs as dependency')
+    it('should deploy all plugins to local repository')
+    it('should add all plugin libs as dependency')
     it('should add all plugin permissions to the manifest')
     it('should work without any plugins')
   })
