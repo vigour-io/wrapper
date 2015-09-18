@@ -8,17 +8,17 @@ apply plugin: 'maven'
 task javadocs(type: Javadoc) {
     source = sourceSets.main.java.srcDirs
 }
- 
+
 task javadocsJar(type: Jar, dependsOn: javadocs) {
     classifier = 'javadoc'
     from javadocs.destinationDir
 }
- 
+
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.java.srcDirs
 }
- 
+
 artifacts {
     archives sourcesJar
     archives javadocsJar
@@ -29,7 +29,7 @@ uploadArchives {
         mavenDeployer {
             repository(url: "file://localhost" + System.getenv("ANDROID_HOME")
                     + "/extras/android/m2repository/")
-            pom.version = '1.0-SNAPSHOT'
+            pom.version = '0.2-SNAPSHOT'
             pom.groupId = 'io.vigour.plugin'
             pom.artifactId = 'core'
         }

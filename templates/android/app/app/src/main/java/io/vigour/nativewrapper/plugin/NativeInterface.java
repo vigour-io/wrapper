@@ -54,12 +54,16 @@ public class NativeInterface {
                 && array[2] instanceof String) {
                 handleJsMessage(id, (String)array[1], (String)array[2], array[3]);
             } else {
-                bridgeInterface.respondError(id, "wrong number of arguments, we expect 4: " + params);
+                if (array.length != 4) {
+                    bridgeInterface.respond(id, "wrong number of arguments, we expect 4: " + params, null);
+                } else {
+                    bridgeInterface.respond(id, "2nd and 3rd params must be strings: " + params, null);
+                }
             }
         } catch (IOException e) {
             String errorMessage = "exception handling message: " + params + " because: " + e.getMessage();
             errorMessage = errorMessage.replace('\'', '"').replace("\n", "");
-            bridgeInterface.respondError(id, errorMessage);
+            bridgeInterface.respond(id, errorMessage, null);
         }
     }
 
@@ -70,21 +74,11 @@ public class NativeInterface {
 
     private BridgeInterface bridgeInterface = new BridgeInterface() {
         @Override
-        public void respondError(final int callId, final String errorMessage) {
+        public void respond(final int callId, final String error, final String response) {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webView.evaluateJavascript(String.format("receiveAndroidError(%d, '%s')", callId, errorMessage), null);
-                }
-            });
-        }
-
-        @Override
-        public void respond(final int callId, final String response) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("receiveAndroidResult(%d, '%s')", callId, response), null);
+                    webView.evaluateJavascript(String.format("window.vigour.native.bridgeResult(%d, '%s', '%s')", callId, error, response), null);
                 }
             });
         }
