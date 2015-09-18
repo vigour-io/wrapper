@@ -4,7 +4,7 @@ This folder holds the native android projects necessary to build an android app.
 
 The main project - [app](./app) - exists mainly of a crosswalk view that loads our *javascript app* and has a plugin manager that exposes injected *plugins* to the javascript app.
 
-The notion of a Plugin and a PluginManager is central to this setup. They are defined in [plugincore](.plugincore), which is a java projects that builds a jar.
+The notion of a Plugin and a PluginManager is central to this setup. They are defined in [plugincore](./plugincore), which is a java projects that builds a jar.
 
 ## Building
 
