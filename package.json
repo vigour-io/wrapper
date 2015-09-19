@@ -64,7 +64,6 @@
     "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
   },
   "optionalDependencies": {
-    "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev",
     "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev"
   },
   "keywords": [
