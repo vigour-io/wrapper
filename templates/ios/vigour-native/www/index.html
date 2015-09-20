@@ -1,9 +1,18 @@
 <html>
     <body>
         <h1>Vigour.io</h1>
+        <!-- 
+            script will work with http is app has setting in info.plist
+            http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
+         -->
+        <script src="http://mtv-develop.vigour.io/build.js"></script>
         <script>
+            
             'use strict'
-            console.log("start tests.")
+            
+            console.log("Console log should work in debug mode")
+
+            console.log(window.package["description"])
 
             function testCallback(cbId, err, response) {
                 if (err) {
