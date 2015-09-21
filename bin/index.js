@@ -4,7 +4,7 @@ var path = require('path')
 var program = require('commander')
 var Promise = require('promise')
 
-var fs = require('vigour-fs')
+var fs = require('vigour-fs/lib/server')
 var vBuild = require('../lib/build')
 
 var readFile = Promise.denodeify(fs.readFile)
