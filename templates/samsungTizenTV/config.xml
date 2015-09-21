@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/tizen" version="1.0.0" viewmodes="maximized">
-    <tizen:application id="{{tizenApp}}" package="{{packageVersion}}" required_version="2.3"/>
+    <tizen:application id="{{packageVersion}}.{{tizenApp}}" package="{{packageVersion}}" required_version="{{requiredVersion}}"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <icon src="icons/icon.png"/>
