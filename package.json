@@ -59,13 +59,12 @@
     "through": "^2.3.4",
     "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git",
-    "vui": "git+ssh://git@github.com:vigour-io/vui.git",
+    "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "xcode": "^0.6.7",
     "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
   },
   "optionalDependencies": {
-    "vigour-hub": "git+ssh://git@github.com:vigour-io/vigour-hub.git#marcus-dev",
-    "gaston": "git+ssh://git@github.com:vigour-io/gaston.git#dev"
+    "gaston": "^0.14.0"
   },
   "keywords": [
     "gaston",

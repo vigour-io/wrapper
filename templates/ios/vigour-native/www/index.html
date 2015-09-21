@@ -1,10 +1,19 @@
 <html>
     <body>
         <h1>Vigour.io</h1>
+        <!-- 
+            script will work with http is app has setting in info.plist
+            http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
+         -->
+        <script src="http://mtv-develop.vigour.io/build.js"></script>
         <script>
             
-            console.log("start tests.")
-        
+            'use strict'
+            
+            console.log("Console log should work in debug mode")
+
+            console.log(window.package["description"])
+
             function testCallback(cbId, err, response) {
                 if (err) {
                     alert(err)
@@ -15,7 +24,7 @@
                     console.log("back from callback.")
                 }
             }
-            
+
             window.vigour = {}
             window.vigour.native = {}
             window.vigour.native.bridge = {}
@@ -28,22 +37,22 @@
                     alert(response)
                 }
             }
-            
 
-        
+
+
             var callbacks = [testCallback]
-            
+
             function receive (cbId, err, response) {
                 callbacks[cbId](err, response)
             }
-        
+
             var message = {
                 pluginId: "vigour.logger",
                 fnName: "log",
                 opts: {},
                 cbId: 0
             }
-        
+
             window.webkit.messageHandlers.vigourBridgeHandler.postMessage(message)
 
         </script>
