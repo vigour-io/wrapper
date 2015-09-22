@@ -5,7 +5,7 @@ var program = require('commander')
 var Promise = require('promise')
 
 var fs = require('vigour-fs/lib/server')
-var vBuild = require('../lib/build')
+var vBuilder = require('../lib/builder')
 
 var readFile = Promise.denodeify(fs.readFile)
 var fs_exists = function (p) {
@@ -14,7 +14,7 @@ var fs_exists = function (p) {
   })
 }
 
-var buildFactory = function (cwd) {
+var builderFactory = function (cwd) {
   return function (platforms) {
     build(platforms, cwd)
   }
@@ -23,7 +23,7 @@ var buildFactory = function (cwd) {
 program
   .version('0.0.1')
   .command('build [platforms...]')
-  .action(buildFactory(process.cwd()))
+  .action(builderFactory(process.cwd()))
 
 program.parse(process.argv)
 
@@ -58,7 +58,7 @@ function build (platforms, cwd) {
       }
       parsed.vigour.native.cwd = cwd  // TODO Document this
       parsed.vigour.native.packer = parsed.vigour.packer
-      return vBuild(parsed.vigour.native)
+      return vBuilder(parsed.vigour.native)
     })
     .then(function (meta) {
       console.log('Build done in ' + meta.time + 'ms')

@@ -1,8 +1,8 @@
 /* global describe, it, expect, before, after, sinon */
 
 var path = require('path')
-var build = require('../../../../lib/build')
-var tasks = require('../../../../lib/build/android/tasks.js')
+var builder = require('../../../../lib/builder')
+var tasks = require('../../../../lib/builder/android/tasks.js')
 var fs = require('vigour-fs/lib/server')
 var Promise = require('promise')
 var mkdirp = Promise.denodeify(fs.mkdirp)
@@ -144,7 +144,7 @@ describe('android build', function () {
       this.timeout(timeout)
       var platform = 'android'
       opts.vigour.native.selectedPlatforms = platform
-      return build(opts)
+      return builder(opts)
         .then(checkSuccess)
     })
   after(function () {

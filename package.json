@@ -11,7 +11,9 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gaston test node",
+    "test": "./node_modules/.bin/gaston test",
+    "test-bridge": "./node_modules/.bin/gaston test browser -f test/node/bridge/",
+    "test-builder": "./node_modules/.bin/gaston test node -f test/node/builder/",
     "test-ios": "./node_modules/.bin/gaston test node -f test/node/ios/",
     "test-android": "./node_modules/.bin/gaston test node -f test/node/android/",
     "test-samsungtv": "./node_modules/.bin/gaston test node -f test/node/samsungtv/"
@@ -63,7 +65,7 @@
     "xcode": "^0.6.7",
     "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
   },
-  "optionalDependencies": {
+  "devDependencies": {
     "gaston": "^0.14.0"
   },
   "keywords": [
