@@ -78,7 +78,7 @@ public class NativeInterface {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridgeResult(%d, '%s', '%s')", callId, error, response), null);
+                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', '%s')", callId, error, response), null);
                 }
             });
         }
