@@ -36,7 +36,6 @@
     "test": "test"
   },
   "dependencies": {
-    "android": "git+ssh://git@github.com:benmonro/android.git#master",
     "archiver": "^0.14.4",
     "body-parser": "1.12.2",
     "browserify": "^9",
@@ -53,17 +52,17 @@
     "mustache": "~0.8.1",
     "ncp": "2.0.x",
     "npmlog": "0.1.x",
-    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git",
+    "vigour-fs": "^2.0.0",
+    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
     "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "xcode": "^0.6.7",
-    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git"
+    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git#master"
   },
   "devDependencies": {
     "gaston": "^0.14.0"
