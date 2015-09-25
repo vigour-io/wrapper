@@ -1,5 +1,7 @@
 package io.vigour.nativewrapper.plugin.core;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created by michielvanliempt on 08/04/15.
  */
@@ -23,15 +25,18 @@ public class CallContext {
             respond(function.run(arguments));
         } catch (Exception e) {
             e.printStackTrace();
+            if (e instanceof InvocationTargetException) {
+                e = (Exception) e.getCause();
+            }
             error(e.toString());
         }
     }
 
     public void error(String errorMessage) {
-        bridge.respondError(callId, errorMessage);
+        bridge.respond(callId, errorMessage, null);
     }
 
     public void respond(String response) {
-        bridge.respond(callId, response);
+        bridge.respond(callId, null, response);
     }
 }
