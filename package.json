@@ -40,17 +40,18 @@
     "body-parser": "1.12.2",
     "browserify": "^9",
     "chai": "2.1.x",
+    "checksum": "^0.1.1",
     "cli-spinner": "0.2.0",
     "colors": "1.0.x",
     "commander": "^2.7.1",
     "concat-stream": "^1.4.8",
+    "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "express": "4.12.3",
-    "lodash": "^3.10.1",
     "globby": "^2.1.0",
+    "lodash": "^3.10.1",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
-    "ncp": "2.0.x",
     "npmlog": "0.1.x",
     "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
     "plist": "^1.1.0",
@@ -58,14 +59,15 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-fs": "^2.0.0",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
+    "vigour-fs": "^3.0.0",
     "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "xcode": "^0.6.7",
     "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git#master"
   },
   "devDependencies": {
-    "gaston": "^0.14.0"
+    "gaston": "^0.14.0",
+    "npm": "^2.9.0"
   },
   "keywords": [
     "gaston",
@@ -75,8 +77,5 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause",
-  "devDependencies": {
-    "npm": "^2.9.0"
-  }
+  "license": "BSD-2-Clause"
 }

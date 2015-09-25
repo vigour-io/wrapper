@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "22.0.1"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId androidAppId
@@ -37,9 +37,7 @@ android {
 }
 
 repositories {
-    flatDir {
-        dirs 'libs'
-    }
+
 }
 
 dependencies {
@@ -49,7 +47,7 @@ dependencies {
     compile 'com.fasterxml.jackson.jr:jackson-jr-objects:2.5.1'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'joda-time:joda-time:2.7'
-    compile 'io.vigour.plugin:core:+'
+    compile 'io.vigour.plugin:core:0.2-SNAPSHOT'
     //-- start plugin dependencies
     //-- end plugin dependencies
 }
