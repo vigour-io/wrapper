@@ -21,9 +21,9 @@ describe('bridge', function () {
     // window.NativeInterface.send is usually provided by the android build script
     window.NativeInterface = {
       send: function (str) {
-        var obj = JSON.parse(str)
+        var argsArray = JSON.parse(str)
         setTimeout(function () {
-          window.vigour.native.bridge.result(obj.cbId, null, pluginResult)
+          window.vigour.native.bridge.result(argsArray[0], null, pluginResult)
         }, 200)
       }
     }
