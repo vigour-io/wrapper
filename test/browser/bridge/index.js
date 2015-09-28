@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 // Let's pretend we're android for these platform-agnostic tests
 var env = require('../../../lib/env.js')
 env.platform = 'android'
@@ -15,6 +13,22 @@ describe('bridge', function () {
   it('should be requireable', function () {
     bridge = require('../../../lib/bridge')
     expect(typeof bridge).equal('object')
+  })
+
+  describe('native events', function () {
+    it('should emit the `ready` event', function () {
+      var spy = sinon.spy()
+      bridge.on('ready', spy)
+      window.vigour.native.bridge.ready(null, 'message')
+      expect(spy).calledOnce
+    })
+
+    it('should emit `error` events', function () {
+      var spy = sinon.spy()
+      bridge.on('error', spy)
+      window.vigour.native.bridge.error('message')
+      expect(spy).calledOnce
+    })
   })
 
   it('should enqueue calls until plugin is ready, then call them in order', function (done) {

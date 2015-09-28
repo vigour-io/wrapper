@@ -77,5 +77,8 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "standard": {
+    "globals": [ "describe", "it", "expect", "before", "after", "beforeEach", "afterEach", "sinon" ]
+  }
 }
