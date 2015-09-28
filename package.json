@@ -62,7 +62,7 @@
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
     "vigour-fs": "^3.0.0",
     "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
-    "xcode": "^0.6.7",
+    "xcode": "^0.8.0",
     "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git#master"
   },
   "devDependencies": {
