@@ -33,6 +33,7 @@
 		49C5ED941AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
 		49C5ED951AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
 		49C5ED981AD5AFFC00DA670C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C5ED971AD5AFFC00DA670C /* WebKit.framework */; };
+		49E417191BB952F200067AC8 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		49C5ED891AD559F800DA670C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 		49C5ED931AD5ACAB00DA670C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		49C5ED971AD5AFFC00DA670C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeSendMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				49423C391AD689CC00B53589 /* VigourBridge.swift */,
 				49B9B3271AD7BDDC0088820E /* VigourBridgeMessage.swift */,
+				49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			files = (
 				4926A22E1AD2C637000FDF43 /* VigourViewController.swift in Sources */,
 				49442BAE1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */,
+				49E417191BB952F200067AC8 /* VigourBridgeSendMessage.swift in Sources */,
 				4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */,
 				49423C481AD6AFD100B53589 /* VigourPluginManager.swift in Sources */,
 				49423C3C1AD689CC00B53589 /* VigourBridge.swift in Sources */,

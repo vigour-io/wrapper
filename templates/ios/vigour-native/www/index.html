@@ -12,34 +12,56 @@
             
             console.log("Console log should work in debug mode")
 
-            //console.log(window.package["description"])
-
-            function testCallback(cbId, err, response) {
-                if (err) {
-                    alert(err)
-                }
-                else {
-                    alert(response)
-                    alert(cbId)
-                    console.log("back from callback.")
-                }
-            }
 
             window.vigour = {}
             window.vigour.native = {}
             window.vigour.native.bridge = {}
-            window.vigour.native.bridge.receive = testCallback
-            window.vigour.native.bridge.ready = function(err, response) {
+            window.vigour.native.bridge.error = function error (err, pluginId) {
+                console.log("**ERROR**")
+                if (pluginId) {
+                    console.log(pluginId)
+                }
+                console.log(err)
+            }
+            window.vigour.native.bridge.receive = function receive (err, message, pluginId) {
+                console.log("**RECEIVE**")
+                if (pluginId) {
+                    console.log(pluginId)
+                }
                 if (err) {
-                    alert(err)
+                    console.log(err)
+                }
+                if (message) {
+                    console.log(message)
+                }
+            }
+            window.vigour.native.bridge.result = function receive (cbId, err, response) {
+                console.log("**RESULT**")
+                if (err) {
+                    console.log(err)
+                }
+                if (cbId) {
+                    console.log(cbId)
+                }
+                if (response) {
+                    console.log(response)
+                }
+            }
+            window.vigour.native.bridge.ready = function(err, response, pluginId) {
+                console.log("**READY**")
+                if (err) {
+                    console.log(err)
                 }
                 else {
-                    alert(response)
+                    if (pluginId) {
+                        console.log(pluginId)
+                    }
+                    console.log(response)
                 }
             }
 
 
-
+            /*
             var callbacks = [testCallback]
 
             function receive (cbId, err, response) {
@@ -54,6 +76,7 @@
             }
 
             window.webkit.messageHandlers.vigourBridgeHandler.postMessage(message)
+             */
 
         </script>
     </body>

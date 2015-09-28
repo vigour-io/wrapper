@@ -9,7 +9,7 @@
 import Foundation
 
 
-internal struct VigourBridgeMessage {
+struct VigourBridgeMessage {
     let callbackId: Int?
     let pluginId: String
     let pluginMethod: String

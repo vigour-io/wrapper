@@ -9,8 +9,12 @@
 import Foundation
 import WebKit
 
+
 internal let scriptMessageHandlerString = "vigourBridgeHandler"
+
+internal let scriptMessageErrorCallback = "window.vigour.native.bridge.error"
 internal let scriptMessageReadyCallback = "window.vigour.native.bridge.ready"
+internal let scriptMessageResultCallback = "window.vigour.native.bridge.result"
 internal let scriptMessageReceiveCallback = "window.vigour.native.bridge.receive"
 
 enum VigourBridgeError: ErrorType {
