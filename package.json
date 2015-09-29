@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/gaston test",
-    "test-bridge": "./node_modules/.bin/gaston test browser -f test/node/bridge/",
+    "test-bridge": "./node_modules/.bin/gaston test browser -f test/browser/bridge/",
     "test-builder": "./node_modules/.bin/gaston test node -f test/node/builder/",
     "test-ios": "./node_modules/.bin/gaston test node -f test/node/ios/",
     "test-android": "./node_modules/.bin/gaston test node -f test/node/android/",
