@@ -33,7 +33,7 @@ var opts =
           version: '2.1.4',
           versionCode: 27,
           applicationId: 'org.test',
-          appIndexPath: 'src/index.html'
+          appIndexPath: 'bundle.html'
         }
       }
     }
