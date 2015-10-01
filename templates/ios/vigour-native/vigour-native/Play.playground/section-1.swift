@@ -1,59 +1,63 @@
 // Playground - noun: a place where people can play
 
 import Foundation
+import JavaScriptCore
 
-protocol test {
-    func isMethodForName(name: String) -> ()->()
-}
+print("e")
 
-class VigourPlugin {
-    static var pluginTypeMap:[String:Any] = [:]
-    required init() {
-        print("some plug is inited")
+struct JSObject {
+    let value:Dictionary<String, NSObject>
+    
+    init(_ value: Dictionary<String, NSObject>) {
+        self.value = value
     }
-    class func instance() -> VigourPlugin {
-        return VigourPlugin()
+    
+    func jsString() -> String {
+        var s = ""
+        traverse(value, js: &s)
+        return s
     }
-    func test() {
-        print("crap")
+    
+    func traverse<T>(obj:T, inout js:String) {
+        if let o = obj as? Dictionary<String, NSObject> {
+            js += "{"
+            var count = 0
+            for (key, value) in o {
+                count++
+                js += "\"\(key)\":"
+                traverse(value, js: &js)
+                if count < o.count {
+                    js += ", "
+                }
+            }
+            js += "}"
+        }
+        else if let o = obj as? NSArray {
+            js += "["
+            for (index, item) in o.enumerate() {
+                traverse(item, js: &js)
+                if index < o.count - 1 {
+                    js += ","
+                }
+            }
+            js += "]"
+        }
+        else if let o = obj as? String {
+            js += "\"\(o)\""
+        }
+        else if obj is NSNumber {
+            js += "\(obj)"
+        }
+        else if let o = obj as? Bool {
+            js += "\(o)"
+        }
     }
 }
-let b = VigourPlugin()
-
-VigourPlugin.pluginTypeMap["plug"] = VigourPlugin.self
-if let c = VigourPlugin.pluginTypeMap["plug"] as? VigourPlugin.Type {
-    print(c.dynamicType)
-    print(c.init())
-    print(c.instance())
-
-}
-let p = NSStringFromClass(VigourPlugin)
 
 
-if let aClass = NSClassFromString("VigourPlugin") as? VigourPlugin.Type {
+let test = ["a":1, "b":true, "c":[1,2,3.3], "d":["e":"f"]]
 
-    print(aClass)
-}
+let jso = JSObject(test)
 
-enum JSValue {
-    case StringValue(val:String)
-    case IntValue(val:Int)
-    case ArrayValue(val: Array<JSValue>)
-    case DictValue(val: Dictionary<String, JSValue>)
-}
-
-var val = Dictionary<String, JSValue>()
-val["top"] = JSValue.IntValue(val:5)
-
-
-var t = Dictionary<String, Any>()
-t["t"] = 7
-t["f"] = "r"
-t["r"] = 1.5
-t["r"] is Double
-t["f"] is Double
-t["f"] is String
-t["g"] = p
-print(t)
-
+jso.jsString()
 

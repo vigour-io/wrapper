@@ -38,9 +38,9 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         
     }
     
-    internal func sendJSMessage(callbackId:Int, arguments:NSDictionary?, error:NSError?) {
+    internal func sendJSMessage(message: VigourBridgeSendMessage) {
         if let d = delegate {
-            let jsString = "\(scriptMessageReceiveCallback)(\(callbackId), null, {})"
+            let jsString = message.jsString()
             d.webView?.evaluateJavaScript(jsString, completionHandler: { (_, error) -> Void in
                 
             })
