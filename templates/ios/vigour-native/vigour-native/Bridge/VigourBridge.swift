@@ -50,17 +50,30 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     internal func receiveBridgeMessage(message:VigourBridgeMessage) {
         
         if let plug = VigourPluginManager.pluginTypeMap[message.pluginId] as? VigourPluginProtocol.Type {
+            
+            //get the insance or singleton
             let p = plug.instance()
-            p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
-                
-                if error != nil {
-                    print(error)
-                    self?.sendJSMessage(VigourBridgeSendMessage.Error(error: error, pluginId: message.pluginId))
-                }
-                else if let callbackId = message.callbackId {
-                    self?.sendJSMessage(VigourBridgeSendMessage.Result(error: nil, calbackId: callbackId, response: result))
-                }
-            })
+            
+            //call the method
+            do {
+                try p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
+                    
+                    if error != nil {
+                        print(error)
+                        self?.sendJSMessage(VigourBridgeSendMessage.Error(error: error, pluginId: message.pluginId))
+                    }
+                    else if let callbackId = message.callbackId {
+                        self?.sendJSMessage(VigourBridgeSendMessage.Result(error: nil, calbackId: callbackId, response: result))
+                    }
+                })
+            }
+            catch VigourBridgeError.PluginError(let message, let pluginId) {
+                //TODO: throw it to js side!
+            }
+            catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
         }
         
     }
@@ -95,7 +108,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 }
             }
             catch VigourBridgeError.BridgeError(let message) {
-                print(message)
+                VigourBridgeSendMessage.Error(error: JSError(title:"Bridge Error", description:message, todo:""), pluginId: "")
             }
             catch let error as NSError {
                 print(error.localizedDescription)
