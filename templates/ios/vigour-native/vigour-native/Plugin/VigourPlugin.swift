@@ -10,7 +10,7 @@
 import Foundation
 
 
-typealias pluginResult = (NSError?, NSDictionary?) -> Void
+typealias pluginResult = (JSError?, JSObject) -> Void
 
 protocol VigourPluginProtocol {
     weak var delegate:VigourViewController? { get set }

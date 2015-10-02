@@ -3,7 +3,6 @@
 import Foundation
 import JavaScriptCore
 
-print("e")
 
 struct JSObject {
     let value:Dictionary<String, NSObject>
@@ -19,6 +18,7 @@ struct JSObject {
     }
     
     func traverse<T>(obj:T, inout js:String) {
+
         if let o = obj as? Dictionary<String, NSObject> {
             js += "{"
             var count = 0
@@ -48,16 +48,18 @@ struct JSObject {
         else if obj is NSNumber {
             js += "\(obj)"
         }
-        else if let o = obj as? Bool {
-            js += "\(o)"
-        }
     }
 }
 
 
-let test = ["a":1, "b":true, "c":[1,2,3.3], "d":["e":"f"]]
+let test = ["a":1, "b": true, "c":[1,2,3.3], "d":["e":"f"]]
 
 let jso = JSObject(test)
 
 jso.jsString()
+
+
+var template = "Your name is %@ %@ and your age is %d."
+let top = String(format: template, "John", "crap", 35)
+
 

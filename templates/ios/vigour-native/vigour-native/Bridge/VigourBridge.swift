@@ -37,11 +37,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     private func setup() {
         
     }
-    
+
     internal func sendJSMessage(message: VigourBridgeSendMessage) {
         if let d = delegate {
-            let jsString = message.jsString()
-            d.webView?.evaluateJavaScript(jsString, completionHandler: { (_, error) -> Void in
+            d.webView?.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
                 
             })
         }
@@ -53,11 +52,13 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         if let plug = VigourPluginManager.pluginTypeMap[message.pluginId] as? VigourPluginProtocol.Type {
             let p = plug.instance()
             p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
+                
                 if error != nil {
                     print(error)
+                    self?.sendJSMessage(VigourBridgeSendMessage.Error(error: error, pluginId: message.pluginId))
                 }
                 else if let callbackId = message.callbackId {
-                    self?.sendJSMessage(callbackId, arguments:result, error: error)
+                    self?.sendJSMessage(VigourBridgeSendMessage.Result(error: nil, calbackId: callbackId, response: result))
                 }
             })
         }

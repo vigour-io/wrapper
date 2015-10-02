@@ -27,6 +27,7 @@
 		49442BB11B9CECA9004E78BF /* VigourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22D1AD2C637000FDF43 /* VigourViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		49442BB21B9CECBA004E78BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22B1AD2C637000FDF43 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		49442BB31B9CECC0004E78BF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; settings = {ASSET_TAGS = (); }; };
+		49A6361B1BBDB8A6009E72C4 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; settings = {ASSET_TAGS = (); }; };
 		49B9B3281AD7BDDC0088820E /* VigourBridgeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9B3271AD7BDDC0088820E /* VigourBridgeMessage.swift */; };
 		49C5ED8A1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
 		49C5ED8B1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
@@ -305,6 +306,7 @@
 				49442BAF1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */,
 				4938ECF01B95F92F0092CF80 /* VigourBridgeMessage.swift in Sources */,
 				49423C491AD6AFD100B53589 /* VigourPluginManager.swift in Sources */,
+				49A6361B1BBDB8A6009E72C4 /* VigourBridgeSendMessage.swift in Sources */,
 				49423C421AD689E000B53589 /* VigourPlugin.swift in Sources */,
 				49C5ED951AD5ACAB00DA670C /* Utils.swift in Sources */,
 				49442BB11B9CECA9004E78BF /* VigourViewController.swift in Sources */,

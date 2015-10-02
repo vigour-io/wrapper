@@ -25,7 +25,7 @@ struct Logger: VigourPluginProtocol {
         default:return
         }
         
-        completionHandler(nil, NSDictionary())
+        completionHandler(nil, JSObject(["succes":true]))
     }
     
     static func instance() -> VigourPluginProtocol {
