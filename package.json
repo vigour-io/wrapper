@@ -64,7 +64,7 @@
     "vigour-fs": "^3.0.0",
     "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "xcode": "^0.8.0",
-    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git#master"
+    "shutter": "git+ssh@github.com:vigour-io/shutter.git#master"
   },
   "devDependencies": {
     "gaston": "^0.14.0",
