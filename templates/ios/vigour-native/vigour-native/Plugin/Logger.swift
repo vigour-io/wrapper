@@ -28,6 +28,10 @@ struct Logger: VigourPluginProtocol {
         completionHandler(nil, JSObject(["succes":true]))
     }
     
+    func onReady() throws -> JSObject {
+        return JSObject([Logger.pluginId:"ready"])
+    }
+    
     static func instance() -> VigourPluginProtocol {
         return Logger()
     }

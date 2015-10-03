@@ -62,7 +62,7 @@ struct JSObject: JSStringProtocol {
             var count = 0
             for (key, value) in o {
                 count++
-                js += "\"\(key)\":"
+                js += "'\(key)':"
                 traverse(value, js: &js)
                 if count < o.count {
                     js += ", "
@@ -81,7 +81,7 @@ struct JSObject: JSStringProtocol {
             js += "]"
         }
         else if let o = obj as? String {
-            js += "\"\(o)\""
+            js += "'\(o)'"
         }
         else if obj is NSNumber {
             js += "\(obj)"

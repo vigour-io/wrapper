@@ -22,7 +22,7 @@ class vigour_nativeTests: XCTestCase {
     
     func testVigourPluginRegistry() {
         VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)
-        XCTAssertTrue(VigourPluginManager.pluginTypeMap["vigour.logger"] is VigourPluginProtocol.Type, "No logger conform to VigourPluginProtocol")
+        XCTAssertNotNil(VigourPluginManager.pluginTypeMap["vigour.logger"]!.instance(), "plugin not initialized")
     }
     
     func testPerformanceExample() {

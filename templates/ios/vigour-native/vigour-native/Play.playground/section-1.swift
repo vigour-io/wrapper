@@ -62,4 +62,54 @@ jso.jsString()
 var template = "Your name is %@ %@ and your age is %d."
 let top = String(format: template, "John", "crap", 35)
 
+protocol W {
+    var v:String {get}
+    static func instance() -> W
+}
+struct A:W {
+    var v = "top"
+    static func instance() -> W {
+        return A()
+    }
+    init() {
+        print("init")
+    }
+}
 
+print(A.self)
+
+let x = A.self
+x.init()
+
+func c(builder:() -> A) {
+    let x = builder()
+    x.v
+}
+c{A()}
+
+func createClass<T: W>(classType: T.Type) {
+    print(classType.instance())
+}
+
+createClass(A)
+
+class MyClass: W {
+    var v = "crap"
+    static func instance() -> W {
+        return MyClass()
+    }
+    class func top() {
+        
+    }
+}
+
+createClass(MyClass)
+MyClass.instance()
+
+let faa = "a"
+let foo = "(\"\(faa)')"
+print(foo)
+
+
+
+let timeString = String(format: "function(%@){}", "{'a':'b'}")

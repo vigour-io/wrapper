@@ -14,6 +14,6 @@ import Foundation
 */
 extension VigourPluginManager {
     static func register() {
-        VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)        
+        VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)
     }
 }
