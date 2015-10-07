@@ -12,12 +12,12 @@
   },
   "scripts": {
     "test": "gaston test -s ./test",
-    "test-bridge": "gaston test -r phantom -f test/phantom/bridge/",
-    "test-plugins": "gaston test -r common -f test/common/",
-    "test-builder": "gaston test -r node -f test/node/builder/",
-    "test-ios": "gaston test -r node -f test/node/ios/",
-    "test-android": "gaston test -r node -f test/node/android/",
-    "test-samsungtv": "gaston test -r node -f test/node/samsungtv/"
+    "test-bridge": "gaston test -r phantom -s test/phantom/bridge/",
+    "test-plugins": "gaston test -r common -s test/common/",
+    "test-builder": "gaston test -r node -s test/node/builder/",
+    "test-ios": "gaston test -r node -s test/node/ios/",
+    "test-android": "gaston test -r node -s test/node/android/",
+    "test-samsungtv": "gaston test -r node -s test/node/samsungtv/"
   },
   "engines": {
     "node": ">=0.10.0"
