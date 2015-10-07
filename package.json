@@ -11,13 +11,13 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gaston test",
-    "test-bridge": "./node_modules/.bin/gaston test browser -f test/browser/bridge/",
-    "test-plugins": "./node_modules/.bin/gaston test browser -f test/common/",
-    "test-builder": "./node_modules/.bin/gaston test node -f test/node/builder/",
-    "test-ios": "./node_modules/.bin/gaston test node -f test/node/ios/",
-    "test-android": "./node_modules/.bin/gaston test node -f test/node/android/",
-    "test-samsungtv": "./node_modules/.bin/gaston test node -f test/node/samsungtv/"
+    "test": "gaston test -s ./test",
+    "test-bridge": "gaston test -r pantom -f test/browser/bridge/",
+    "test-plugins": "gaston test -r phantom -f test/common/",
+    "test-builder": "gaston test -r node -f test/node/builder/",
+    "test-ios": "gaston test -r node -f test/node/ios/",
+    "test-android": "gaston test -r node -f test/node/android/",
+    "test-samsungtv": "gaston test -r node -f test/node/samsungtv/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -67,7 +67,7 @@
     "shutter": "git+ssh@github.com:vigour-io/shutter.git#master"
   },
   "devDependencies": {
-    "gaston": "^0.14.0",
+    "gaston": "^0.15.0",
     "npm": "^2.9.0"
   },
   "keywords": [

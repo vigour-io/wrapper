@@ -19,7 +19,7 @@ var log_stream = log.stream
 // TODO Remove dependency on vigour-example being checkout-out in same
 // directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname
-  , '..', '..', '..', '..', '..', 'vigour-example')
+  , '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
 var fixturePath = path.join(__dirname, '..', 'fixtures', 'template.xml')
 

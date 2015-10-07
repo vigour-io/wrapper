@@ -1,0 +1,118 @@
+{
+  "name": "test-app",
+  "version": "0.0.1",
+  "description": "Test app for vigour-native",
+  "scripts": {
+    "start": "./node_modules/.bin/gaston",
+    "test": "./node_modules/.bin/gaston test",
+    "build": "./node_modules/.bin/gaston build -s src",
+    "all": "npm run build; ../../bin/build.js build",
+    "ios": "npm run build; ../../bin/build.js build -p ios",
+    "android": "npm run build; ../../bin/build.js build -p android",
+    "samsungtv": "npm run build; ../../bin/build.js build -p samsungtv"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vigour-io/vigour-native.git"
+  },
+  "keywords": [
+    "vigour",
+    "vigour-native",
+    "test"
+  ],
+  "author": "Vigour",
+  "license": "ISC",
+  "contributors": [
+    "Shawn Inder <shawn@vigour.io>"
+  ],
+  "engines": {},
+  "bugs": {
+    "url": "https://github.com/vigour-io/vigour-native/issues"
+  },
+  "homepage": "https://github.com/vigour-io/vigour-native",
+  "dependencies": {
+    "plugin": "git+ssh://git@github.com:vigour-io/plugin.git#master"
+  },
+  "devDependencies": {
+    "gaston": "^0.14.0"
+  },
+  "vigour": {
+    "native": {
+      "platforms": {
+        "ios": {
+          "productName": "Vigour iOS Test App",
+          "organizationName": "Vigour",
+          "organizationIdentifier": "io.vigour.test",
+          "buildNumber": "1",
+          "appIndexPath": "build.html",
+          "appIcon": "assets/img/appIcon.png",
+          "splashScreen": "assets/img/splash.png",
+          "NSAllowsArbitraryLoads": true,
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "android": {
+          "productName": "Vigour Android Test App",
+          "applicationId": "io.vigour.test",
+          "appIndexPath": "build.html",
+          "appIcon": "assets/img/appIcon.png",
+          "splashScreen": "assets/img/splash.png",
+          "splashDuration": 1500,
+          "keystoreFile": "example.keystore",
+          "keystorePassword": "shmexample",
+          "keystoreAlias": "blabla",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "samsungtv": {
+          "productName": "Vigour Samsung Test App",
+          "xmlConfig": {
+            "category": "video",
+            "name": "Vigour",
+            "author": "Vigour",
+            "description": "Vigour",
+            "version": "1.0.0",
+            "icons": {
+              "ThumbIcon": "assets/img/appIcon.png",
+              "BigThumbIcon": "assets/img/appIcon.png",
+              "ListIcon": "assets/img/appIcon.png",
+              "BigListIcon": "assets/img/appIcon.png"
+            },
+            "assets": {
+              "build.html": true,
+              "build.js": true,
+              "build.css": true
+            }
+          }
+        },
+        "lgtv": {
+          "productName": "Vigour LG Test App"
+        }
+      }
+    }
+  },
+  "gaston": {
+    "port": 8080,
+    "socket-port": 9000,
+    "no-auto-reload": false,
+    "no-package": false,
+    "bundle": "./",
+    "build": "./",
+    "browserify": {
+      "transforms": []
+    },
+    "less": {
+      "options": {}
+    },
+    "smaps": true,
+    "source-maps": true,
+    "remote-logging": true,
+    "require-paths": {}
+  }
+}
