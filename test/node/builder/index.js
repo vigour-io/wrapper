@@ -8,7 +8,6 @@ var config = {
       root: root,
       selectedPlatforms: 'custom',
       customPlatform: function (opts, shared) {
-        console.log(typeof shared, shared)
         expect(opts).to.be.an.object
         expect(shared).to.be.an('object')
         expect(shared.copyAssets).to.be.a('function')
