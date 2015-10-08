@@ -1,7 +1,7 @@
 'use strict'
 
-var BridgeObservable = require('../../../lib/bridge/BridgeObservable')
-var bridge = require('../../../lib/bridge')
+var BridgeObservable = require('../../../../lib/bridge/BridgeObservable')
+var bridge = require('../../../../lib/bridge')
 var Plugin
 var name = 'some-plugin'
 var plugin
@@ -9,7 +9,7 @@ var plugin
 describe('Plugin', function () {
   sinon.spy(bridge, 'registerPlugin')
   it('should be requireable', function () {
-    Plugin = require('../../../lib/bridge/Plugin')
+    Plugin = require('../../../../lib/bridge/Plugin')
     expect(typeof Plugin).to.equal('function')
   })
 
