@@ -1,19 +1,23 @@
 'use strict'
 
-var BridgeObservable = require('../../../lib/bridge/BridgeObservable')
-var bridge = require('../../../lib/bridge')
+var BridgeObservable = require('../../../../lib/bridge/BridgeObservable')
+var bridge = require('../../../../lib/bridge')
+var customPlatform = require('../../../helpers/customPlatform')
+
+bridge.platform = customPlatform
+
 var Plugin
 var name = 'some-plugin'
 var plugin
 
 describe('Plugin', function () {
-  sinon.spy(bridge, 'registerPlugin')
   it('should be requireable', function () {
-    Plugin = require('../../../lib/bridge/Plugin')
+    Plugin = require('../../../../lib/bridge/Plugin')
     expect(typeof Plugin).to.equal('function')
   })
 
   it('should be instantiatable', function () {
+    sinon.spy(bridge, 'registerPlugin')
     plugin = new Plugin({
       key: name,
       x: {}
@@ -52,7 +56,11 @@ describe('Plugin', function () {
     })
 
     it('should send itself via the bridge when changed', function () {
+      sinon.spy(bridge.platform, 'send')
       plugin.x.val = 'new value'
+      setTimeout(function () {
+        expect(bridge.platform.send).called
+      }, 10)
     })
   })
   describe('incorrect usage', function () {

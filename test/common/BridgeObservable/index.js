@@ -21,8 +21,8 @@ describe('BridgeObservable', function () {
 
   it('should emit `bridge` events on change', function () {
     var spy = sinon.spy()
-    bridgeObservable.on('bridge', spy)
+    bridgeObservable.once('bridge', spy)
     bridgeObservable.x.val = { key: 'value' }
-    expect(spy).calledOnce
+    expect(spy).called
   })
 })

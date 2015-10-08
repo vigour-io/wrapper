@@ -4,8 +4,7 @@ var path = require('path')
 var builder = require('../../../../lib/builder')
 
 // TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native, perhaps by making vigour-example a submodule?
-var repo = path.join(__dirname
-  , '..', '..', '..', '..', '..', 'vigour-example')
+var repo = path.join(__dirname, '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
 var opts =
   { configFiles: pkgPath,
