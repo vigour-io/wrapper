@@ -54,6 +54,6 @@ describe('bridge', function () {
     setTimeout(function () {
       // This is usually called by the native side
       window.vigour.native.bridge.ready(null, {}, pluginId)
-    }, 200)
+    }, 100)
   })
 })
