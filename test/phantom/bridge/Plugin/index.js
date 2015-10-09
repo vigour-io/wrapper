@@ -55,12 +55,14 @@ describe('Plugin', function () {
       expect(receiveSpy).calledOnce
     })
 
-    it('should send itself via the bridge when changed', function () {
+    it('should send itself via the bridge when changed', function (done) {
       sinon.spy(bridge.platform, 'send')
-      plugin.x.val = 'new value'
-      setTimeout(function () {
+      plugin.x.once('data', function () {
         expect(bridge.platform.send).called
-      }, 10)
+        done()
+      })
+
+      plugin.x.val = 'new value'
     })
   })
   describe('incorrect usage', function () {
