@@ -27,9 +27,8 @@ artifacts {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "file://localhost" + System.getenv("ANDROID_HOME")
-                    + "/extras/android/m2repository/")
-            pom.version = '0.2-SNAPSHOT'
+            repository(url: mavenLocal().url)
+            pom.version = '0.3-SNAPSHOT'
             pom.groupId = 'io.vigour.plugin'
             pom.artifactId = 'core'
         }

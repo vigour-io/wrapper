@@ -33,10 +33,10 @@ public class CallContext {
     }
 
     public void error(String errorMessage) {
-        bridge.respond(callId, errorMessage, null);
+        bridge.result(callId, errorMessage, null);
     }
 
     public void respond(String response) {
-        bridge.respond(callId, null, response);
+        bridge.result(callId, null, response);
     }
 }

@@ -22,7 +22,6 @@ public class NativeInterface {
     private final Activity context;
     private final XWalkView webView;
     private PluginManager pluginManager;
-    private static int callId = 0;
 
     public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager) {
         this.context = context;
@@ -52,18 +51,18 @@ public class NativeInterface {
             if (array.length == 4
                 && array[1] instanceof String
                 && array[2] instanceof String) {
-                handleJsMessage(id, (String)array[1], (String)array[2], array[3]);
+                handleJsMessage(id, (String) array[1], (String) array[2], array[3]);
             } else {
                 if (array.length != 4) {
-                    bridgeInterface.respond(id, "wrong number of arguments, we expect 4: " + params, null);
+                    bridgeInterface.result(id, "wrong number of arguments, we expect 4: " + params, null);
                 } else {
-                    bridgeInterface.respond(id, "2nd and 3rd params must be strings: " + params, null);
+                    bridgeInterface.result(id, "2nd and 3rd params must be strings: " + params, null);
                 }
             }
         } catch (IOException e) {
             String errorMessage = "exception handling message: " + params + " because: " + e.getMessage();
             errorMessage = errorMessage.replace('\'', '"').replace("\n", "");
-            bridgeInterface.respond(id, errorMessage, null);
+            bridgeInterface.error(errorMessage, "");
         }
     }
 
@@ -74,7 +73,7 @@ public class NativeInterface {
 
     private BridgeInterface bridgeInterface = new BridgeInterface() {
         @Override
-        public void respond(final int callId, final String error, final String response) {
+        public void result(final int callId, final String error, final String response) {
             context.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -82,5 +81,36 @@ public class NativeInterface {
                 }
             });
         }
+
+        @Override
+        public void error(final String error, final String pluginId) {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.error('%s', '%s')", error, pluginId), null);
+                }
+            });
+        }
+
+        @Override
+        public void ready(final String error, final String response, final String pluginId) {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.ready('%s', '%s', '%s')", error, response, pluginId), null);
+                }
+            });
+        }
+
+        @Override
+        public void receive(final String error, final String message, final String pluginId) {
+            context.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.receive('%s', '%s', '%s')", error, message, pluginId), null);
+                }
+            });
+        }
+
     };
 }
