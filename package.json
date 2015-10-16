@@ -62,7 +62,6 @@
     "through": "^2.3.4",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
     "vigour-fs": "^3.0.0",
-    "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "xcode": "^0.8.0",
     "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop"
   },
