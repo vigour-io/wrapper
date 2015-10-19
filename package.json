@@ -66,6 +66,7 @@
     "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop"
   },
   "devDependencies": {
+    "ncp": "^2.0.0",
     "npm": "^2.9.0"
   },
   "keywords": [
