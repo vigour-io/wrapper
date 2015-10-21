@@ -6,6 +6,7 @@ import android.util.Log;
 import com.fasterxml.jackson.jr.ob.JSON;
 
 import org.xwalk.core.JavascriptInterface;
+import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
@@ -27,6 +28,14 @@ public class NativeInterface {
         this.context = context;
         this.webView = webView;
         this.pluginManager = pluginManager;
+
+        webView.setUIClient(new XWalkUIClient(webView) {
+            @Override
+            public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
+                super.onPageLoadStopped(view, url, status);
+                onPageLoaded();
+            }
+        });
     }
 
     @JavascriptInterface
@@ -69,6 +78,11 @@ public class NativeInterface {
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
         pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, bridgeInterface));
+    }
+
+    private void onPageLoaded() {
+        bridgeInterface.ready("", "", "");
+        pluginManager.notifyReady(bridgeInterface);
     }
 
     private BridgeInterface bridgeInterface = new BridgeInterface() {
