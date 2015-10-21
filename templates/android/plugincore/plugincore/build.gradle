@@ -28,7 +28,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: mavenLocal().url)
-            pom.version = '0.3-SNAPSHOT'
+            pom.version = '0.4'
             pom.groupId = 'io.vigour.plugin'
             pom.artifactId = 'core'
         }
