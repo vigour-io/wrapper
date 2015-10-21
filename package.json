@@ -53,17 +53,18 @@
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
+    "ncp": "^2.0.0",
     "npmlog": "0.1.x",
     "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
+    "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
     "vigour-fs": "^3.0.0",
-    "xcode": "^0.8.0",
-    "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop"
+    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
+    "xcode": "^0.8.0"
   },
   "devDependencies": {
     "npm": "^2.9.0"
@@ -78,6 +79,15 @@
   ],
   "license": "BSD-2-Clause",
   "standard": {
-    "globals": [ "describe", "it", "expect", "before", "after", "beforeEach", "afterEach", "sinon" ]
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "sinon"
+    ]
   }
 }
