@@ -1,14 +1,18 @@
+'use strict'
 var Observable = require('vjs/lib/observable')
-var BridgeObservable
-var bridgeObservable
 
 describe('BridgeObservable', function () {
+  var BridgeObservable
+  var bridgeObservable
+
   it('should be requireable', function () {
+    // these tests are unsecceray
     BridgeObservable = require('../../../lib/bridge/BridgeObservable')
     expect(typeof BridgeObservable).to.equal('function')
   })
 
   it('should be instantiatable', function () {
+    // these tests are unsecceray
     bridgeObservable = new BridgeObservable({
       x: {}
     })
@@ -19,10 +23,11 @@ describe('BridgeObservable', function () {
     expect(bridgeObservable.x).instanceOf(BridgeObservable)
   })
 
-  it('should emit `bridge` events on change', function () {
-    var spy = sinon.spy()
-    bridgeObservable.once('bridge', spy)
-    bridgeObservable.x.val = { key: 'value' }
-    expect(spy).called
+  it('should emit `bridge` events on change', function (done) {
+    bridgeObservable.once('bridge', function (data) {
+      expect(data).equals(bridgeObservable.x)
+      done()
+    })
+    bridgeObservable.x.val = 'value'
   })
 })
