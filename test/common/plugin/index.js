@@ -1,6 +1,4 @@
 'use strict'
-var Observable = require('vjs/lib/observable')
-
 // we need to mock all behaviour for tests here
 // also we need to use correct error handeling from the bridge
 describe('Plugin', function () {
