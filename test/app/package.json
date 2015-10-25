@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "description": "Test app for vigour-native",
   "scripts": {
-    "start": "./node_modules/.bin/gaston",
-    "test": "./node_modules/.bin/gaston test",
-    "build": "./node_modules/.bin/gaston build -s src",
-    "all": "npm run build; ../../bin/build.js build",
-    "ios": "npm run build; ../../bin/build.js build -p ios",
-    "android": "npm run build; ../../bin/build.js build -p android",
-    "samsungtv": "npm run build; ../../bin/build.js build -p samsungtv"
+    "test": "gaston test",
+    "build": "gaston build -s src -o . -i",
+    "all": "npm run build && ../../bin/build.js build",
+    "ios": "npm run build && ../../bin/build.js build -p ios",
+    "android": "npm run build && ../../bin/build.js build -p android",
+    "samsungtv": "npm run build && ../../bin/build.js build -p samsungtv"
   },
   "repository": {
     "type": "git",
@@ -32,9 +31,6 @@
   "homepage": "https://github.com/vigour-io/vigour-native",
   "dependencies": {
     "plugin": "git+ssh://git@github.com:vigour-io/plugin.git#master"
-  },
-  "devDependencies": {
-    "gaston": "^0.14.0"
   },
   "vigour": {
     "native": {

@@ -11,13 +11,17 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "gaston test -s ./test",
-    "test-bridge": "gaston test -r phantom -s test/phantom/bridge/",
+    "installtestapp": "./installtestapp.js",
+    "postinstall": "npm run installtestapp",
+    "buildtestapp": "./buildtestapp.js",
+    "pretest": "npm run buildtestapp",
+    "test": "gaston test",
+    "test-bridge": "gaston test -r browser -s test/phantom/bridge/",
     "test-plugins": "gaston test -r common -s test/common/",
-    "test-builder": "gaston test -r node -s test/node/builder/",
-    "test-ios": "gaston test -r node -s test/node/ios/",
-    "test-android": "gaston test -r node -s test/node/android/",
-    "test-samsungtv": "gaston test -r node -s test/node/samsungtv/"
+    "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
+    "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
+    "test-android": "npm run buildtestapp && gaston test -r node -s test/node/android/",
+    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -65,9 +69,6 @@
     "vigour-fs": "^3.0.0",
     "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
     "xcode": "^0.8.2"
-  },
-  "devDependencies": {
-    "npm": "^2.9.0"
   },
   "keywords": [
     "gaston",
