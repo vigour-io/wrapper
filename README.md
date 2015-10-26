@@ -142,6 +142,19 @@ with error being either an error as described below, or an array of them:
 }
 ```
 
+## native
+### Android
+
+The native code for android is devided in two projects, both found in (templates/android):
+- app: the code for the app that contains the WebView that will display the javascript app
+- plugincore: the library of base classes needed for both plugins and the app.
+
+The plugincore library is released to jcenter and can be added as dependency with the following code:
+```gradle
+compile 'io.vigour:plugin-core:0.4.1'
+```
+The current version of the plugincore is [ ![Download](https://api.bintray.com/packages/vigour/maven/plugin-core/images/download.svg) ](https://bintray.com/vigour/maven/plugin-core/_latestVersion)
+
 <a name='platforms'></a>
 ## Supported Platforms
   - [X] web browsers
