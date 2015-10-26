@@ -113,26 +113,24 @@ bridge.send(pluginId, fnName, opts, cb)
 - bridge does
 ```javascript
 window
-    .vigour
-    .native
     .NativeInterface
     .send(
       JSON.stringify(
-        { pluginId: 1,
-          fnName: 'act',
-          opts: {},
-          cbId: 2
-        }
+        [ cbId,
+          pluginId,
+          fnName,
+          opts
+        ]
       )
     )
 ```
 - native does its stuff, then calls
 ```javascript
-window.vigour.native.bridgeResult(cbId, error)
+window.vigour.native.bridge.result(cbId, error)
 ```
   or
 ```javascript
-window.vigour.native.bridgeResult(cbId, null, response)
+window.vigour.native.bridge.result(cbId, null, response)
 ```
 
 with error being either an error as described below, or an array of them:
@@ -145,11 +143,11 @@ with error being either an error as described below, or an array of them:
 ## native
 ### Android
 
-The native code for android is devided in two projects, both found in (templates/android):
-- app: the code for the app that contains the WebView that will display the javascript app
-- plugincore: the library of base classes needed for both plugins and the app.
+The native code for android is devided in two projects, both found in [templates/android](templates/android):
+- `app`: the code for the app that contains the WebView that will display the javascript app
+- `plugincore`: the library of base classes needed for both plugins and the app.
 
-The plugincore library is released to jcenter and can be added as dependency with the following code:
+The plugin-core library is released to JCenter and can be added as dependency with the following code:
 ```gradle
 compile 'io.vigour:plugin-core:0.4.1'
 ```
