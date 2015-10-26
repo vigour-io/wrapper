@@ -12,11 +12,4 @@ describe('Plugin', function () {
   it('should have a BridgeObservable as a Child', function () {
     expect(example.display).instanceof(BridgeObservable)
   })
-
-  it('should fire conditions for new plugins', function (done) {
-    example.on('error', function () {
-      done()
-    })
-    example.display.val = 'geinig'
-  })
 })
