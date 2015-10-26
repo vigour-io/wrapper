@@ -104,6 +104,7 @@ describe('android-scripts', function () {
 
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
+      this.timeout(30000)
       var tasks = {
         exe: exe
       }
