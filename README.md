@@ -151,7 +151,7 @@ The plugin-core library is released to JCenter and can be added as dependency wi
 ```gradle
 compile 'io.vigour:plugin-core:0.4.1'
 ```
-The current version of the plugincore is [ ![plugin-core](https://api.bintray.com/packages/vigour/maven/plugin-core/images/download.svg) ](https://bintray.com/vigour/maven/plugin-core/_latestVersion)
+The current version of the plugincore is [ ![Download](https://api.bintray.com/packages/vigour/maven/plugin-core/images/download.svg) ](https://bintray.com/vigour/maven/plugin-core/_latestVersion)
 
 <a name='platforms'></a>
 ## Supported Platforms
