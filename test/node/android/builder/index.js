@@ -2,7 +2,9 @@
 
 var path = require('path')
 var builder = require('../../../../lib/builder')
-var tasks = require('../../../../lib/builder/android/tasks.js')
+var assemble = require('../../../../lib/builder/android/assemble')
+var exe = require('../../../../lib/exe')
+var customizeTemplate = require('../../../../lib/builder/android/customizeTemplate')
 var fs = require('vigour-fs/lib/server')
 var Promise = require('promise')
 var mkdirp = Promise.denodeify(fs.mkdirp)
@@ -16,8 +18,6 @@ var log = require('npmlog')
 var log_stream = log.stream
 // log.stream = logStream
 
-// TODO Remove dependency on vigour-example being checkout-out in same
-// directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname
   , '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
@@ -33,7 +33,8 @@ var opts =
           version: '2.1.4',
           versionCode: 27,
           applicationId: 'org.test',
-          appIndexPath: 'bundle.html'
+          appIndexPath: 'bundle.html',
+          buildDir: path.join(repo, 'build', 'android')
         }
       }
     }
@@ -70,7 +71,7 @@ describe('android-scripts', function () {
             productName: 'The Product!',
             splashDuration: 1234
           }
-          return tasks.customizeTemplate(opts)
+          return customizeTemplate.call(opts)
         })
         .then(function () {
           return readXML(tmpFile)
@@ -103,11 +104,15 @@ describe('android-scripts', function () {
 
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
+      this.timeout(30000)
+      var tasks = {
+        exe: exe
+      }
       var exeStub = sinon.stub(tasks, 'exe').returns(Promise.resolve())
       try {
-        return tasks.assemble(opts.vigour.native.platforms.android)
-          .then(function (opts) {
-            expect(exeStub.calledOnce).to.be.true
+        return assemble.call(opts.vigour.native.platforms.android)
+          .then(function () {
+            expect(exeStub).calledOnce
             var command = exeStub.args[0][0]
             expect(command).to.contain('-PverName=2.1.4')
             expect(command).to.contain('-PverCode=27')

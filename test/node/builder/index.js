@@ -10,9 +10,6 @@ var config = {
       customPlatform: function (opts, shared) {
         expect(opts).to.be.an.object
         expect(opts.vigour.native.plugins[0].name).to.equal('plugin')
-        expect(shared).to.be.an('object')
-        expect(shared.copyAssets).to.be.a('function')
-        expect(shared.handleErrors).to.be.a('function')
       }
     }
   }
