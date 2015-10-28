@@ -3,7 +3,7 @@
 // we need to mock all behaviour for tests here
 // also we need to use correct error handeling from the bridge
 describe('Plugin', function () {
-  var BridgeObservable = require('../../../lib/bridge/bridgeObservable')
+  var BridgeObservable = require('../../../lib/bridge/bridgeobservable')
   var Plugin = require('../../../lib/bridge/plugin')
   var example = new Plugin({
     key: 'example',

@@ -6,7 +6,7 @@ var pluginFn = 'doSomething'
 var pluginOptsOne = { key: 'valueOne' }
 var pluginOptsTwo = { key: 'valueTwo' }
 var pluginResult = require('../../helpers/success.json')
-var customPlatform = require('../../helpers/customPlatform')
+var customPlatform = require('../../helpers/customplatform')
 
 describe('bridge', function () {
   it('should be requireable', function () {

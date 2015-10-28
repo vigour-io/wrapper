@@ -8,7 +8,7 @@ describe('BridgeObservable', function () {
 
   it('should be requireable', function () {
     // these tests are unsecceray
-    BridgeObservable = require('../../../lib/bridge/bridgeObservable')
+    BridgeObservable = require('../../../lib/bridge/bridgeobservable')
     expect(typeof BridgeObservable).to.equal('function')
   })
 

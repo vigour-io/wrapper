@@ -1,8 +1,8 @@
 'use strict'
 
-var BridgeObservable = require('../../../../lib/bridge/bridgeObservable')
+var BridgeObservable = require('../../../../lib/bridge/bridgeobservable')
 var bridge = require('../../../../lib/bridge')
-var customPlatform = require('../../../helpers/customPlatform')
+var customPlatform = require('../../../helpers/customplatform')
 
 bridge.platform = customPlatform
 
