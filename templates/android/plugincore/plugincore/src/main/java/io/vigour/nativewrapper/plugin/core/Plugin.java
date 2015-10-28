@@ -24,6 +24,10 @@ public class Plugin {
         return name;
     }
 
+    public String getReadyMessage() {
+        return "";
+    }
+
     public PluginFunction getFunction(String functionName) {
         return functions.get(functionName);
     }

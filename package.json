@@ -11,10 +11,17 @@
     "vNative": "bin/build.js"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gaston test node",
-    "test-ios": "./node_modules/.bin/gaston test node -f test/node/ios/",
-    "test-android": "./node_modules/.bin/gaston test node -f test/node/android/",
-    "test-samsungtv": "./node_modules/.bin/gaston test node -f test/node/samsungtv/"
+    "installtestapp": "./installtestapp.js",
+    "postinstall": "npm run installtestapp",
+    "buildtestapp": "./buildtestapp.js",
+    "pretest": "npm run buildtestapp",
+    "test": "gaston test",
+    "test-bridge": "gaston test -r browser -s test/phantom/bridge/",
+    "test-plugins": "gaston test -r common -s test/common/",
+    "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
+    "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
+    "test-android": "npm run buildtestapp && gaston test -r node -s test/node/android/",
+    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -34,7 +41,6 @@
     "test": "test"
   },
   "dependencies": {
-    "android": "git+ssh://git@github.com:benmonro/android.git#master",
     "archiver": "^0.14.4",
     "body-parser": "1.12.2",
     "browserify": "^9",
@@ -51,21 +57,19 @@
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
-    "ncp": "2.0.x",
+    "ncp": "^2.0.0",
     "npmlog": "0.1.x",
-    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git",
+    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
+    "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-fs": "git+ssh://git@github.com:vigour-io/vigour-fs.git",
-    "vigour-img": "git+ssh@github.com:vigour-io/vigour-img.git",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git",
-    "xcode": "^0.6.7"
-  },
-  "optionalDependencies": {
-    "gaston": "^0.14.0"
+    "vigour-fs": "^3.0.0",
+    "vigour-fs-promised": "^2.0.0",
+    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
+    "xcode": "^0.8.2"
   },
   "keywords": [
     "gaston",
@@ -76,7 +80,16 @@
     "ci"
   ],
   "license": "BSD-2-Clause",
-  "devDependencies": {
-    "npm": "^2.9.0"
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "sinon"
+    ]
   }
 }

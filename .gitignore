@@ -20,3 +20,4 @@ Breakpoints_v2.xcbkptlist
 templates/android/app/.idea/
 templates/android/plugincore/.idea/
 local.properties
+test-runner.html
