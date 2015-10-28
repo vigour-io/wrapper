@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --use_strict
 var path = require('path')
 var spawn = require('./spawn')
 

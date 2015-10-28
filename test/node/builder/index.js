@@ -1,3 +1,5 @@
+'use strict'
+
 var path = require('path')
 var builder = require('../../../lib/builder/')
 

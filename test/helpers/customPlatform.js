@@ -1,3 +1,5 @@
+'use strict'
+
 var payload = require('./success.json')
 
 module.exports = exports = {

@@ -1,3 +1,5 @@
+'use strict'
+
 var runTasks = require('../../../lib/builder/runTasks')
 var copyAssets = require('../../../lib/builder/copyAssets')
 var Promise = require('promise')

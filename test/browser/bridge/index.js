@@ -1,3 +1,5 @@
+'use strict'
+
 var bridge
 var pluginId = 1
 var pluginFn = 'doSomething'
