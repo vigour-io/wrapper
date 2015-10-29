@@ -118,9 +118,9 @@ describe('android-scripts', function () {
         .then(runInstall)
     })
 
-  // after(function () {
-  //   return remove(tmpDir)
-  // })
+    after(function () {
+      return remove(tmpDir)
+    })
   })
 
   describe('customizeTemplate', function () {
