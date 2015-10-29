@@ -1,10 +1,9 @@
 /* global describe, it, expect, before, after, sinon */
 
 var path = require('path')
-var builder = require('../../../../lib/builder')
-var assemble = require('../../../../lib/builder/android/assemble')
-var installTemplate = require('../../../../lib/builder/android/installTemplate')
-var customizeTemplate = require('../../../../lib/builder/android/customizeTemplate')
+var builderPath = '../../../../lib/builder'
+var builder = require(builderPath)
+var AndroidTasks = require(builderPath + '/android')
 var fs = require('vigour-fs/lib/server')
 var Promise = require('promise')
 var mkdirp = Promise.denodeify(fs.mkdirp)
@@ -23,8 +22,7 @@ var repo = path.join(__dirname, '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
 var fixturePath = path.join(__dirname, '..', 'fixtures')
 
-var opts =
-{ configFiles: pkgPath,
+var opts = { configFiles: pkgPath,
   vigour: {
     native: {
       root: repo,
@@ -41,9 +39,15 @@ var opts =
   }
 }
 
-var timeout = 5 * 60 * 1000
+var timeout = 60 * 1000
 
 describe('android-scripts', function () {
+  var android = new AndroidTasks(opts)
+  android.exe = sinon.stub().returns(Promise.resolve())
+  android.log = {
+    info: function () {}
+  }
+
   describe('installTemplate', function () {
     var tmpDir = path.join(__dirname, 'tmp', 'template')
     var templatePath = path.join(fixturePath, 'copyTest')
@@ -103,14 +107,9 @@ describe('android-scripts', function () {
     })
 
     function runInstall () {
-      var opts = {
-        buildDir: tmpDir,
-        templateSrc: templatePath,
-        log: {
-          info: function () {}
-        }
-      }
-      return installTemplate.call(opts)
+      android.buildDir = tmpDir
+      android.templateSrc = templatePath
+      return android.installTemplate()
     }
 
     before(function () {
@@ -137,13 +136,11 @@ describe('android-scripts', function () {
           return writeFile(tmpFile, file)
         })
         .then(function () {
-          var opts = {
-            srcDir: path.join(__dirname, 'tmp'),
-            appIndexPath: 'path/to/app/index.js',
-            productName: 'The Product!',
-            splashDuration: 1234
-          }
-          return customizeTemplate.call(opts)
+          android.srcDir = path.join(__dirname, 'tmp')
+          android.appIndexPath = 'path/to/app/index.js'
+          android.productName = 'The Product!'
+          android.splashDuration = 1234
+          return android.customizeTemplate()
         })
         .then(function () {
           return readXML(tmpFile)
@@ -177,12 +174,11 @@ describe('android-scripts', function () {
 
   describe('assemble', function () {
     it('should call gradle with params for the relevant options', function () {
-      var options = opts.vigour.native.platforms.android
-      options.exe = sinon.stub().returns(Promise.resolve())
-      return assemble.call(options)
+      android.exe.reset()
+      return android.assemble()
         .then(function () {
-          expect(options.exe).calledOnce
-          var command = options.exe.args[0][0]
+          expect(android.exe).calledOnce
+          var command = android.exe.args[0][0]
           expect(command).to.contain('-PverName=2.1.4')
           expect(command).to.contain('-PverCode=27')
           expect(command).to.contain('-PandroidAppId=org.test')
@@ -191,9 +187,30 @@ describe('android-scripts', function () {
   })
 
   describe('install & run', function () {
-    it('should only install & run if set in options')
-    it('should use correct options to install apk')
-    it('should use correct options to run app')
+    it('should not install & run if not set in options', function () {
+      android.run = false
+      android.exe.reset()
+      android.installRun()
+        .then(function () {
+          expect(android.exe.callCount).to.eql(0)
+        })
+    })
+
+    it('should install & run if set in options', function () {
+      android.run = true
+      android.exe.reset()
+      android.installRun()
+        .then(function () {
+          expect(android.exe.callCount).to.eql(2)
+        })
+    })
+
+    it('should use correct options to install apk', function () {
+      expect(android.exe.getCall(0).args[0]).to.contain(android.apkNameBase)
+    })
+    it('should use correct options to run app', function () {
+      expect(android.exe.getCall(1).args[0]).to.contain(android.applicationId)
+    })
   })
 
   describe('installing plugins', function () {
@@ -204,7 +221,7 @@ describe('android-scripts', function () {
   })
 })
 
-describe.skip('android build', function () {
+describe('android build', function () {
   it('should succeed in under ' + timeout + ' milliseconds!'
     , function () {
       this.timeout(timeout)
