@@ -20,7 +20,7 @@
     "test-plugins": "gaston test -r common -s test/common/",
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
-    "test-android": "npm run buildtestapp && gaston test -r node -s test/node/android/",
+    "test-android": "gaston test -r node -s test/node/android/",
     "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
   },
   "engines": {
