@@ -91,5 +91,11 @@
       "afterEach",
       "sinon"
     ]
+  },
+  "services": {
+    "sentinel": {
+      "branches": [],
+      "unignoreFolders": []
+    }
   }
 }
