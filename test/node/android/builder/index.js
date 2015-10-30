@@ -1,3 +1,4 @@
+/* global describe, it, expect, before, after, sinon */
 'use strict'
 
 var path = require('path')
