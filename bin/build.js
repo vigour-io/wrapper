@@ -1,4 +1,4 @@
-#!/usr/bin/env node --use_strict
+#!/usr/bin/env node
 
 var pliant = require('pliant')
 var builder = require('../lib/builder')
