@@ -79,16 +79,21 @@
               "BigThumbIcon": "assets/img/appIcon.png",
               "ListIcon": "assets/img/appIcon.png",
               "BigListIcon": "assets/img/appIcon.png"
-            },
-            "assets": {
-              "build.html": true,
-              "build.js": true,
-              "build.css": true
             }
+          },
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
           }
         },
         "lgtv": {
-          "productName": "Vigour LG Test App"
+          "productName": "Vigour LG Test App",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
         }
       }
     }

@@ -52,7 +52,7 @@
     "concat-stream": "^1.4.8",
     "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "express": "4.12.3",
-    "globby": "^2.1.0",
+    "globby": "^3.0.1",
     "lodash": "^3.10.1",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
@@ -91,5 +91,11 @@
       "afterEach",
       "sinon"
     ]
+  },
+  "services": {
+    "sentinel": {
+      "branches": [],
+      "unignoreFolders": []
+    }
   }
 }

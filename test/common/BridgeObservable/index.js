@@ -1,4 +1,5 @@
 'use strict'
+
 var Observable = require('vjs/lib/observable')
 
 describe('BridgeObservable', function () {
@@ -7,7 +8,7 @@ describe('BridgeObservable', function () {
 
   it('should be requireable', function () {
     // these tests are unsecceray
-    BridgeObservable = require('../../../lib/bridge/BridgeObservable')
+    BridgeObservable = require('../../../lib/bridge/bridgeobservable')
     expect(typeof BridgeObservable).to.equal('function')
   })
 

@@ -1,8 +1,8 @@
 'use strict'
 
-var BridgeObservable = require('../../../../lib/bridge/BridgeObservable')
+var BridgeObservable = require('../../../../lib/bridge/bridgeobservable')
 var bridge = require('../../../../lib/bridge')
-var customPlatform = require('../../../helpers/customPlatform')
+var customPlatform = require('../../../helpers/customplatform')
 
 bridge.platform = customPlatform
 
@@ -12,7 +12,7 @@ var plugin
 
 describe('Plugin', function () {
   it('should be requireable', function () {
-    Plugin = require('../../../../lib/bridge/Plugin')
+    Plugin = require('../../../../lib/bridge/plugin')
     expect(typeof Plugin).to.equal('function')
   })
 
