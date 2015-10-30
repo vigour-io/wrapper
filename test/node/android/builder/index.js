@@ -234,7 +234,15 @@ describe('android-scripts', function () {
     it('should init all plugins in main java file')
     it('should add all plugin libs as dependency')
     it('should add all plugin permissions to the manifest')
-    it('should work without any plugins')
+    it('should work without any plugins', function () {
+      return android.installPlugins()
+        .then(function () {
+          expect(true).to.be.true
+        })
+        .catch(function (error) {
+          expect(error).to.not.exist
+        })
+    })
   })
 
   describe('assemble', function () {
