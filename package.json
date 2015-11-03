@@ -1,5 +1,5 @@
 {
-  "name": "vigour-native",
+  "name": "vigour-wrapper",
   "version": "0.0.3",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
@@ -17,7 +17,6 @@
     "pretest": "npm run buildtestapp",
     "test": "gaston test",
     "test-bridge": "gaston test -r browser -s test/phantom/bridge/",
-    "test-plugins": "gaston test -r common -s test/common/",
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
     "test-android": "gaston test -r node -s test/node/android/",
@@ -50,7 +49,6 @@
     "colors": "1.0.x",
     "commander": "^2.7.1",
     "concat-stream": "^1.4.8",
-    "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "express": "4.12.3",
     "globby": "^3.0.1",
     "lodash": "^3.10.1",
@@ -58,17 +56,18 @@
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
     "ncp": "^2.0.0",
-    "npmlog": "0.1.x",
-    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
+    "npmlog": "^0.1.1",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
-    "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop",
     "source-map": "0.1.32",
     "through": "^2.3.4",
+    "vigour-element": "0.0.3",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
+    "vigour-js": "^0.2.2",
+    "vigour-pliant": "^1.0.1",
+    "vigour-shutter": "^1.1.1",
     "xcode": "^0.8.2"
   },
   "keywords": [
@@ -79,7 +78,7 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "standard": {
     "globals": [
       "describe",
