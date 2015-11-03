@@ -12,7 +12,6 @@
   },
   "scripts": {
     "installtestapp": "./installtestapp.js",
-    "postinstall": "npm run installtestapp",
     "buildtestapp": "./buildtestapp.js",
     "pretest": "npm run buildtestapp",
     "test": "gaston test",
