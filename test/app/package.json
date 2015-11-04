@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/vigour-io/vigour-native",
   "dependencies": {
-    "plugin": "git+ssh://git@github.com:vigour-io/plugin.git#master"
+    "vigour-plugin": "^1.0.1"
   },
   "vigour": {
     "native": {
