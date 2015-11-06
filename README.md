@@ -164,6 +164,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [ ] iWatch
   - [ ] windows phone
 
+<a name='contacts'></a>
 ## Contacts
 
 name | responsibilities | slack | skype | e-mail
