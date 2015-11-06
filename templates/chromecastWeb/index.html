@@ -1,18 +1,13 @@
 <html>
 <head>
   <title>{{productName}}</title>
-  <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js"></script>
+  <link rel="stylesheet" type="text/css" href="receiver.css">
 </head>
   <body>
-
     <video id='media'>
     </video>
-    <script>
-      window.mediaElement = document.getElementById('media');
-      window.mediaManager = new cast.receiver.MediaManager(window.mediaElement);
-      window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
-      window.castReceiverManager.start();
-    </script>
   </body>
+  <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js"></script>
+  <script type="text/javascript" src="vigourReceiver.js"></script>
 </html>
