@@ -167,10 +167,10 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
 <a name='contacts'></a>
 ## Contacts
 
-name | responsibilities | slack | skype | e-mail
+name | responsibilities | slack | skype | e-mail | phone(s)
 ---|---|---|---|---
 **Valerio Barrila** | Team leader and communicator, js support, java support? | valerio | valerio.barrila | valerio@vigour.io
-**Shawn Inder** | cross-platform stuff: js part of bridge, builders and plugins | shawn | shawnfinder | shawn@vigour.io
+**Shawn Inder** | cross-platform stuff: js part of bridge, builders and plugins | shawn | shawnfinder | shawn@vigour.io | Canada: 1-514-903-9082, Netherlands: +31628959682
 **Alexander van der Werff** | ios | werffmeister | avanderwerff | alex@vigour.io
 **Michiel van Liempt** | android | michiel | michielvanliemptsoftware | michiel@vigour.io
 **Renan Carvalho** | tvs, chromecast | renan | facebook:renancarvalho | renan@vigour.io
