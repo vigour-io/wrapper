@@ -163,3 +163,14 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [ ] chromecast
   - [ ] iWatch
   - [ ] windows phone
+
+## Contacts
+
+name | responsibilities | slack | skype | e-mail
+---|---|---|---|---
+**Valerio Barrila** | Team leader and communicator, js support, java support? | valerio | valerio.barrila | valerio@vigour.io
+**Shawn Inder** | cross-platform stuff: js part of bridge, builders and plugins | shawn | shawnfinder | shawn@vigour.io
+**Alexander van der Werff** | ios | werffmeister | avanderwerff | alex@vigour.io
+**Michiel van Liempt** | android | michiel | michielvanliemptsoftware | michiel@vigour.io
+**Renan Carvalho** | tvs, chromecast | renan | facebook:renancarvalho | renan@vigour.io
+**David Bina** | plugins (ios, android) | vidbina | kingvidbina | ?
