@@ -2,7 +2,7 @@
 
 var path = require('path')
 var builderPath = '../../../../lib/builder'
-var builder = require(builderPath)
+var Builder = require(builderPath)
 var AndroidTasks = require(builderPath + '/android')
 var fs = require('vigour-fs/lib/server')
 var Promise = require('promise')
@@ -22,18 +22,17 @@ var repo = path.join(__dirname, '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
 var fixturePath = path.join(__dirname, '..', 'fixtures')
 
-var opts = { configFiles: pkgPath,
-  vigour: {
-    native: {
-      root: repo,
-      platforms: {
-        android: {
-          version: '2.1.4',
-          versionCode: 27,
-          applicationId: 'org.test',
-          appIndexPath: 'bundle.html',
-          buildDir: path.join(repo, 'build', 'android')
-        }
+var opts = {
+  _packageDir: pkgPath,
+  native: {
+    root: repo,
+    platforms: {
+      android: {
+        version: '2.1.4',
+        versionCode: 27,
+        applicationId: 'org.test',
+        appIndexPath: 'bundle.html',
+        buildDir: path.join(repo, 'build', 'android')
       }
     }
   }
@@ -226,8 +225,9 @@ describe('android build', function () {
     , function () {
       this.timeout(timeout)
       var platform = 'android'
-      opts.vigour.native.selectedPlatforms = platform
-      return builder(opts)
+      opts.native.selectedPlatforms = platform
+      var builder = new Builder(opts)
+      return builder.start()
         .then(checkSuccess)
     })
   after(function () {

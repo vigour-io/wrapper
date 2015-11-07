@@ -95,5 +95,89 @@
       "branches": [],
       "unignoreFolders": []
     }
+  },
+  "vigour": {
+    "native": {
+      "clean": {
+        "def": null,
+        "description": "clean before build"
+      },
+      "debug": {
+        "def": null,
+        "description": "make a debug build"
+      },
+      "selectedPlatforms": {
+        "def": null,
+        "env": "VNATIVE_PLATFORMS",
+        "description": "Comma-separated list of platforms to build (builds all by default)"
+      },
+      "customPlatform": {
+        "def": null
+      },
+
+      "platforms": {
+        "samsungtv.url": {
+          "def": null,
+          "description": "URL to load on app start"
+        },
+        "samsungtv": {
+          "main": {
+            "def": null,
+            "description": "path to the build.js to include in the build"
+          },
+          "mainHtml": {
+            "def": null,
+            "description": "path to the build.html to include in the build"
+          }
+        },
+
+        "android": {
+          "version": {
+            "def": "1.0.0",
+            "env": "VNATIVE_VERSION",
+            "description": "version (semver) to be used for the android apk"
+          },
+          "versionCode": {
+            "def": 1,
+            "env": "VNATIVE_VERSIONCODE",
+            "description": "version code (integer) to be used for the andriod apk"
+          },
+          "appIndexPath": {
+            "def": "src/index.html",
+            "description": "path of the apps index file"
+          },
+          "applicationId": {
+            "def": null,
+            "description": "the id of the app (as used in the play store)"
+          },
+          "run": {
+            "def": null,
+            "env": "VNATIVE_ANDROID_RUN",
+            "description": "wether to install and launch the build on device"
+          },
+          "logToFile": {
+            "def": null,
+            "description": "if thruthy the build output is saved to 'android-build.log'"
+          },
+          "keystoreFile": {
+            "def": null,
+            "description": "keystore to sign release build"
+          },
+          "keystorePassword": {
+            "def": null,
+            "env": "KEYSTORE_PASS",
+            "description": "password for the keystore to sign release build"
+          },
+          "keystoreAlias": {
+            "def": null,
+            "description": "alias for the key to sign release build"
+          },
+          "keystoreKeyPassword": {
+            "def": null,
+            "description": "password for the key to sign release build"
+          }
+        }
+      }
+    }
   }
 }
