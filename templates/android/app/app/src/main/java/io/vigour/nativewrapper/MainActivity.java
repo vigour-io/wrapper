@@ -1,12 +1,12 @@
 package io.vigour.nativewrapper;
 
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
@@ -21,25 +21,20 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
+    private ViewGroup webViewContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, BuildConfig.DEBUG);
-
-        int delay = getResources().getInteger(R.integer.splashDuration);
-        String url = getResources().getString(R.string.index_path);
-
-
-        PluginManager pluginManager = new PluginManager();
-
-        webview = (XWalkView) findViewById(R.id.webview);
-        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
-        webview.load("file:///android_asset/" + url, null);
-
-        registerPlugins(pluginManager);
+        webview = (XWalkView) PersistentViewHolder.get();
+        if (webview == null) {
+            webview = buildWebView();
+            PersistentViewHolder.set(webview);
+        }
+        webViewContainer = (ViewGroup) findViewById(R.id.webViewContainer);
+        webViewContainer.addView(webview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         // show the version for debugging
         TextView versionView = (TextView) findViewById(R.id.versionView);
@@ -57,6 +52,23 @@ public class MainActivity extends ActionBarActivity {
         } else {
             versionView.setVisibility(View.GONE);
         }
+    }
+
+    private XWalkView buildWebView() {
+        XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, BuildConfig.DEBUG);
+        XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
+
+        PluginManager pluginManager = new PluginManager();
+
+        XWalkView webview = new XWalkView(this, this);
+        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
+        webview.setBackgroundColor(0xff60a931);
+
+        String url = getResources().getString(R.string.index_path);
+        webview.load("file:///android_asset/" + url, null);
+
+        registerPlugins(pluginManager);
+        return webview;
     }
 
     private void registerPlugins(PluginManager pluginManager) {
@@ -83,8 +95,9 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (webview != null) {
-            webview.onDestroy();
+        Log.i("main", "ondestroy");
+        if (webViewContainer != null) {
+            webViewContainer.removeAllViews();
         }
     }
 }
