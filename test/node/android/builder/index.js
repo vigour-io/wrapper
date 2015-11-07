@@ -1,3 +1,4 @@
+/* global describe, it, expect, before, after, sinon */
 'use strict'
 
 var path = require('path')
@@ -167,9 +168,81 @@ describe('android-scripts', function () {
   })
 
   describe('installImages', function () {
-    it('should create launch icons from image')
-    it('should create splash screens from image')
-    it('should skip images that are already resized')
+    var tmpDir = path.join(__dirname, 'tmp', 'template')
+    var shutterStub
+    var oldRoot
+
+    it('should do nothing without options', function () {
+      shutterStub.reset()
+      return android.installImages()
+        .then(function () {
+          expect(shutterStub.callCount).to.eql(0)
+        })
+    })
+
+    it('should create launch icons from image', function () {
+      shutterStub.reset()
+      delete android['appIcon']
+      android.splashScreen = 'test.png'
+      return android.installImages()
+        .then(function () {
+          expect(shutterStub.callCount).to.eql(1)
+          expect(shutterStub.args[0][0].manip[0].src).to.eql(path.join(fixturePath, android.splashScreen))
+          expect(shutterStub.args[0][0].manip[0].batch).to.have.length(2)
+        })
+    })
+
+    it('should create splash screens from image', function () {
+      shutterStub.reset()
+      delete android['splashScreen']
+      android.appIcon = 'test.png'
+      return android.installImages()
+        .then(function () {
+          expect(shutterStub.callCount).to.eql(1)
+          expect(shutterStub.args[0][0].manip[0].src).to.eql(path.join(fixturePath, android.appIcon))
+          expect(shutterStub.args[0][0].manip[0].batch).to.have.length(4)
+        })
+    })
+
+    it('should skip images that are already resized', function () {
+      shutterStub.reset()
+      // right now the files are cached
+      android.splashScreen = 'test.png'
+      android.appIcon = 'test.png'
+      return android.installImages()
+        .then(function () {
+          expect(shutterStub.callCount).to.eql(0)
+        })
+    })
+
+    before(function () {
+      shutterStub = sinon.stub().returns(Promise.resolve())
+      android.shutter = shutterStub
+      oldRoot = android.root
+      android.root = fixturePath
+      var cachePath = path.join(android.buildDir, 'cache.json')
+      return mkdirp(tmpDir)
+        .then(remove(cachePath))
+    })
+
+    after(function () {
+      android.root = oldRoot
+    })
+  })
+
+  describe('installing plugins', function () {
+    it('should init all plugins in main java file')
+    it('should add all plugin libs as dependency')
+    it('should add all plugin permissions to the manifest')
+    it('should work without any plugins', function () {
+      return android.installPlugins()
+        .then(function () {
+          expect(true).to.be.true
+        })
+        .catch(function (error) {
+          expect(error).to.not.exist
+        })
+    })
   })
 
   describe('assemble', function () {
@@ -211,13 +284,6 @@ describe('android-scripts', function () {
     it('should use correct options to run app', function () {
       expect(android.exe.getCall(1).args[0]).to.contain(android.applicationId)
     })
-  })
-
-  describe('installing plugins', function () {
-    it('should init all plugins in main java file')
-    it('should add all plugin libs as dependency')
-    it('should add all plugin permissions to the manifest')
-    it('should work without any plugins')
   })
 })
 
