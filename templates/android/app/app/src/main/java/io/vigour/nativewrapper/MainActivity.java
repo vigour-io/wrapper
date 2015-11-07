@@ -62,7 +62,6 @@ public class MainActivity extends ActionBarActivity {
 
         XWalkView webview = new XWalkView(this, this);
         webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
-        webview.setBackgroundColor(0xff60a931);
 
         String url = getResources().getString(R.string.index_path);
         webview.load("file:///android_asset/" + url, null);
@@ -96,8 +95,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("main", "ondestroy");
-        if (webViewContainer != null) {
-            webViewContainer.removeAllViews();
+        if (webview != null) {
+            webview.onDestroy();
         }
     }
 }
