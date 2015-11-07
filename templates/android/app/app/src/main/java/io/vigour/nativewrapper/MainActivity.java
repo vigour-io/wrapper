@@ -21,22 +21,6 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
-    private View splashView;
-
-    Runnable removeSplash = new Runnable() {
-        @Override
-        public void run() {
-            if (splashView == null) {
-                return;
-            }
-
-            ViewParent parent = splashView.getParent();
-            if (parent != null) {
-                ((ViewGroup) parent).removeView(splashView);
-                splashView = null;
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +32,6 @@ public class MainActivity extends ActionBarActivity {
         int delay = getResources().getInteger(R.integer.splashDuration);
         String url = getResources().getString(R.string.index_path);
 
-        splashView = findViewById(R.id.splash);
-        splashView.postDelayed(removeSplash, delay);
 
         PluginManager pluginManager = new PluginManager();
 
