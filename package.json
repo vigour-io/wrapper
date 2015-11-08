@@ -114,6 +114,10 @@
       "customPlatform": {
         "def": null
       },
+      "run": {
+        "def": null,
+        "description": "wether to install and launch the build on device"
+      },
 
       "platforms": {
         "samsungtv.url": {
