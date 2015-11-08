@@ -13,7 +13,7 @@
 		4926A2331AD2C637000FDF43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4926A2321AD2C637000FDF43 /* Images.xcassets */; };
 		4926A2421AD2C637000FDF43 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A2411AD2C637000FDF43 /* vigour_nativeTests.swift */; };
 		4926A24C1AD2CCEF000FDF43 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
-		4938ECF01B95F92F0092CF80 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9B3271AD7BDDC0088820E /* VigourBridgeReceiveMessage.swift */; settings = {ASSET_TAGS = (); }; };
+		4938ECF01B95F92F0092CF80 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9B3271AD7BDDC0088820E /* VigourBridgeReceiveMessage.swift */; };
 		49423C3C1AD689CC00B53589 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C391AD689CC00B53589 /* VigourBridge.swift */; };
 		49423C411AD689E000B53589 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C401AD689E000B53589 /* VigourPlugin.swift */; };
 		49423C421AD689E000B53589 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C401AD689E000B53589 /* VigourPlugin.swift */; };
@@ -21,20 +21,20 @@
 		49423C451AD6A5EB00B53589 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C431AD6A5EB00B53589 /* Logger.swift */; };
 		49423C481AD6AFD100B53589 /* VigourPluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C471AD6AFD100B53589 /* VigourPluginManager.swift */; };
 		49423C491AD6AFD100B53589 /* VigourPluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C471AD6AFD100B53589 /* VigourPluginManager.swift */; };
-		49442BAE1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49442BAD1B9CDCE6004E78BF /* VigourPluginRegistration.swift */; settings = {ASSET_TAGS = (); }; };
-		49442BAF1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49442BAD1B9CDCE6004E78BF /* VigourPluginRegistration.swift */; settings = {ASSET_TAGS = (); }; };
-		49442BB01B9CEBE1004E78BF /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C391AD689CC00B53589 /* VigourBridge.swift */; settings = {ASSET_TAGS = (); }; };
-		49442BB11B9CECA9004E78BF /* VigourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22D1AD2C637000FDF43 /* VigourViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		49442BB21B9CECBA004E78BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22B1AD2C637000FDF43 /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		49442BB31B9CECC0004E78BF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; settings = {ASSET_TAGS = (); }; };
-		49A6361B1BBDB8A6009E72C4 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; settings = {ASSET_TAGS = (); }; };
+		49442BAE1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49442BAD1B9CDCE6004E78BF /* VigourPluginRegistration.swift */; };
+		49442BAF1B9CDCE6004E78BF /* VigourPluginRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49442BAD1B9CDCE6004E78BF /* VigourPluginRegistration.swift */; };
+		49442BB01B9CEBE1004E78BF /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49423C391AD689CC00B53589 /* VigourBridge.swift */; };
+		49442BB11B9CECA9004E78BF /* VigourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22D1AD2C637000FDF43 /* VigourViewController.swift */; };
+		49442BB21B9CECBA004E78BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A22B1AD2C637000FDF43 /* AppDelegate.swift */; };
+		49442BB31B9CECC0004E78BF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4926A24B1AD2CCEF000FDF43 /* MainController.swift */; };
+		49A6361B1BBDB8A6009E72C4 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; };
 		49B9B3281AD7BDDC0088820E /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B9B3271AD7BDDC0088820E /* VigourBridgeReceiveMessage.swift */; };
 		49C5ED8A1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
 		49C5ED8B1AD559F800DA670C /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49C5ED891AD559F800DA670C /* www */; };
 		49C5ED941AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
 		49C5ED951AD5ACAB00DA670C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C5ED931AD5ACAB00DA670C /* Utils.swift */; };
 		49C5ED981AD5AFFC00DA670C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C5ED971AD5AFFC00DA670C /* WebKit.framework */; };
-		49E417191BB952F200067AC8 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; settings = {ASSET_TAGS = (); }; };
+		49E417191BB952F200067AC8 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E417181BB952F200067AC8 /* VigourBridgeSendMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,7 +227,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Vigour.io;
 				TargetAttributes = {
 					4926A2251AD2C637000FDF43 = {
@@ -359,6 +359,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -373,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -412,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				SDKROOT = iphoneos;
@@ -427,8 +428,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vigour-native/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -439,8 +441,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "vigour-native/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -459,6 +462,7 @@
 				);
 				INFOPLIST_FILE = "vigour-nativeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vigour-native.app/vigour-native";
 			};
@@ -474,6 +478,7 @@
 				);
 				INFOPLIST_FILE = "vigour-nativeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vigour-native.app/vigour-native";
 			};
