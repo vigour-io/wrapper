@@ -197,3 +197,4 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
 * **David Bina**, plugins developer (ios, android)
   * *Slack:* vidbina
   * *Skype:* kingvidbina
+  * *Email:* david@supr.nu
