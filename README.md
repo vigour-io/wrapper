@@ -189,7 +189,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
 * **Alexander van der Werff**, ios developer
   * *Slack:* werffmeister
   * *Skype:* avanderwerff
-  * *Email:* alex@vigour.io
+  * *Email:* meister@alexandervanderwerff.com
 * **Michiel van Liempt**, android developer
   * *Slack:* michiel
   * *Skype:* michielvanliemptsoftware
