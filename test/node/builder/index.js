@@ -1,22 +1,23 @@
-/* global describe, it, expect */
+'use strict'
 
-var builder = require('../../../lib/builder/')
+var path = require('path')
+var Builder = require('../../../lib/builder/')
+
+var root = path.join(__dirname, '..', '..', 'app')
+var config = {
+  native: {
+    root: root,
+    selectedPlatforms: 'custom',
+    customPlatform: function (opts) {
+      expect(opts).to.be.an.object
+      expect(opts.native.plugins[0].name).to.equal('vigour-plugin')
+    }
+  }
+}
 
 describe('builder', function () {
   it('should pass options and the shared object to platform builders', function () {
-    return builder({
-      vigour: {
-        native: {
-          selectedPlatforms: 'custom',
-          customPlatform: function (opts, shared) {
-            console.log(typeof shared, shared)
-            expect(opts).to.be.an.object
-            expect(shared).to.be.an('object')
-            expect(shared.copyAssets).to.be.a('function')
-            expect(shared.handleErrors).to.be.a('function')
-          }
-        }
-      }
-    })
+    var builder = new Builder(config)
+    return builder.start()
   })
 })

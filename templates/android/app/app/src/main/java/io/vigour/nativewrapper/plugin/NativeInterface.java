@@ -6,6 +6,7 @@ import android.util.Log;
 import com.fasterxml.jackson.jr.ob.JSON;
 
 import org.xwalk.core.JavascriptInterface;
+import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 
 import java.io.IOException;
@@ -21,13 +22,22 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 public class NativeInterface {
     private final Activity context;
     private final XWalkView webView;
+    private final BridgeInterface bridgeInterface;
     private PluginManager pluginManager;
-    private static int callId = 0;
 
-    public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager) {
+    public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager, BridgeInterface bridgeInterface) {
         this.context = context;
         this.webView = webView;
         this.pluginManager = pluginManager;
+        this.bridgeInterface = bridgeInterface;
+
+        webView.setUIClient(new XWalkUIClient(webView) {
+            @Override
+            public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
+                super.onPageLoadStopped(view, url, status);
+                onPageLoaded();
+            }
+        });
     }
 
     @JavascriptInterface
@@ -52,18 +62,18 @@ public class NativeInterface {
             if (array.length == 4
                 && array[1] instanceof String
                 && array[2] instanceof String) {
-                handleJsMessage(id, (String)array[1], (String)array[2], array[3]);
+                handleJsMessage(id, (String) array[1], (String) array[2], array[3]);
             } else {
                 if (array.length != 4) {
-                    bridgeInterface.respond(id, "wrong number of arguments, we expect 4: " + params, null);
+                    bridgeInterface.result(id, "wrong number of arguments, we expect 4: " + params, null);
                 } else {
-                    bridgeInterface.respond(id, "2nd and 3rd params must be strings: " + params, null);
+                    bridgeInterface.result(id, "2nd and 3rd params must be strings: " + params, null);
                 }
             }
         } catch (IOException e) {
             String errorMessage = "exception handling message: " + params + " because: " + e.getMessage();
             errorMessage = errorMessage.replace('\'', '"').replace("\n", "");
-            bridgeInterface.respond(id, errorMessage, null);
+            bridgeInterface.error(errorMessage, "");
         }
     }
 
@@ -72,15 +82,8 @@ public class NativeInterface {
         pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, bridgeInterface));
     }
 
-    private BridgeInterface bridgeInterface = new BridgeInterface() {
-        @Override
-        public void respond(final int callId, final String error, final String response) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', '%s')", callId, error, response), null);
-                }
-            });
-        }
-    };
+    private void onPageLoaded() {
+        bridgeInterface.ready("", "", "");
+        pluginManager.notifyReady(bridgeInterface);
+    }
 }

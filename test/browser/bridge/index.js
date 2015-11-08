@@ -1,13 +1,12 @@
-// Let's pretend we're android for these platform-agnostic tests
-var env = require('../../../lib/env.js')
-env.platform = 'android'
+'use strict'
 
 var bridge
 var pluginId = 1
 var pluginFn = 'doSomething'
 var pluginOptsOne = { key: 'valueOne' }
 var pluginOptsTwo = { key: 'valueTwo' }
-var pluginResult = { result: 'super nice' }
+var pluginResult = require('../../helpers/success.json')
+var customPlatform = require('../../helpers/customplatform')
 
 describe('bridge', function () {
   it('should be requireable', function () {
@@ -16,33 +15,28 @@ describe('bridge', function () {
   })
 
   describe('native events', function () {
+    before(function () {
+      bridge.platform = customPlatform
+    })
     it('should emit the `ready` event', function () {
       var spy = sinon.spy()
-      bridge.on('ready', spy)
+      bridge.once('ready', spy)
       window.vigour.native.bridge.ready(null, 'message')
       expect(spy).calledOnce
     })
 
     it('should emit `error` events', function () {
       var spy = sinon.spy()
-      bridge.on('error', spy)
+      bridge.once('error', spy)
       window.vigour.native.bridge.error('message')
-      expect(spy).calledOnce
+      expect(spy).called
     })
   })
 
   it('should enqueue calls until plugin is ready, then call them in order', function (done) {
-    // window.NativeInterface.send is usually provided by the android build script
-    window.NativeInterface = {
-      send: function (str) {
-        var argsArray = JSON.parse(str)
-        setTimeout(function () {
-          window.vigour.native.bridge.result(argsArray[0], null, pluginResult)
-        }, 200)
-      }
-    }
     var oneDone = false
     var twoDone = false
+
     bridge.send(pluginId, pluginFn, pluginOptsOne, function (err, data) {
       expect(err).not.to.exist
       expect(data).to.deep.equal(pluginResult)
@@ -62,6 +56,6 @@ describe('bridge', function () {
     setTimeout(function () {
       // This is usually called by the native side
       window.vigour.native.bridge.ready(null, {}, pluginId)
-    }, 200)
+    }, 100)
   })
 })

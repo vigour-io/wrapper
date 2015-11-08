@@ -2,5 +2,5 @@
 <resources>
     <integer name="splashDuration">2000</integer>
     <string name="app_name">vigour-native template</string>
-    <string name="index_path">file:///android_asset/index.html</string>
+    <string name="index_path">index.html</string>
 </resources>

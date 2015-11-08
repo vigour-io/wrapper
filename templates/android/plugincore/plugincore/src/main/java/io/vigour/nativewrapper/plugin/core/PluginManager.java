@@ -28,4 +28,16 @@ public class PluginManager {
 
         context.execute(function);
     }
+
+    public void notifyReady(BridgeInterface bridge) {
+        for (Plugin plugin : plugins.values()) {
+            try {
+                String message = plugin.getReadyMessage();
+                bridge.ready("", message, plugin.getName());
+            } catch (Exception e) {
+                bridge.ready(e.getMessage(), "", plugin.getName());
+            }
+        }
+
+    }
 }
