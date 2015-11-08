@@ -9,8 +9,6 @@
         <script>
             
             'use strict'
-            
-            console.log("Console log should work in debug mode")
 
 
             window.vigour = {}
@@ -57,6 +55,9 @@
                         console.log(pluginId)
                     }
                     console.log(response[pluginId])
+                    if(pluginId == "vigour.logger") {
+                        console.log("Console log should work in debug mode")
+                    }
                 }
             }
 
