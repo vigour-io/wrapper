@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -118,7 +118,6 @@
         "def": null,
         "description": "wether to install and launch the build on device"
       },
-
       "platforms": {
         "samsungtv.url": {
           "def": null,
@@ -134,7 +133,6 @@
             "description": "path to the build.html to include in the build"
           }
         },
-
         "android": {
           "version": {
             "def": "1.0.0",
