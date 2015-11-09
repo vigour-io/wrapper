@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "buildtestapp": "./buildtestapp.js",
     "pretest": "npm run buildtestapp",
     "test": "gaston test",
-    "test-bridge": "gaston test -r browser -s test/phantom/bridge/",
+    "test-bridge": "gaston test -r browser -s test/browser/bridge/",
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
     "test-android": "gaston test -r node -s test/node/android/",
@@ -119,11 +119,11 @@
         "description": "wether to install and launch the build on device"
       },
       "platforms": {
-        "samsungtv.url": {
-          "val": false,
-          "description": "URL to load on app start"
-        },
         "samsungtv": {
+          "url": {
+            "val": false,
+            "description": "URL to load on app start"
+          },
           "main": {
             "val": false,
             "description": "path to the build.js to include in the build"
