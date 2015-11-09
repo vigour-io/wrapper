@@ -119,11 +119,11 @@
         "description": "wether to install and launch the build on device"
       },
       "platforms": {
-        "samsungtv.url": {
-          "val": false,
-          "description": "URL to load on app start"
-        },
         "samsungtv": {
+          "url": {
+            "val": false,
+            "description": "URL to load on app start"
+          },
           "main": {
             "val": false,
             "description": "path to the build.js to include in the build"
