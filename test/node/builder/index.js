@@ -5,12 +5,14 @@ var Builder = require('../../../lib/builder/')
 
 var root = path.join(__dirname, '..', '..', 'app')
 var config = {
-  native: {
-    root: root,
-    selectedPlatforms: 'custom',
-    customPlatform: function (opts) {
-      expect(opts).to.be.an.object
-      expect(opts.native.plugins[0].name).to.equal('vigour-plugin')
+  vigour: {
+    native: {
+      root: root,
+      selectedPlatforms: 'custom',
+      customPlatform: function (opts) {
+        expect(opts).to.be.an.object
+        expect(opts.vigour.native.plugins[0].name).to.equal('vigour-plugin')
+      }
     }
   }
 }
