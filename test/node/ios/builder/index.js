@@ -9,8 +9,10 @@ var repo = path.join(__dirname
 var pkgPath = path.join(repo, 'package.json')
 var opts = {
   _packageDir: pkgPath,
-  native: {
-    root: repo
+  vigour: {
+    native: {
+      root: repo
+    }
   }
 }
 
@@ -23,7 +25,7 @@ describe('ios build', function () {
     this.timeout(timeout)
     var _options = JSON.parse(options)
     var platform = 'ios'
-    _options.native.selectedPlatforms = platform
+    _options.vigour.native.selectedPlatforms = platform
     var builder = new Builder(_options)
     return builder.start()
       .then(checkSuccess)

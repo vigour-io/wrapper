@@ -158,8 +158,43 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [X] web browsers
   - [X] iOS
   - [X] android
-  - [_] lg TV
-  - [_] samsung TV
-  - [_] chromecast
-  - [_] iWatch
-  - [_] windows phone
+  - [ ] lg TV
+  - [ ] samsung TV
+  - [ ] chromecast
+  - [ ] iWatch
+  - [ ] windows phone
+
+<a name='contacts'></a>
+## Contacts
+
+#### Vigour
+
+* **Valerio Barrila**, team leader, responsible for team organization and project execution
+  * *Slack:* valerio
+  * *Skype:* valerio.barrila
+  * *Email:* valerio@vigour.io
+  * *Phone:* +31 645 013 981
+* **Shawn Inder**, main developer, responisble for core components
+  * *Slack:* shawn
+  * *Skype:* shawnfinder
+  * *Email:* shawn@vigour.io
+  * *Phone canada:* 1-514-903-9082
+  * *Phone nl:* +31628959682
+* **Renan Carvalho**, developer, responsible for web and tv
+  * *Slack:* renan
+  * *Email:* renan@vigour.io
+
+#### External collaborators
+
+* **Alexander van der Werff**, ios developer
+  * *Slack:* werffmeister
+  * *Skype:* avanderwerff
+  * *Email:* meister@alexandervanderwerff.com
+* **Michiel van Liempt**, android developer
+  * *Slack:* michiel
+  * *Skype:* michielvanliemptsoftware
+  * *Email:* michiel@vigour.io
+* **David Bina**, plugins developer (ios, android)
+  * *Slack:* vidbina
+  * *Skype:* kingvidbina
+  * *Email:* david@supr.nu

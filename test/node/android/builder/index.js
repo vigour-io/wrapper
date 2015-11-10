@@ -25,15 +25,17 @@ var fixturePath = path.join(__dirname, '..', 'fixtures')
 
 var opts = {
   _packageDir: pkgPath,
-  native: {
-    root: repo,
-    platforms: {
-      android: {
-        version: '2.1.4',
-        versionCode: 27,
-        applicationId: 'org.test',
-        appIndexPath: 'bundle.html',
-        buildDir: path.join(repo, 'build', 'android')
+  vigour: {
+    native: {
+      root: repo,
+      platforms: {
+        android: {
+          version: '2.1.4',
+          versionCode: 27,
+          applicationId: 'org.test',
+          appIndexPath: 'bundle.html',
+          buildDir: path.join(repo, 'build', 'android')
+        }
       }
     }
   }
@@ -291,7 +293,7 @@ describe('android build', function () {
     , function () {
       this.timeout(timeout)
       var platform = 'android'
-      opts.native.selectedPlatforms = platform
+      opts.vigour.native.selectedPlatforms = platform
       var builder = new Builder(opts)
       return builder.start()
         .then(checkSuccess)
