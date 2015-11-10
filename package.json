@@ -65,7 +65,6 @@
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
     "vigour-js": "^0.2.2",
-    "vigour-pliant": "^1.0.1",
     "vigour-shutter": "^1.1.1",
     "xcode": "^0.8.2"
   },
