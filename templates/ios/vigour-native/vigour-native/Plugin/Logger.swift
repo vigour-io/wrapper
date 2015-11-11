@@ -16,16 +16,20 @@ struct Logger: VigourPluginProtocol {
 
     weak var delegate: VigourViewController?
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
         switch(name) {
         case "log":
             if let message = args?.objectForKey("message") as? String {
                 log(message)
             }
-        default:return
+        default:break
         }
         
-        completionHandler(nil, NSDictionary())
+        completionHandler(nil, JSObject(["succes":true]))
+    }
+    
+    func onReady() throws -> JSObject {
+        return JSObject([Logger.pluginId:"ready"])
     }
     
     static func instance() -> VigourPluginProtocol {

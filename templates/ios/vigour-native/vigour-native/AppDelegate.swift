@@ -53,19 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let filemgr = NSFileManager.defaultManager()
         
-        var error: NSError?
         if filemgr.fileExistsAtPath(webAplicationFolderPath) && !force {
-            if let e = error {
-                print("\(e.localizedDescription)")
-                return
-            }
             return
-        }
-        
-        if #available(iOS 9, *) {
-           
-        } else {
-           
         }
 
         //wkwebview fix for referencing to www folder
