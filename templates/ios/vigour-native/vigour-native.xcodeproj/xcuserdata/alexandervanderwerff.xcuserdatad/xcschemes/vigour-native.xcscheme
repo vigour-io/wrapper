@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4926A2251AD2C637000FDF43"
+               BlueprintIdentifier = "4959BE1C1BF3DC1F00F7B310"
                BuildableName = "vigour-native.app"
                BlueprintName = "vigour-native"
-               ReferencedContainer = "container:vigour-native.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4926A23A1AD2C637000FDF43"
-               BuildableName = "vigour-nativeTests.xctest"
-               BlueprintName = "vigour-nativeTests"
                ReferencedContainer = "container:vigour-native.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +32,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4926A23A1AD2C637000FDF43"
+               BlueprintIdentifier = "4959BE301BF3DC1F00F7B310"
                BuildableName = "vigour-nativeTests.xctest"
                BlueprintName = "vigour-nativeTests"
+               ReferencedContainer = "container:vigour-native.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4959BE3B1BF3DC1F00F7B310"
+               BuildableName = "vigour-nativeUITests.xctest"
+               BlueprintName = "vigour-nativeUITests"
                ReferencedContainer = "container:vigour-native.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4926A2251AD2C637000FDF43"
+            BlueprintIdentifier = "4959BE1C1BF3DC1F00F7B310"
             BuildableName = "vigour-native.app"
             BlueprintName = "vigour-native"
             ReferencedContainer = "container:vigour-native.xcodeproj">
@@ -79,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4926A2251AD2C637000FDF43"
+            BlueprintIdentifier = "4959BE1C1BF3DC1F00F7B310"
             BuildableName = "vigour-native.app"
             BlueprintName = "vigour-native"
             ReferencedContainer = "container:vigour-native.xcodeproj">
@@ -98,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4926A2251AD2C637000FDF43"
+            BlueprintIdentifier = "4959BE1C1BF3DC1F00F7B310"
             BuildableName = "vigour-native.app"
             BlueprintName = "vigour-native"
             ReferencedContainer = "container:vigour-native.xcodeproj">
