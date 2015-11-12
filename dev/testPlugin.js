@@ -6,7 +6,7 @@ var devBridge = require('../lib/bridge')
 var devNativePlugins = {
   ChromeCast: {
     init() {
-      console.log('FAKE NATIVE INIT FUNCTION!')
+      console.log('FAKE NATIVE INIT FUNCTION!--------')
       // err, response, pluginId
 
       window.vigour.native.bridge.ready(null, true,'ChromeCast')
