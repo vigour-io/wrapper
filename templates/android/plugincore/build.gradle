@@ -1,7 +1,9 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'maven-publish'
 
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
     }
     dependencies {
@@ -14,10 +16,20 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         mavenLocal()
+        jcenter()
         maven {
             url 'https://download.01.org/crosswalk/releases/crosswalk/android/maven2'
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.vigour.plugin' // domain for all vigour plugins
+            artifactId 'core'
+            version '0.0' // we need to figure out a system to manage this
         }
     }
 }
