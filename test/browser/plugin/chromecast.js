@@ -1,4 +1,5 @@
 'use strict'
+var ChromeCastPlugin = require('../')
 
 // we need to mock all behaviour for tests here
 // also we need to use correct error handeling from the bridge
