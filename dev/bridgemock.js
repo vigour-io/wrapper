@@ -6,7 +6,7 @@ var devNativePlugins = {
     init (data) {
       setTimeout(() => {
         window.vigour.native.bridge.ready(null, true, 'ChromeCast')
-        /// start device scans event with timeout
+        // start device scans event with timeout
         startFakeDevicesScan()
       }, 100)
     },
@@ -16,7 +16,6 @@ var devNativePlugins = {
       setTimeout(() => {
         startCasting(deviceId)
       }, 100)
-
     },
     disconnect () {
       // sender stop session
@@ -41,7 +40,16 @@ var stopCasting = () => {
 
 // fake, used for dev
 var startCasting = (deviceId) => {
-  window.vigour.native.bridge.receive(null, {type: 'connected', data: deviceId}, 'ChromeCast')
+  // establish session:
+  var sessionId = 'FAKE_SESSION_ID'
+  var data = {
+    deviceId: deviceId,
+    sessionId: sessionId
+  }
+  // when established, send info back over the bridge:
+  setTimeout(function () {
+    window.vigour.native.bridge.receive(null, {type: 'connected', data: data}, 'ChromeCast')
+  })
 }
 
 // fake, used for dev

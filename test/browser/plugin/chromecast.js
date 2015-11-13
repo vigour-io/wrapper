@@ -44,12 +44,18 @@ describe('Testing ChromeCastPlugin', function () {
       // fake device join
       window.vigour.native.bridge.receive(null, {type: 'join', data: testDevice}, 'ChromeCast')
       // call startCasting for testDevice
-      plugin.startCasting(plugin.devices[testDevice.id].id)
-      // session should be filled with a reference to the device
+      var device = plugin.devices[testDevice.id]
+      plugin.startCasting(device)
+      expect(plugin.session.val).to.equal(device)
+      // session.val === device >> "connecting OR connected" to device
+      expect(plugin.session).to.not.have.property('id')
+      // state is now "connecting" because no session.id yet
+
       // wait for 'connected' event
       setTimeout(() => {
-        expect(plugin.session.id.val).equal(testDevice.id)
-        expect(plugin.session.name.val).equal(testDevice.name)
+        // expect 'connected' event to have fired 1 time
+        expect(plugin.session.id.val).to.exist
+        // state is now "connected" because I have a session id
         done()
       }, 200)
     })
