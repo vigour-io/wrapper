@@ -4,20 +4,26 @@ var devBridge = require('../lib/bridge')
 var devNativePlugins = {
   ChromeCast: {
     init (data) {
-      console.log('init', data)
       setTimeout(() => {
         window.vigour.native.bridge.ready(null, true, 'ChromeCast')
         /// start device scans event with timeout
-        // startFakeDevicesScan()
+        startFakeDevicesScan()
       }, 100)
     },
     connect (deviceId) {
       // sender start session
-      // timeout(receive(event: type: connected))
+      // start casting once connected
+      setTimeout(() => {
+        startCasting(deviceId)
+      }, 100)
+
     },
     disconnect () {
       // sender stop session
-      // timeout(receive(event: type: disconnected))
+      // stop casting
+      setTimeout(() => {
+        stopCasting()
+      }, 100)
     }
   }
 }
@@ -28,14 +34,23 @@ devBridge.send = function (pluginId, fnName, opts, cb) {
   }
 }
 
-// Fake fuction, used for dev
-function startFakeDevicesScan () {
+// fake, used for dev
+var stopCasting = () => {
+  window.vigour.native.bridge.receive(null, {type: 'disconnected'}, 'ChromeCast')
+}
+
+// fake, used for dev
+var startCasting = (deviceId) => {
+  window.vigour.native.bridge.receive(null, {type: 'connected', data: deviceId}, 'ChromeCast')
+}
+
+// fake, used for dev
+var startFakeDevicesScan = () => {
   var devices = [
     {id: 1, name: 'name01'},
     {id: 2, name: 'name02'},
     {id: 3, name: 'name03'}]
   let iter = (device) => {
-    console.log('iter', device)
     if (!device) return
     setTimeout(() => {
       window.vigour.native.bridge.receive(null, {type: 'join', data: device}, 'ChromeCast')
