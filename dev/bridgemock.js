@@ -3,16 +3,30 @@ var devBridge = require('../lib/bridge')
 
 var devNativePlugins = {
   ChromeCast: {
-    init () {
-      window.vigour.native.bridge.ready(null, true, 'ChromeCast')
-      setTimeout(function(){
-        window.vigour.native.bridge.receive(null, {joined: {id: 'asdf23'}}, 'ChromeCast')
-      }, this.timeout)
-    }
-  },
-  timeout: 1000
+    init (data) {
+      if (data && data.appId) console.log('---- Chromecast Sender [' + data.appId + ']')
+      else console.log('---- Chromecast Receiver')
+      setTimeout(() => {
+        window.vigour.native.bridge.ready(null, true, 'ChromeCast')
+      }, 500)
+    },
+    connect (deviceId) {
+      window.vigour.native.bridge.receive(null, {
+        type: 'join',
+        data: {
+          id: deviceId,
+          name: name
+        }
+      }, 'Chromecast')
+    },
+    disconnect () {}
+  }
 }
 
 devBridge.send = function (pluginId, fnName, opts, cb) {
-  devNativePlugins[pluginId][fnName](opts, cb)
+  if (fnName !== 'set') {
+    devNativePlugins[pluginId][fnName](opts, cb)
+  }
 }
+
+module.exports = devBridge

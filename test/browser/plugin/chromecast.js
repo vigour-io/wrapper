@@ -1,19 +1,22 @@
 'use strict'
-var ChromeCastPlugin = require('../')
+var ChromeCastPlugin = require('../../../lib/plugins/chromecast')
+var devBridge = require('../../../dev/bridgemock')
 
-// we need to mock all behaviour for tests here
-// also we need to use correct error handeling from the bridge
-describe('Plugin', function () {
-  var BridgeObservable = require('../../../lib/bridge/bridgeobservable')
-  var Plugin = require('../../../lib/bridge/plugin')
-  var example = new Plugin({
-    key: 'example',
-    display: {}
+describe('Testing ChromeCastPlugin', function () {
+  var chromeCastPlugin
+  var bridge = window.vigour.native.bridge
+  it('should be able to create a plugin instance', function () {
+    var spy = sinon.spy(bridge, 'ready')
+    chromeCastPlugin = new ChromeCastPlugin({
+      bridge: {
+        useVal: devBridge
+      }
+    })
+    expect(spy.calledOnce).to.be.true
   })
 
-  it('should have a BridgeObservable as a Child', function () {
-    expect(example.display).instanceof(BridgeObservable)
+  it('should be able to receive join events', function () {
+    var spy = sinon.spy(bridge, 'chromeCastPlugin')
+    bridge.receive(null, {type: 'join', data: {id: 'friendlyName'}}, 'ChromeCast')
   })
 })
-
-require('./chromecast')
