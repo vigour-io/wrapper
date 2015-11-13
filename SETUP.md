@@ -1,7 +1,7 @@
 # How to run native builds
 
 ## Android
-Don't what is the best procedure to install the tools needed run builds and emulators, but I installed the following tools:
+Don't know what is the best procedure to install the tools needed run builds and emulators, but I installed the following tools:
 
 #### Android Studio
 Once installed go to the preferences pane and install the extra stuff as in the images:
