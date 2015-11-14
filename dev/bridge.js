@@ -6,7 +6,7 @@ var devNativePlugins = {
     init (data) {
       setTimeout(() => {
         window.vigour.native.bridge.ready(null, true, 'ChromeCast')
-        /// start device scans event with timeout
+        // start device scans event with timeout
         startFakeDevicesScan()
       }, 100)
     },
@@ -16,7 +16,6 @@ var devNativePlugins = {
       setTimeout(() => {
         startCasting(deviceId)
       }, 100)
-
     },
     disconnect () {
       // sender stop session
