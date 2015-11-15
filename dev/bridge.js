@@ -1,5 +1,5 @@
 'use strict'
-var devBridge = require('vigour-wrapper/lib/bridge')
+var devBridge = require('../lib/bridge')
 
 var devNativePlugins = {
   ChromeCast: {
