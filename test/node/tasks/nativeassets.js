@@ -4,6 +4,7 @@ var Promise = require('promise')
 var fs = require('vigour-fs-promised')
 var nativeassets = require('../../../lib/builder/ios/nativeassets')
 var base = path.join(__dirname, '..', '..', 'app')
+var Shutter = require('vigour-shutter')
 
 var mockBuilder = {
   buildDir: path.join(base, 'build'),
@@ -23,6 +24,7 @@ var iconsPath = path.join(mockBuilder.buildDir,
   'Assets.xcassets',
   'AppIcon.appiconset'
 )
+var handle
 
 describe('nativeassets', function () {
   before(function () {
@@ -36,9 +38,16 @@ describe('nativeassets', function () {
       return fs.mkdirpAsync(item)
     }))
   })
+  before(function () {
+    var shutter = new Shutter()
+    return shutter.start()
+      .then(function (_handle) {
+        handle = _handle
+      })
+  })
   it('should succeed in under 30 seconds', function () {
     this.timeout(30000)
-    return nativeassets.call(mockBuilder)
+    return nativeassets.call(mockBuilder, 'localhost', 8000)
       .then(function () {
         var base = path.join(__dirname, '..', '..', '..', 'lib', 'builder', 'ios')
         var paths = [
@@ -63,5 +72,8 @@ describe('nativeassets', function () {
             })
         }))
       })
+  })
+  after(function (done) {
+    handle.close(done)
   })
 })
