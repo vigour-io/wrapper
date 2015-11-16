@@ -19,7 +19,6 @@ var devNativePlugins = {
       setTimeout(() => {
         startCasting(deviceId)
       })
-
     },
     disconnect () {
       // sender stop session
