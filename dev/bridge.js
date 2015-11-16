@@ -1,21 +1,24 @@
 'use strict'
 var devBridge = require('../lib/bridge')
+var bridge = window.vigour.native.bridge
+var Promise = require('bluebird')
 
 var devNativePlugins = {
   ChromeCast: {
     init (data) {
       setTimeout(() => {
-        window.vigour.native.bridge.ready(null, true, 'ChromeCast')
+        // setup plugin and send ready
+        bridge.ready(null, true, 'ChromeCast')
         /// start device scans event with timeout
         startFakeDevicesScan()
-      }, 100)
+      })
     },
     connect (deviceId) {
       // sender start session
       // start casting once connected
       setTimeout(() => {
         startCasting(deviceId)
-      }, 100)
+      })
 
     },
     disconnect () {
@@ -23,7 +26,7 @@ var devNativePlugins = {
       // stop casting
       setTimeout(() => {
         stopCasting()
-      }, 100)
+      })
     }
   }
 }
@@ -36,12 +39,12 @@ devBridge.send = function (pluginId, fnName, opts, cb) {
 
 // fake, used for dev
 var stopCasting = () => {
-  window.vigour.native.bridge.receive(null, {type: 'disconnected'}, 'ChromeCast')
+  bridge.receive(null, {type: 'disconnected'}, 'ChromeCast')
 }
 
 // fake, used for dev
 var startCasting = (deviceId) => {
-  window.vigour.native.bridge.receive(null, {type: 'connected', data: deviceId}, 'ChromeCast')
+  bridge.receive(null, {type: 'connected', data: deviceId}, 'ChromeCast')
 }
 
 // fake, used for dev
@@ -53,9 +56,9 @@ var startFakeDevicesScan = () => {
   let iter = (device) => {
     if (!device) return
     setTimeout(() => {
-      window.vigour.native.bridge.receive(null, {type: 'join', data: device}, 'ChromeCast')
+      bridge.receive(null, {type: 'join', data: device}, 'ChromeCast')
       iter(devices.shift())
-    }, 100)
+    })
   }
   iter(devices.shift())
 }
