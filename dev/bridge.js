@@ -38,12 +38,12 @@ devBridge.send = function (pluginId, fnName, opts, cb) {
 
 // fake, used for dev
 var stopCasting = () => {
-  bridge.receive(null, {type: 'disconnected'}, 'ChromeCast')
+  bridge.receive(null, {type: 'stoppedCasting'}, 'ChromeCast')
 }
 
 // fake, used for dev
 var startCasting = (deviceId) => {
-  bridge.receive(null, {type: 'connected', data: deviceId}, 'ChromeCast')
+  bridge.receive(null, {type: 'startedCasting', data: deviceId}, 'ChromeCast')
 }
 
 // fake, used for dev
