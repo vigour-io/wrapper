@@ -13,14 +13,14 @@ var devNativePlugins = {
         startFakeDevicesScan()
       })
     },
-    connect (deviceId) {
+    startCasting (deviceId) {
       // sender start session
       // start casting once connected
       setTimeout(() => {
         startCasting(deviceId)
       })
     },
-    disconnect () {
+    startCasting () {
       // sender stop session
       // stop casting
       setTimeout(() => {
