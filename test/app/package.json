@@ -44,6 +44,10 @@
           "appIcon": "assets/img/appIcon.png",
           "splashScreen": "assets/img/splash.png",
           "NSAllowsArbitraryLoads": true,
+					"interfaceOrientations": {
+						"iPhone":["Portrait"],
+						"iPad":["Portrait", "LandscapeLeft", "UpsideDown", "LandscapeRight"]
+					},
           "assets": {
             "build.html": true,
             "build.js": true,
