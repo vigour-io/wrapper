@@ -8,7 +8,8 @@
     "all": "npm run build && ../../bin/build.js build",
     "ios": "npm run build && ../../bin/build.js build -p ios",
     "android": "npm run build && ../../bin/build.js build -p android",
-    "samsungtv": "npm run build && ../../bin/build.js build -p samsungtv"
+    "samsungtv": "npm run build && ../../bin/build.js build -p samsungtv",
+    "webostv": "npm run build && ../../bin/build.js build -p webostv"
   },
   "repository": {
     "type": "git",
@@ -91,12 +92,17 @@
             "build.css": true
           }
         },
-        "lgtv": {
-          "productName": "Vigour LG Test App",
+        "webostv": {
+          "productName": "Vigour LG Example",
+          "appinfo":{
+            "domain":"com.vigour11.io",
+            "name":"Vigour Example new build"
+          },
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "assets": "*"
           }
         }
       }
