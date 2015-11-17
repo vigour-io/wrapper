@@ -10,20 +10,18 @@ import Foundation
 
 
 struct VigourPluginManager {
-    
-    var plugins:Dictionary<String, VigourPluginProtocol> = [:]
-    
-    static var pluginTypeMap:[String:Any] = [:]
+
+    static var pluginTypeMap:[String:VigourPluginProtocol.Type] = [:]
     
     init() {
         setup()
     }
-
+    
     private func setup() {
         VigourPluginManager.register()
     }
     
-    static func registerPlugin(id: String, type: Any) {
+    static func registerPlugin<T:VigourPluginProtocol>(id: String, type: T.Type) {
         VigourPluginManager.pluginTypeMap[id] = type
     }
     
