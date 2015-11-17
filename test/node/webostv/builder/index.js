@@ -26,7 +26,6 @@ describe('webostv build', function () {
     var platform = 'webostv'
     _options.vigour.native.selectedPlatforms = platform
     var builder = new Builder(_options)
-    console.log(_options,"bahhh")
     return builder.start()
       .then(checkSuccess)
   })
