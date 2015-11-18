@@ -102,20 +102,17 @@
             "build.css": true
           }
         },
-<<<<<<< HEAD
         "webostv": {
           "productName": "Vigour LG Example",
           "appinfo":{
             "domain":"com.vigour11.io",
             "name":"Vigour Example new build"
           },
-=======
+        },
         "chromecastweb": {
-
         },
         "lgtv": {
           "productName": "Vigour LG Test App",
->>>>>>> develop
           "assets": {
             "build.html": true,
             "build.js": true,
