@@ -1,6 +1,8 @@
-# vigour-native
+# Wrapper
 
 Builds a set of native apps from a single javascript codebase.
+
+`npm install vigour-wrapper`
 
 ## Dependencies
 
