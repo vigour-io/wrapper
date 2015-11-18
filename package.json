@@ -19,7 +19,8 @@
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
     "test-android": "gaston test -r node -s test/node/android/",
-    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
+    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/",
+    "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/"
   },
   "engines": {
     "node": ">=0.10.0"

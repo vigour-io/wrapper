@@ -9,7 +9,8 @@
     "ios": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"ios\"}'",
     "android": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"android\"}'",
     "samsungtv": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"samsungtv\"}'",
-    "web": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"web\"}'"
+    "web": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"web\"}'",
+    "chromecastweb": "npm run build && ../../bin/build.js build --native {\"selectedPlatform\": \"chromecastweb\"}'"
   },
   "repository": {
     "type": "git",
@@ -99,6 +100,9 @@
             "build.js": true,
             "build.css": true
           }
+        },
+        "chromecastweb": {
+
         },
         "lgtv": {
           "productName": "Vigour LG Test App",
