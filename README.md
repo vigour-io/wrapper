@@ -15,6 +15,23 @@ Builds a set of native apps from a single javascript codebase.
 
 Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
 
+
+###Observations:
+
+####Lg webos Tv
+For Lg webostv, a manually process is required before run the build script. Lg uses a SDK to generate ipk files, and this SDK is not available on npm. To download the SDK just go to [LG developer web site](http://developer.lge.com/webOSTV/sdk/web-sdk/sdk-installation/), and follow the steps. If you want to understand more about the SDK CLI you can [read mode here](http://developer.lge.com/webOSTV/sdk/web-sdk/webos-tv-cli/using-webos-tv-cli/ ).
+
+##### specific details:
+ - Use the default folder path when installing the SDK
+ 
+ - The build process only uses the SDK CLI. It means that you can install only the CLI from SDK the package.
+ 
+ - ```ares-package ``` comand is used by the build script to generate the IPK file using the SDK CLI. 
+ 
+ - The IPK file name is generated automatically, it uses the ```id``` property in ```appinfo.json``` to generate it.
+ 
+
+
 ## Tests
 
 Most of the tests expect to find the `vigour-example` repo in the same directory as `vigour-native`. If that is so, then `mocha test/` should do the rest. This of course should be improved eventually, either by making vigour-example a submodule, or by automating the cloning the first time tests are run, or perhaps even something entirely different...
@@ -159,6 +176,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [X] iOS
   - [X] android
   - [ ] lg TV
+  - [X] lg Webos TV
   - [ ] samsung TV
   - [ ] chromecast
   - [ ] iWatch
@@ -180,10 +198,11 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   * *Email:* shawn@vigour.io
   * *Phone canada:* 1-514-903-9082
   * *Phone nl:* +31628959682
-* **Renan Carvalho**, developer, responsible for web and tv
+* **Renan Carvalho**, developer, responsible for web and tv's
   * *Slack:* renan
   * *Email:* renan@vigour.io
-
+  * *Skype:* renanacarvalho
+  * *Phone:* +31 633 882 626
 #### External collaborators
 
 * **Alexander van der Werff**, ios developer
