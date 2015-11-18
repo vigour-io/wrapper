@@ -1,6 +1,5 @@
 'use strict'
 
-var BridgeObservable = require('../../../../lib/bridge/bridgeobservable')
 var bridge = require('../../../../lib/bridge')
 var customPlatform = require('../../../helpers/customplatform')
 
@@ -28,10 +27,6 @@ describe('Plugin', function () {
 
   it('should register itself with the bridge on instantiation', function () {
     expect(bridge.registerPlugin).calledOnce
-  })
-
-  it('should have BridgeObservable children', function () {
-    expect(plugin.x).instanceOf(BridgeObservable)
   })
 
   describe('native events', function () {
