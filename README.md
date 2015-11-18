@@ -180,7 +180,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [ ] lg TV
   - [X] lg Webos TV
   - [ ] samsung TV
-  - [ ] chromecast
+  - [x] chromecast
   - [ ] iWatch
   - [ ] windows phone
 
