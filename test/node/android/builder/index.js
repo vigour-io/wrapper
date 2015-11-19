@@ -1,4 +1,3 @@
-/* global describe, it, expect, before, after, sinon */
 'use strict'
 
 var path = require('path')
@@ -41,7 +40,7 @@ var opts = {
   }
 }
 
-var timeout = 60 * 1000
+var timeout = 2 * 60 * 1000
 
 describe('android-scripts', function () {
   var android = new AndroidTasks(opts)

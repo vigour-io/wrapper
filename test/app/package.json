@@ -6,11 +6,13 @@
     "test": "gaston test",
     "build": "gaston build -s src -o . -i",
     "all": "npm run build && ../../bin/build.js build",
-    "ios": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"ios\"}'",
-    "android": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"android\"}'",
-    "samsungtv": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"samsungtv\"}'",
-    "web": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"web\"}'",
-    "netcasttv": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"netcasttv\"}'"
+    "ios": "npm run build && ../../bin/build.js build --native.selectedPlatforms ios",
+    "android": "npm run build && ../../bin/build.js build --native.selectedPlatforms android",
+    "samsungtv": "npm run build && ../../bin/build.js build --native.selectedPlatforms samsungtv",
+    "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
+    "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
+    "netcasttv": "npm run build && ../../bin/build.js build --native.selectedPlatforms netcasttv",
+    "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
   },
   "repository": {
     "type": "git",
@@ -109,13 +111,14 @@
             "assets": "*"
           }
         },
-        "lgtv": {
-          "productName": "Vigour LG Test App",
-          "assets": {
-            "build.html": true,
-            "build.js": true,
-            "build.css": true
+        "webostv": {
+          "productName": "Vigour LG Example",
+          "appinfo":{
+            "domain":"com.vigour11.io",
+            "name":"Vigour Example new build"
           }
+        },
+        "chromecastweb": {
         }
       }
     }
