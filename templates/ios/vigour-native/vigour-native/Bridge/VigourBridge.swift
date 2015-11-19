@@ -35,6 +35,9 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     
     override init() {
         super.init()
+        #if DEBUG
+            print("*****INIT BRIDGE*****")
+        #endif
         setup()
     }
     
