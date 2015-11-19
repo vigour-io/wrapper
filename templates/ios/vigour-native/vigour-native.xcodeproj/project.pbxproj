@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		492195271BFDB91100EB8AF5 /* VigourNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VigourNative-Bridging-Header.h"; path = "vigour-native/VigourNative-Bridging-Header.h"; sourceTree = "<group>"; };
 		4959BE1D1BF3DC1F00F7B310 /* vigour-native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vigour-native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4959BE271BF3DC1F00F7B310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4959BE2C1BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,9 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		492195261BFDB39600EB8AF5 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vendor;
+			path = "vigour-native/Vendor";
+			sourceTree = "<group>";
+		};
 		4959BE141BF3DC1F00F7B310 = {
 			isa = PBXGroup;
 			children = (
+				492195271BFDB91100EB8AF5 /* VigourNative-Bridging-Header.h */,
+				492195261BFDB39600EB8AF5 /* Vendor */,
 				4959BE751BF3DDF800F7B310 /* Frameworks */,
 				4959BE4E1BF3DC4E00F7B310 /* www */,
 				4959BE1F1BF3DC1F00F7B310 /* vigour-native */,
@@ -461,6 +472,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VigourNative-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -475,6 +487,7 @@
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VigourNative-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -545,6 +558,7 @@
 				4959BE471BF3DC1F00F7B310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4959BE481BF3DC1F00F7B310 /* Build configuration list for PBXNativeTarget "vigour-nativeTests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +567,7 @@
 				4959BE4A1BF3DC1F00F7B310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4959BE4B1BF3DC1F00F7B310 /* Build configuration list for PBXNativeTarget "vigour-nativeUITests" */ = {
 			isa = XCConfigurationList;
@@ -561,6 +576,7 @@
 				4959BE4D1BF3DC1F00F7B310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
