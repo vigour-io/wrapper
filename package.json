@@ -8,7 +8,7 @@
   },
   "main": "./lib",
   "bin": {
-    "vNative": "bin/build.js"
+    "wrapper": "bin/build.js"
   },
   "scripts": {
     "installtestapp": "./installtestapp.js",
@@ -110,7 +110,7 @@
       },
       "selectedPlatforms": {
         "val": false,
-        "env": "VNATIVE_PLATFORMS",
+        "env": "WRAPPER_PLATFORMS",
         "description": "Comma-separated list of platforms to build (builds all by default)"
       },
       "customPlatform": {
@@ -138,12 +138,12 @@
         "android": {
           "version": {
             "val": "1.0.0",
-            "env": "VNATIVE_VERSION",
+            "env": "WRAPPER_VERSION",
             "description": "version (semver) to be used for the android apk"
           },
           "versionCode": {
             "val": 1,
-            "env": "VNATIVE_VERSIONCODE",
+            "env": "WRAPPER_VERSIONCODE",
             "description": "version code (integer) to be used for the andriod apk"
           },
           "appIndexPath": {
@@ -156,7 +156,7 @@
           },
           "run": {
             "val": false,
-            "env": "VNATIVE_ANDROID_RUN",
+            "env": "WRAPPER_ANDROID_RUN",
             "description": "wether to install and launch the build on device"
           },
           "logToFile": {

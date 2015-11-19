@@ -15,7 +15,7 @@ Builds a set of native apps from a single javascript codebase.
 
 ## Usage
 
-Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
+Declaring vigour-native as a dependency to a project make an executable called `wrapper` accessible. You can then build the project with `wrapper build` or `wrapper build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
 
 
 ###Observations:
@@ -25,13 +25,13 @@ For Lg webostv, a manually process is required before run the build script. Lg u
 
 ##### specific details:
  - Use the default folder path when installing the SDK
- 
+
  - The build process only uses the SDK CLI. It means that you can install only the CLI from SDK the package.
- 
- - ```ares-package ``` comand is used by the build script to generate the IPK file using the SDK CLI. 
- 
+
+ - ```ares-package ``` comand is used by the build script to generate the IPK file using the SDK CLI.
+
  - The IPK file name is generated automatically, it uses the ```id``` property in ```appinfo.json``` to generate it.
- 
+
 
 
 ## Tests
@@ -41,8 +41,8 @@ Most of the tests expect to find the `vigour-example` repo in the same directory
 ## In-script usage
 
 ```
-var vNative = require('vigour-native')
-vNative.build({
+var wrapper = require('vigour-native')
+wrapper.build({
   src: './src'
   , dest: './build'
   , splash: './img/splash.png'
@@ -73,9 +73,9 @@ vNative.build({
 
 **Also works with promises**
 ```
-var vNative = require('vigour-native')
+var wrapper = require('vigour-native')
   , Promise = require('promise') // `npm i promise`
-  , build = Promise.denodeify(vNative.build)
+  , build = Promise.denodeify(wrapper.build)
 build({...})
 .then(function (meta) {
   console.log("Build done in " + meta.time + "ms")
