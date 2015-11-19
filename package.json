@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "main": "./lib",
   "bin": {
-    "vNative": "bin/build.js"
+    "wrapper": "bin/build.js"
   },
   "scripts": {
     "installtestapp": "./installtestapp.js",
@@ -17,9 +17,12 @@
     "test": "gaston test",
     "test-bridge": "gaston test -r browser -s test/browser/bridge/",
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
+    "test-web": "npm run buildtestapp && gaston test -r node -s test/node/web/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
     "test-android": "gaston test -r node -s test/node/android/",
-    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
+    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/",
+    "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
+    "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -107,7 +110,7 @@
       },
       "selectedPlatforms": {
         "val": false,
-        "env": "VNATIVE_PLATFORMS",
+        "env": "WRAPPER_PLATFORMS",
         "description": "Comma-separated list of platforms to build (builds all by default)"
       },
       "customPlatform": {
@@ -135,12 +138,12 @@
         "android": {
           "version": {
             "val": "1.0.0",
-            "env": "VNATIVE_VERSION",
+            "env": "WRAPPER_VERSION",
             "description": "version (semver) to be used for the android apk"
           },
           "versionCode": {
             "val": 1,
-            "env": "VNATIVE_VERSIONCODE",
+            "env": "WRAPPER_VERSIONCODE",
             "description": "version code (integer) to be used for the andriod apk"
           },
           "appIndexPath": {
@@ -153,7 +156,7 @@
           },
           "run": {
             "val": false,
-            "env": "VNATIVE_ANDROID_RUN",
+            "env": "WRAPPER_ANDROID_RUN",
             "description": "wether to install and launch the build on device"
           },
           "logToFile": {

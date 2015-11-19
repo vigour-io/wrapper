@@ -18,12 +18,12 @@ var opts = {
 var options = JSON.stringify(opts)
 var timeout = 5 * 60 * 1000
 
-describe('ios build', function () {
-  it('ios should succeed in under ' + timeout + ' milliseconds!'
+describe('web build', function () {
+  it('web should succeed in under ' + timeout + ' milliseconds!'
   , function () {
     this.timeout(timeout)
     var _options = JSON.parse(options)
-    var platform = 'ios'
+    var platform = 'web'
     _options.vigour.native.selectedPlatforms = platform
     var builder = new Builder(_options)
     return builder.start()

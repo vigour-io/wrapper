@@ -6,9 +6,12 @@
     "test": "gaston test",
     "build": "gaston build -s src -o . -i",
     "all": "npm run build && ../../bin/build.js build",
-    "ios": "npm run build && ../../bin/build.js build -p ios",
-    "android": "npm run build && ../../bin/build.js build -p android",
-    "samsungtv": "npm run build && ../../bin/build.js build -p samsungtv"
+    "ios": "npm run build && ../../bin/build.js build --native.selectedPlatforms ios",
+    "android": "npm run build && ../../bin/build.js build --native.selectedPlatforms android",
+    "samsungtv": "npm run build && ../../bin/build.js build --native.selectedPlatforms samsungtv",
+    "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
+    "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
+    "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
   },
   "repository": {
     "type": "git",
@@ -35,6 +38,14 @@
   "vigour": {
     "native": {
       "platforms": {
+        "web": {
+          "appIndexPath": "build.html",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
         "ios": {
           "productName": "Vigour iOS Test App",
           "organizationName": "Vigour",
@@ -44,10 +55,10 @@
           "appIcon": "assets/img/appIcon.png",
           "splashScreen": "assets/img/splash.png",
           "NSAllowsArbitraryLoads": true,
-					"interfaceOrientations": {
-						"iPhone":["Portrait"],
-						"iPad":["Portrait", "LandscapeLeft", "UpsideDown", "LandscapeRight"]
-					},
+          "interfaceOrientations": {
+            "iPhone":["Portrait"],
+            "iPad":["Portrait", "LandscapeLeft", "UpsideDown", "LandscapeRight"]
+          },
           "assets": {
             "build.html": true,
             "build.js": true,
@@ -91,12 +102,22 @@
             "build.css": true
           }
         },
+        "webostv": {
+          "productName": "Vigour LG Example",
+          "appinfo":{
+            "domain":"com.vigour11.io",
+            "name":"Vigour Example new build"
+          }
+        },
+        "chromecastweb": {
+        },
         "lgtv": {
           "productName": "Vigour LG Test App",
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "assets": "*"
           }
         }
       }
