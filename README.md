@@ -158,6 +158,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [X] web browsers
   - [X] iOS
   - [X] android
+  - [X] lg net cast TV (old platform)
   - [ ] lg TV
   - [ ] samsung TV
   - [ ] chromecast

@@ -9,7 +9,8 @@
     "ios": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"ios\"}'",
     "android": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"android\"}'",
     "samsungtv": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"samsungtv\"}'",
-    "web": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"web\"}'"
+    "web": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"web\"}'",
+    "netcasttv": "npm run build && ../../bin/build.js build --native '{\"selectedPlatforms\":\"netcasttv\"}'"
   },
   "repository": {
     "type": "git",
@@ -98,6 +99,14 @@
             "build.html": true,
             "build.js": true,
             "build.css": true
+          }
+        },
+        "netcasttv":{
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true,
+            "assets": "*"
           }
         },
         "lgtv": {
