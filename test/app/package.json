@@ -11,6 +11,7 @@
     "samsungtv": "npm run build && ../../bin/build.js build --native.selectedPlatforms samsungtv",
     "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
     "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
+    "netcasttv": "npm run build && ../../bin/build.js build --native.selectedPlatforms netcasttv",
     "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
   },
   "repository": {
@@ -102,6 +103,14 @@
             "build.css": true
           }
         },
+        "netcasttv":{
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true,
+            "assets": "*"
+          }
+        },
         "webostv": {
           "productName": "Vigour LG Example",
           "appinfo":{
@@ -110,15 +119,6 @@
           }
         },
         "chromecastweb": {
-        },
-        "lgtv": {
-          "productName": "Vigour LG Test App",
-          "assets": {
-            "build.html": true,
-            "build.js": true,
-            "build.css": true,
-            "assets": "*"
-          }
         }
       }
     }
