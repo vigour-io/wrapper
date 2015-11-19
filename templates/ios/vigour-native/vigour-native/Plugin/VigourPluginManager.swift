@@ -23,6 +23,9 @@ struct VigourPluginManager {
     
     static func registerPlugin<T:VigourPluginProtocol>(id: String, type: T.Type) {
         VigourPluginManager.pluginTypeMap[id] = type
+        #if DEBUG
+            print("*****PLUGIN \(id) REGISTERED*****")
+        #endif
     }
     
 }

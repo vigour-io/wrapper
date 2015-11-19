@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */; };
+		492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */; };
+		492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */; };
+		4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492195391BFE88C200EB8AF5 /* Facebook.swift */; };
 		4959BE281BF3DC1F00F7B310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE271BF3DC1F00F7B310 /* Assets.xcassets */; };
 		4959BE361BF3DC1F00F7B310 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE351BF3DC1F00F7B310 /* vigour_nativeTests.swift */; };
 		4959BE411BF3DC1F00F7B310 /* vigour_nativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */; };
@@ -44,7 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		492195271BFDB91100EB8AF5 /* VigourNative-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VigourNative-Bridging-Header.h"; path = "vigour-native/VigourNative-Bridging-Header.h"; sourceTree = "<group>"; };
+		492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		492195381BFE84A400EB8AF5 /* Vigour-Native-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vigour-Native-Bridging-Header.h"; sourceTree = "<group>"; };
+		492195391BFE88C200EB8AF5 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
 		4959BE1D1BF3DC1F00F7B310 /* vigour-native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vigour-native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4959BE271BF3DC1F00F7B310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4959BE2C1BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,7 +83,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
 				4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */,
+				492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */,
+				492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +110,9 @@
 		492195261BFDB39600EB8AF5 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */,
+				492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */,
+				492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */,
 			);
 			name = Vendor;
 			path = "vigour-native/Vendor";
@@ -107,7 +121,7 @@
 		4959BE141BF3DC1F00F7B310 = {
 			isa = PBXGroup;
 			children = (
-				492195271BFDB91100EB8AF5 /* VigourNative-Bridging-Header.h */,
+				492195381BFE84A400EB8AF5 /* Vigour-Native-Bridging-Header.h */,
 				492195261BFDB39600EB8AF5 /* Vendor */,
 				4959BE751BF3DDF800F7B310 /* Frameworks */,
 				4959BE4E1BF3DC4E00F7B310 /* www */,
@@ -179,6 +193,7 @@
 				4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */,
 				4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */,
 				4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */,
+				492195391BFE88C200EB8AF5 /* Facebook.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -329,6 +344,7 @@
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
 				4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */,
 				4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */,
+				4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */,
 				4959BE6B1BF3DD1700F7B310 /* VigourPlugin.swift in Sources */,
 				4959BE6C1BF3DD1700F7B310 /* VigourPluginManager.swift in Sources */,
 				4959BE661BF3DD1700F7B310 /* VigourBridge.swift in Sources */,
@@ -467,12 +483,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vigour-native/Vendor",
+				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VigourNative-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -482,12 +502,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vigour-native/Vendor",
+				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "VigourNative-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 			};
 			name = Release;
 		};
