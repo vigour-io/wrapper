@@ -46,7 +46,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        config.mediaPlaybackRequiresUserAction = false
+        config.requiresUserActionForMediaPlayback = false
         config.userContentController = self.userContentController
         return config
     }()
@@ -109,6 +109,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
     }
+    
     
     //MARK: - WKNavigationDelegate
     

@@ -57,8 +57,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
             self?.makePluginsAvailable()
         }
         
-        //TODO: call generic ready
-        //
+        sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: JSObject(["bridge":"ready"]), pluginId: nil))
     }
     
     private final func makePluginsAvailable() {
@@ -67,14 +66,15 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
             if let plug = VigourPluginManager.pluginTypeMap[pluginId] {
                 
                 //get an insance or shared instance
-                let p = plug.instance()
+                var p = plug.instance()
+                p.delegate = delegate
                 
                 //call
                 do {
                     try sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: p.onReady(), pluginId: pluginId))
                 }
                 catch VigourBridgeError.PluginError(let message, let pluginId) {
-                    //TODO: throw it to js side!
+                    sendJSMessage(VigourBridgeSendMessage.Error(error: JSError(title:"Plugin Error", description: message, todo:""), pluginId: pluginId))
                 }
                 catch let error as NSError {
                     
@@ -98,8 +98,13 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         if let plug = VigourPluginManager.pluginTypeMap[message.pluginId] {
             
             //get an insance or shared instance
-            let p = plug.instance()
+            var p = plug.instance()
 
+            //set delegate to be sure if instance is not a shared instance
+            if let d = delegate {
+                p.delegate = d
+            }
+            
             //call the method
             do {
                 try p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
@@ -114,7 +119,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 })
             }
             catch VigourBridgeError.PluginError(let message, let pluginId) {
-                //TODO: throw it to js side!
+                sendJSMessage(VigourBridgeSendMessage.Error(error: JSError(title:"Plugin Error", description: message, todo:""), pluginId: pluginId))
             }
             catch let error as NSError {
                 print(error.localizedDescription)

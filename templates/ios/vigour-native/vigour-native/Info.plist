@@ -59,5 +59,9 @@
     <string>1523994961255055</string>
     <key>FacebookDisplayName</key>
     <string>Vigorous Testing</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbauth2</string>
+    </array>
 </dict>
 </plist>
