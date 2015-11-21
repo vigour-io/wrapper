@@ -13,6 +13,7 @@ import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
+import io.vigour.nativewrapper.plugin.core.BridgeInterface;
 import io.vigour.nativewrapper.plugin.core.PluginManager;
 
 //-- start plugin imports
@@ -22,6 +23,48 @@ public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
     private ViewGroup webViewContainer;
+
+    BridgeInterface bridgeInterface = new BridgeInterface() {
+        @Override
+        public void result(final int callId, final String error, final String response) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', '%s')", callId, error, response), null);
+                }
+            });
+        }
+
+        @Override
+        public void error(final String error, final String pluginId) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.error('%s', '%s')", error, pluginId), null);
+                }
+            });
+        }
+
+        @Override
+        public void ready(final String error, final String response, final String pluginId) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.ready('%s', '%s', '%s')", error, response, pluginId), null);
+                }
+            });
+        }
+
+        @Override
+        public void receive(final String error, final String message, final String pluginId) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.receive('%s', '%s', '%s')", error, message, pluginId), null);
+                }
+            });
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +104,8 @@ public class MainActivity extends ActionBarActivity {
         PluginManager pluginManager = new PluginManager();
 
         XWalkView webview = new XWalkView(this, this);
-        webview.addJavascriptInterface(new NativeInterface(this, webview, pluginManager), "NativeInterface");
+        NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
+        webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
         String url = getResources().getString(R.string.index_path);
         webview.load("file:///android_asset/" + url, null);
@@ -77,6 +121,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
         if (webview != null) {
+            bridgeInterface.receive("", "pause", "");
             webview.pauseTimers();
             webview.onHide();
         }
@@ -86,6 +131,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         if (webview != null) {
+            bridgeInterface.receive("", "resume", "");
             webview.resumeTimers();
             webview.onShow();
         }

@@ -1,6 +1,8 @@
-# vigour-native
+# Wrapper
 
 Builds a set of native apps from a single javascript codebase.
+
+`npm install vigour-wrapper`
 
 ## Dependencies
 
@@ -13,7 +15,24 @@ Builds a set of native apps from a single javascript codebase.
 
 ## Usage
 
-Declaring vigour-native as a dependency to a project make an executable called vNative accessible. You can then build the project with `vNative build` or `vNative build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
+Declaring vigour-native as a dependency to a project make an executable called `wrapper` accessible. You can then build the project with `wrapper build` or `wrapper build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
+
+
+###Observations:
+
+####Lg webos Tv
+For Lg webostv, a manually process is required before run the build script. Lg uses a SDK to generate ipk files, and this SDK is not available on npm. To download the SDK just go to [LG developer web site](http://developer.lge.com/webOSTV/sdk/web-sdk/sdk-installation/), and follow the steps. If you want to understand more about the SDK CLI you can [read more here](http://developer.lge.com/webOSTV/sdk/web-sdk/webos-tv-cli/using-webos-tv-cli/ ).
+
+##### specific details:
+ - Use the default folder path when installing the SDK
+
+ - The build process only uses the SDK CLI. It means that you can install only the CLI from SDK the package.
+
+ - ```ares-package ``` comand is used by the build script to generate the IPK file using the SDK CLI.
+
+ - The IPK file name is generated automatically, it uses the ```id``` property in ```appinfo.json``` to generate it.
+
+
 
 ## Tests
 
@@ -22,8 +41,8 @@ Most of the tests expect to find the `vigour-example` repo in the same directory
 ## In-script usage
 
 ```
-var vNative = require('vigour-native')
-vNative.build({
+var wrapper = require('vigour-native')
+wrapper.build({
   src: './src'
   , dest: './build'
   , splash: './img/splash.png'
@@ -54,9 +73,9 @@ vNative.build({
 
 **Also works with promises**
 ```
-var vNative = require('vigour-native')
+var wrapper = require('vigour-native')
   , Promise = require('promise') // `npm i promise`
-  , build = Promise.denodeify(vNative.build)
+  , build = Promise.denodeify(wrapper.build)
 build({...})
 .then(function (meta) {
   console.log("Build done in " + meta.time + "ms")
@@ -158,8 +177,46 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [X] web browsers
   - [X] iOS
   - [X] android
-  - [_] lg TV
-  - [_] samsung TV
-  - [_] chromecast
-  - [_] iWatch
-  - [_] windows phone
+  - [X] lg net cast TV (old platform)
+  - [ ] lg TV
+  - [X] lg Webos TV
+  - [ ] samsung TV
+  - [x] chromecast
+  - [ ] iWatch
+  - [ ] windows phone
+
+<a name='contacts'></a>
+## Contacts
+
+#### Vigour
+
+* **Valerio Barrila**, team leader, responsible for team organization and project execution
+  * *Slack:* valerio
+  * *Skype:* valerio.barrila
+  * *Email:* valerio@vigour.io
+  * *Phone:* +31 645 013 981
+* **Shawn Inder**, main developer, responisble for core components
+  * *Slack:* shawn
+  * *Skype:* shawnfinder
+  * *Email:* shawn@vigour.io
+  * *Phone canada:* 1-514-903-9082
+  * *Phone nl:* +31628959682
+* **Renan Carvalho**, developer, responsible for web and tv's
+  * *Slack:* renan
+  * *Email:* renan@vigour.io
+  * *Skype:* renanacarvalho
+  * *Phone:* +31 633 882 626
+#### External collaborators
+
+* **Alexander van der Werff**, ios developer
+  * *Slack:* werffmeister
+  * *Skype:* avanderwerff
+  * *Email:* meister@alexandervanderwerff.com
+* **Michiel van Liempt**, android developer
+  * *Slack:* michiel
+  * *Skype:* michielvanliemptsoftware
+  * *Email:* michiel@vigour.io
+* **David Bina**, plugins developer (ios, android)
+  * *Slack:* vidbina
+  * *Skype:* kingvidbina
+  * *Email:* david@supr.nu

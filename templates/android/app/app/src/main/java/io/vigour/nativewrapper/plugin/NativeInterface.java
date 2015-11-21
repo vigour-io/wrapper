@@ -22,12 +22,14 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 public class NativeInterface {
     private final Activity context;
     private final XWalkView webView;
+    private final BridgeInterface bridgeInterface;
     private PluginManager pluginManager;
 
-    public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager) {
+    public NativeInterface(Activity context, XWalkView webView, PluginManager pluginManager, BridgeInterface bridgeInterface) {
         this.context = context;
         this.webView = webView;
         this.pluginManager = pluginManager;
+        this.bridgeInterface = bridgeInterface;
 
         webView.setUIClient(new XWalkUIClient(webView) {
             @Override
@@ -84,47 +86,4 @@ public class NativeInterface {
         bridgeInterface.ready("", "", "");
         pluginManager.notifyReady(bridgeInterface);
     }
-
-    private BridgeInterface bridgeInterface = new BridgeInterface() {
-        @Override
-        public void result(final int callId, final String error, final String response) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', '%s')", callId, error, response), null);
-                }
-            });
-        }
-
-        @Override
-        public void error(final String error, final String pluginId) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.error('%s', '%s')", error, pluginId), null);
-                }
-            });
-        }
-
-        @Override
-        public void ready(final String error, final String response, final String pluginId) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.ready('%s', '%s', '%s')", error, response, pluginId), null);
-                }
-            });
-        }
-
-        @Override
-        public void receive(final String error, final String message, final String pluginId) {
-            context.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript(String.format("window.vigour.native.bridge.receive('%s', '%s', '%s')", error, message, pluginId), null);
-                }
-            });
-        }
-
-    };
 }

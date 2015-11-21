@@ -1,9 +1,8 @@
-/* global describe, it, expect, before, after, sinon */
 'use strict'
 
 var path = require('path')
 var builderPath = '../../../../lib/builder'
-var builder = require(builderPath)
+var Builder = require(builderPath)
 var AndroidTasks = require(builderPath + '/android')
 var fs = require('vigour-fs/lib/server')
 var Promise = require('promise')
@@ -23,7 +22,8 @@ var repo = path.join(__dirname, '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
 var fixturePath = path.join(__dirname, '..', 'fixtures')
 
-var opts = { configFiles: pkgPath,
+var opts = {
+  _packageDir: pkgPath,
   vigour: {
     native: {
       root: repo,
@@ -40,7 +40,7 @@ var opts = { configFiles: pkgPath,
   }
 }
 
-var timeout = 60 * 1000
+var timeout = 2 * 60 * 1000
 
 describe('android-scripts', function () {
   var android = new AndroidTasks(opts)
@@ -293,7 +293,8 @@ describe('android build', function () {
       this.timeout(timeout)
       var platform = 'android'
       opts.vigour.native.selectedPlatforms = platform
-      return builder(opts)
+      var builder = new Builder(opts)
+      return builder.start()
         .then(checkSuccess)
     })
   after(function () {

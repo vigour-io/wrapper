@@ -1,6 +1,9 @@
-#!/usr/bin/env node --use_strict
+#!/usr/bin/env node
+'use strict'
 
-var pliant = require('pliant')
-var builder = require('../lib/builder')
-var config = require('../lib/builder/config')
-pliant.bin(config, builder)
+var Config = require('vigour-js/lib/config')
+var config = new Config()
+var Service = require('../lib/builder')
+
+var service = new Service(config)
+service.start()

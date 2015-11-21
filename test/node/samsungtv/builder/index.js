@@ -1,20 +1,18 @@
 'use strict'
 
 var path = require('path')
-var builder = require('../../../../lib/builder')
+var Builder = require('../../../../lib/builder')
 
-// TODO Remove dependency on vigour-example being checkout-out in same directory as vigour-native, perhaps by making vigour-example a submodule?
 var repo = path.join(__dirname, '..', '..', '..', 'app')
 var pkgPath = path.join(repo, 'package.json')
-var opts =
-  { configFiles: pkgPath,
-  vigour:
-    { native:
-      {
-        root: repo
-      }
+var opts = {
+  _packageDir: pkgPath,
+  vigour: {
+    native: {
+      root: repo
     }
   }
+}
 
 var options = JSON.stringify(opts)
 var timeout = 5 * 60 * 1000
@@ -26,7 +24,8 @@ describe('samsungtv build', function () {
     var _options = JSON.parse(options)
     var platform = 'samsungtv'
     _options.vigour.native.selectedPlatforms = platform
-    return builder(_options)
+    var builder = new Builder(_options)
+    return builder.start()
       .then(checkSuccess)
   })
 })
