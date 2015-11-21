@@ -122,6 +122,11 @@
           "appinfo": {
             "domain": "com.vigour11.io",
             "name": "Vigour Example new build"
+          },
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
           }
         },
         "chromecastweb": {}
