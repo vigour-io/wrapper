@@ -24,7 +24,7 @@
     "test"
   ],
   "author": "Vigour",
-  "license": "ISC",
+  "license": "MIT",
   "contributors": [
     "Shawn Inder <shawn@vigour.io>"
   ],
@@ -107,8 +107,7 @@
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true,
-            "assets": "*"
+            "build.css": true
           }
         },
         "webostv": {
@@ -119,6 +118,7 @@
           }
         },
         "chromecastweb": {
+
         }
       }
     }
