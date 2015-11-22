@@ -103,6 +103,8 @@
 
         
         </script>
+        <button onclick="console.log('test1', 'test2', ['a', 'b'])">log</button>
+        <button onclick="console.log(false, true)">log</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)">login</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(logoutMessage)">logout</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(shareMessage)">share</button>
