@@ -25,7 +25,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     
     var shareCompletionHandler:pluginResult?
     
-    static let pluginId = "vigour-facebook"
+    static let pluginId = "io.vigour.facebook"
     
     weak var delegate: VigourViewController? {
         didSet {
