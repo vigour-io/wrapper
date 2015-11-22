@@ -89,18 +89,24 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
                 return
             }
             else if result != nil {
-                completionHandler(nil, JSObject(
-                    ["authResponse":
-                        [
-                            "accessToken":result.token.tokenString,
-                            "userID":result.token.userID,
-                            "expiresIn":result.token.expirationDate.description
-                        ],
-                        "isCancelled":result.isCancelled,
-                        "grantedPermission":Array(result.grantedPermissions),
-                        "declinedPermissions":Array(result.declinedPermissions),
+                var repsonse:[String:NSObject] = [
+                    "isCancelled":result.isCancelled
+                ]
+                if result.grantedPermissions != nil {
+                    repsonse["grantedPermissions"] = Array(result.grantedPermissions)
+                }
+                if result.declinedPermissions != nil {
+                    repsonse["declinedPermissions"] = Array(result.declinedPermissions)
+                }
+                if result.token != nil {
+                    let auth = [
+                        "accessToken":result.token.tokenString != nil ? result.token.tokenString : "",
+                        "userID":result.token.userID != nil ? result.token.userID : "",
+                        "expiresIn":result.token.expirationDate != nil ? result.token.expirationDate.description : ""
                     ]
-                ))
+                    repsonse["authResponse"] = auth
+                }
+                completionHandler(nil, JSObject(repsonse))
             }
         })
     }
