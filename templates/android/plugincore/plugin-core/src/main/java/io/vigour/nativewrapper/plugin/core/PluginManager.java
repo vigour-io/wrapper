@@ -40,4 +40,12 @@ public class PluginManager {
         }
 
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Object data) {
+        for (Plugin plugin : plugins.values()) {
+            if (plugin instanceof ActivityResultListener) {
+                ((ActivityResultListener) plugin).onActivityResult(requestCode, resultCode, data);
+            }
+        }
+    }
 }
