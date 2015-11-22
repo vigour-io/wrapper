@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.0.0",
+  "version": "2.0.4",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
     "test-android": "gaston test -r node -s test/node/android/",
     "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/",
+    "test-netcasttv": "npm run buildtestapp && gaston test -r node -s test/node/netcasttv/",
     "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
     "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/"
   },

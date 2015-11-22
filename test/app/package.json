@@ -1,6 +1,6 @@
 {
   "name": "test-app",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Test app for vigour-native",
   "scripts": {
     "test": "gaston test",
@@ -11,6 +11,7 @@
     "samsungtv": "npm run build && ../../bin/build.js build --native.selectedPlatforms samsungtv",
     "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
     "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
+    "netcasttv": "npm run build && ../../bin/build.js build --native.selectedPlatforms netcasttv",
     "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
   },
   "repository": {
@@ -23,7 +24,7 @@
     "test"
   ],
   "author": "Vigour",
-  "license": "ISC",
+  "license": "MIT",
   "contributors": [
     "Shawn Inder <shawn@vigour.io>"
   ],
@@ -56,8 +57,15 @@
           "splashScreen": "assets/img/splash.png",
           "NSAllowsArbitraryLoads": true,
           "interfaceOrientations": {
-            "iPhone":["Portrait"],
-            "iPad":["Portrait", "LandscapeLeft", "UpsideDown", "LandscapeRight"]
+            "iPhone": [
+              "Portrait"
+            ],
+            "iPad": [
+              "Portrait",
+              "LandscapeLeft",
+              "UpsideDown",
+              "LandscapeRight"
+            ]
           },
           "assets": {
             "build.html": true,
@@ -102,24 +110,26 @@
             "build.css": true
           }
         },
-        "webostv": {
-          "productName": "Vigour LG Example",
-          "appinfo":{
-            "domain":"com.vigour11.io",
-            "name":"Vigour Example new build"
-          }
-        },
-        "chromecastweb": {
-        },
-        "lgtv": {
-          "productName": "Vigour LG Test App",
+        "netcasttv": {
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true,
-            "assets": "*"
+            "build.css": true
           }
-        }
+        },
+        "webostv": {
+          "productName": "Vigour LG Example",
+          "appinfo": {
+            "domain": "com.vigour11.io",
+            "name": "Vigour Example new build"
+          },
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "chromecastweb": {}
       }
     }
   },
