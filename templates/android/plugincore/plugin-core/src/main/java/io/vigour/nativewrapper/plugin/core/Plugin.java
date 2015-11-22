@@ -14,12 +14,13 @@ public class Plugin {
     public Plugin(String name) {
         this.name = name;
         for (Method m : getClass().getMethods()) {
-            if (m.getDeclaringClass() == getClass()) {
+            if (m.getDeclaringClass() == getClass() &&
+                    m.getParameterTypes().length < 2) {
                 register(new ReflectivePluginFunction(m.getName(), m, this));
             }
         }
     }
-    
+
     public String getName() {
         return name;
     }
