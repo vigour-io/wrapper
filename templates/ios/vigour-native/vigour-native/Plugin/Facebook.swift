@@ -22,11 +22,11 @@ enum VigourFacebookMethod: String {
 class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
 
     private static let sharedInstance = Facebook()
-    
+
     var shareCompletionHandler:pluginResult?
-    
-    static let pluginId = "io.vigour.facebook"
-    
+
+    static let pluginId = "vigour-facebook"
+
     weak var delegate: VigourViewController? {
         didSet {
             #if DEBUG
@@ -34,23 +34,23 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             #endif
         }
     }
-    
+
     static func instance() -> VigourPluginProtocol {
         return sharedInstance
     }
-    
+
     func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: pluginResult) throws {
         if let method = VigourFacebookMethod(rawValue: name) {
             switch method {
             case .Login:
-                
+
                 //check if scope is passed
                login(args?.objectForKey("scope") as? [String] ?? [], completionHandler: completionHandler)
-                
+
             case .Logout:
-                
+
                 logout(completionHandler)
-                
+
             case .Share:
                 let shareValue = FacebookShareValue(
                                 title: args?.objectForKey("title") as? String ?? "Vigour is awsome!",
@@ -66,19 +66,19 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         }
 
     }
-    
+
     func onReady() throws -> JSObject {
-        
+
         //init stuff
-        
+
         return JSObject([Facebook.pluginId:"ready"])
     }
-    
+
     //Methods
     private func login(scope:[String], completionHandler: pluginResult) {
-        
+
         let loginMgr = FBSDKLoginManager()
-        
+
         //The view controller to present from. If nil, the topmost view controller will be automatically determined as best as possible.
         loginMgr.logInWithReadPermissions(scope, fromViewController: nil, handler: { (result, error) -> Void in
             if error != nil {
@@ -110,13 +110,13 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             }
         })
     }
-    
+
     private func logout(completionHandler: pluginResult) {
         let loginMgr = FBSDKLoginManager()
         loginMgr.logOut()
         completionHandler(nil, JSObject([:]))
     }
-    
+
     private func share(shareValue: FacebookShareValue, completionHandler: pluginResult) {
         shareCompletionHandler = completionHandler
         #if DEBUG
@@ -137,10 +137,10 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             FBSDKShareDialog.showFromViewController(d, withContent: content, delegate: self)
         }
     }
-    
-    
+
+
     //MARK: - FBSDKSharingDelegate
-    
+
     func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
         #if DEBUG
             print("SHARING COMPLETED:: \(results)")
@@ -149,7 +149,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             completionHandler(nil, JSObject(["message":"share completed"]))
         }
     }
-    
+
     func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
         #if DEBUG
             print("SHARING ERROR:: \(error)")
@@ -158,7 +158,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             completionHandler(JSError(title: "Facebook plugin error: \(error.code)", description: error.localizedDescription, todo: error.localizedRecoverySuggestion), JSObject([:]))
         }
     }
-    
+
     func sharerDidCancel(sharer: FBSDKSharing!) {
         #if DEBUG
             print("SHARING CANCELLED")
@@ -167,5 +167,5 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             completionHandler(nil, JSObject([:]))
         }
     }
-    
+
 }
