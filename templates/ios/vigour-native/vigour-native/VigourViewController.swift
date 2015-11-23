@@ -35,7 +35,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
         #if DEBUG
-        let source = "console.log = function(msg){window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
         let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
         controller.addUserScript(script)
         #endif
@@ -46,7 +46,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        config.mediaPlaybackRequiresUserAction = false
+        config.requiresUserActionForMediaPlayback = false
         config.userContentController = self.userContentController
         return config
     }()
@@ -109,6 +109,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
     }
+    
     
     //MARK: - WKNavigationDelegate
     

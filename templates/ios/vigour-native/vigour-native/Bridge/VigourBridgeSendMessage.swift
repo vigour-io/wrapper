@@ -117,7 +117,7 @@ enum VigourBridgeSendMessage: JSStringProtocol {
             
         case .Result(let error, let callbackId, let response):
             
-            js = String(format: scriptMessageResultCallbackTpl, callbackId, errorJSString(error), response.jsString())
+            js = String(format: scriptMessageResultCallbackTpl, errorJSString(error), callbackId, response.jsString())
             
         case .Receive(let error, let message, let pluginId):
             

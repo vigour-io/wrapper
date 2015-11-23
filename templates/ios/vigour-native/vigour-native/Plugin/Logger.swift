@@ -19,7 +19,7 @@ struct Logger: VigourPluginProtocol {
     func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
         switch(name) {
         case "log":
-            if let message = args?.objectForKey("message") as? String {
+            if let message = args?.objectForKey("message") {
                 log(message)
             }
         default:break
@@ -38,7 +38,7 @@ struct Logger: VigourPluginProtocol {
     
     //MARK: - Plugin implementation
     
-    func log(message: String) {
+    func log(message: AnyObject) {
         print("<Vigour Log> \(message)\n")
     }
     
