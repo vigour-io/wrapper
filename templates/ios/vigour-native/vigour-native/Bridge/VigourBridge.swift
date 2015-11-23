@@ -75,15 +75,17 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                     sendJSMessage(VigourBridgeSendMessage.Error(error: JSError(title:"Plugin Error", description: message, todo:""), pluginId: pluginId))
                 }
                 catch let error as NSError {
-
+                    print(error.localizedDescription)
                 }
             }
         }
     }
 
     internal final func sendJSMessage(message: VigourBridgeSendMessage) {
-        print("Sending")
-        print(message)
+        #if DEBUG
+            print("Sending")
+            print(message)
+        #endif
         if let d = delegate, webView = d.webView {
             webView.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
                 if error != nil {
@@ -94,8 +96,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     }
 
     internal final func receiveBridgeMessage(message:VigourBridgeReceiveMessage) {
-        print("Receiving")
-        print(message)
+        #if DEBUG
+            print("Receiving")
+            print(message)
+        #endif
         if let plug = VigourPluginManager.pluginTypeMap[message.pluginId] {
 
             //get an insance or shared instance
@@ -111,7 +115,9 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 try p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
 
                     if error != nil {
-                        print(error)
+                        #if DEBUG
+                            print(error)
+                        #endif
                         self?.sendJSMessage(VigourBridgeSendMessage.Error(error: error, pluginId: message.pluginId))
                     }
                     else if let callbackId = message.callbackId {
