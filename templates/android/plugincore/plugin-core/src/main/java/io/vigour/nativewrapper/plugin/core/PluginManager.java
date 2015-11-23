@@ -8,10 +8,17 @@ import java.util.TreeMap;
  */
 public class PluginManager {
 
+    BridgeEvents bridgeEventInterface;
+
     private Map<String, Plugin> plugins = new TreeMap<>();
+
+    public PluginManager(BridgeEvents bridgeEventInterface) {
+        this.bridgeEventInterface = bridgeEventInterface;
+    }
 
     public void register(Plugin plugin) {
         plugins.put(plugin.getName(), plugin);
+        plugin.setEventInterface(bridgeEventInterface);
     }
 
     public void execute(CallContext context) {
@@ -32,6 +39,7 @@ public class PluginManager {
     public void notifyReady(BridgeInterface bridge) {
         for (Plugin plugin : plugins.values()) {
             try {
+                plugin.setEventInterface(bridge);
                 String message = plugin.getReadyMessage();
                 bridge.ready("", message, plugin.getName());
             } catch (Exception e) {
