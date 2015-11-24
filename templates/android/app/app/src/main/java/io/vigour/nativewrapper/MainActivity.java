@@ -27,6 +27,7 @@ public class MainActivity extends ActionBarActivity {
     BridgeInterface bridgeInterface = new BridgeInterface() {
         @Override
         public void result(final int callId, final String error, final String response) {
+            Log.i("Sending result:", String.format("{ callId: %d, error: '%s', response: '%s' }", callId, error, response));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -37,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void error(final String error, final String pluginId) {
+            Log.i("Sending error:", String.format("{ error: '%s', pluginId: '%s' }", error, pluginId));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -47,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void ready(final String error, final String response, final String pluginId) {
+            Log.i("Sending ready:", String.format("{ error: '%s', response: '%s', pluginId: '%s' }", error, response, pluginId));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -57,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void receive(final String error, final String message, final String pluginId) {
+            Log.i("Sending receive:", String.format("{ error: '%s', message: '%s', pluginId: '%s' }", error, message, pluginId));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
