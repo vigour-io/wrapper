@@ -1,5 +1,5 @@
 'use strict'
-var Observable = require('vjs/lib/observable')
+var Observable = require('vigour-js/lib/observable')
 
 describe('BridgeObservable', function () {
   var BridgeObservable
