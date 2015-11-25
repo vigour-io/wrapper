@@ -65,6 +65,7 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
+    "vigour-config": "0.0.3",
     "vigour-element": "0.0.3",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",

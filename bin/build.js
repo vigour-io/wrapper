@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
-var Config = require('vigour-js/lib/config')
+var Config = require('vigour-config')
 var config = new Config()
 var Service = require('../lib/builder')
 
