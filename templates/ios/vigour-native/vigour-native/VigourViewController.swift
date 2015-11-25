@@ -11,9 +11,9 @@
 import WebKit
 import UIKit
 
-class VigourViewController: UIViewController, WKUIDelegate {
+class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
     
-    let vigourBridge = VigourBridge(pluginManager: VigourPluginManager())
+    var vigourBridge:VigourBridge = VigourBridge()
     
     var statusBarHidden = true {
         didSet {
@@ -35,7 +35,7 @@ class VigourViewController: UIViewController, WKUIDelegate {
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
         #if DEBUG
-        let source = "console.log = function(msg){window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
         let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
         controller.addUserScript(script)
         #endif
@@ -46,7 +46,7 @@ class VigourViewController: UIViewController, WKUIDelegate {
     lazy var configuration: WKWebViewConfiguration = {
         let config = WKWebViewConfiguration()
         config.allowsInlineMediaPlayback = true
-        config.mediaPlaybackRequiresUserAction = false
+        config.requiresUserActionForMediaPlayback = false
         config.userContentController = self.userContentController
         return config
     }()
@@ -80,6 +80,7 @@ class VigourViewController: UIViewController, WKUIDelegate {
         
         webView = WKWebView(frame: CGRectZero, configuration: configuration)
         webView?.UIDelegate = self
+        webView?.navigationDelegate = self
         webView?.scrollView.bounces = false
         view.addSubview(webView!)
         
@@ -87,8 +88,6 @@ class VigourViewController: UIViewController, WKUIDelegate {
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
         let width = NSLayoutConstraint(item: webView!, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1, constant: 0)
         view.addConstraints([height, width])
-        
-//        add Script for catching console.log!!!!
         
     }
     
@@ -110,6 +109,15 @@ class VigourViewController: UIViewController, WKUIDelegate {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
     }
+    
+    
+    //MARK: - WKNavigationDelegate
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        //TODO: maybe wait for some js event...
+        vigourBridge.activate()
+    }
+    
     
     //MARK: - WKUIDelegate
     

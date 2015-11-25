@@ -1,60 +1,112 @@
 <html>
     <body>
         <h1>Vigour.io</h1>
+        <style>
+            button {
+                font-size:20px;
+            }
+        </style>
         <!-- 
             script will work with http is app has setting in info.plist
             http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
          -->
-        <script src="http://mtv-develop.vigour.io/build.js"></script>
+        <!--script src="http://mtv-develop.vigour.io/build.js"></script-->
         <script>
             
             'use strict'
             
-            console.log("Console log should work in debug mode")
-
-            //console.log(window.package["description"])
-
-            function testCallback(cbId, err, response) {
-                if (err) {
-                    alert(err)
-                }
-                else {
-                    alert(response)
-                    alert(cbId)
-                    console.log("back from callback.")
-                }
+            var loginMessage = {
+                pluginId: "vigour-facebook",
+                fnName: "login",
+                opts: {"scope":["public_profile", "email"]},
+                cbId: 0
+            }
+        
+            var logoutMessage = {
+                pluginId: "vigour-facebook",
+                fnName: "logout",
+                opts: {},
+                cbId: 1
+            }
+        
+            //contentURL - the link to be shared
+            //contentTitle - represents the title of the content in the link
+            //imageURL - the URL of thumbnail image that appears on the post
+            //contentDescription - of the content, usually 2-4 sentences
+            var shareMessage = {
+                pluginId: "vigour-facebook",
+                fnName: "share",
+                opts: {"urlString":"http://www.vigour.io", "title":"some title", "description":"some description", "imageUrlString":"https://www.google.nl/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"},
+                cbId: 1
             }
 
             window.vigour = {}
             window.vigour.native = {}
             window.vigour.native.bridge = {}
-            window.vigour.native.bridge.receive = testCallback
-            window.vigour.native.bridge.ready = function(err, response) {
+            window.vigour.native.bridge.error = function error (err, pluginId) {
+                console.log("**ERROR**")
+                if (pluginId) {
+                    console.log(pluginId)
+                }
+                console.log(err)
+            }
+            window.vigour.native.bridge.receive = function receive (err, message, pluginId) {
+                console.log("**RECEIVE**")
+                if (pluginId) {
+                    console.log(pluginId)
+                }
                 if (err) {
-                    alert(err)
+                    console.log(err)
+                }
+                if (message) {
+                    console.log(message)
+                }
+            }
+            window.vigour.native.bridge.result = function receive (cbId, err, response) {
+                console.log("**RESULT**")
+                if (err) {
+                    console.log(err)
+                }
+                if (cbId) {
+                    console.log(cbId)
+                }
+                if (response) {
+                    console.log(response)
+                }
+            }
+            window.vigour.native.bridge.ready = function(err, response, pluginId) {
+                console.log("**READY**")
+                if (err) {
+                    console.log(err)
                 }
                 else {
-                    alert(response)
+                    if (pluginId) {
+                        console.log("PLUGIN::")
+                        console.log(pluginId)
+                    }
+                    console.log(response[pluginId])
+                    if(pluginId == "vigour.logger") {
+                        console.log("Console log should work in debug mode")
+                    }
+                    
+                    else {//generic
+
+                        
+                        if (response["bridge"]) {
+                           // window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)
+                        }
+                    }
+                    
                 }
             }
 
 
-
-            var callbacks = [testCallback]
-
-            function receive (cbId, err, response) {
-                callbacks[cbId](err, response)
-            }
-
-            var message = {
-                pluginId: "vigour.logger",
-                fnName: "log",
-                opts: {},
-                cbId: 0
-            }
-
-            window.webkit.messageHandlers.vigourBridgeHandler.postMessage(message)
-
+        
         </script>
+        <button onclick="console.log('test1', 'test2', ['a', 'b'])">log</button>
+        <button onclick="console.log(false, true)">log</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)">login</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(logoutMessage)">logout</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(shareMessage)">share</button>
     </body>
 </html>

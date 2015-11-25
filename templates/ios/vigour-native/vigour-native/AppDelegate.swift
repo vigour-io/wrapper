@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
+        /** -- PLACEHOLDER FOR PLUGIN GENERATING CODE -- **/
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         copyWWWToTmpFolderIfNeeded(true)
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -53,24 +57,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let filemgr = NSFileManager.defaultManager()
         
-        var error: NSError?
         if filemgr.fileExistsAtPath(webAplicationFolderPath) && !force {
-            if let e = error {
-                print("\(e.localizedDescription)")
-                return
-            }
             return
-        }
-        
-        if #available(iOS 9, *) {
-           
-        } else {
-           
         }
 
         //wkwebview fix for referencing to www folder
         copyFolderToFolder(NSBundle.mainBundle().pathForResource("www", ofType: nil)!, destination: webAplicationFolderPath)
     }
+    
+    /** -- PLACEHOLDER FOR PLUGIN GENERATING CODE -- **/
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+
     
 }
 

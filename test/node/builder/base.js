@@ -1,5 +1,7 @@
-var runTasks = require('../../../lib/builder/runTasks')
-var copyAssets = require('../../../lib/builder/copyAssets')
+'use strict'
+
+var runTasks = require('../../../lib/builder/runtasks')
+var copyAssets = require('../../../lib/builder/copyassets')
 var Promise = require('promise')
 var log = require('npmlog')
 var path = require('path')

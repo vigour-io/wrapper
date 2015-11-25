@@ -1,14 +1,18 @@
 {
   "name": "test-app",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Test app for vigour-native",
   "scripts": {
     "test": "gaston test",
     "build": "gaston build -s src -o . -i",
     "all": "npm run build && ../../bin/build.js build",
-    "ios": "npm run build && ../../bin/build.js build -p ios",
-    "android": "npm run build && ../../bin/build.js build -p android",
-    "samsungtv": "npm run build && ../../bin/build.js build -p samsungtv"
+    "ios": "npm run build && ../../bin/build.js build --native.selectedPlatforms ios",
+    "android": "npm run build && ../../bin/build.js build --native.selectedPlatforms android",
+    "samsungtv": "npm run build && ../../bin/build.js build --native.selectedPlatforms samsungtv",
+    "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
+    "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
+    "netcasttv": "npm run build && ../../bin/build.js build --native.selectedPlatforms netcasttv",
+    "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,7 @@
     "test"
   ],
   "author": "Vigour",
-  "license": "ISC",
+  "license": "MIT",
   "contributors": [
     "Shawn Inder <shawn@vigour.io>"
   ],
@@ -30,11 +34,19 @@
   },
   "homepage": "https://github.com/vigour-io/vigour-native",
   "dependencies": {
-    "plugin": "git+ssh://git@github.com:vigour-io/plugin.git#master"
+    "vigour-plugin": "^1.0.1"
   },
   "vigour": {
     "native": {
       "platforms": {
+        "web": {
+          "appIndexPath": "build.html",
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
         "ios": {
           "productName": "Vigour iOS Test App",
           "organizationName": "Vigour",
@@ -44,6 +56,17 @@
           "appIcon": "assets/img/appIcon.png",
           "splashScreen": "assets/img/splash.png",
           "NSAllowsArbitraryLoads": true,
+          "interfaceOrientations": {
+            "iPhone": [
+              "Portrait"
+            ],
+            "iPad": [
+              "Portrait",
+              "LandscapeLeft",
+              "UpsideDown",
+              "LandscapeRight"
+            ]
+          },
           "assets": {
             "build.html": true,
             "build.js": true,
@@ -79,17 +102,34 @@
               "BigThumbIcon": "assets/img/appIcon.png",
               "ListIcon": "assets/img/appIcon.png",
               "BigListIcon": "assets/img/appIcon.png"
-            },
-            "assets": {
-              "build.html": true,
-              "build.js": true,
-              "build.css": true
             }
+          },
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
           }
         },
-        "lgtv": {
-          "productName": "Vigour LG Test App"
-        }
+        "netcasttv": {
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "webostv": {
+          "productName": "Vigour LG Example",
+          "appinfo": {
+            "domain": "com.vigour11.io",
+            "name": "Vigour Example new build"
+          },
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          }
+        },
+        "chromecastweb": {}
       }
     }
   },

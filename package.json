@@ -1,6 +1,6 @@
 {
-  "name": "vigour-native",
-  "version": "0.0.3",
+  "name": "vigour-wrapper",
+  "version": "2.0.6",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -8,20 +8,22 @@
   },
   "main": "./lib",
   "bin": {
-    "vNative": "bin/build.js"
+    "wrapper": "bin/build.js"
   },
   "scripts": {
     "installtestapp": "./installtestapp.js",
-    "postinstall": "npm run installtestapp",
     "buildtestapp": "./buildtestapp.js",
     "pretest": "npm run buildtestapp",
     "test": "gaston test",
-    "test-bridge": "gaston test -r browser -s test/phantom/bridge/",
-    "test-plugins": "gaston test -r common -s test/common/",
+    "test-bridge": "gaston test -r browser -s test/browser/bridge/",
     "test-builder": "npm run buildtestapp && gaston test -r node -s test/node/builder/",
+    "test-web": "npm run buildtestapp && gaston test -r node -s test/node/web/",
     "test-ios": "npm run buildtestapp && gaston test -r node -s test/node/ios/",
-    "test-android": "npm run buildtestapp && gaston test -r node -s test/node/android/",
-    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/"
+    "test-android": "gaston test -r node -s test/node/android/",
+    "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/",
+    "test-netcasttv": "npm run buildtestapp && gaston test -r node -s test/node/netcasttv/",
+    "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
+    "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -50,25 +52,24 @@
     "colors": "1.0.x",
     "commander": "^2.7.1",
     "concat-stream": "^1.4.8",
-    "element": "git+ssh://git@github.com:vigour-io/element.git#develop",
     "express": "4.12.3",
-    "globby": "^2.1.0",
+    "globby": "^3.0.1",
     "lodash": "^3.10.1",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
     "ncp": "^2.0.0",
-    "npmlog": "0.1.x",
-    "pliant": "git+ssh://git@github.com:vigour-io/pliant.git#develop",
+    "npmlog": "^0.1.1",
     "plist": "^1.1.0",
     "promise": "^6.1.0",
     "rimraf": "^2.3.2",
-    "shutter": "git+ssh@github.com:vigour-io/shutter.git#develop",
     "source-map": "0.1.32",
     "through": "^2.3.4",
+    "vigour-element": "0.0.3",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
-    "vjs": "git+ssh://git@github.com:vigour-io/vjs.git#develop",
+    "vigour-js": "^0.2.2",
+    "vigour-shutter": "^2.0.2",
     "xcode": "^0.8.2"
   },
   "keywords": [
@@ -79,7 +80,7 @@
     "phantom-js",
     "ci"
   ],
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "standard": {
     "globals": [
       "describe",
@@ -91,5 +92,97 @@
       "afterEach",
       "sinon"
     ]
+  },
+  "services": {
+    "sentinel": {
+      "branches": [],
+      "unignoreFolders": []
+    }
+  },
+  "vigour": {
+    "native": {
+      "clean": {
+        "val": false,
+        "description": "clean before build"
+      },
+      "debug": {
+        "val": false,
+        "description": "make a debug build"
+      },
+      "selectedPlatforms": {
+        "val": false,
+        "env": "WRAPPER_PLATFORMS",
+        "description": "Comma-separated list of platforms to build (builds all by default)"
+      },
+      "customPlatform": {
+        "val": false
+      },
+      "run": {
+        "val": false,
+        "description": "wether to install and launch the build on device"
+      },
+      "platforms": {
+        "samsungtv": {
+          "url": {
+            "val": false,
+            "description": "URL to load on app start"
+          },
+          "main": {
+            "val": false,
+            "description": "path to the build.js to include in the build"
+          },
+          "mainHtml": {
+            "val": false,
+            "description": "path to the build.html to include in the build"
+          }
+        },
+        "android": {
+          "version": {
+            "val": "1.0.0",
+            "env": "WRAPPER_VERSION",
+            "description": "version (semver) to be used for the android apk"
+          },
+          "versionCode": {
+            "val": 1,
+            "env": "WRAPPER_VERSIONCODE",
+            "description": "version code (integer) to be used for the andriod apk"
+          },
+          "appIndexPath": {
+            "val": "src/index.html",
+            "description": "path of the apps index file"
+          },
+          "applicationId": {
+            "val": false,
+            "description": "the id of the app (as used in the play store)"
+          },
+          "run": {
+            "val": false,
+            "env": "WRAPPER_ANDROID_RUN",
+            "description": "wether to install and launch the build on device"
+          },
+          "logToFile": {
+            "val": false,
+            "description": "if thruthy the build output is saved to 'android-build.log'"
+          },
+          "keystoreFile": {
+            "val": false,
+            "description": "keystore to sign release build"
+          },
+          "keystorePassword": {
+            "val": false,
+            "env": "KEYSTORE_PASS",
+            "description": "password for the keystore to sign release build"
+          },
+          "keystoreAlias": {
+            "val": false,
+            "description": "alias for the key to sign release build"
+          },
+          "keystoreKeyPassword": {
+            "val": false,
+            "description": "password for the key to sign release build"
+          }
+        }
+      }
+    }
   }
 }
