@@ -114,6 +114,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     private func logout(completionHandler: pluginResult) {
         let loginMgr = FBSDKLoginManager()
         loginMgr.logOut()
+        FBSDKAccessToken.setCurrentAccessToken(nil)
         completionHandler(nil, JSObject([:]))
     }
 
