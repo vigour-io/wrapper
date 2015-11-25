@@ -1,3 +1,9 @@
 'use strict'
 
-require('./global.less')
+require('gaston-tester')
+
+describe('thing', function () {
+  it('should', function () {
+    expect(window).to.exist
+  })
+})

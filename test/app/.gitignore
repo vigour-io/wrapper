@@ -2,3 +2,5 @@ build
 bundles
 build.*
 node_modules
+mocha.js
+mocha.css
