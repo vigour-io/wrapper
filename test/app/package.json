@@ -4,7 +4,7 @@
   "description": "Test app for vigour-native",
   "scripts": {
     "test": "gaston test",
-    "build": "gaston build -s src -o . -i",
+    "build": "gaston bundle -t -s src -o . -i",
     "all": "npm run build && ../../bin/build.js build",
     "ios": "npm run build && ../../bin/build.js build --native.selectedPlatforms ios",
     "android": "npm run build && ../../bin/build.js build --native.selectedPlatforms android",
@@ -44,7 +44,9 @@
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
           }
         },
         "ios": {
@@ -70,7 +72,9 @@
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
           }
         },
         "android": {
@@ -107,14 +111,18 @@
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
           }
         },
         "netcasttv": {
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
           }
         },
         "webostv": {
@@ -126,7 +134,9 @@
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true
+            "build.css": true,
+            "mocha.js": true,
+            "mocha.css": true
           }
         },
         "chromecastweb": {}
