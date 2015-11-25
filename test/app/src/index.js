@@ -1,3 +1,7 @@
 'use strict'
 
-require('./global.less')
+describe('thing', function () {
+  it('should', function () {
+    expect(window).to.exist
+  })
+})
