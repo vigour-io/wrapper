@@ -105,7 +105,7 @@ public class MainActivity extends ActionBarActivity {
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, BuildConfig.DEBUG);
         XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
 
-        PluginManager pluginManager = new PluginManager();
+        PluginManager pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
