@@ -185,5 +185,8 @@
         }
       }
     }
+  },
+  "devDependencies": {
+    "vigour-spawn": "^1.0.0"
   }
 }

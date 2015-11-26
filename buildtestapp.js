@@ -1,6 +1,6 @@
 #!/usr/bin/env node --use_strict
 var path = require('path')
-var spawn = require('./spawn')
+var spawn = require('vigour-spawn')
 
 build()
 
