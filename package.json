@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -65,11 +65,11 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-config": "0.0.3",
-    "vigour-element": "0.0.3",
+    "vigour-config": "~0.0.6",
+    "vigour-element": "~0.0.4",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
-    "vigour-js": "^0.2.2",
+    "vigour-js": "~0.3.0",
     "vigour-shutter": "^2.0.2",
     "xcode": "^0.8.2"
   },
