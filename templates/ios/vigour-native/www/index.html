@@ -29,6 +29,13 @@
                 cbId: 1
             }
         
+            var initMessage = {
+                pluginId: "vigour-facebook",
+                fnName: "init",
+                opts: {},
+                cbId: 2
+            }
+        
             //contentURL - the link to be shared
             //contentTitle - represents the title of the content in the link
             //imageURL - the URL of thumbnail image that appears on the post
@@ -37,7 +44,7 @@
                 pluginId: "vigour-facebook",
                 fnName: "share",
                 opts: {"urlString":"http://www.vigour.io", "title":"some title", "description":"some description", "imageUrlString":"https://www.google.nl/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"},
-                cbId: 1
+                cbId: 3
             }
 
             window.vigour = {}
@@ -93,7 +100,7 @@
 
                         
                         if (response["bridge"]) {
-                           // window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)
+                           window.webkit.messageHandlers.vigourBridgeHandler.postMessage(initMessage)
                         }
                     }
                     
