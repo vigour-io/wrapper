@@ -37,17 +37,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
-        public void error(final String error, final String pluginId) {
-            Log.i("Sending error:", String.format("{ error: '%s', pluginId: '%s' }", error, pluginId));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.error('%s', '%s')", error, pluginId), null);
-                }
-            });
-        }
-
-        @Override
         public void ready(final String error, final String response, final String pluginId) {
             Log.i("Sending ready:", String.format("{ error: '%s', response: '%s', pluginId: '%s' }", error, response, pluginId));
             runOnUiThread(new Runnable() {
