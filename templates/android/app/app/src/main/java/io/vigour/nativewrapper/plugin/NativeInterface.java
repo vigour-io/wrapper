@@ -66,7 +66,7 @@ public class NativeInterface {
         } catch (IOException e) {
             String errorMessage = "exception handling message: " + params + " because: " + e.getMessage();
             errorMessage = errorMessage.replace('\'', '"').replace("\n", "");
-            bridgeInterface.error(errorMessage, "");
+            bridgeInterface.receive("error", errorMessage, "");
         }
     }
 
@@ -91,7 +91,7 @@ public class NativeInterface {
             pluginManager.notifyReady(bridgeInterface);
         } else {
             Log.w("NativeInterface/handle", "unknown event: " + eventName);
-            bridgeInterface.error("unknown event: " + eventName, "");
+            bridgeInterface.receive("error", "unknown event: " + eventName, "");
         }
     }
 }
