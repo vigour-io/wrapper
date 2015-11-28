@@ -20,6 +20,7 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
  * Created by michielvanliempt on 25/03/15.
  */
 public class NativeInterface {
+    private static final String EVENT_BRIDGE_READY = "bridgeReady";
     private final Activity context;
     private final XWalkView webView;
     private final BridgeInterface bridgeInterface;
@@ -78,8 +79,27 @@ public class NativeInterface {
     }
 
     private void handleJsMessage(int callId, String pluginId, String functionName, Object arguments) {
+        if (arguments == null) {
+            arguments = "";
+        }
         Log.i("NativeInterface/handle", String.format("calling %s from plugin %s with arguments %s", functionName, pluginId, arguments.toString()));
-        pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, bridgeInterface));
+        if (pluginId.isEmpty()) {
+            handleEvent(functionName, arguments);
+        } else {
+            pluginManager.execute(new CallContext(callId, pluginId, functionName, arguments, bridgeInterface));
+        }
+    }
+
+    private void handleEvent(String eventName, Object Data) {
+        if (eventName == null || eventName.isEmpty()) {
+            Log.i("NativeInterface/handle", "empty event");
+        } else if (eventName.equals(EVENT_BRIDGE_READY)) {
+            Log.i("NativeInterface/handle", "bridge ready");
+            pluginManager.notifyReady(bridgeInterface);
+        } else {
+            Log.w("NativeInterface/handle", "unknown event: " + eventName);
+            bridgeInterface.error("unknown event: " + eventName, "");
+        }
     }
 
     private void onPageLoaded() {
