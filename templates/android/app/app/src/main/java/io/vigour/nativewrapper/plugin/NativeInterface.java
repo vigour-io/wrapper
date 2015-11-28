@@ -31,14 +31,6 @@ public class NativeInterface {
         this.webView = webView;
         this.pluginManager = pluginManager;
         this.bridgeInterface = bridgeInterface;
-
-        webView.setUIClient(new XWalkUIClient(webView) {
-            @Override
-            public void onPageLoadStopped(XWalkView view, String url, LoadStatus status) {
-                super.onPageLoadStopped(view, url, status);
-                onPageLoaded();
-            }
-        });
     }
 
     @JavascriptInterface
@@ -95,15 +87,11 @@ public class NativeInterface {
             Log.i("NativeInterface/handle", "empty event");
         } else if (eventName.equals(EVENT_BRIDGE_READY)) {
             Log.i("NativeInterface/handle", "bridge ready");
+            bridgeInterface.ready("", "", "");
             pluginManager.notifyReady(bridgeInterface);
         } else {
             Log.w("NativeInterface/handle", "unknown event: " + eventName);
             bridgeInterface.error("unknown event: " + eventName, "");
         }
-    }
-
-    private void onPageLoaded() {
-        bridgeInterface.ready("", "", "");
-        pluginManager.notifyReady(bridgeInterface);
     }
 }
