@@ -1,43 +1,33 @@
 'use strict'
 
 var Plugin = require('../../../lib/plugin')
-var Platform = require('../../../lib/plugin/platform')
 
 describe('Working with Plugins: InverterBoy', function () {
-  var mock = new Platform({
-    on: {
-      init: {
-        mock (data, event) {
-          setTimeout(() => {
-            this.ready.val = true
-          }, 100)
-        }
-      },
-      invert: {
-        mock (data, event) {
-          var type = typeof data
-          if (type === 'string') {
-            var string = this.lookUp(type)
-            string.set(data.split('').reverse().join(''), event)
+  var inverterBoy = new Plugin({
+    platform: {
+      on: {
+        init: {
+          mock (data, event) {
+            setTimeout(() => {
+              this.ready.val = true
+            }, 100)
+          }
+        },
+        invert: {
+          mock (data, event) {
+            var type = typeof data
+            if (type === 'string') {
+              var string = this.lookUp(type)
+              string.set(data.split('').reverse().join(''), event)
+            }
           }
         }
       }
-    }
-  })
-
-  var inverterBoy = new Plugin({
-    platform: mock,
+    },
     string: {
       on: {
         data (data, event) {
           this.platform.emit('invert', this.val, event)
-        }
-      }
-    },
-    array: {
-      on: {
-        data (data, event) {
-          this.platform.emit('invert', data, event)
         }
       }
     }
@@ -46,7 +36,7 @@ describe('Working with Plugins: InverterBoy', function () {
   it('set a string', function (done) {
     inverterBoy.string.val = 'helloworld'
     setTimeout(function () {
-      expect(inverterBoy.string.val !== 'dlrowolleh').ok
+      expect(inverterBoy.string.val).equals('helloworld')
       expect(inverterBoy.initialised.val === true).ok
       expect(inverterBoy.ready.val === false).ok
       expect(inverterBoy.loading.val).ok
@@ -83,42 +73,40 @@ describe('Working with Plugins: InverterBoy', function () {
 })
 
 describe('Working with Plugins: Social', function () {
-  var mock = new Platform({
-    on: {
-      init: {
-        mock (data, event) {
-          setTimeout(() => {
-            this.ready.val = true
-          }, 20)
-        }
-      },
-      login: {
-        mock (data, event) {
-          this.loading.val = 'login'
-          setTimeout(() => {
-            this.loggedin.val = true
-            if (this.loading.val === 'login') {
-              this.loading.val = false
-            }
-          }, 10)
-        }
-      },
-      logout: {
-        mock (data, event) {
-          this.loading.val = 'logout'
-          setTimeout(() => {
-            this.loggedin.val = false
-            if (this.loading.val === 'logout') {
-              this.loading.val = false
-            }
-          }, 5)
+  var social = new Plugin({
+    platform: {
+      on: {
+        init: {
+          mock (data, event) {
+            setTimeout(() => {
+              this.ready.val = true
+            }, 20)
+          }
+        },
+        login: {
+          mock (data, event) {
+            this.loading.val = 'login'
+            setTimeout(() => {
+              this.loggedin.val = true
+              if (this.loading.val === 'login') {
+                this.loading.val = false
+              }
+            }, 10)
+          }
+        },
+        logout: {
+          mock (data, event) {
+            this.loading.val = 'logout'
+            setTimeout(() => {
+              this.loggedin.val = false
+              if (this.loading.val === 'logout') {
+                this.loading.val = false
+              }
+            }, 5)
+          }
         }
       }
-    }
-  })
-
-  var social = new Plugin({
-    platform: mock,
+    },
     loggedin: false,
     user: {
       on: {
