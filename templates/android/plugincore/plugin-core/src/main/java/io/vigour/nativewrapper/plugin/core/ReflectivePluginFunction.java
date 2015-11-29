@@ -23,7 +23,7 @@ public class ReflectivePluginFunction implements PluginFunction {
     }
 
     @Override
-    public String run(Object arguments) throws InvocationTargetException, IllegalAccessException {
+    public Object run(Object arguments) throws InvocationTargetException, IllegalAccessException {
 
         Object result = null;
         if (method.getParameterTypes().length == 0) {
@@ -33,9 +33,9 @@ public class ReflectivePluginFunction implements PluginFunction {
         }
 
         if (result == null) {
-            return "ok";
+            return "";
         }
-        return result.toString();
+        return result;
     }
 
     @Override
