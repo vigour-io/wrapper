@@ -12,32 +12,21 @@ describe('Working with Plugins: InverterBoy', function () {
             this.ready.val = true
           }, 100)
         }
-      }//,
-      // invert: {
-      //   mock (data, event) {
-      //     var type = typeof data
-      //     if (type === 'string') {
-      //       this.string.set(data.split('').reverse().join(''), event)
-      //     }
-      //   }
-      // }
+      }
     },
     string: {
       on: {
         data: {
-          condition (data, next, event){
+          condition (data, next, event) {
             setTimeout(() => {
-              console.log('--->next')
-              next(false, 'ballz')
+              next(false, data.split('').reverse().join(''))
             }, 100)
           },
           mock (data, event) {
+            this.set(data, event)
             console.error(data, event)
           }
         }
-        //  (data, event) {
-        //   this.parent.emit('invert', this.val, event)
-        // }
       }
     }
   })
@@ -45,6 +34,10 @@ describe('Working with Plugins: InverterBoy', function () {
   it('set a string', function (done) {
     inverterBoy.string.val = 'helloworld'
     done()
+    console.log(inverterBoy.string.val)
+    setTimeout(function(){
+      console.log(inverterBoy.string.val)
+    },1000)
     // setTimeout(function () {
     //   expect(inverterBoy.string.val).equals('helloworld')
     //   expect(inverterBoy.initialised.val === true).ok
