@@ -71,7 +71,8 @@
     "vigour-fs-promised": "^2.0.0",
     "vigour-js": "~0.3.0",
     "vigour-shutter": "^2.0.2",
-    "xcode": "^0.8.2"
+    "xcode": "^0.8.2",
+    "bluebird": "3.0.x"
   },
   "keywords": [
     "gaston",
