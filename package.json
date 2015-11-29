@@ -66,7 +66,7 @@
     "source-map": "0.1.32",
     "through": "^2.3.4",
     "vigour-config": "~0.0.6",
-    "vigour-element": "~0.0.4",
+    "vigour-element": "~0.2.0",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
     "vigour-js": "~0.3.0",
