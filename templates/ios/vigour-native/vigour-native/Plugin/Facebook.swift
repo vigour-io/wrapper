@@ -16,7 +16,7 @@ struct FacebookShareValue {
 }
 
 enum VigourFacebookMethod: String {
-    case Login="login", Logout="logout", Share="share"
+    case Login="login", Logout="logout", Share="share", Init="init"
 }
 
 class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
@@ -42,6 +42,19 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: pluginResult) throws {
         if let method = VigourFacebookMethod(rawValue: name) {
             switch method {
+            case .Init:
+                if FBSDKAccessToken.currentAccessToken() != nil {
+                    completionHandler(nil, JSObject([
+                        "connectionStatus": "connected",
+                        "token": FBSDKAccessToken.currentAccessToken().tokenString,
+                        "userId": FBSDKAccessToken.currentAccessToken().userID
+                        ]
+                        )
+                    )
+                }
+                else {
+                    completionHandler(nil, JSObject(["connectionStatus": "unknown"]))
+                }
             case .Login:
 
                 //check if scope is passed
@@ -75,6 +88,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     }
 
     //Methods
+    
     private func login(scope:[String], completionHandler: pluginResult) {
 
         let loginMgr = FBSDKLoginManager()
@@ -114,6 +128,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     private func logout(completionHandler: pluginResult) {
         let loginMgr = FBSDKLoginManager()
         loginMgr.logOut()
+        FBSDKAccessToken.setCurrentAccessToken(nil)
         completionHandler(nil, JSObject([:]))
     }
 

@@ -22,12 +22,12 @@ public class Plugin {
         }
     }
 
-    protected void sendEvent(String message) {
-        eventInterface.receive("", message, name);
+    protected void sendEvent(String event, String data) {
+        eventInterface.receive(event, data, name);
     }
 
     protected void sendError(String message) {
-        eventInterface.error(message, name);
+        eventInterface.receive("error", message, name);
     }
 
     public String getName() {

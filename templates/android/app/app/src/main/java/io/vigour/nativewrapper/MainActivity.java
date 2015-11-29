@@ -1,11 +1,13 @@
 package io.vigour.nativewrapper;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -37,17 +39,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
-        public void error(final String error, final String pluginId) {
-            Log.i("Sending error:", String.format("{ error: '%s', pluginId: '%s' }", error, pluginId));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.error('%s', '%s')", error, pluginId), null);
-                }
-            });
-        }
-
-        @Override
         public void ready(final String error, final String response, final String pluginId) {
             Log.i("Sending ready:", String.format("{ error: '%s', response: '%s', pluginId: '%s' }", error, response, pluginId));
             runOnUiThread(new Runnable() {
@@ -69,6 +60,7 @@ public class MainActivity extends ActionBarActivity {
             });
         }
     };
+    private PluginManager pluginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +71,11 @@ public class MainActivity extends ActionBarActivity {
         if (webview == null) {
             webview = buildWebView();
             PersistentViewHolder.set(webview);
+        } else {
+            ViewParent parent = webview.getParent();
+            if (parent != null) {
+                ((ViewGroup)parent).removeView(webview);
+            }
         }
         webViewContainer = (ViewGroup) findViewById(R.id.webViewContainer);
         webViewContainer.addView(webview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -105,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, BuildConfig.DEBUG);
         XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
 
-        PluginManager pluginManager = new PluginManager(bridgeInterface);
+        pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
@@ -119,6 +116,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void registerPlugins(PluginManager pluginManager) {
+    }
+
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        pluginManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -147,6 +149,8 @@ public class MainActivity extends ActionBarActivity {
         Log.i("main", "ondestroy");
         if (webview != null) {
             webview.onDestroy();
+            PersistentViewHolder.set(null);
+            webview = null;
         }
     }
 }
