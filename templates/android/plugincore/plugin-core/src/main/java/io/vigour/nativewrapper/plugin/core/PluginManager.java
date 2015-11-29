@@ -56,4 +56,41 @@ public class PluginManager {
             }
         }
     }
+
+    /**
+     * I'm not sure this will be called since we only init the plugins after the page has loaded...
+      */
+    public void onStart() {
+        for (Plugin plugin : plugins.values()) {
+            if (plugin instanceof ActivityLifecycleListener) {
+                ((ActivityLifecycleListener) plugin).onStart();
+            }
+        }
+    }
+
+    public void onPause() {
+        for (Plugin plugin : plugins.values()) {
+            if (plugin instanceof ActivityLifecycleListener) {
+                ((ActivityLifecycleListener) plugin).onPause();
+            }
+        }
+    }
+
+    public void onResume() {
+        for (Plugin plugin : plugins.values()) {
+            if (plugin instanceof ActivityLifecycleListener) {
+                ((ActivityLifecycleListener) plugin).onResume();
+            }
+        }
+    }
+
+    public void onStop() {
+        for (Plugin plugin : plugins.values()) {
+            if (plugin instanceof ActivityLifecycleListener) {
+                ((ActivityLifecycleListener) plugin).onStop();
+            }
+        }
+    }
+
+
 }

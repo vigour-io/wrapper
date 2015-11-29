@@ -131,6 +131,7 @@ public class MainActivity extends ActionBarActivity {
             webview.pauseTimers();
             webview.onHide();
         }
+        pluginManager.onPause();
     }
 
     @Override
@@ -141,6 +142,7 @@ public class MainActivity extends ActionBarActivity {
             webview.resumeTimers();
             webview.onShow();
         }
+        pluginManager.onResume();
     }
 
     @Override
@@ -151,6 +153,18 @@ public class MainActivity extends ActionBarActivity {
             webview.onDestroy();
             PersistentViewHolder.set(null);
             webview = null;
+        }
+    }
+
+    @Override protected void onStop() {
+        super.onStop();
+        pluginManager.onStop();
+    }
+
+    @Override protected void onStart() {
+        super.onStart();
+        if (webview != null && pluginManager != null) {
+            pluginManager.onStart();
         }
     }
 }
