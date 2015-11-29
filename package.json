@@ -70,6 +70,7 @@
     "vigour-fs-promised": "^2.0.0",
     "vigour-js": "~0.3.0",
     "vigour-shutter": "^2.0.2",
+    "vigour-ua": "^0.0.3",
     "xcode": "^0.8.2"
   },
   "keywords": [
