@@ -1,5 +1,6 @@
 package io.vigour.nativewrapper;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends ActionBarActivity {
             });
         }
     };
+    private PluginManager pluginManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +96,7 @@ public class MainActivity extends ActionBarActivity {
         XWalkPreferences.setValue(XWalkPreferences.REMOTE_DEBUGGING, BuildConfig.DEBUG);
         XWalkPreferences.setValue(XWalkPreferences.ANIMATABLE_XWALK_VIEW, true);
 
-        PluginManager pluginManager = new PluginManager(bridgeInterface);
+        pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
@@ -108,6 +110,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void registerPlugins(PluginManager pluginManager) {
+    }
+
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        pluginManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

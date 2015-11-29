@@ -47,7 +47,7 @@ dependencies {
     compile 'com.fasterxml.jackson.jr:jackson-jr-objects:2.5.1'
     compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile 'joda-time:joda-time:2.7'
-    compile 'io.vigour:plugin-core:0.6.2'
+    compile 'io.vigour:plugin-core:0.6.3'
     //-- start plugin dependencies
     //-- end plugin dependencies
 }
