@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.webkit.WebView;
 import android.widget.TextView;
 
@@ -70,6 +71,11 @@ public class MainActivity extends ActionBarActivity {
         if (webview == null) {
             webview = buildWebView();
             PersistentViewHolder.set(webview);
+        } else {
+            ViewParent parent = webview.getParent();
+            if (parent != null) {
+                ((ViewGroup)parent).removeView(webview);
+            }
         }
         webViewContainer = (ViewGroup) findViewById(R.id.webViewContainer);
         webViewContainer.addView(webview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -143,6 +149,8 @@ public class MainActivity extends ActionBarActivity {
         Log.i("main", "ondestroy");
         if (webview != null) {
             webview.onDestroy();
+            PersistentViewHolder.set(null);
+            webview = null;
         }
     }
 }
