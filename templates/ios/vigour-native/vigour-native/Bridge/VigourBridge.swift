@@ -149,7 +149,17 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         @param message, script mesage receiving from vigour js
      */
     private final func processScriptMessage(message:WKScriptMessage) throws -> VigourBridgeReceiveMessage? {
-        if let messageObject = message.body as? NSDictionary where messageObject.count >= 3 {
+        if let messageObject = message.body as? NSDictionary where messageObject.count == 1 {
+            
+            guard (messageObject.objectForKey("event") as? String != nil) else { throw VigourBridgeError.BridgeError("event param required!") }
+            
+            /*Activate bridge on this plugin*/
+            if let event = messageObject.objectForKey("event") as? String where event == "bridgeReady" {
+                activate()
+            }
+            
+        }
+        else if let messageObject = message.body as? NSDictionary where messageObject.count >= 3 {
 
             guard (messageObject.objectForKey("pluginId") as? String != nil) else { throw VigourBridgeError.BridgeError("Plugin id required!") }
 
@@ -169,7 +179,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
 
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
 
-        if let messageObject = message.body as? NSDictionary where messageObject.count >= 2
+        if let messageObject = message.body as? NSDictionary where messageObject.count >= 1
             && message.name == self.dynamicType.scriptMessageHandlerName() {
 
             do {
