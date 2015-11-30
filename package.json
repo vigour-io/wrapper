@@ -23,7 +23,8 @@
     "test-samsungtv": "npm run buildtestapp && gaston test -r node -s test/node/samsungtv/",
     "test-netcasttv": "npm run buildtestapp && gaston test -r node -s test/node/netcasttv/",
     "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
-    "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/"
+    "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/",
+    "postversion": "git push && git push --tags"
   },
   "engines": {
     "node": ">=0.10.0"
