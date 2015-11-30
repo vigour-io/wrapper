@@ -9,7 +9,7 @@ describe('Working with Plugins: InverterBoy', function () {
         init: {
           mock (data, event) {
             setTimeout(() => {
-              this.ready.val = true
+              this.parent.ready.val = true
             }, 100)
           }
         },
@@ -79,28 +79,28 @@ describe('Working with Plugins: Social', function () {
         init: {
           mock (data, event) {
             setTimeout(() => {
-              this.ready.val = true
+              this.parent.ready.val = true
             }, 20)
           }
         },
         login: {
           mock (data, event) {
-            this.loading.val = 'login'
+            this.parent.loading.val = 'login'
             setTimeout(() => {
-              this.loggedin.val = true
-              if (this.loading.val === 'login') {
-                this.loading.val = false
+              this.parent.loggedin.val = true
+              if (this.parent.loading.val === 'login') {
+                this.parent.loading.val = false
               }
             }, 10)
           }
         },
         logout: {
           mock (data, event) {
-            this.loading.val = 'logout'
+            this.parent.loading.val = 'logout'
             setTimeout(() => {
-              this.loggedin.val = false
-              if (this.loading.val === 'logout') {
-                this.loading.val = false
+              this.parent.loggedin.val = false
+              if (this.parent.loading.val === 'logout') {
+                this.parent.loading.val = false
               }
             }, 5)
           }
