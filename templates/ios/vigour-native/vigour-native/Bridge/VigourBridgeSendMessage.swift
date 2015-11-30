@@ -8,8 +8,6 @@
 
 import Foundation
 
-//window.vigour.native.bridge.error(err, pluginId)
-internal let scriptMessageErrorCallbackTpl = "%@; window.vigour.native.bridge.error(error, '%@')"
 
 //window.vigour.native.bridge.ready(err, response, pluginId)
 internal let scriptMessageReadyCallbackTpl = "%@; window.vigour.native.bridge.ready(error, %@, '%@')"
@@ -17,13 +15,64 @@ internal let scriptMessageReadyCallbackTpl = "%@; window.vigour.native.bridge.re
 //window.vigour.native.bridge.result(cbId, err, response)
 internal let scriptMessageResultCallbackTpl = "%@; window.vigour.native.bridge.result(%d, error, %@)"
 
-//window.vigour.native.bridge.receive(err, message, pluginId)
-internal let scriptMessageReceiveCallbackTpl = "%@; window.vigour.native.bridge.receive(error, %@, '%@')"
+//window.vigour.native.bridge.receive(eventType, data, pluginId)
+internal let scriptMessageReceiveCallbackTpl = "%@; window.vigour.native.bridge.receive('%@', %@, '%@')"
 
 internal let scriptMessageTpl = "(function() { %@ }())"
 
 protocol JSStringProtocol {
      func jsString() -> String
+}
+
+/**
+    VigourBridgeSendMessage enum for sending different types to the bridge
+ */
+enum VigourBridgeSendMessage: JSStringProtocol {
+    case Receive(error: JSError?, event: String, message: JSObject, pluginId: String?)
+    case Result(error: JSError?, calbackId: Int, response: JSObject)
+    case Ready(error: JSError?, response: JSObject, pluginId: String?)
+    
+    func jsString() -> String {
+        var js = ""
+        
+        switch self {
+        case .Ready(let error, let response, let pluginId):
+            
+            if let id = pluginId {
+                js = String(format: scriptMessageReadyCallbackTpl, errorJSString(error), response.jsString(), id)
+            }
+            else {
+                js = String(format: scriptMessageReadyCallbackTpl, errorJSString(error), response.jsString(), "")
+            }
+            
+        case .Result(let error, let callbackId, let response):
+            
+            js = String(format: scriptMessageResultCallbackTpl, errorJSString(error), callbackId, response.jsString())
+            
+        case .Receive(let error, let event, let message, let pluginId):
+            if let _ = error {
+                js = String(format: scriptMessageReceiveCallbackTpl, errorJSString(error), event, "error", pluginId ?? "null")
+            }
+            else {
+                js = String(format: scriptMessageReceiveCallbackTpl, errorJSString(error), event, message.jsString(), pluginId ?? "null")
+            }
+            
+        }
+        
+        return String(format: scriptMessageTpl, js)
+    }
+    
+    private func errorJSString(error: JSError?) -> String {
+        var js = ""
+        if let e = error {
+            js += "\(e.jsString()), "
+        }
+        else {
+            js += "var error = null"
+        }
+        return js
+    }
+    
 }
 
 struct JSError: JSStringProtocol {
@@ -90,53 +139,4 @@ struct JSObject: JSStringProtocol {
             js += "\(o)"
         }
     }
-}
-
-enum VigourBridgeSendMessage: JSStringProtocol {
-    case Error(error: JSError?, pluginId: String)
-    case Receive(error: JSError?, message: JSObject, pluginId: String)
-    case Result(error: JSError?, calbackId: Int, response: JSObject)
-    case Ready(error: JSError?, response: JSObject, pluginId: String?)
-    
-    func jsString() -> String {
-        var js = ""
-        
-        switch self {
-        case .Error(let error, let pluginId):
-            
-            js = String(format: scriptMessageErrorCallbackTpl, errorJSString(error), pluginId)
-            
-        case .Ready(let error, let response, let pluginId):
-            
-            if let id = pluginId {
-                js = String(format: scriptMessageReadyCallbackTpl, errorJSString(error), response.jsString(), id)
-            }
-            else {
-                js = String(format: scriptMessageReadyCallbackTpl, errorJSString(error), response.jsString(), "")
-            }
-            
-        case .Result(let error, let callbackId, let response):
-            
-            js = String(format: scriptMessageResultCallbackTpl, errorJSString(error), callbackId, response.jsString())
-            
-        case .Receive(let error, let message, let pluginId):
-            
-            js = String(format: scriptMessageReceiveCallbackTpl, errorJSString(error), message.jsString(), pluginId)
-            
-        }
-        
-        return String(format: scriptMessageTpl, js)
-    }
-    
-    private func errorJSString(error: JSError?) -> String {
-        var js = ""
-        if let e = error {
-            js += "\(e.jsString()), "
-        }
-        else {
-            js += "var error = null"
-        }
-        return js
-    }
-    
 }
