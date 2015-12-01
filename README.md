@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vigour-io/wrapper.svg?branch=develop)](https://travis-ci.org/vigour-io/wrapper)
+
 # Wrapper
 
 Builds a set of native apps from a single javascript codebase.
