@@ -50,23 +50,16 @@
             window.vigour = {}
             window.vigour.native = {}
             window.vigour.native.bridge = {}
-            window.vigour.native.bridge.error = function error (err, pluginId) {
-                console.log("**ERROR**")
-                if (pluginId) {
-                    console.log(pluginId)
-                }
-                console.log(err)
-            }
-            window.vigour.native.bridge.receive = function receive (err, message, pluginId) {
+            window.vigour.native.bridge.receive = function receive (event, data, pluginId) {
                 console.log("**RECEIVE**")
                 if (pluginId) {
                     console.log(pluginId)
                 }
-                if (err) {
-                    console.log(err)
+                if (event) {
+                    console.log(event)
                 }
-                if (message) {
-                    console.log(message)
+                if (data) {
+                    console.log(data)
                 }
             }
             window.vigour.native.bridge.result = function receive (cbId, err, response) {

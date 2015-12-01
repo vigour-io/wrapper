@@ -1,12 +1,18 @@
 language: node_js
 node_js:
-  - "4"
+  - "5.0.0" #all the versions you want to be tested
+branches:
+  only:
+    - master #all the branches that will trigger travis
+    - develop
+    - staging
 before_install:
-  - npm install -g git+ssh://git@github.com:vigour-io/sentinel.git#develop
+  - npm install -g gaston #as we use gaston to test we need to install it beforehand
+  - npm install -g vigour-sentinel #required
 script:
-  - sentinel
+  - sentinel #required
 after_failure:
-  - sentinel --notify-fail
+  - sentinel --notify-fail #required
 sudo: required
 services:
   - docker
