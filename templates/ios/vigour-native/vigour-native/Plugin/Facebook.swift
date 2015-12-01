@@ -66,13 +66,13 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
                 
             case .Share:
                 
-                if let link = args?.objectForKey("urlString") as? String {
+                if let link = args?.objectForKey("url") as? String {
                     
                     let shareValue = FacebookShareLinkValue(
                         title: args?.objectForKey("title") as? String,
                         urlString: link,
                         description: args?.objectForKey("description") as? String,
-                        imageUrlString: args?.objectForKey("imageUrlString") as? String
+                        imageUrlString: args?.objectForKey("image") as? String
                     )
                     share(shareValue, completionHandler:completionHandler)
                     
