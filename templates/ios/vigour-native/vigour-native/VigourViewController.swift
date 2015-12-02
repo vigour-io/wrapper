@@ -115,7 +115,7 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         //TODO: maybe wait for some js event...
-        vigourBridge.activate()
+        //vigourBridge.activate()
     }
     
     
