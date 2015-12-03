@@ -187,7 +187,8 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             print("SHARING CANCELLED")
         #endif
         if let completionHandler = shareCompletionHandler {
-            completionHandler(nil, JSObject([:]))
+
+            completionHandler(JSError(title: "Facebook plugin error", description: "User canceled ", todo: ""), JSObject([:]))
         }
     }
     
