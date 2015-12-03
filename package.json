@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -11,8 +11,8 @@
     "wrapper": "bin/build.js"
   },
   "scripts": {
-    "installtestapp": "./installtestapp.js",
-    "buildtestapp": "./buildtestapp.js",
+    "installtestapp": "cd test/app && npm install",
+    "buildtestapp": "cd test/app && npm run build",
     "pretest": "npm run buildtestapp",
     "test": "gaston test",
     "test-bridge": "gaston test -r browser -s test/browser/bridge/",

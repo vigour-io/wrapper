@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Redirect</title>
+    <script type="text/javascript">
+      try {
+        var url = "{{url}}"
+        console.log('Redirecting to', url)
+        window.location = url
+      } catch (e) {
+        console.log('caught', e)
+      }
+    </script>
+  </head>
+</html>
