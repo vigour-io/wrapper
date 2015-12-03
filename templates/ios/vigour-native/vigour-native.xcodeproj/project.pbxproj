@@ -11,6 +11,7 @@
 		492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */; };
 		492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */; };
 		4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492195391BFE88C200EB8AF5 /* Facebook.swift */; };
+		4934C7861C10E182007BD728 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934C7851C10E182007BD728 /* Env.swift */; };
 		4959BE281BF3DC1F00F7B310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE271BF3DC1F00F7B310 /* Assets.xcassets */; };
 		4959BE361BF3DC1F00F7B310 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE351BF3DC1F00F7B310 /* vigour_nativeTests.swift */; };
 		4959BE411BF3DC1F00F7B310 /* vigour_nativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */; };
@@ -53,6 +54,7 @@
 		492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		492195381BFE84A400EB8AF5 /* Vigour-Native-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vigour-Native-Bridging-Header.h"; sourceTree = "<group>"; };
 		492195391BFE88C200EB8AF5 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
+		4934C7851C10E182007BD728 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		4959BE1D1BF3DC1F00F7B310 /* vigour-native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vigour-native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4959BE271BF3DC1F00F7B310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4959BE2C1BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */,
 				4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */,
 				492195391BFE88C200EB8AF5 /* Facebook.swift */,
+				4934C7851C10E182007BD728 /* Env.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
+				4934C7861C10E182007BD728 /* Env.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
 				4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */,
