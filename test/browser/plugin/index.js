@@ -1,6 +1,8 @@
 'use strict'
 
 var Plugin = require('../../../lib/plugin')
+var bridgeInject = require('../../../lib/bridge/inject')
+var bridge = require('../../../lib/bridge')
 
 describe('Working with Plugins: InverterBoy', function () {
   var inverterBoy = new Plugin({
@@ -35,46 +37,46 @@ describe('Working with Plugins: InverterBoy', function () {
 
   it('set a string', function (done) {
     inverterBoy.string.val = 'helloworld'
-    setTimeout(function () {
-      expect(inverterBoy.string.val).equals('helloworld')
-      expect(inverterBoy.initialised.val === true).ok
-      expect(inverterBoy.ready.val === false).ok
-      expect(inverterBoy.loading.val).ok
-    }, 10)
-    setTimeout(function () {
+    expect(inverterBoy.string.val).equals('helloworld')
+    expect(inverterBoy.initialised.val === true).ok
+    expect(inverterBoy.ready.val === false).ok
+    expect(inverterBoy.loading.val).ok
+
+    inverterBoy.string.once(function (data) {
       expect(inverterBoy.string.val === 'dlrowolleh').ok
-      expect(inverterBoy.loading.val === false).ok
-      expect(inverterBoy.ready.val === true).ok
+      expect(inverterBoy.loading.val).to.be.false
+      expect(inverterBoy.ready.val).to.be.true
       done()
-    }, 150)
+    })
   })
 
   it('set another string', function () {
     inverterBoy.string.val = '123'
-    expect(inverterBoy.string.val === '321').ok
+    expect(inverterBoy.string.val).to.equal('321')
   })
 
   it('set initialised to false => plugin needs to reinitialise', function (done) {
     inverterBoy.initialised.val = false
     inverterBoy.string.val = 'helloworld'
-    setTimeout(function () {
-      expect(inverterBoy.string.val !== 'dlrowolleh').ok
-      expect(inverterBoy.initialised.val === true).ok
-      expect(inverterBoy.ready.val === false).ok
-      expect(inverterBoy.loading.val).ok
-    }, 10)
-    setTimeout(function () {
+    expect(inverterBoy.string.val !== 'dlrowolleh').ok
+    expect(inverterBoy.initialised.val === true).ok
+    expect(inverterBoy.ready.val === false).ok
+    expect(inverterBoy.loading.val).ok
+
+    inverterBoy.string.once(function (data) {
       expect(inverterBoy.string.val === 'dlrowolleh').ok
-      expect(inverterBoy.loading.val === false).ok
-      expect(inverterBoy.ready.val === true).ok
+      expect(inverterBoy.loading.val).to.be.false
+      expect(inverterBoy.ready.val).to.be.true
       done()
-    }, 150)
+    })
   })
 })
 
 describe('Working with Plugins: Social', function () {
+  console.clear()
   var social = new Plugin({
     platform: {
+      inject: bridgeInject('vigour-testing'),
       on: {
         init: {
           mock (data, event) {
@@ -119,6 +121,10 @@ describe('Working with Plugins: Social', function () {
         }
       }
     }
+  })
+
+  it('should be connected to the bridge', function () {
+    expect(bridge.plugins.testing).to.equal(social)
   })
 
   it('set a user => initialised api and logs in', function (done) {
