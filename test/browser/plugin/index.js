@@ -124,7 +124,7 @@ describe('Working with Plugins: Social', function () {
   })
 
   it('should be connected to the bridge', function () {
-    expect(bridge.plugins.testing).to.equal(social)
+    expect(bridge.plugins.testing).to.equal(social.platform)
   })
 
   it('set a user => initialised api and logs in', function (done) {
