@@ -6,7 +6,7 @@ var bridge = require('../../../lib/bridge')
 
 describe('Working with Plugins: InverterBoy', function () {
   var inverterBoy = new Plugin({
-    platform: {
+    _platform: {
       on: {
         init: {
           mock (data, event) {
@@ -29,7 +29,7 @@ describe('Working with Plugins: InverterBoy', function () {
     string: {
       on: {
         data (data, event) {
-          this.platform.emit('invert', this.val, event)
+          this._platform.emit('invert', this.val, event)
         }
       }
     }
@@ -75,7 +75,7 @@ describe('Working with Plugins: InverterBoy', function () {
 describe('Working with Plugins: Social', function () {
   console.clear()
   var social = new Plugin({
-    platform: {
+    _platform: {
       inject: bridgeInject('vigour-testing'),
       on: {
         init: {
@@ -114,9 +114,9 @@ describe('Working with Plugins: Social', function () {
       on: {
         data (data, event) {
           if (this.val) {
-            this.platform.emit('login', this.val, event)
+            this._platform.emit('login', this.val, event)
           } else {
-            this.platform.emit('logout', this.val, event)
+            this._platform.emit('logout', this.val, event)
           }
         }
       }
@@ -124,7 +124,7 @@ describe('Working with Plugins: Social', function () {
   })
 
   it('should be connected to the bridge', function () {
-    expect(bridge.plugins.testing).to.equal(social.platform)
+    expect(bridge.plugins.testing).to.equal(social._platform)
   })
 
   it('set a user => initialised api and logs in', function (done) {
