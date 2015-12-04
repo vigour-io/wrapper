@@ -16,7 +16,7 @@ describe('bridge', function () {
 
   describe('native events', function () {
     before(function () {
-      bridge.platform = customPlatform
+      bridge._platform = customPlatform
     })
     it('should emit the `ready` event', function () {
       var spy = sinon.spy()
