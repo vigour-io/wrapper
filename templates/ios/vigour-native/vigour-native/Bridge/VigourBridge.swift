@@ -93,12 +93,18 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
             print("Sending")
             print(message)
         #endif
-        if let d = delegate, webView = d.webView {
-            webView.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
-                if error != nil {
-                    print(error)
-                }
-            })
+        
+        //MARK:- make sure evanluate js back on the main thread
+        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        
+            if let weakSelf = self, let d = weakSelf.delegate, webView = d.webView {
+                webView.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
+                    if error != nil {
+                        print(error)
+                    }
+                })
+            }
+            
         }
     }
 

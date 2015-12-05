@@ -53,22 +53,52 @@ enum VigourEnvMethod: String {
     case Init="init"
 }
 
-struct Env: VigourPluginProtocol {
+class Env: VigourPluginProtocol {
+    
+    static let sharedInstance = Env()
     
     static let pluginId = "env"
     
-    var delegate: VigourViewController?
+    weak var delegate: VigourViewController?
+    
+    private var reachability: Reachability?
+    
+    init() {
+        
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            #if DEBUG
+            print("Unable to create Reachability")
+            #endif
+        }
+
+    }
+    
+    deinit {
+         if let r = reachability {
+            r.stopNotifier()
+        }
+    }
     
     static func instance() -> VigourPluginProtocol {
-        return Env()
+        return Env.sharedInstance
     }
     
     func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
-        if let method = VigourFacebookMethod(rawValue: name) {
+        if let method = VigourEnvMethod(rawValue: name) {
             switch method {
             case .Init:
-                print("CRAPPPP")
-            default:break
+                
+                //get initial info
+                let js = getInfo()
+                
+                //start scan for updates
+                startReachability()
+                
+                completionHandler(nil, js)
+                
+
             }
         }
     }
@@ -79,11 +109,46 @@ struct Env: VigourPluginProtocol {
     
     //MARK: - Private
     
-    private func getInfo() {
-        let bundleIdentifier = NSBundle.mainBundle().bundleIdentifier
-        let country = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode)
-        let lang = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode)
-        let timeZone = NSTimeZone.localTimeZone().localizedName(NSTimeZoneNameStyle.Generic, locale: NSLocale.currentLocale())
-        let modelName = UIDevice.currentDevice().modelName
+    private func startReachability() {
+        
+        if let r = reachability {
+            
+            //scan on bg thread, send message to js will be on main thread
+            r.whenReachable = { status in
+                status.currentReachabilityString
+            }
+            
+            r.whenUnreachable = { status in
+                status.currentReachabilityString
+            }
+            
+            do {
+                try r.startNotifier()
+            } catch {
+                print("Unable to start notifier")
+            }
+        }
+    }
+    
+    private func getInfo() -> JSObject {
+        var jsObject = [String:NSObject]()
+        if let r = reachability {
+            jsObject["network"] = r.currentReachabilityString
+        }
+        else {
+            jsObject["network"] = "connection info n/a"
+        }
+        jsObject["bundleId"] = NSBundle.mainBundle().bundleIdentifier
+        jsObject["country"] =  NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String ?? ""
+        jsObject["language"] = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as? String ?? ""
+        jsObject["region"] = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String ?? ""
+        jsObject["timezone"] = NSTimeZone.localTimeZone().localizedName(NSTimeZoneNameStyle.Generic, locale: NSLocale.currentLocale())
+        jsObject["model"] = UIDevice.currentDevice().modelName
+        jsObject["os"] = UIDevice.currentDevice().systemName
+        jsObject["osVersion"] = UIDevice.currentDevice().systemVersion
+        jsObject["appVersion"] = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String ?? ""
+        jsObject["build"] = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as? String ?? ""
+        
+        return JSObject(jsObject)
     }
 }
