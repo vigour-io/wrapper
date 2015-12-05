@@ -1,7 +1,7 @@
 'use strict'
 
 var bridge
-var pluginId = 1
+var pluginId = 'vigour-testing'
 var pluginFn = 'doSomething'
 var pluginOptsOne = { key: 'valueOne' }
 var pluginOptsTwo = { key: 'valueTwo' }
@@ -16,7 +16,7 @@ describe('bridge', function () {
 
   describe('native events', function () {
     before(function () {
-      bridge.platform = customPlatform
+      bridge._platform = customPlatform
     })
     it('should emit the `ready` event', function () {
       var spy = sinon.spy()
@@ -25,7 +25,7 @@ describe('bridge', function () {
       expect(spy).calledOnce
     })
 
-    it('should emit `error` events', function () {
+    xit('should emit `error` events', function () {
       var spy = sinon.spy()
       bridge.once('error', spy)
       window.vigour.native.bridge.error('message')
@@ -33,7 +33,7 @@ describe('bridge', function () {
     })
   })
 
-  it('should enqueue calls until plugin is ready, then call them in order', function (done) {
+  xit('should enqueue calls until plugin is ready, then call them in order', function (done) {
     var oneDone = false
     var twoDone = false
 
