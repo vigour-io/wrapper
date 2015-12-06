@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreTelephony.CTTelephonyNetworkInfo
+import AVFoundation
 
 extension UIDevice {
     
@@ -50,6 +51,26 @@ extension UIDevice {
     
 }
 
+extension CTTelephonyNetworkInfo {
+    func standardGrouping(radioAccessTechnology:String) -> String {
+        switch radioAccessTechnology {
+        case CTRadioAccessTechnologyGPRS: return "2G"
+            case CTRadioAccessTechnologyEdge: return "2G"
+            case CTRadioAccessTechnologyWCDMA: return "3G"
+            case CTRadioAccessTechnologyHSDPA: return "3G"
+            case CTRadioAccessTechnologyHSUPA: return "3G"
+            case CTRadioAccessTechnologyCDMA1x: return "2G"
+            case CTRadioAccessTechnologyCDMAEVDORev0: return "3G"
+            case CTRadioAccessTechnologyCDMAEVDORevA: return "3G"
+            case CTRadioAccessTechnologyCDMAEVDORevB: return "3G"
+            case CTRadioAccessTechnologyeHRPD: return "3G"
+            case CTRadioAccessTechnologyLTE: return "4G"
+        default: return "unkonwn"
+        }
+    }
+}
+
+
 enum VigourEnvMethod: String {
     case Init="init"
 }
@@ -80,6 +101,9 @@ class Env: VigourPluginProtocol {
         
         //active event
         notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
+        //radio chane events
+        notificationCenter.addObserver(self, selector: Selector("radioAccessChanged"), name: CTRadioAccessTechnologyDidChangeNotification, object: nil)
         
         
         do {
@@ -113,12 +137,13 @@ class Env: VigourPluginProtocol {
                 //get initial info
                 let js = getInfo()
                 
-                //start scan for updates
+                //start observe for updates
                 startReachability()
+                
+                //start observe audio changes
                 
                 completionHandler(nil, js)
                 
-
             }
         }
     }
@@ -147,19 +172,44 @@ class Env: VigourPluginProtocol {
         }
     }
     
+    func radioAccessChanged() {
+        if let d = delegate {
+            let networkInfo = telNetworkInfo.currentRadioAccessTechnology ?? ""
+             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "radioAccessChange", message: JSValue(["networkInfo":networkInfo]), pluginId: Env.pluginId))
+        }
+    }
+    
     //MARK: - Private
+    
+    private func startAudoVolumeObserving() {
+        let audioSession = AVAudioSession.sharedInstance()
+//        try audioSession.setActive(true)
+//        audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.New, context: nil)
+    }
     
     private func startReachability() {
         
         if let r = reachability {
             
             //scan on bg thread, send message to js will be on main thread
-            r.whenReachable = { status in
-                status.currentReachabilityString
+            r.whenReachable = { [weak self] status in
+                
+                if let weakSelf = self, let d = weakSelf.delegate {
+                    
+                    var connectionType = "Wifi"
+                    if status.currentReachabilityStatus == .ReachableViaWWAN {
+                        connectionType = weakSelf.telNetworkInfo.standardGrouping(weakSelf.telNetworkInfo.currentRadioAccessTechnology ?? "")
+                    }
+                    
+                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(["network":connectionType]), pluginId: Env.pluginId))
+                }
+                
             }
             
-            r.whenUnreachable = { status in
-                status.currentReachabilityString
+            r.whenUnreachable = { [weak self] status in
+                if let weakSelf = self, let d = weakSelf.delegate {
+                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(["network":"no connection"]), pluginId: Env.pluginId))
+                }
             }
             
             do {
