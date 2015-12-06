@@ -56,7 +56,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         dispatch_once(&token) { [weak self] () -> Void in
             self?.makePluginsAvailable()
         }
-        sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: JSObject(["bridge":"ready"]), pluginId: nil))
+        sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: JSValue(["bridge":"ready"]), pluginId: nil))
     }
 
     private final func makePluginsAvailable() {
@@ -72,10 +72,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                     try sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: p.onReady(), pluginId: pluginId))
                 }
                 catch VigourBridgeError.PluginError(let message, let pluginId) {
-                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSObject([:]), pluginId: pluginId))
+                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSValue(false), pluginId: pluginId))
                 }
                 catch let error as NSError {
-                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                     #if DEBUG
                         print(error.localizedDescription)
                     #endif
@@ -138,10 +138,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 })
             }
             catch VigourBridgeError.PluginError(let message, let pluginId) {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSObject([:]), pluginId: pluginId))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSValue(false), pluginId: pluginId))
             }
             catch let error as NSError {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                 #if DEBUG
                     print(error.localizedDescription)
                 #endif
@@ -194,10 +194,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 }
             }
             catch VigourBridgeError.BridgeError(let message) {
-                VigourBridgeSendMessage.Receive(error: JSError(title:"Bridge Error", description: message, todo:""), event: "error", message: JSObject([:]), pluginId: nil)
+                VigourBridgeSendMessage.Receive(error: JSError(title:"Bridge Error", description: message, todo:""), event: "error", message: JSValue(false), pluginId: nil)
             }
             catch let error as NSError {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                 #if DEBUG
                     print(error.localizedDescription)
                 #endif

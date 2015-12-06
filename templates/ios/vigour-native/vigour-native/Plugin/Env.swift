@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreTelephony.CTTelephonyNetworkInfo
 
 extension UIDevice {
     
@@ -63,7 +64,23 @@ class Env: VigourPluginProtocol {
     
     private var reachability: Reachability?
     
+    private let notificationCenter = NSNotificationCenter.defaultCenter()
+    
+    let telNetworkInfo: CTTelephonyNetworkInfo = CTTelephonyNetworkInfo()
+    
     init() {
+        
+
+        
+        //resign event
+        notificationCenter.addObserver(self, selector: Selector("appWillResignActive"), name: UIApplicationWillResignActiveNotification, object: nil)
+        
+        //will enter foreground
+        notificationCenter.addObserver(self, selector: Selector("appwillEnterForegroundNotification"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
+        //active event
+        notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        
         
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
@@ -76,7 +93,10 @@ class Env: VigourPluginProtocol {
     }
     
     deinit {
-         if let r = reachability {
+        
+        notificationCenter.removeObserver(self)
+        
+        if let r = reachability {
             r.stopNotifier()
         }
     }
@@ -103,8 +123,28 @@ class Env: VigourPluginProtocol {
         }
     }
     
-    func onReady() throws -> JSObject {
-        return JSObject([Env.pluginId:"ready"])
+    func onReady() throws -> JSValue {
+        return JSValue([Env.pluginId:"ready"])
+    }
+    
+    //MARK:- Notifications
+    
+    func appwillEnterForegroundNotification() {
+        if let d = delegate {
+            d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "enterForeground", message: JSValue(true), pluginId: Env.pluginId))
+        }
+    }
+    
+    func applicationWillResignActiveNotification() {
+        if let d = delegate {
+            d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "pause", message: JSValue(true), pluginId: Env.pluginId))
+        }
+    }
+    
+    func appDidBecomeActive() {
+        if let d = delegate {
+            d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "resume", message: JSValue(true), pluginId: Env.pluginId))
+        }
     }
     
     //MARK: - Private
@@ -130,7 +170,7 @@ class Env: VigourPluginProtocol {
         }
     }
     
-    private func getInfo() -> JSObject {
+    private func getInfo() -> JSValue {
         var jsObject = [String:NSObject]()
         if let r = reachability {
             jsObject["network"] = r.currentReachabilityString
@@ -149,6 +189,6 @@ class Env: VigourPluginProtocol {
         jsObject["appVersion"] = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String ?? ""
         jsObject["build"] = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as? String ?? ""
         
-        return JSObject(jsObject)
+        return JSValue(jsObject)
     }
 }

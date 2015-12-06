@@ -28,9 +28,9 @@ protocol JSStringProtocol {
     VigourBridgeSendMessage enum for sending different types to the bridge
  */
 enum VigourBridgeSendMessage: JSStringProtocol {
-    case Receive(error: JSError?, event: String, message: JSObject, pluginId: String?)
-    case Result(error: JSError?, calbackId: Int, response: JSObject)
-    case Ready(error: JSError?, response: JSObject, pluginId: String?)
+    case Receive(error: JSError?, event: String, message: JSValue, pluginId: String?)
+    case Result(error: JSError?, calbackId: Int, response: JSValue)
+    case Ready(error: JSError?, response: JSValue, pluginId: String?)
     
     func jsString() -> String {
         var js = ""
@@ -92,16 +92,41 @@ struct JSError: JSStringProtocol {
     }
 }
 
-struct JSObject: JSStringProtocol {
-    let value:Dictionary<String, NSObject>
+struct JSPrimitiveValue: JSStringProtocol {
+
+    let value:AnyObject
     
-    init(_ value: Dictionary<String, NSObject>) {
+    init(_ value:AnyObject) {
+        self.value = value
+    }
+    
+    func jsString() -> String {
+        return "\(value)"
+    }
+    
+}
+
+struct JSValue: JSStringProtocol {
+    let value:AnyObject
+    
+    init(_ value: AnyObject) {
         self.value = value
     }
     
     func jsString() -> String {
         var s = ""
-        traverse(value, js: &s)
+        if value is Dictionary<String, NSObject> {
+            traverse(value, js: &s)
+        }
+        else if value is String {
+            s = "\(value)"
+        }
+        else if let v = value as? Bool {
+            s = v ? "true" : "false"
+        }
+        else if let v = value as? NSNumber {
+            s = "\(v)"
+        }
         return s
     }
     
@@ -136,7 +161,7 @@ struct JSObject: JSStringProtocol {
             js += "\(obj)"
         }
         else if let o = obj as? Bool {
-            js += "\(o)"
+            js += o ? "true" : "false"
         }
     }
 }
