@@ -13,6 +13,11 @@ import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.internal.XWalkSettings;
+import org.xwalk.core.internal.XWalkViewBridge;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
 import io.vigour.nativewrapper.plugin.core.BridgeInterface;
@@ -105,6 +110,7 @@ public class MainActivity extends ActionBarActivity {
         pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
+        setWebViewUserAgent(webview, "android-native");
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
         webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
@@ -167,4 +173,23 @@ public class MainActivity extends ActionBarActivity {
             pluginManager.onStart();
         }
     }
+
+    private void setWebViewUserAgent(XWalkView webView, String userAgent)
+    {
+        try
+        {
+            Method ___getBridge = XWalkView.class.getDeclaredMethod("getBridge");
+            ___getBridge.setAccessible(true);
+            XWalkViewBridge xWalkViewBridge = null;
+            xWalkViewBridge = (XWalkViewBridge)___getBridge.invoke(webView);
+            XWalkSettings xWalkSettings = xWalkViewBridge.getSettings();
+            xWalkSettings.setUserAgentString(userAgent);
+        }
+        catch (Exception e)
+        {
+            // Could not set user agent
+            e.printStackTrace();
+        }
+    }
+
 }
