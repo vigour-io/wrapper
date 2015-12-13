@@ -177,6 +177,13 @@ class Env:NSObject, VigourPluginProtocol {
         if let d = delegate {
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "enterForeground", message: JSValue(true), pluginId: Env.pluginId))
         }
+        
+        do {
+            try audioSession.setActive(true)
+        }
+        catch {
+            
+        }
     }
     
     func appWillResignActive() {
