@@ -11,13 +11,13 @@ Builds a set of native apps from a single javascript codebase.
 - npm 2@ˆ2
 
 ## Install
-- Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
-- `npm i vigour-native --save` (Coming soon)
+- Add `git+ssh://git@github.com:vigour-io/vigour-wrapper.git#master` to dependencies in package.json
+- `npm i vigour-wrapper --save` (Coming soon)
 
 
 ## Usage
 
-Declaring vigour-native as a dependency to a project make an executable called `wrapper` accessible. You can then build the project with `wrapper build` or `wrapper build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.native`].
+Declaring vigour-wrapper as a dependency to a project make an executable called `wrapper` accessible. You can then build the project with `wrapper build` or `wrapper build -- <platform>` (see [supported platforms](#user-content-platforms)). Configuration is read from the project's package.json[`vigour.wrapper`].
 
 
 ###Observations:
@@ -38,12 +38,12 @@ For Lg webostv, a manually process is required before run the build script. Lg u
 
 ## Tests
 
-Most of the tests expect to find the `vigour-example` repo in the same directory as `vigour-native`. If that is so, then `mocha test/` should do the rest. This of course should be improved eventually, either by making vigour-example a submodule, or by automating the cloning the first time tests are run, or perhaps even something entirely different...
+Most of the tests expect to find the `vigour-example` repo in the same directory as `vigour-wrapper`. If that is so, then `mocha test/` should do the rest. This of course should be improved eventually, either by making vigour-example a submodule, or by automating the cloning the first time tests are run, or perhaps even something entirely different...
 
 ## In-script usage
 
 ```
-var wrapper = require('vigour-native')
+var wrapper = require('vigour-wrapper')
 wrapper.build({
   src: './src'
   , dest: './build'
@@ -64,8 +64,7 @@ wrapper.build({
       , "iWatch"
     }
   , plugins: [
-    "https://github.com/vigour-io/vigour-native-statusBar#master"
-    //, "vigour-native-statusBar" // Coming Soon: via npm
+    "vigour-statusBar"
   ]
   , ignoreBuilds: true // Git only
 }, function (err, meta) {
@@ -75,7 +74,7 @@ wrapper.build({
 
 **Also works with promises**
 ```
-var wrapper = require('vigour-native')
+var wrapper = require('vigour-wrapper')
   , Promise = require('promise') // `npm i promise`
   , build = Promise.denodeify(wrapper.build)
 build({...})
@@ -222,3 +221,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   * *Slack:* vidbina
   * *Skype:* kingvidbina
   * *Email:* david@supr.nu
+* **Thomas Vervest**, plugins (ios, android) and native wrapper developer
+  * *Slack:* tvervest
+  * *Skype:* tvervest
+  * *Email:* thomas@squarewolf.nl
