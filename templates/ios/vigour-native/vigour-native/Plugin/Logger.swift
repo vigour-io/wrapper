@@ -39,7 +39,7 @@ struct Logger: VigourPluginProtocol {
     //MARK: - Plugin implementation
     
     func log(message: AnyObject) {
-        print("<Vigour Log> \(message)\n")
+        print("<Vigour Log> \(message)")
     }
     
 }
