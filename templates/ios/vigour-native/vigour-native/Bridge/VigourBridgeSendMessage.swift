@@ -119,7 +119,7 @@ struct JSValue: JSStringProtocol {
             traverse(value, js: &s)
         }
         else if value is String {
-            s = "\(value)"
+            s = "\"\(value)\""
         }
         else if let v = value as? Bool {
             s = v ? "true" : "false"

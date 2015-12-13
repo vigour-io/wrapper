@@ -179,7 +179,7 @@ class Env:NSObject, VigourPluginProtocol {
         }
     }
     
-    func applicationWillResignActive() {
+    func appWillResignActive() {
         if let d = delegate {
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "pause", message: JSValue(true), pluginId: Env.pluginId))
         }
@@ -193,7 +193,7 @@ class Env:NSObject, VigourPluginProtocol {
     
     func radioAccessChanged() {
         if let d = delegate {
-            let networkInfo = telNetworkInfo.currentRadioAccessTechnology ?? ""
+            let networkInfo = telNetworkInfo.currentRadioAccessTechnology ?? "none"
              d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "radioAccessChange", message: JSValue(["networkInfo":networkInfo]), pluginId: Env.pluginId))
         }
     }
@@ -231,7 +231,7 @@ class Env:NSObject, VigourPluginProtocol {
             
             r.whenUnreachable = { [weak self] status in
                 if let weakSelf = self, let d = weakSelf.delegate {
-                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(["network":"no connection"]), pluginId: Env.pluginId))
+                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(["network":"none"]), pluginId: Env.pluginId))
                 }
             }
             

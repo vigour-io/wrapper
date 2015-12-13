@@ -91,7 +91,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     internal final func sendJSMessage(message: VigourBridgeSendMessage) {
         #if DEBUG
             print("Sending")
-            print(message)
+            print(message.jsString())
         #endif
         
         //MARK:- make sure evanluate js back on the main thread
