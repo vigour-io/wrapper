@@ -1,18 +1,27 @@
 package io.vigour.nativewrapper;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkView;
+import org.xwalk.core.internal.XWalkSettings;
+import org.xwalk.core.internal.XWalkViewBridge;
+
+import java.lang.reflect.Method;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
 import io.vigour.nativewrapper.plugin.core.BridgeInterface;
@@ -25,6 +34,7 @@ public class MainActivity extends ActionBarActivity {
 
     private XWalkView webview;
     private ViewGroup webViewContainer;
+    private static String lastNetworkStatus = "";
 
     BridgeInterface bridgeInterface = new BridgeInterface() {
         @Override
@@ -74,7 +84,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             ViewParent parent = webview.getParent();
             if (parent != null) {
-                ((ViewGroup)parent).removeView(webview);
+                ((ViewGroup) parent).removeView(webview);
             }
         }
         webViewContainer = (ViewGroup) findViewById(R.id.webViewContainer);
@@ -96,6 +106,42 @@ public class MainActivity extends ActionBarActivity {
         } else {
             versionView.setVisibility(View.GONE);
         }
+
+        registerReceiver(new BroadcastReceiver() {
+            @Override public void onReceive(Context context, Intent intent) {
+                final String status = getNetworkStatus();
+                if (!lastNetworkStatus.equals(status)) {
+                    Log.i("network", "status: " + status);
+
+                    bridgeInterface.receive("change", String.format("{\"network\": \"%s\"}", status), "env");
+                    lastNetworkStatus = status;
+                }
+            }
+        }, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+    }
+
+    private String getNetworkStatus() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        final NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        if (activeNetworkInfo == null) {
+            return "none";
+        }
+        switch (activeNetworkInfo.getType()) {
+            case ConnectivityManager.TYPE_ETHERNET:
+                return "ethernet";
+            case ConnectivityManager.TYPE_WIFI:
+            case ConnectivityManager.TYPE_WIMAX:
+                return "wifi";
+            case ConnectivityManager.TYPE_MOBILE:
+            case ConnectivityManager.TYPE_MOBILE_HIPRI:
+            case ConnectivityManager.TYPE_MOBILE_MMS:
+            case ConnectivityManager.TYPE_MOBILE_SUPL:
+            case ConnectivityManager.TYPE_MOBILE_DUN:
+                return "mobile";
+            case ConnectivityManager.TYPE_BLUETOOTH:
+                return "bluetooth";
+        }
+        return "none";
     }
 
     private XWalkView buildWebView() {
@@ -105,6 +151,7 @@ public class MainActivity extends ActionBarActivity {
         pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
+        setWebViewUserAgent(webview, "android-native");
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
         webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
@@ -127,7 +174,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onPause() {
         super.onPause();
         if (webview != null) {
-            bridgeInterface.receive("", "pause", "");
+            bridgeInterface.receive("pause", "pause", "env");
             webview.pauseTimers();
             webview.onHide();
         }
@@ -138,7 +185,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onResume() {
         super.onResume();
         if (webview != null) {
-            bridgeInterface.receive("", "resume", "");
+            bridgeInterface.receive("resume", "resume", "env");
             webview.resumeTimers();
             webview.onShow();
         }
@@ -167,4 +214,33 @@ public class MainActivity extends ActionBarActivity {
             pluginManager.onStart();
         }
     }
+
+    @Override public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            bridgeInterface.receive("button", "back", "env");
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            bridgeInterface.receive("button", "volDown", "env");
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            bridgeInterface.receive("button", "volUp", "env");
+        } else if (keyCode == KeyEvent.KEYCODE_MUTE) {
+            bridgeInterface.receive("button", "volMute", "env");
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void setWebViewUserAgent(XWalkView webView, String userAgent) {
+        try {
+            Method ___getBridge = XWalkView.class.getDeclaredMethod("getBridge");
+            ___getBridge.setAccessible(true);
+            XWalkViewBridge xWalkViewBridge = null;
+            xWalkViewBridge = (XWalkViewBridge) ___getBridge.invoke(webView);
+            XWalkSettings xWalkSettings = xWalkViewBridge.getSettings();
+            xWalkSettings.setUserAgentString(userAgent);
+        } catch (Exception e) {
+            // Could not set user agent
+            e.printStackTrace();
+        }
+    }
+
 }
