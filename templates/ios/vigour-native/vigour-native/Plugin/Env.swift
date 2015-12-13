@@ -75,7 +75,7 @@ enum VigourEnvMethod: String {
     case Init="init"
 }
 
-class Env: VigourPluginProtocol {
+class Env:NSObject, VigourPluginProtocol {
     
     static let sharedInstance = Env()
     
@@ -87,22 +87,25 @@ class Env: VigourPluginProtocol {
     
     private let notificationCenter = NSNotificationCenter.defaultCenter()
     
-    let telNetworkInfo: CTTelephonyNetworkInfo = CTTelephonyNetworkInfo()
+    private let telNetworkInfo: CTTelephonyNetworkInfo = CTTelephonyNetworkInfo()
     
-    init() {
+    private let audioSession = AVAudioSession.sharedInstance()
+    
+    override init() {
         
+        super.init()
 
         
         //resign event
         notificationCenter.addObserver(self, selector: Selector("appWillResignActive"), name: UIApplicationWillResignActiveNotification, object: nil)
         
         //will enter foreground
-        notificationCenter.addObserver(self, selector: Selector("appwillEnterForegroundNotification"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("appwillEnterForeground"), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         //active event
         notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive"), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
-        //radio chane events
+        //radio change events
         notificationCenter.addObserver(self, selector: Selector("radioAccessChanged"), name: CTRadioAccessTechnologyDidChangeNotification, object: nil)
         
         
@@ -119,6 +122,8 @@ class Env: VigourPluginProtocol {
     deinit {
         
         notificationCenter.removeObserver(self)
+        
+        audioSession.removeObserver(self, forKeyPath: "outputVolume")
         
         if let r = reachability {
             r.stopNotifier()
@@ -141,6 +146,7 @@ class Env: VigourPluginProtocol {
                 startReachability()
                 
                 //start observe audio changes
+                startAudoVolumeObserving()
                 
                 completionHandler(nil, js)
                 
@@ -152,15 +158,28 @@ class Env: VigourPluginProtocol {
         return JSValue([Env.pluginId:"ready"])
     }
     
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "outputVolume" {
+            if let d = delegate, let c = change, let old = c["old"] as? CGFloat, let new = c["new"] as? CGFloat {
+                if new > old {
+                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "button", message: JSValue("volUp"), pluginId: Env.pluginId))
+                }
+                else {
+                    d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "button", message: JSValue("volDown"), pluginId: Env.pluginId))
+                }
+            }
+        }
+    }
+    
     //MARK:- Notifications
     
-    func appwillEnterForegroundNotification() {
+    func appwillEnterForeground() {
         if let d = delegate {
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "enterForeground", message: JSValue(true), pluginId: Env.pluginId))
         }
     }
     
-    func applicationWillResignActiveNotification() {
+    func applicationWillResignActive() {
         if let d = delegate {
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "pause", message: JSValue(true), pluginId: Env.pluginId))
         }
@@ -182,9 +201,13 @@ class Env: VigourPluginProtocol {
     //MARK: - Private
     
     private func startAudoVolumeObserving() {
-        let audioSession = AVAudioSession.sharedInstance()
-//        try audioSession.setActive(true)
-//        audioSession.addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.New, context: nil)
+        do {
+            try audioSession.setActive(true)
+            audioSession.addObserver(self, forKeyPath: "outputVolume", options: [NSKeyValueObservingOptions.New, NSKeyValueObservingOptions.Old], context: nil)
+        }
+        catch {
+            
+        }
     }
     
     private func startReachability() {

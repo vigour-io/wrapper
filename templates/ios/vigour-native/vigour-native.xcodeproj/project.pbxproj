@@ -504,6 +504,7 @@
 					"$(PROJECT_DIR)/vigour-native/Vendor",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
@@ -523,6 +524,7 @@
 					"$(PROJECT_DIR)/vigour-native/Vendor",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
