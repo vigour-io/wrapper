@@ -158,11 +158,11 @@ public class MainActivity extends ActionBarActivity {
         String url = getResources().getString(R.string.index_path);
         webview.load("file:///android_asset/" + url, null);
 
-        registerPlugins(pluginManager);
+        registerPlugins(pluginManager, webview);
         return webview;
     }
 
-    private void registerPlugins(PluginManager pluginManager) {
+    private void registerPlugins(PluginManager pluginManager, XWalkView webview) {
     }
 
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
