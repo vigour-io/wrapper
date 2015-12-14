@@ -262,13 +262,23 @@ class Env:NSObject, VigourPluginProtocol {
         jsObject["country"] =  NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String ?? ""
         jsObject["language"] = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode) as? String ?? ""
         jsObject["region"] = NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String ?? ""
-        jsObject["timezone"] = NSTimeZone.localTimeZone().localizedName(NSTimeZoneNameStyle.Generic, locale: NSLocale.currentLocale())
+        
+        let now = NSDate()
+        let f = NSDateFormatter()
+        f.dateFormat = "Z"
+        let timeZone = f.stringFromDate(now)
+        f.dateFormat = "YYYY-MM-DD"
+        let date = f.stringFromDate(now)
+        f.dateFormat = "HH:mm:ss"
+        let time = f.stringFromDate(now)
+        jsObject["timezone"] = "\(date)T\(time)\(timeZone)"
+//        jsObject["timezone"] = NSTimeZone.localTimeZone().localizedName(NSTimeZoneNameStyle.Generic, locale: NSLocale.currentLocale())
         jsObject["model"] = UIDevice.currentDevice().modelName
         jsObject["os"] = UIDevice.currentDevice().systemName
         jsObject["osVersion"] = UIDevice.currentDevice().systemVersion
         jsObject["appVersion"] = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String ?? ""
         jsObject["build"] = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as? String ?? ""
-        
+
         return JSValue(jsObject)
     }
 }
