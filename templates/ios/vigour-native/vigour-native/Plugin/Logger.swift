@@ -25,11 +25,11 @@ struct Logger: VigourPluginProtocol {
         default:break
         }
         
-        completionHandler(nil, JSObject(["succes":true]))
+        completionHandler(nil, JSValue(["succes":true]))
     }
     
-    func onReady() throws -> JSObject {
-        return JSObject([Logger.pluginId:"ready"])
+    func onReady() throws -> JSValue {
+        return JSValue([Logger.pluginId:"ready"])
     }
     
     static func instance() -> VigourPluginProtocol {
@@ -39,7 +39,7 @@ struct Logger: VigourPluginProtocol {
     //MARK: - Plugin implementation
     
     func log(message: AnyObject) {
-        print("<Vigour Log> \(message)\n")
+        print("<Vigour Log> \(message)")
     }
     
 }
