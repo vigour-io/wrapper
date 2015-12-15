@@ -226,7 +226,7 @@ class Env:NSObject, VigourPluginProtocol {
                 
                 if let weakSelf = self, let d = weakSelf.delegate {
                     
-                    var connectionType = "Wifi"
+                    var connectionType = "wifi"
                     if status.currentReachabilityStatus == .ReachableViaWWAN {
                         connectionType = weakSelf.telNetworkInfo.standardGrouping(weakSelf.telNetworkInfo.currentRadioAccessTechnology ?? "")
                     }
@@ -256,7 +256,7 @@ class Env:NSObject, VigourPluginProtocol {
             jsObject["network"] = r.currentReachabilityString
         }
         else {
-            jsObject["network"] = "connection info n/a"
+            jsObject["network"] = "none"
         }
         jsObject["bundleId"] = NSBundle.mainBundle().bundleIdentifier
         jsObject["country"] =  NSLocale.currentLocale().objectForKey(NSLocaleCountryCode) as? String ?? ""
@@ -267,7 +267,7 @@ class Env:NSObject, VigourPluginProtocol {
         let f = NSDateFormatter()
         f.dateFormat = "Z"
         let timeZone = f.stringFromDate(now)
-        f.dateFormat = "YYYY-MM-DD"
+        f.dateFormat = "YYYY-MM-dd"
         let date = f.stringFromDate(now)
         f.dateFormat = "HH:mm:ss"
         let time = f.stringFromDate(now)
