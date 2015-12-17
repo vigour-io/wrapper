@@ -16,5 +16,6 @@ extension VigourPluginManager {
     static func register() {
         VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)
         VigourPluginManager.registerPlugin(Facebook.pluginId, type: Facebook.self)
+        VigourPluginManager.registerPlugin(Env.pluginId, type: Env.self)
     }
 }

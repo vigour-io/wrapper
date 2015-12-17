@@ -16,25 +16,33 @@
             'use strict'
             
             var loginMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "login",
                 opts: {"scope":["public_profile", "email"]},
                 cbId: 0
             }
         
             var logoutMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "logout",
                 opts: {},
                 cbId: 1
             }
         
             var initMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "init",
                 opts: {},
                 cbId: 2
             }
+        
+        
+        var envMessage = {
+            pluginId: "env",
+            fnName: "init",
+            opts: {},
+            cbId: 3
+        }
         
             //contentURL - the link to be shared
             //contentTitle - represents the title of the content in the link
@@ -103,6 +111,7 @@
 
         
         </script>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(envMessage)">env</button>
         <button onclick="console.log('test1', 'test2', ['a', 'b'])">log</button>
         <button onclick="console.log(false, true)">log</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)">login</button>

@@ -44,7 +44,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             switch method {
             case .Init:
                 if FBSDKAccessToken.currentAccessToken() != nil {
-                    completionHandler(nil, JSObject([
+                    completionHandler(nil, JSValue([
                         "connectionStatus": "connected",
                         "token": FBSDKAccessToken.currentAccessToken().tokenString,
                         "userId": FBSDKAccessToken.currentAccessToken().userID
@@ -53,7 +53,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
                     )
                 }
                 else {
-                    completionHandler(nil, JSObject(["connectionStatus": "unknown"]))
+                    completionHandler(nil, JSValue(["connectionStatus": "unknown"]))
                 }
             case .Login:
                 
@@ -78,23 +78,23 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
                     
                 }
                 else {
-                    completionHandler(JSError(title: "Facebook share needs a link", description: "No link found to share", todo: "Add a link to share?"), JSObject([:]))
+                    completionHandler(JSError(title: "Facebook share needs a link", description: "No link found to share", todo: "Add a link to share?"), JSValue([:]))
                 }
                 
                 
             }
         }
         else {
-            completionHandler(JSError(title: "Facebook method error", description: "No valid method name was matched for the Facebook plugin", todo: "Check if the right method name is used?"), JSObject([:]))
+            completionHandler(JSError(title: "Facebook method error", description: "No valid method name was matched for the Facebook plugin", todo: "Check if the right method name is used?"), JSValue([:]))
         }
         
     }
     
-    func onReady() throws -> JSObject {
+    func onReady() throws -> JSValue {
         
         //init stuff
         
-        return JSObject([Facebook.pluginId:"ready"])
+        return JSValue([Facebook.pluginId:"ready"])
     }
     
     //Methods
@@ -106,7 +106,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         //The view controller to present from. If nil, the topmost view controller will be automatically determined as best as possible.
         loginMgr.logInWithReadPermissions(scope, fromViewController: nil, handler: { (result, error) -> Void in
             if error != nil {
-                completionHandler(JSError(title: "Facebook plugin error: \(error.code)", description: error.localizedDescription, todo: error.localizedRecoverySuggestion), JSObject([:]))
+                completionHandler(JSError(title: "Facebook plugin error: \(error.code)", description: error.localizedDescription, todo: error.localizedRecoverySuggestion), JSValue([:]))
                 #if DEBUG
                     print("FB ERROR: \(error.localizedDescription)")
                 #endif
@@ -128,7 +128,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
                     repsonse["userID"] = result.token.userID != nil ? result.token.userID : ""
                     repsonse["userId"] = result.token.expirationDate != nil ? result.token.expirationDate.description : ""
                 }
-                completionHandler(nil, JSObject(repsonse))
+                completionHandler(nil, JSValue(repsonse))
             }
         })
     }
@@ -137,7 +137,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         let loginMgr = FBSDKLoginManager()
         loginMgr.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
-        completionHandler(nil, JSObject([:]))
+        completionHandler(nil, JSValue([:]))
     }
     
     private func share(shareValue: FacebookShareLinkValue, completionHandler: pluginResult) {
@@ -169,7 +169,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             print("SHARING COMPLETED:: \(results)")
         #endif
         if let completionHandler = shareCompletionHandler {
-            completionHandler(nil, JSObject(["message":"share completed"]))
+            completionHandler(nil, JSValue(["message":"share completed"]))
         }
     }
     
@@ -178,7 +178,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
             print("SHARING ERROR:: \(error)")
         #endif
         if let completionHandler = shareCompletionHandler {
-            completionHandler(JSError(title: "Facebook plugin error: \(error.code)", description: error.localizedDescription, todo: error.localizedRecoverySuggestion), JSObject([:]))
+            completionHandler(JSError(title: "Facebook plugin error: \(error.code)", description: error.localizedDescription, todo: error.localizedRecoverySuggestion), JSValue([:]))
         }
     }
     
@@ -188,7 +188,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         #endif
         if let completionHandler = shareCompletionHandler {
 
-            completionHandler(JSError(title: "Facebook plugin error", description: "User canceled ", todo: ""), JSObject([:]))
+            completionHandler(JSError(title: "Facebook plugin error", description: "User canceled ", todo: ""), JSValue([:]))
         }
     }
     

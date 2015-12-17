@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.2.1",
+  "version": "2.2.5",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -104,6 +104,10 @@
   },
   "vigour": {
     "native": {
+      "builds": {
+        "val": true,
+        "description": "Whether to produce native builds in addition to the web assets they will serve"
+      },
       "clean": {
         "val": false,
         "description": "clean before build"
