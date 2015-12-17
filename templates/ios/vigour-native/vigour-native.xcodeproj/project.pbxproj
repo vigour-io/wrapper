@@ -15,6 +15,7 @@
 		4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492195391BFE88C200EB8AF5 /* Facebook.swift */; };
 		4934C7861C10E182007BD728 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934C7851C10E182007BD728 /* Env.swift */; };
 		494419461C137F57003946A7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494419451C137F57003946A7 /* Reachability.swift */; };
+		4956499D1C21508D0091544D /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4956499C1C21508D0091544D /* StatusBar.swift */; };
 		4959BE281BF3DC1F00F7B310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE271BF3DC1F00F7B310 /* Assets.xcassets */; };
 		4959BE361BF3DC1F00F7B310 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE351BF3DC1F00F7B310 /* vigour_nativeTests.swift */; };
 		4959BE411BF3DC1F00F7B310 /* vigour_nativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */; };
@@ -61,6 +62,7 @@
 		492195391BFE88C200EB8AF5 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
 		4934C7851C10E182007BD728 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		494419451C137F57003946A7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		4956499C1C21508D0091544D /* StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		4959BE1D1BF3DC1F00F7B310 /* vigour-native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vigour-native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4959BE271BF3DC1F00F7B310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4959BE2C1BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				492195391BFE88C200EB8AF5 /* Facebook.swift */,
 				4934C7851C10E182007BD728 /* Env.swift */,
 				494419451C137F57003946A7 /* Reachability.swift */,
+				4956499C1C21508D0091544D /* StatusBar.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4956499D1C21508D0091544D /* StatusBar.swift in Sources */,
 				494419461C137F57003946A7 /* Reachability.swift in Sources */,
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
 				4934C7861C10E182007BD728 /* Env.swift in Sources */,
