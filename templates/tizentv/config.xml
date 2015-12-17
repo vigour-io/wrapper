@@ -7,4 +7,5 @@
     <name>{{appName}}</name>
     <tizen:privilege name="http://developer.samsung.com/privilege/adstreamingfw"/>
     <tizen:profile name="tv-samsung-public"/>
+    <access origin="*" subdomains="true"></access>
 </widget>
