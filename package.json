@@ -24,7 +24,8 @@
     "test-netcasttv": "npm run buildtestapp && gaston test -r node -s test/node/netcasttv/",
     "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
     "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "builddocs": "./node_modules/.bin/jsdoc -r -d docs lib/*"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -188,6 +189,7 @@
     }
   },
   "devDependencies": {
+    "jsdoc": "^3.4.0",
     "vigour-spawn": "^1.0.0"
   }
 }
