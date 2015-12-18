@@ -81,7 +81,7 @@ class Env:NSObject, VigourPluginProtocol {
     
     static let pluginId = "env"
     
-    weak var delegate: VigourViewController?
+    weak var delegate: VigourBridgeViewController?
     
     private var reachability: Reachability?
     

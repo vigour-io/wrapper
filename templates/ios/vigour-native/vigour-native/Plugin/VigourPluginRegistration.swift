@@ -17,5 +17,6 @@ extension VigourPluginManager {
         VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)
         VigourPluginManager.registerPlugin(Facebook.pluginId, type: Facebook.self)
         VigourPluginManager.registerPlugin(Env.pluginId, type: Env.self)
+        VigourPluginManager.registerPlugin(StatusBar.pluginId, type: StatusBar.self)
     }
 }

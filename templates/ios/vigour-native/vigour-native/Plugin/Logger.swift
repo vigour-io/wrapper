@@ -14,7 +14,7 @@ struct Logger: VigourPluginProtocol {
     
     static let pluginId = "vigour.logger"
 
-    weak var delegate: VigourViewController?
+    weak var delegate: VigourBridgeViewController?
     
     func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
         switch(name) {

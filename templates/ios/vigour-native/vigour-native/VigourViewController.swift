@@ -11,7 +11,7 @@
 import WebKit
 import UIKit
 
-class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDelegate, WKNavigationDelegate {
     
     var vigourBridge:VigourBridge = VigourBridge()
     
