@@ -13,7 +13,11 @@ enum VigourOrientationMethod: String {
     case Init="init", Orientation="orientation", Locked="locked"
 }
 
-struct Orientation: VigourPluginProtocol {
+class Orientation:NSObject, VigourPluginProtocol {
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
     
     static let sharedInstance = Orientation()
     
@@ -29,6 +33,9 @@ struct Orientation: VigourPluginProtocol {
         
         switch method {
         case .Init:
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orientationChanged:"), name: UIDeviceOrientationDidChangeNotification, object: nil)
+
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
             if let orientation = args?.objectForKey("orientation") as? String {
@@ -57,6 +64,15 @@ struct Orientation: VigourPluginProtocol {
         }
         else {
             return "unknown"
+        }
+    }
+    
+    //MARK:- orientationChanged
+    
+    func orientationChanged(notification:NSNotification) {
+        if let d = delegate {
+            let orientation = mapOrientationValue(UIDevice.currentDevice().orientation)
+            d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(orientation), pluginId: Orientation.pluginId))
         }
     }
     
