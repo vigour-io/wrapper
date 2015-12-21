@@ -25,6 +25,7 @@ class Orientation:NSObject, VigourPluginProtocol {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    
     static let sharedInstance = Orientation()
     
     static let pluginId = "orientation"
@@ -42,8 +43,15 @@ class Orientation:NSObject, VigourPluginProtocol {
 
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
-            if let orientation = args?.objectForKey("orientation") as? String {
-                print(orientation)
+            if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait" {
+                UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+            }
+            else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape" {
+                UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+            }
+        case .Locked:
+            if let locked = args?.objectForKey("locked") as? Bool, let d = delegate {
+                d.autoRotate = !locked
             }
         default:break
         }

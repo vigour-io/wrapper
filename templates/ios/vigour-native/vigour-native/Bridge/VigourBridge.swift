@@ -15,6 +15,7 @@ protocol VigourBridgeViewController:WKUIDelegate, WKNavigationDelegate {
     var webView: WKWebView? {get set}
     var statusBarHidden: Bool {get set}
     var statusBarStyle: UIStatusBarStyle {get set}
+    var autoRotate: Bool {get set}
 }
 
 internal let scriptMessageHandlerString = "vigourBridgeHandler"
