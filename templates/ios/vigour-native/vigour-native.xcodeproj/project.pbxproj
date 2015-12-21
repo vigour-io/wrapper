@@ -24,7 +24,6 @@
 		4959BE661BF3DD1700F7B310 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */; };
 		4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */; };
 		4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */; };
-		4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5E1BF3DD1700F7B310 /* MainController.swift */; };
 		4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE601BF3DD1700F7B310 /* Logger.swift */; };
 		4959BE6B1BF3DD1700F7B310 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */; };
 		4959BE6C1BF3DD1700F7B310 /* VigourPluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */; };
@@ -78,7 +77,6 @@
 		4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridge.swift; sourceTree = "<group>"; };
 		4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeReceiveMessage.swift; sourceTree = "<group>"; };
 		4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeSendMessage.swift; sourceTree = "<group>"; };
-		4959BE5E1BF3DD1700F7B310 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		4959BE601BF3DD1700F7B310 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPlugin.swift; sourceTree = "<group>"; };
 		4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPluginManager.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */,
 				4959BE701BF3DD2300F7B310 /* Main.storyboard */,
 				4959BE5A1BF3DD1700F7B310 /* Bridge */,
-				4959BE5E1BF3DD1700F7B310 /* MainController.swift */,
 				4959BE5F1BF3DD1700F7B310 /* Plugin */,
 				4959BE641BF3DD1700F7B310 /* Utils.swift */,
 				4959BE651BF3DD1700F7B310 /* VigourViewController.swift */,
@@ -363,7 +360,6 @@
 				4934C7861C10E182007BD728 /* Env.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
-				4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
 				49044F441C28196C008392C5 /* Orientation.swift in Sources */,
 				4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */,

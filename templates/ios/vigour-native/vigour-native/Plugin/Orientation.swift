@@ -15,6 +15,12 @@ enum VigourOrientationMethod: String {
 
 class Orientation:NSObject, VigourPluginProtocol {
     
+    override init() {
+        super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orientationChanged:"), name: UIDeviceOrientationDidChangeNotification, object: nil)
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -33,8 +39,6 @@ class Orientation:NSObject, VigourPluginProtocol {
         
         switch method {
         case .Init:
-            
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("orientationChanged:"), name: UIDeviceOrientationDidChangeNotification, object: nil)
 
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
