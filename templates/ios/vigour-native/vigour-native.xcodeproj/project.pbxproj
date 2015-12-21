@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49044F441C28196C008392C5 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F431C28196C008392C5 /* Orientation.swift */; };
 		4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4171C14CD12001E4026 /* CoreTelephony.framework */; };
 		4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4191C14CD26001E4026 /* AVFoundation.framework */; };
 		492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49044F431C28196C008392C5 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		4905E4171C14CD12001E4026 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4905E4191C14CD26001E4026 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				4934C7851C10E182007BD728 /* Env.swift */,
 				494419451C137F57003946A7 /* Reachability.swift */,
 				4956499C1C21508D0091544D /* StatusBar.swift */,
+				49044F431C28196C008392C5 /* Orientation.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
 				4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
+				49044F441C28196C008392C5 /* Orientation.swift in Sources */,
 				4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */,
 				4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */,
 				4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */,
