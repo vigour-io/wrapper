@@ -27,6 +27,8 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
         }
     }
     
+    var autoRotate = true
+    
     //wrapper for web app
     var webView: WKWebView?
     
@@ -108,6 +110,10 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return autoRotate
     }
     
     

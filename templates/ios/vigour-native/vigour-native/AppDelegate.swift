@@ -28,9 +28,6 @@ let webAplicationFolderPath = NSTemporaryDirectory().stringByAppendingString(web
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var mainController: MainController = {
-        return MainController()
-    }()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -39,12 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         copyWWWToTmpFolderIfNeeded(true)
-        
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        self.window?.rootViewController = mainController.mainViewController
-        
-        self.window!.makeKeyAndVisible()
         
         return true
     }
