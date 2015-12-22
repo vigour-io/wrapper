@@ -25,7 +25,7 @@
     "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
     "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/",
     "postversion": "git push && git push --tags",
-    "builddocs": "./node_modules/.bin/jsdoc -r -d docs lib/*"
+    "builddocs": "./node_modules/.bin/jsdoc -c jsdoc.conf -t ./node_modules/ink-docstrap/template"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -189,6 +189,7 @@
     }
   },
   "devDependencies": {
+    "ink-docstrap": "^1.1.0",
     "jsdoc": "^3.4.0",
     "vigour-spawn": "^1.0.0"
   }
