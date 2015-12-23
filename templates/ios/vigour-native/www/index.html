@@ -85,6 +85,13 @@
             cbId: 7
         }
         
+        var oMessage6 = {
+            pluginId: "purchase",
+            fnName: "getProducts",
+            opts: {},
+            cbId: 7
+        }
+        
             //contentURL - the link to be shared
             //contentTitle - represents the title of the content in the link
             //imageURL - the URL of thumbnail image that appears on the post
@@ -152,6 +159,7 @@
 
         
         </script>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage6)">get products</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage)">orientation</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage2)">lanscape</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage3)">portrait</button>

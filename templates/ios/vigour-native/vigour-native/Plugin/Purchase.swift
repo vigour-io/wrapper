@@ -9,18 +9,18 @@
 import Foundation
 import StoreKit
 
-public class Purchase: VigourPluginProtocol {
+public class Purchase:NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver, VigourPluginProtocol {
     
     static let sharedInstance = Purchase()
     
 //    private let productIdentifiers: Set<String>
 //    private var purchasedProductIdentifiers = Set<String>()
     
-    private var productsRequest: SKProductsRequest?
-    private var completionHandler: (success: Bool, products: [SKProduct]) -> ()?
+//    private var productsRequest: SKProductsRequest?
+//    private var completionHandler: (success: Bool, products: [SKProduct]) -> ()?
     
-    init() {
-        
+    override init() {
+        super.init()
     }
     
     //MARK:- VigourPluginProtocol
@@ -30,7 +30,7 @@ public class Purchase: VigourPluginProtocol {
     weak var delegate: VigourBridgeViewController?
     
     func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: pluginResult) throws {
-        
+        print(name)
     }
     
     static func instance() -> VigourPluginProtocol {
@@ -41,12 +41,39 @@ public class Purchase: VigourPluginProtocol {
         return JSValue([Purchase.pluginId:"ready"])
     }
     
+    //MARK:- SKProductsRequestDelegate
+    
+    public func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse) {
+        if response.products.count != 0 {
+            for product in response.products {
+                print(product)
+            }
+        }
+        else {
+            print("There are no products.")
+        }
+    }
+    
+    //MARK:- SKPaymentTransactionObserver
+    
+    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print(transactions)
+    }
     
     //MARK:- Plugin API
     
     
     public func getProducts() {
-        
+        if SKPaymentQueue.canMakePayments() {
+            let productIdentifiers = NSSet(array: productIDs)
+            let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<NSObject>)
+            
+            productRequest.delegate = self
+            productRequest.start()
+        }
+        else {
+            println("Cannot perform In App Purchases.")
+        }
     }
     
 }

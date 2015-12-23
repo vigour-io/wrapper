@@ -19,5 +19,6 @@ extension VigourPluginManager {
         VigourPluginManager.registerPlugin(Env.self)
         VigourPluginManager.registerPlugin(StatusBar.self)
         VigourPluginManager.registerPlugin(Orientation.self)
+        VigourPluginManager.registerPlugin(Purchase.self)
     }
 }
