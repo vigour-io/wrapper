@@ -11,13 +11,17 @@ import StoreKit
 
 public class Purchase: VigourPluginProtocol {
     
-    static let sharedInstance = Orientation()
+    static let sharedInstance = Purchase()
     
-    private let productIdentifiers: Set<ProductIdentifier>
-    private var purchasedProductIdentifiers = Set<ProductIdentifier>()
+//    private let productIdentifiers: Set<String>
+//    private var purchasedProductIdentifiers = Set<String>()
     
     private var productsRequest: SKProductsRequest?
-    private var completionHandler: RequestProductsCompletionHandler?
+    private var completionHandler: (success: Bool, products: [SKProduct]) -> ()?
+    
+    init() {
+        
+    }
     
     //MARK:- VigourPluginProtocol
     
