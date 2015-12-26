@@ -26,6 +26,7 @@ var opts = {
   _packageDir: pkgPath,
   vigour: {
     native: {
+      builds: true,
       root: repo,
       platforms: {
         android: {
