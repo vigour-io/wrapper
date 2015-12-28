@@ -1,11 +1,17 @@
 <html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <style>
+            html, body {
+                height:100%;
+            }
+        button {
+            font-size:20px;
+        }
+        </style>
+    </head>
     <body>
         <h1>Vigour.io</h1>
-        <style>
-            button {
-                font-size:20px;
-            }
-        </style>
         <!-- 
             script will work with http is app has setting in info.plist
             http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
@@ -42,6 +48,41 @@
             fnName: "init",
             opts: {},
             cbId: 3
+        }
+        
+        var oMessage = {
+            pluginId: "orientation",
+            fnName: "init",
+            opts: {},
+            cbId: 4
+        }
+        
+        var oMessage2 = {
+            pluginId: "orientation",
+            fnName: "orientation",
+            opts: {"orientation":"landscape"},
+            cbId: 5
+        }
+        
+        var oMessage3 = {
+            pluginId: "orientation",
+            fnName: "orientation",
+            opts: {"orientation":"portrait"},
+            cbId: 6
+        }
+        
+        var oMessage4 = {
+            pluginId: "orientation",
+            fnName: "locked",
+            opts: {"locked":true},
+            cbId: 7
+        }
+        
+        var oMessage5 = {
+            pluginId: "orientation",
+            fnName: "locked",
+            opts: {"locked":false},
+            cbId: 7
         }
         
             //contentURL - the link to be shared
@@ -111,6 +152,11 @@
 
         
         </script>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage)">orientation</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage2)">lanscape</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage3)">portrait</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage4)">lock true</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage5)">lock false</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(envMessage)">env</button>
         <button onclick="console.log('test1', 'test2', ['a', 'b'])">log</button>
         <button onclick="console.log(false, true)">log</button>

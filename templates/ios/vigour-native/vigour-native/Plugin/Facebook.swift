@@ -27,7 +27,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     
     static let pluginId = "facebook"
     
-    weak var delegate: VigourViewController? {
+    weak var delegate: VigourBridgeViewController? {
         didSet {
             #if DEBUG
                 print("delegate set for \(Facebook.pluginId)")
@@ -156,7 +156,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         if let imageUrlString = shareValue.imageUrlString, let imageUrl = NSURL(string: imageUrlString) {
             content.imageURL = imageUrl
         }
-        if let d = delegate {
+        if let d = delegate as? UIViewController {
             FBSDKShareDialog.showFromViewController(d, withContent: content, delegate: self)
         }
     }
