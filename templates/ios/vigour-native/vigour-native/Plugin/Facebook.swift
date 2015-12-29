@@ -23,7 +23,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     
     private static let sharedInstance = Facebook()
     
-    var shareCompletionHandler:pluginResult?
+    var shareCompletionHandler:PluginResult?
     
     static let pluginId = "facebook"
     
@@ -39,7 +39,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         return sharedInstance
     }
     
-    func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: PluginResult) throws {
         if let method = VigourFacebookMethod(rawValue: name) {
             switch method {
             case .Init:
@@ -99,7 +99,7 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
     
     //Methods
     
-    private func login(scope:[String], completionHandler: pluginResult) {
+    private func login(scope:[String], completionHandler: PluginResult) {
         
         let loginMgr = FBSDKLoginManager()
         
@@ -133,14 +133,14 @@ class Facebook: NSObject, VigourPluginProtocol, FBSDKSharingDelegate {
         })
     }
     
-    private func logout(completionHandler: pluginResult) {
+    private func logout(completionHandler: PluginResult) {
         let loginMgr = FBSDKLoginManager()
         loginMgr.logOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
         completionHandler(nil, JSValue([:]))
     }
     
-    private func share(shareValue: FacebookShareLinkValue, completionHandler: pluginResult) {
+    private func share(shareValue: FacebookShareLinkValue, completionHandler: PluginResult) {
         shareCompletionHandler = completionHandler
         #if DEBUG
             print("SHARING:: ", shareValue)

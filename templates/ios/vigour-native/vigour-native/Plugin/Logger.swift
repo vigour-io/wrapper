@@ -16,7 +16,7 @@ struct Logger: VigourPluginProtocol {
 
     weak var delegate: VigourBridgeViewController?
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         switch(name) {
         case "log":
             if let message = args?.objectForKey("message") {

@@ -32,7 +32,7 @@ class Orientation:NSObject, VigourPluginProtocol {
     
     weak var delegate: VigourBridgeViewController?
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         guard let method = VigourOrientationMethod.init(rawValue: name)
         else {
             throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
