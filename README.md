@@ -25,6 +25,22 @@ Declaring vigour-wrapper as a dependency to a project make an executable called 
 ####Lg webos Tv
 For Lg webostv, a manually process is required before run the build script. Lg uses a SDK to generate ipk files, and this SDK is not available on npm. To download the SDK just go to [LG developer web site](http://developer.lge.com/webOSTV/sdk/web-sdk/sdk-installation/), and follow the steps. If you want to understand more about the SDK CLI you can [read more here](http://developer.lge.com/webOSTV/sdk/web-sdk/webos-tv-cli/using-webos-tv-cli/ ).
 
+
+####Tizen Tv
+If you want to test your project on the TV, you will need to download the [Tizen SDK](http://www.samsungdforum.com/Tizendevtools/Sdkdownload). Today (24/12/2015) the only version that works good is the version 2.4.0, but you can download the latest version on the web site and when you start the installation process, you can specify the version 2.4.0.
+
+* How to setup the developer mode on the tv ?
+
+  - Go to smart hub and press, 1,2,3,4,5. Then fill the ip field with you machine IP. After that restart the tv on the eletric power(Remove it from the eletric socket).
+  
+* How to see my app on the tv?
+
+  - After the step above ^^^; you will need to run ```npm run tizentv``` and import the wgt file on the IDE. Once your peoject was imported, click on the 'remote device manager' in the connection tab. Then insert your TV IP address and do not change the default port. Right click on the project and choose '''run as''' and select your TV.
+
+  
+  
+
+
 ##### specific details:
  - Use the default folder path when installing the SDK
 
@@ -181,7 +197,7 @@ The current version of the plugincore is [ ![Download](https://api.bintray.com/p
   - [X] lg net cast TV (old platform)
   - [X] lg Webos TV (new platform)
   - [X] samsung TV
-  - [ ] samsung Tizen TV(soon)
+  - [X] samsung Tizen TV
   - [x] chromecast
   - [ ] iWatch
   - [ ] windows phone

@@ -21,10 +21,11 @@ struct VigourPluginManager {
         VigourPluginManager.register()
     }
     
-    static func registerPlugin<T:VigourPluginProtocol>(id: String, type: T.Type) {
-        VigourPluginManager.pluginTypeMap[id] = type
+    static func registerPlugin<T:VigourPluginProtocol>(type: T.Type) {
+        
+        VigourPluginManager.pluginTypeMap[T.pluginId] = type
         #if DEBUG
-            print("*****PLUGIN \(id) REGISTERED*****")
+            print("*****PLUGIN \(T.pluginId) REGISTERED*****")
         #endif
     }
     

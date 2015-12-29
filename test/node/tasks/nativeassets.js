@@ -10,7 +10,8 @@ var mockBuilder = {
   buildDir: path.join(base, 'build'),
   splashScreen: path.join('assets', 'img', 'splash.png'),
   appIcon: path.join('assets', 'img', 'appIcon.png'),
-  root: base
+  root: base,
+  builds: true
 }
 var splashPath = path.join(mockBuilder.buildDir,
   'vigour-native',

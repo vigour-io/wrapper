@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.2.1",
+  "version": "2.2.6",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -24,8 +24,9 @@
     "test-netcasttv": "npm run buildtestapp && gaston test -r node -s test/node/netcasttv/",
     "test-webostv": "npm run buildtestapp && gaston test -r node -s test/node/webostv/",
     "test-chromecastweb": "npm run buildtestapp && gaston test -r node -s test/node/chromecastweb/",
-    "postversion": "git push && git push --tags",
-    "builddocs": "./node_modules/.bin/jsdoc -c jsdoc.conf -t ./node_modules/ink-docstrap/template"
+    "test-tizentv": "npm run buildtestapp && gaston test -r node -s test/node/tizentv/",
+    "builddocs": "./node_modules/.bin/jsdoc -c jsdoc.conf -t ./node_modules/ink-docstrap/template",
+    "postversion": "git push && git push --tags"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -104,6 +105,10 @@
   },
   "vigour": {
     "native": {
+      "builds": {
+        "val": true,
+        "description": "Whether to produce native builds in addition to the web assets they will serve"
+      },
       "clean": {
         "val": false,
         "description": "clean before build"
