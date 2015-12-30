@@ -12,7 +12,8 @@
     "web": "npm run build && ../../bin/build.js build --native.selectedPlatforms web",
     "webostv": "npm run build && ../../bin/build.js build --native.selectedPlatforms webostv",
     "netcasttv": "npm run build && ../../bin/build.js build --native.selectedPlatforms netcasttv",
-    "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb"
+    "chromecastweb": "npm run build && ../../bin/build.js build --native.selectedPlatforms chromecastweb",
+    "tizentv": "npm run build && ./node_modules/.bin/wrapper build --native.selectedPlatforms tizentv"
   },
   "repository": {
     "type": "git",
@@ -114,6 +115,25 @@
             "build.css": true,
             "mocha.js": true,
             "mocha.css": true
+          }
+        },
+         "tizentv":{
+          "assets": {
+            "build.html": true,
+            "build.js": true,
+            "build.css": true
+          },
+          "icons": {
+            "ThumbIcon": "assets/img/appIcon.png",
+            "BigThumbIcon": "assets/img/appIcon.png",
+            "ListIcon": "assets/img/appIcon.png",
+            "BigListIcon": "assets/img/appIcon.png"
+          },
+          "config":{
+            "appName":"vigourexample",
+            "iconPath":"icons/ThumbIcon.png",
+            "yourDomain":"http://vigour.io/",
+            "entryPoint": "build.html"
           }
         },
         "netcasttv": {

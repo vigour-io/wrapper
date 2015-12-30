@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://{{yourdomain}}/{{appName}}" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="7vsjs1lLE0.{{appName}}" package="7vsjs1lLE0" required_version="2.3"/>
+    <content src="{{entryPoint}}"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="{{iconPath}}"/>
+    <name>{{appName}}</name>
+    <tizen:privilege name="http://developer.samsung.com/privilege/adstreamingfw"/>
+    <tizen:profile name="tv-samsung-public"/>
+    <access origin="*" subdomains="true"></access>
+</widget>
