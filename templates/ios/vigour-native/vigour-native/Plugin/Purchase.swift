@@ -154,9 +154,32 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
             try fetchProducts!.fetch() { (success:Bool, products, productsReq) -> () in
                 
                 if success {
-                    for product in products {
-                        print(product.localizedDescription, product.price)
+                    
+                    var jsObject = [String:[String:String]]()
+                    
+                    for p in productsReq {
+                        
+                        let indexOptional = products.indexOf({ (product) -> Bool in
+                            product.productIdentifier == p.1
+                        })
+                        if let index = indexOptional {
+                            let prod = products[index]
+                            jsObject[p.0] = [
+                                "description":prod.localizedDescription,
+                                "price":"\(prod.price)",
+                                "title":prod.localizedTitle,
+                                "priceLocale":"\(prod.priceLocale.localeIdentifier)",
+                                "productIdentifier":prod.productIdentifier
+                            ]
+                        }
                     }
+                    
+                    completionHandler(nil, JSValue(jsObject))
+                    
+                    #if DEBUG
+                    print(jsObject)
+                    #endif
+                    
                 }
                 else {
                     completionHandler(JSError(title: "Pay error", description: "Fetching products failed", todo: ""), JSValue([:]))
