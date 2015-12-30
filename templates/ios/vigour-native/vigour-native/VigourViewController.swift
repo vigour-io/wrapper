@@ -37,9 +37,9 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
         #if DEBUG
-        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
-        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
-        controller.addUserScript(script)
+//        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+//        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
+//        controller.addUserScript(script)
         #endif
         
         return controller
