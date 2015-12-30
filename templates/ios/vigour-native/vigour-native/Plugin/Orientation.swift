@@ -40,7 +40,6 @@ class Orientation:NSObject, VigourPluginProtocol {
         
         switch method {
         case .Init:
-
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
             if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait" {
@@ -55,7 +54,6 @@ class Orientation:NSObject, VigourPluginProtocol {
                 d.autoRotate = !locked
             }
             completionHandler(nil, JSValue(true))
-        default:break
         }
         
     }

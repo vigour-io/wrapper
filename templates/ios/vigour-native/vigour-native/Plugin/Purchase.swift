@@ -125,6 +125,7 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         
         SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
         
+        retrieveReceipt()
         
         //check for product id's in package
 //        if let path = NSBundle.mainBundle().pathForResource("www/package", ofType:"json") {
@@ -177,7 +178,7 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         if let handler = purchaseLookup[transaction.payment.productIdentifier] {
             
             
-            handler(nil, JSValue(true))
+            handler(nil, JSValue(retrieveReceipt()))
             
             purchaseLookup[transaction.payment.productIdentifier] = nil
         }
@@ -289,6 +290,15 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         #if DEBUG
             print("Number of products: ", productsLookup.count)
         #endif
+    }
+    
+    private func retrieveReceipt() -> String {
+        let receiptUrl = NSBundle.mainBundle().appStoreReceiptURL
+        if let receipt: NSData = NSData(contentsOfURL: receiptUrl!) {
+            let receiptString = receipt.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+            return receiptString
+        }
+        return ""
     }
     
 }

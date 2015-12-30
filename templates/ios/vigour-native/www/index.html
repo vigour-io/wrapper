@@ -96,7 +96,7 @@
             pluginId: "pay",
             fnName: "buy",
             opts: {"id":"mtv_play_single_episode_purchase"},
-            cbId: 17
+            cbId: 18
         }
         
             //contentURL - the link to be shared
@@ -132,6 +132,11 @@
                 }
                 if (cbId) {
                     console.log(cbId)
+                    if (cbId == 18) {
+                        var div = document.createElement('div');
+                        div.innerHTML = '<h3 style="position:relative;color:red;width:200px;">'+response+'</h3>';
+                        document.body.appendChild(div);
+                    }
                 }
                 if (response) {
                     console.log(response)
