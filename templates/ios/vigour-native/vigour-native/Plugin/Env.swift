@@ -134,7 +134,7 @@ class Env:NSObject, VigourPluginProtocol {
         return Env.sharedInstance
     }
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         if let method = VigourEnvMethod(rawValue: name) {
             switch method {
             case .Init:

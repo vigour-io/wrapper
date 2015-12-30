@@ -85,6 +85,20 @@
             cbId: 7
         }
         
+        var oMessage6 = {
+            pluginId: "pay",
+            fnName: "getProducts",
+            opts:{"single": "mtv_play_single_episode_purchase","monthly": "mtv_play_subscription_monthly","yearly": "mtv_play_subscription_annual"},
+            cbId: 17
+        }
+        
+        var oMessage7 = {
+            pluginId: "pay",
+            fnName: "buy",
+            opts: {"id":"mtv_play_single_episode_purchase"},
+            cbId: 18
+        }
+        
             //contentURL - the link to be shared
             //contentTitle - represents the title of the content in the link
             //imageURL - the URL of thumbnail image that appears on the post
@@ -118,6 +132,11 @@
                 }
                 if (cbId) {
                     console.log(cbId)
+                    if (cbId == 18) {
+                        var div = document.createElement('div');
+                        div.innerHTML = '<h3 style="position:relative;color:red;width:200px;">'+response+'</h3>';
+                        document.body.appendChild(div);
+                    }
                 }
                 if (response) {
                     console.log(response)
@@ -152,6 +171,8 @@
 
         
         </script>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage6)">get products</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage7)">buy episode</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage)">orientation</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage2)">lanscape</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage3)">portrait</button>

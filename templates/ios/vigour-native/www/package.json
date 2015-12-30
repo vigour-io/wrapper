@@ -1,0 +1,65 @@
+{
+  "name": "pay-tests",
+  "gaston": {
+    "package": true
+  },
+  "vigour": {
+    "pay": {
+      "android": {
+        "billingKey": "SUPASECRETwhatevs",
+        "products": {
+          "single": {
+            "val": "mtv-play_single_episode_purchase",
+            "type": "single-purchase"
+          },
+          "monthly": {
+            "val": "mtvplay_subscription_monthly",
+            "type": "monthly-recurring-subscription"
+          },
+          "yearly": {
+            "val": "mtvplay_single_purchase",
+            "type": "yearly-recurring-subscription"
+          }
+        }
+      },
+      "iOS": {
+        "products": {
+          "single": "mtv_play_single_episode_purchase",
+          "monthly": "mtv_play_subscription_monthly",
+          "yearly": "mtv_play_subscription_annual"
+        }
+      },
+      "amazon": {
+        "products": {
+          "single": "amazon_single_id",
+          "monthly": "amazon_monthly_id",
+          "yearly": "amazon_yearly_id"
+        },
+        "src": "https://resources.amazonwebapps.com/v1/latest/Amazon-Web-App-API.min.js"
+      },
+      "testStore": {
+        "products": {
+          "single": "{region}_single_test",
+          "monthly": "{region}_monthly_test",
+          "yearly": "{region}_yearly_test"
+        }
+      }
+    }
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "expect",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "sinon",
+      "alert",
+      "amzn_wa",
+      "amzn_wa_tester"
+    ]
+  }
+}
+

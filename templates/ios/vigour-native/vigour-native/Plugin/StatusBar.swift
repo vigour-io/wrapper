@@ -22,7 +22,7 @@ class StatusBar: VigourPluginProtocol {
     
     weak var delegate: VigourBridgeViewController?
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         if let methodName = VigourStatusBarMethod(rawValue: name) {
             switch(methodName) {
             case .Init:
