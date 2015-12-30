@@ -69,6 +69,10 @@ class ProductFetcher:NSObject, SKProductsRequestDelegate {
 
 public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtocol {
     
+    private var productsLookup = [String:SKProduct]()
+    
+    private var purchaseLookup = [String:PluginResult]()
+    
     static let sharedInstance = Purchase()
     
     override init() {
@@ -97,7 +101,11 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
                 getProducts(products, completionHandler:completionHandler)
             }
         case .Buy:
-            break
+            if let productId = args!["id"] as? String, let product = productsLookup[productId] {
+                let payment = SKPayment(product: product)
+                purchaseLookup[payment.productIdentifier] = completionHandler
+                SKPaymentQueue.defaultQueue().addPayment(payment)
+            }
         }
     }
     
@@ -112,6 +120,11 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
     //MARK:- Prepare
     
     private func setup() {
+        
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+        
+        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+        
         
         //check for product id's in package
 //        if let path = NSBundle.mainBundle().pathForResource("www/package", ofType:"json") {
@@ -140,7 +153,73 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
     //MARK:- SKPaymentTransactionObserver
     
     public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print(transactions)
+        for transaction in transactions {
+            switch (transaction.transactionState) {
+            case .Purchased:
+                completeTransaction(transaction)
+            case .Failed:
+                failedTransaction(transaction)
+            case .Restored:
+                restoreTransaction(transaction)
+            case .Deferred:
+                break
+            case .Purchasing:
+                break
+            }
+        }
+    }
+    
+    private func completeTransaction(transaction: SKPaymentTransaction) {
+        #if DEBUG
+            print("completeTransaction")
+        #endif
+        
+        if let handler = purchaseLookup[transaction.payment.productIdentifier] {
+            
+            
+            handler(nil, JSValue(true))
+            
+            purchaseLookup[transaction.payment.productIdentifier] = nil
+        }
+        
+        SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+    }
+    
+    private func restoreTransaction(transaction: SKPaymentTransaction) {
+        #if DEBUG
+            print("**Restore Transaction**", transaction.payment.productIdentifier)
+        #endif
+    }
+    
+    private func failedTransaction(transaction: SKPaymentTransaction) {
+        #if DEBUG
+            print("failedTransaction")
+        #endif
+
+        if let error = transaction.error, let handler = purchaseLookup[transaction.payment.productIdentifier] {
+            
+            var errorTitle = ""
+            switch error.code {
+            case SKErrorClientInvalid:
+                errorTitle = "Client Invalid"
+            case SKErrorPaymentCancelled:
+                errorTitle = "Payment Cancelled"
+            case SKErrorPaymentInvalid:
+                errorTitle = "Payment Invalid"
+            case SKErrorPaymentNotAllowed:
+                errorTitle = "Payment Not Allowed"
+            case SKErrorStoreProductNotAvailable:
+                errorTitle = "Product Not Available"
+            default:
+                errorTitle = "Unknown Transaction Error"
+            }
+            
+            handler(JSError(title:errorTitle, description: error.localizedDescription, todo:error.localizedRecoverySuggestion), JSValue([:]))
+            
+            purchaseLookup[transaction.payment.productIdentifier] = nil
+            
+        }
+        SKPaymentQueue.defaultQueue().finishTransaction(transaction)
     }
     
     //MARK:- Plugin API
@@ -151,9 +230,13 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         fetchProducts = ProductFetcher(products: productsReq)
         
         do {
-            try fetchProducts!.fetch() { (success:Bool, products, productsReq) -> () in
+            try fetchProducts!.fetch() { [weak self] (success:Bool, products, productsReq) -> () in
                 
                 if success {
+                    
+                    if let weakSelf = self {
+                        weakSelf.cacheProducts(products)
+                    }
                     
                     var jsObject = [String:[String:String]]()
                     
@@ -171,7 +254,9 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
                                 "priceLocale":"\(prod.priceLocale.localeIdentifier)",
                                 "productIdentifier":prod.productIdentifier
                             ]
+                            
                         }
+                        
                     }
                     
                     completionHandler(nil, JSValue(jsObject))
@@ -197,5 +282,13 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         }
     }
     
+    private func cacheProducts(products:[SKProduct]) {
+        for product in products {
+            productsLookup[product.productIdentifier] = product
+        }
+        #if DEBUG
+            print("Number of products: ", productsLookup.count)
+        #endif
+    }
     
 }
