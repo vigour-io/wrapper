@@ -292,6 +292,7 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         #endif
     }
     
+    //https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html
     private func retrieveReceipt() -> String {
         let receiptUrl = NSBundle.mainBundle().appStoreReceiptURL
         if let receipt: NSData = NSData(contentsOfURL: receiptUrl!) {

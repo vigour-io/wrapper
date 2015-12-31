@@ -44,11 +44,15 @@ class Orientation:NSObject, VigourPluginProtocol {
         case .Orientation:
             if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait" {
                 UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+                completionHandler(nil, JSValue(true))
             }
             else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape" {
                 UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+                completionHandler(nil, JSValue(true))
             }
-            completionHandler(nil, JSValue(true))
+            else {
+                completionHandler(JSError(title: "Orientation error", description: "wrong param for method", todo: ""), JSValue([:]))
+            }
         case .Locked:
             if let locked = args?.objectForKey("locked") as? Bool, let d = delegate {
                 d.autoRotate = !locked
