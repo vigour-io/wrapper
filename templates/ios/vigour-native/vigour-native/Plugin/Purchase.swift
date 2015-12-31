@@ -95,7 +95,9 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         }
         switch method {
         case .Init:
-            break
+            
+            SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+            
         case .GetProducts:
             if let products = args! as? [String:String]  {
                 getProducts(products, completionHandler:completionHandler)
@@ -122,10 +124,6 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
     private func setup() {
         
         SKPaymentQueue.defaultQueue().addTransactionObserver(self)
-        
-        SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
-        
-        retrieveReceipt()
         
         //check for product id's in package
 //        if let path = NSBundle.mainBundle().pathForResource("www/package", ofType:"json") {

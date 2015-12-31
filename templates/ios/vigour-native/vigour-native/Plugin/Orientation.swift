@@ -42,16 +42,28 @@ class Orientation:NSObject, VigourPluginProtocol {
         case .Init:
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
-            if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait" {
-                UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
-                completionHandler(nil, JSValue(true))
+            if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait",
+                let d = delegate {
+                    
+                    //force rotation
+                    d.autoRotate = true
+                    UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+                    
+                    completionHandler(nil, JSValue(true))
+                    
             }
-            else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape" {
-                UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
-                completionHandler(nil, JSValue(true))
+            else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape",
+                    let d = delegate {
+                        
+                        //force rotation
+                        d.autoRotate = true
+                        UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+                        
+                        completionHandler(nil, JSValue(true))
+                        
             }
             else {
-                completionHandler(JSError(title: "Orientation error", description: "wrong param for method", todo: ""), JSValue([:]))
+                completionHandler(JSError(title: "Orientation error", description: "wrong param for method orientation", todo: ""), JSValue(false))
             }
         case .Locked:
             if let locked = args?.objectForKey("locked") as? Bool, let d = delegate {
@@ -86,7 +98,7 @@ class Orientation:NSObject, VigourPluginProtocol {
     //MARK:- orientationChanged
     
     func orientationChanged(notification:NSNotification) {
-        if let d = delegate {
+        if let d = delegate where d.autoRotate == true {
             let orientation = mapOrientationValue(UIDevice.currentDevice().orientation)
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(orientation), pluginId: Orientation.pluginId))
         }
