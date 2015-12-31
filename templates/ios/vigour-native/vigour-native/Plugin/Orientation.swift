@@ -34,8 +34,8 @@ class Orientation:NSObject, VigourPluginProtocol {
     
     func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         guard let method = VigourOrientationMethod.init(rawValue: name)
-        else {
-            throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
+            else {
+                throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
         }
         
         switch method {
@@ -47,20 +47,26 @@ class Orientation:NSObject, VigourPluginProtocol {
                     
                     //force rotation
                     d.autoRotate = true
+                    
                     UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+                    
+                    //force lock
+                    d.autoRotate = false
                     
                     completionHandler(nil, JSValue(true))
                     
             }
             else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape",
-                    let d = delegate {
-                        
-                        //force rotation
-                        d.autoRotate = true
-                        UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
-                        
-                        completionHandler(nil, JSValue(true))
-                        
+                let d = delegate {
+                    
+                    //force rotation
+                    d.autoRotate = true
+                    UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+                    
+                    d.autoRotate = false
+                    
+                    completionHandler(nil, JSValue(true))
+                    
             }
             else {
                 completionHandler(JSError(title: "Orientation error", description: "wrong param for method orientation", todo: ""), JSValue(false))
@@ -81,7 +87,7 @@ class Orientation:NSObject, VigourPluginProtocol {
     func onReady() throws -> JSValue {
         return JSValue([Orientation.pluginId:"ready"])
     }
- 
+    
     ///private
     func mapOrientationValue(o:UIDeviceOrientation) -> String {
         if UIDeviceOrientationIsLandscape(o) {
