@@ -32,28 +32,50 @@ class Orientation:NSObject, VigourPluginProtocol {
     
     weak var delegate: VigourBridgeViewController?
     
-    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:pluginResult) throws {
+    func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws {
         guard let method = VigourOrientationMethod.init(rawValue: name)
-        else {
-            throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
+            else {
+                throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
         }
         
         switch method {
         case .Init:
-
             completionHandler(nil, JSValue(mapOrientationValue(UIDevice.currentDevice().orientation)))
         case .Orientation:
-            if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait" {
-                UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+            if let orientation = args?.objectForKey("orientation") as? String where orientation == "portrait",
+                let d = delegate {
+                    
+                    //force rotation
+                    d.autoRotate = true
+                    
+                    UIDevice.currentDevice().setValue(UIInterfaceOrientation.Portrait.rawValue, forKey: "orientation")
+                    
+                    //force lock
+                    d.autoRotate = false
+                    
+                    completionHandler(nil, JSValue(true))
+                    
             }
-            else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape" {
-                UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+            else if let orientation = args?.objectForKey("orientation") as? String where orientation == "landscape",
+                let d = delegate {
+                    
+                    //force rotation
+                    d.autoRotate = true
+                    UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+                    
+                    d.autoRotate = false
+                    
+                    completionHandler(nil, JSValue(true))
+                    
+            }
+            else {
+                completionHandler(JSError(title: "Orientation error", description: "wrong param for method orientation", todo: ""), JSValue(false))
             }
         case .Locked:
             if let locked = args?.objectForKey("locked") as? Bool, let d = delegate {
                 d.autoRotate = !locked
             }
-        default:break
+            completionHandler(nil, JSValue(true))
         }
         
     }
@@ -65,7 +87,7 @@ class Orientation:NSObject, VigourPluginProtocol {
     func onReady() throws -> JSValue {
         return JSValue([Orientation.pluginId:"ready"])
     }
- 
+    
     ///private
     func mapOrientationValue(o:UIDeviceOrientation) -> String {
         if UIDeviceOrientationIsLandscape(o) {
@@ -82,7 +104,7 @@ class Orientation:NSObject, VigourPluginProtocol {
     //MARK:- orientationChanged
     
     func orientationChanged(notification:NSNotification) {
-        if let d = delegate {
+        if let d = delegate where d.autoRotate == true {
             let orientation = mapOrientationValue(UIDevice.currentDevice().orientation)
             d.vigourBridge.sendJSMessage(VigourBridgeSendMessage.Receive(error: nil, event: "change", message: JSValue(orientation), pluginId: Orientation.pluginId))
         }

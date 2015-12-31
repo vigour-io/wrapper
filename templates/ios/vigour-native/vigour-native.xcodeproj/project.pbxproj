@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		49044F441C28196C008392C5 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F431C28196C008392C5 /* Orientation.swift */; };
+		49044F461C29612F008392C5 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F451C29612F008392C5 /* Purchase.swift */; };
+		49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49044F471C2967DA008392C5 /* StoreKit.framework */; };
 		4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4171C14CD12001E4026 /* CoreTelephony.framework */; };
 		4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4191C14CD26001E4026 /* AVFoundation.framework */; };
 		492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		49044F431C28196C008392C5 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
+		49044F451C29612F008392C5 /* Purchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		49044F471C2967DA008392C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4905E4171C14CD12001E4026 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		4905E4191C14CD26001E4026 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */,
 				4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */,
 				4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */,
 				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
@@ -209,6 +214,7 @@
 				494419451C137F57003946A7 /* Reachability.swift */,
 				4956499C1C21508D0091544D /* StatusBar.swift */,
 				49044F431C28196C008392C5 /* Orientation.swift */,
+				49044F451C29612F008392C5 /* Purchase.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -216,6 +222,7 @@
 		4959BE751BF3DDF800F7B310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49044F471C2967DA008392C5 /* StoreKit.framework */,
 				4905E4191C14CD26001E4026 /* AVFoundation.framework */,
 				4905E4171C14CD12001E4026 /* CoreTelephony.framework */,
 				4959BE761BF3DE2800F7B310 /* WebKit.framework */,
@@ -358,6 +365,7 @@
 				494419461C137F57003946A7 /* Reachability.swift in Sources */,
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
 				4934C7861C10E182007BD728 /* Env.swift in Sources */,
+				49044F461C29612F008392C5 /* Purchase.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
@@ -511,7 +519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
+				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -531,7 +539,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
+				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 			};
