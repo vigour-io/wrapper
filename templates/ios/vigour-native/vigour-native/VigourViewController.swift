@@ -11,6 +11,10 @@
 import WebKit
 import UIKit
 
+private let webApplicationRootFolderName = NSBundle.mainBundle().pathForResource("www", ofType: nil)
+
+let webAplicationFolderPath = ""
+
 class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDelegate, WKNavigationDelegate {
     
     var vigourBridge:VigourBridge = VigourBridge()
@@ -94,10 +98,9 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
     }
     
     private func loadApp() {
-        let path = "\(webAplicationFolderPath)/\(appplicationIndexPath)"
-        print(path)
-        let url = NSURL(fileURLWithPath: path)
-        webView!.loadRequest(NSURLRequest(URL: url))
+        let filePath = "\(webApplicationRootFolderName!)/\(appplicationIndexPath)"
+        let url = NSURL(fileURLWithPath: filePath)
+        webView!.loadFileURL(url, allowingReadAccessToURL: url)
     }
     
     override func prefersStatusBarHidden() -> Bool {
