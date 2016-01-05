@@ -65,7 +65,7 @@ enum VigourBridgeSendMessage: JSStringProtocol {
     private func errorJSString(error: JSError?) -> String {
         var js = ""
         if let e = error {
-            js += "\(e.jsString()), "
+            js += "\(e.jsString()) "
         }
         else {
             js += "var error = null"
