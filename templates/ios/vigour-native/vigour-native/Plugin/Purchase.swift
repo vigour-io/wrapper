@@ -255,11 +255,16 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
                     
                     for p in productsReq {
                         
+                        
+                        
                         let indexOptional = products.indexOf({ (product) -> Bool in
                             product.productIdentifier == p.1
                         })
                         if let index = indexOptional {
+                            
                             let prod = products[index]
+                            formatter.locale = prod.priceLocale
+                            
                             jsObject[p.0] = [
                                 "description":prod.localizedDescription,
                                 "price":"\(prod.price)",
