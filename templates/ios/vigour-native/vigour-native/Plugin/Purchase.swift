@@ -17,6 +17,17 @@ enum PurchaseError: ErrorType {
     case NoPayment
 }
 
+extension SKProduct {
+    
+    func localizedPrice() -> String {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = .CurrencyStyle
+        formatter.locale = self.priceLocale
+        return formatter.stringFromNumber(self.price)!
+    }
+    
+}
+
 class ProductFetcher:NSObject, SKProductsRequestDelegate {
     
     typealias ProductsHandler = (Bool, [SKProduct], [String:String]) -> ()
@@ -228,6 +239,9 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
         var fetchProducts:ProductFetcher?
         fetchProducts = ProductFetcher(products: productsReq)
         
+        let formatter = NSNumberFormatter()
+        formatter.locale = NSLocale.autoupdatingCurrentLocale()
+        
         do {
             try fetchProducts!.fetch() { [weak self] (success:Bool, products, productsReq) -> () in
                 
@@ -250,8 +264,10 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
                                 "description":prod.localizedDescription,
                                 "price":"\(prod.price)",
                                 "title":prod.localizedTitle,
-                                "priceLocale":"\(prod.priceLocale.localeIdentifier)",
-                                "productIdentifier":prod.productIdentifier
+                                "priceLocale":prod.localizedPrice(),
+                                "productIdentifier":prod.productIdentifier,
+                                "currency" : formatter.currencySymbol,
+                                "currencyCode" : formatter.currencyCode
                             ]
                             
                         }
