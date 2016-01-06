@@ -35,6 +35,17 @@
 		4959BE721BF3DD2300F7B310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE701BF3DD2300F7B310 /* Main.storyboard */; };
 		4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */; };
 		4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4959BE761BF3DE2800F7B310 /* WebKit.framework */; };
+		49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD242E1C3DAF5800D192FC /* Chromecast.swift */; };
+		49FD24451C3DBFB400D192FC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24441C3DBFB400D192FC /* Accelerate.framework */; };
+		49FD24471C3DBFBC00D192FC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */; };
+		49FD24491C3DBFC600D192FC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */; };
+		49FD244B1C3DBFCC00D192FC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244A1C3DBFCC00D192FC /* CoreText.framework */; };
+		49FD244D1C3DBFD700D192FC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244C1C3DBFD700D192FC /* libc++.tbd */; };
+		49FD244F1C3DBFDE00D192FC /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */; };
+		49FD24511C3DBFE500D192FC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24501C3DBFE500D192FC /* MediaPlayer.framework */; };
+		49FD24531C3DBFEA00D192FC /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */; };
+		49FD24551C3DBFF100D192FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */; };
+		49FD24571C3DC00400D192FC /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24561C3DC00400D192FC /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +101,17 @@
 		4959BE711BF3DD2300F7B310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4959BE761BF3DE2800F7B310 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		49FD242E1C3DAF5800D192FC /* Chromecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromecast.swift; sourceTree = "<group>"; };
+		49FD24441C3DBFB400D192FC /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		49FD244A1C3DBFCC00D192FC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		49FD244C1C3DBFD700D192FC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
+		49FD24501C3DBFE500D192FC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
+		49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		49FD24561C3DC00400D192FC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,11 +119,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FD24551C3DBFF100D192FC /* SystemConfiguration.framework in Frameworks */,
+				49FD24531C3DBFEA00D192FC /* MediaToolbox.framework in Frameworks */,
+				49FD24511C3DBFE500D192FC /* MediaPlayer.framework in Frameworks */,
+				49FD244F1C3DBFDE00D192FC /* MediaAccessibility.framework in Frameworks */,
+				49FD244D1C3DBFD700D192FC /* libc++.tbd in Frameworks */,
+				49FD244B1C3DBFCC00D192FC /* CoreText.framework in Frameworks */,
+				49FD24491C3DBFC600D192FC /* CoreBluetooth.framework in Frameworks */,
+				49FD24471C3DBFBC00D192FC /* AudioToolbox.framework in Frameworks */,
+				49FD24451C3DBFB400D192FC /* Accelerate.framework in Frameworks */,
 				49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */,
 				4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */,
 				4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */,
 				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
 				4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */,
+				49FD24571C3DC00400D192FC /* GoogleCast.framework in Frameworks */,
 				492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */,
 				492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -215,6 +247,7 @@
 				4956499C1C21508D0091544D /* StatusBar.swift */,
 				49044F431C28196C008392C5 /* Orientation.swift */,
 				49044F451C29612F008392C5 /* Purchase.swift */,
+				49FD242E1C3DAF5800D192FC /* Chromecast.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -222,6 +255,16 @@
 		4959BE751BF3DDF800F7B310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49FD24561C3DC00400D192FC /* GoogleCast.framework */,
+				49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */,
+				49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */,
+				49FD24501C3DBFE500D192FC /* MediaPlayer.framework */,
+				49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */,
+				49FD244C1C3DBFD700D192FC /* libc++.tbd */,
+				49FD244A1C3DBFCC00D192FC /* CoreText.framework */,
+				49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */,
+				49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */,
+				49FD24441C3DBFB400D192FC /* Accelerate.framework */,
 				49044F471C2967DA008392C5 /* StoreKit.framework */,
 				4905E4191C14CD26001E4026 /* AVFoundation.framework */,
 				4905E4171C14CD12001E4026 /* CoreTelephony.framework */,
@@ -366,6 +409,7 @@
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
 				4934C7861C10E182007BD728 /* Env.swift in Sources */,
 				49044F461C29612F008392C5 /* Purchase.swift in Sources */,
+				49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
@@ -511,13 +555,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/vigour-native/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -531,13 +578,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/vigour-native/Vendor",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";

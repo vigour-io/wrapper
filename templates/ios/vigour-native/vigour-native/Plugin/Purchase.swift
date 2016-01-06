@@ -102,7 +102,7 @@ public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtoc
     func callMethodWithName(name: String, andArguments args: NSDictionary?, completionHandler: PluginResult) throws {
         guard let method = PurchaseMethod.init(rawValue: name)
         else {
-            throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Orientation.pluginId)
+            throw VigourBridgeError.PluginError("Unsupported method!", pluginId: Purchase.pluginId)
         }
         switch method {
         case .Init:
