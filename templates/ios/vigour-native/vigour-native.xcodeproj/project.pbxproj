@@ -45,7 +45,7 @@
 		49FD24511C3DBFE500D192FC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24501C3DBFE500D192FC /* MediaPlayer.framework */; };
 		49FD24531C3DBFEA00D192FC /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */; };
 		49FD24551C3DBFF100D192FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */; };
-		49FD24571C3DC00400D192FC /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24561C3DC00400D192FC /* GoogleCast.framework */; };
+		49FD24591C3DCC1600D192FC /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24581C3DCC1600D192FC /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,7 +111,7 @@
 		49FD24501C3DBFE500D192FC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
 		49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		49FD24561C3DC00400D192FC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleCast.framework; sourceTree = "<group>"; };
+		49FD24581C3DCC1600D192FC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = "vigour-native/Vendor/GoogleCast.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 				4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */,
 				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
 				4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */,
-				49FD24571C3DC00400D192FC /* GoogleCast.framework in Frameworks */,
+				49FD24591C3DCC1600D192FC /* GoogleCast.framework in Frameworks */,
 				492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */,
 				492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -255,7 +255,7 @@
 		4959BE751BF3DDF800F7B310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49FD24561C3DC00400D192FC /* GoogleCast.framework */,
+				49FD24581C3DCC1600D192FC /* GoogleCast.framework */,
 				49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */,
 				49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */,
 				49FD24501C3DBFE500D192FC /* MediaPlayer.framework */,
