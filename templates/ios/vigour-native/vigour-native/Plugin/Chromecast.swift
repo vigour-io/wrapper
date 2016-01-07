@@ -17,6 +17,14 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
     
     private var deviceScanner:GCKDeviceScanner?
     
+    private var deviceManager:GCKDeviceManager?
+    
+    private var selectedDevice:GCKDevice?
+    
+    private var receiverAppId:String?
+    
+    private var castingActionCompletionHandler: PluginResult?
+    
     
     //MARK: - VigourPluginProtocol
     
@@ -45,9 +53,13 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
                 completionHandler(JSError(title:"Chromecast error", description: "An app id is required", todo:"provide the default value or an existing id"), JSValue(false))
             }
         case .StartCasting:
-            print(args)
+            if let id = args!["deviceId"] as? String {
+                castingActionCompletionHandler = completionHandler
+                connectToDeviceById(id)
+            }
         case .StopCasting:
-            print(args)
+            castingActionCompletionHandler = completionHandler
+            disconnectFromCurrentDevice()
         }
 
     }
@@ -59,6 +71,9 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
     static func instance() -> VigourPluginProtocol {
         return Chromecast.sharedInstance
     }
+    
+    
+    
     
     //MARK: - Plugin methods
     
@@ -72,6 +87,7 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
             deviceScanner.addListener(self)
             deviceScanner.startScan()
             deviceScanner.passiveScan = true
+            receiverAppId = identifier
         }
     }
     
@@ -96,6 +112,43 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
         }
     }
     
+    private func connectToDeviceById(id: String) {
+        
+        if let d = deviceScanner {
+            _ = d.devices.filter {
+                    return $0.deviceID == id
+                }.map { [weak self] device in
+                    self?.selectedDevice = device as? GCKDevice
+                }
+        }
+        
+        if (selectedDevice == nil) {
+            return
+        }
+        
+        let identifier = NSBundle.mainBundle().bundleIdentifier
+        deviceManager = GCKDeviceManager(device: selectedDevice, clientPackageName: identifier)
+        deviceManager!.delegate = self
+        deviceManager!.connect()
+    }
+    
+    private func disconnectFromCurrentDevice() {
+        deviceManager!.disconnect()
+    }
+    
+    private func deviceDisconnected() {
+        selectedDevice = nil
+        deviceManager = nil
+        castingActionCompletionHandler = nil
+    }
+    
+    private func sendError(error: NSError) {
+        if let completionHandler = castingActionCompletionHandler {
+            completionHandler(JSError(title:"Chromecast error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion ?? ""), JSValue(false))
+        }
+    }
+    
+    
     // MARK: GCKDeviceScannerListener
     
     func deviceDidComeOnline(device: GCKDevice!) {
@@ -110,6 +163,37 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
         print("Device went away: \(device.friendlyName)")
         #endif
         deviceListChanged(device, online: false)
+    }
+    
+    // MARK: GCKDeviceManagerDelegate
+    
+    func deviceManagerDidConnect(deviceManager: GCKDeviceManager!) {
+        #if DEBUG
+        print("Connected.");
+        #endif
+        deviceManager.launchApplication(receiverAppId);
+    }
+    
+    func deviceManager(deviceManager: GCKDeviceManager!, didConnectToCastApplication applicationMetadata: GCKApplicationMetadata!, sessionID: String!, launchedApplication: Bool) {
+        #if DEBUG
+        print("Application has launched.")
+        #endif
+        if let completionHandler = castingActionCompletionHandler {
+            completionHandler(nil, JSValue(["sessionId":sessionID]))
+            castingActionCompletionHandler = nil
+        }
+    }
+    
+    func deviceManager(deviceManager: GCKDeviceManager!, didFailToConnectWithError error: NSError!) {
+        sendError(error)
+        deviceDisconnected()
+    }
+    
+    func deviceManager(deviceManager: GCKDeviceManager!, didDisconnectWithError error: NSError!) {
+        if (error != nil) {
+            sendError(error)
+        }
+        deviceDisconnected()
     }
     
 }
