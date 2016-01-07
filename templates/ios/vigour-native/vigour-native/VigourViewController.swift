@@ -11,7 +11,11 @@
 import WebKit
 import UIKit
 
-class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
+private let webApplicationRootFolderName = NSBundle.mainBundle().pathForResource("www", ofType: nil)
+
+let webAplicationFolderPath = ""
+
+class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDelegate, WKNavigationDelegate {
     
     var vigourBridge:VigourBridge = VigourBridge()
     
@@ -27,6 +31,8 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         }
     }
     
+    var autoRotate = true
+    
     //wrapper for web app
     var webView: WKWebView?
     
@@ -35,9 +41,9 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
         controller.addScriptMessageHandler(self.vigourBridge, name: VigourBridge.scriptMessageHandlerName())
         self.vigourBridge.delegate = self
         #if DEBUG
-        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
-        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
-        controller.addUserScript(script)
+//        let source = "console.log = function(){var msg = Array.prototype.join.call(arguments, ' '); window.webkit.messageHandlers.\(VigourBridge.scriptMessageHandlerName()).postMessage({pluginId:'vigour.logger', fnName: 'log', opts:{message:msg}})}"
+//        let script = WKUserScript(source: source, injectionTime:.AtDocumentStart, forMainFrameOnly: true)
+//        controller.addUserScript(script)
         #endif
         
         return controller
@@ -92,10 +98,9 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     }
     
     private func loadApp() {
-        let path = "\(webAplicationFolderPath)/\(appplicationIndexPath)"
-        print(path)
-        let url = NSURL(fileURLWithPath: path)
-        webView!.loadRequest(NSURLRequest(URL: url))
+        let filePath = "\(webApplicationRootFolderName!)/\(appplicationIndexPath)"
+        let url = NSURL(fileURLWithPath: filePath)
+        webView!.loadFileURL(url, allowingReadAccessToURL: url)
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -108,6 +113,10 @@ class VigourViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return autoRotate
     }
     
     

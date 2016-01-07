@@ -10,6 +10,14 @@ import Foundation
 import WebKit
 
 
+protocol VigourBridgeViewController:WKUIDelegate, WKNavigationDelegate {
+    var vigourBridge:VigourBridge {get set}
+    var webView: WKWebView? {get set}
+    var statusBarHidden: Bool {get set}
+    var statusBarStyle: UIStatusBarStyle {get set}
+    var autoRotate: Bool {get set}
+}
+
 internal let scriptMessageHandlerString = "vigourBridgeHandler"
 
 
@@ -56,7 +64,7 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
         dispatch_once(&token) { [weak self] () -> Void in
             self?.makePluginsAvailable()
         }
-        sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: JSObject(["bridge":"ready"]), pluginId: nil))
+        sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: JSValue(["bridge":"ready"]), pluginId: nil))
     }
 
     private final func makePluginsAvailable() {
@@ -72,10 +80,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                     try sendJSMessage(VigourBridgeSendMessage.Ready(error: nil, response: p.onReady(), pluginId: pluginId))
                 }
                 catch VigourBridgeError.PluginError(let message, let pluginId) {
-                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSObject([:]), pluginId: pluginId))
+                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSValue(false), pluginId: pluginId))
                 }
                 catch let error as NSError {
-                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                    sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                     #if DEBUG
                         print(error.localizedDescription)
                     #endif
@@ -91,14 +99,20 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
     internal final func sendJSMessage(message: VigourBridgeSendMessage) {
         #if DEBUG
             print("Sending")
-            print(message)
+            print(message.jsString())
         #endif
-        if let d = delegate, webView = d.webView {
-            webView.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
-                if error != nil {
-                    print(error)
-                }
-            })
+        
+        //MARK:- make sure evanluate js back on the main thread
+        dispatch_async(dispatch_get_main_queue()) { [weak self] in
+        
+            if let weakSelf = self, let d = weakSelf.delegate, webView = d.webView {
+                webView.evaluateJavaScript(message.jsString(), completionHandler: { (_, error) -> Void in
+                    if error != nil {
+                        print(error)
+                    }
+                })
+            }
+            
         }
     }
 
@@ -132,10 +146,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 })
             }
             catch VigourBridgeError.PluginError(let message, let pluginId) {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSObject([:]), pluginId: pluginId))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Plugin Error", description: message, todo:""), event:"error", message:JSValue(false), pluginId: pluginId))
             }
             catch let error as NSError {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                 #if DEBUG
                     print(error.localizedDescription)
                 #endif
@@ -188,10 +202,10 @@ class VigourBridge: NSObject, WKScriptMessageHandler {
                 }
             }
             catch VigourBridgeError.BridgeError(let message) {
-                VigourBridgeSendMessage.Receive(error: JSError(title:"Bridge Error", description: message, todo:""), event: "error", message: JSObject([:]), pluginId: nil)
+                VigourBridgeSendMessage.Receive(error: JSError(title:"Bridge Error", description: message, todo:""), event: "error", message: JSValue(false), pluginId: nil)
             }
             catch let error as NSError {
-                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSObject([:]), pluginId: nil))
+                sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
                 #if DEBUG
                     print(error.localizedDescription)
                 #endif

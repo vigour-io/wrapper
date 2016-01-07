@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49044F441C28196C008392C5 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F431C28196C008392C5 /* Orientation.swift */; };
+		49044F461C29612F008392C5 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F451C29612F008392C5 /* Purchase.swift */; };
+		49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49044F471C2967DA008392C5 /* StoreKit.framework */; };
+		4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4171C14CD12001E4026 /* CoreTelephony.framework */; };
+		4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4905E4191C14CD26001E4026 /* AVFoundation.framework */; };
 		492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */; };
 		492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */; };
 		492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */; };
 		4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492195391BFE88C200EB8AF5 /* Facebook.swift */; };
+		4934C7861C10E182007BD728 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4934C7851C10E182007BD728 /* Env.swift */; };
+		494419461C137F57003946A7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494419451C137F57003946A7 /* Reachability.swift */; };
+		4956499D1C21508D0091544D /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4956499C1C21508D0091544D /* StatusBar.swift */; };
 		4959BE281BF3DC1F00F7B310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE271BF3DC1F00F7B310 /* Assets.xcassets */; };
 		4959BE361BF3DC1F00F7B310 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE351BF3DC1F00F7B310 /* vigour_nativeTests.swift */; };
 		4959BE411BF3DC1F00F7B310 /* vigour_nativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */; };
@@ -18,7 +26,6 @@
 		4959BE661BF3DD1700F7B310 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */; };
 		4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */; };
 		4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */; };
-		4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5E1BF3DD1700F7B310 /* MainController.swift */; };
 		4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE601BF3DD1700F7B310 /* Logger.swift */; };
 		4959BE6B1BF3DD1700F7B310 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */; };
 		4959BE6C1BF3DD1700F7B310 /* VigourPluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */; };
@@ -48,11 +55,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49044F431C28196C008392C5 /* Orientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
+		49044F451C29612F008392C5 /* Purchase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		49044F471C2967DA008392C5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4905E4171C14CD12001E4026 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4905E4191C14CD26001E4026 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		492195321BFE821900EB8AF5 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		492195331BFE821900EB8AF5 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		492195341BFE821900EB8AF5 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		492195381BFE84A400EB8AF5 /* Vigour-Native-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vigour-Native-Bridging-Header.h"; sourceTree = "<group>"; };
 		492195391BFE88C200EB8AF5 /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
+		4934C7851C10E182007BD728 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		494419451C137F57003946A7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		4956499C1C21508D0091544D /* StatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		4959BE1D1BF3DC1F00F7B310 /* vigour-native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vigour-native.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4959BE271BF3DC1F00F7B310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4959BE2C1BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,7 +81,6 @@
 		4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridge.swift; sourceTree = "<group>"; };
 		4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeReceiveMessage.swift; sourceTree = "<group>"; };
 		4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeSendMessage.swift; sourceTree = "<group>"; };
-		4959BE5E1BF3DD1700F7B310 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		4959BE601BF3DD1700F7B310 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPlugin.swift; sourceTree = "<group>"; };
 		4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPluginManager.swift; sourceTree = "<group>"; };
@@ -83,6 +97,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */,
+				4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */,
+				4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */,
 				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
 				4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */,
 				492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */,
@@ -148,7 +165,6 @@
 				4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */,
 				4959BE701BF3DD2300F7B310 /* Main.storyboard */,
 				4959BE5A1BF3DD1700F7B310 /* Bridge */,
-				4959BE5E1BF3DD1700F7B310 /* MainController.swift */,
 				4959BE5F1BF3DD1700F7B310 /* Plugin */,
 				4959BE641BF3DD1700F7B310 /* Utils.swift */,
 				4959BE651BF3DD1700F7B310 /* VigourViewController.swift */,
@@ -194,6 +210,11 @@
 				4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */,
 				4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */,
 				492195391BFE88C200EB8AF5 /* Facebook.swift */,
+				4934C7851C10E182007BD728 /* Env.swift */,
+				494419451C137F57003946A7 /* Reachability.swift */,
+				4956499C1C21508D0091544D /* StatusBar.swift */,
+				49044F431C28196C008392C5 /* Orientation.swift */,
+				49044F451C29612F008392C5 /* Purchase.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -201,6 +222,9 @@
 		4959BE751BF3DDF800F7B310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49044F471C2967DA008392C5 /* StoreKit.framework */,
+				4905E4191C14CD26001E4026 /* AVFoundation.framework */,
+				4905E4171C14CD12001E4026 /* CoreTelephony.framework */,
 				4959BE761BF3DE2800F7B310 /* WebKit.framework */,
 			);
 			name = Frameworks;
@@ -337,11 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4956499D1C21508D0091544D /* StatusBar.swift in Sources */,
+				494419461C137F57003946A7 /* Reachability.swift in Sources */,
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
+				4934C7861C10E182007BD728 /* Env.swift in Sources */,
+				49044F461C29612F008392C5 /* Purchase.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
-				4959BE691BF3DD1700F7B310 /* MainController.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
+				49044F441C28196C008392C5 /* Orientation.swift in Sources */,
 				4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */,
 				4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */,
 				4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */,
@@ -488,9 +516,10 @@
 					"$(PROJECT_DIR)/vigour-native/Vendor",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
+				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -507,9 +536,10 @@
 					"$(PROJECT_DIR)/vigour-native/Vendor",
 				);
 				INFOPLIST_FILE = "vigour-native/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mobile.vigour-native";
+				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
 			};

@@ -1,11 +1,17 @@
 <html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <style>
+            html, body {
+                height:100%;
+            }
+        button {
+            font-size:20px;
+        }
+        </style>
+    </head>
     <body>
         <h1>Vigour.io</h1>
-        <style>
-            button {
-                font-size:20px;
-            }
-        </style>
         <!-- 
             script will work with http is app has setting in info.plist
             http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/
@@ -16,25 +22,82 @@
             'use strict'
             
             var loginMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "login",
                 opts: {"scope":["public_profile", "email"]},
                 cbId: 0
             }
         
             var logoutMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "logout",
                 opts: {},
                 cbId: 1
             }
         
             var initMessage = {
-                pluginId: "vigour-facebook",
+                pluginId: "facebook",
                 fnName: "init",
                 opts: {},
                 cbId: 2
             }
+        
+        
+        var envMessage = {
+            pluginId: "env",
+            fnName: "init",
+            opts: {},
+            cbId: 3
+        }
+        
+        var oMessage = {
+            pluginId: "orientation",
+            fnName: "init",
+            opts: {},
+            cbId: 4
+        }
+        
+        var oMessage2 = {
+            pluginId: "orientation",
+            fnName: "orientation",
+            opts: {"orientation":"landscape"},
+            cbId: 5
+        }
+        
+        var oMessage3 = {
+            pluginId: "orientation",
+            fnName: "orientation",
+            opts: {"orientation":"portrait"},
+            cbId: 6
+        }
+        
+        var oMessage4 = {
+            pluginId: "orientation",
+            fnName: "locked",
+            opts: {"locked":true},
+            cbId: 7
+        }
+        
+        var oMessage5 = {
+            pluginId: "orientation",
+            fnName: "locked",
+            opts: {"locked":false},
+            cbId: 7
+        }
+        
+        var oMessage6 = {
+            pluginId: "pay",
+            fnName: "getProducts",
+            opts:{"single": "mtv_play_single_episode_purchase","monthly": "mtv_play_subscription_monthly","yearly": "mtv_play_subscription_annual"},
+            cbId: 17
+        }
+        
+        var oMessage7 = {
+            pluginId: "pay",
+            fnName: "buy",
+            opts: {"id":"mtv_play_single_episode_purchase"},
+            cbId: 18
+        }
         
             //contentURL - the link to be shared
             //contentTitle - represents the title of the content in the link
@@ -69,6 +132,11 @@
                 }
                 if (cbId) {
                     console.log(cbId)
+                    if (cbId == 18) {
+                        var div = document.createElement('div');
+                        div.innerHTML = '<h3 style="position:relative;color:red;width:200px;">'+response+'</h3>';
+                        document.body.appendChild(div);
+                    }
                 }
                 if (response) {
                     console.log(response)
@@ -103,6 +171,14 @@
 
         
         </script>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage6)">get products</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage7)">buy episode</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage)">orientation</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage2)">lanscape</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage3)">portrait</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage4)">lock true</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(oMessage5)">lock false</button>
+        <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(envMessage)">env</button>
         <button onclick="console.log('test1', 'test2', ['a', 'b'])">log</button>
         <button onclick="console.log(false, true)">log</button>
         <button onclick="window.webkit.messageHandlers.vigourBridgeHandler.postMessage(loginMessage)">login</button>

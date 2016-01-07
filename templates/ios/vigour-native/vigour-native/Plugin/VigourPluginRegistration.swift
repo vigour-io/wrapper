@@ -14,7 +14,11 @@ import Foundation
 */
 extension VigourPluginManager {
     static func register() {
-        VigourPluginManager.registerPlugin(Logger.pluginId, type: Logger.self)
-        VigourPluginManager.registerPlugin(Facebook.pluginId, type: Facebook.self)
+        VigourPluginManager.registerPlugin(Logger.self)
+        VigourPluginManager.registerPlugin(Facebook.self)
+        VigourPluginManager.registerPlugin(Env.self)
+        VigourPluginManager.registerPlugin(StatusBar.self)
+        VigourPluginManager.registerPlugin(Orientation.self)
+        VigourPluginManager.registerPlugin(Purchase.self)
     }
 }
