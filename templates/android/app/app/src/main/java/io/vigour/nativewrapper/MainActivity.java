@@ -151,7 +151,6 @@ public class MainActivity extends ActionBarActivity {
         pluginManager = new PluginManager(bridgeInterface);
 
         XWalkView webview = new XWalkView(this, this);
-        setWebViewUserAgent(webview, "android-native");
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
         webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
@@ -228,19 +227,4 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-    private void setWebViewUserAgent(XWalkView webView, String userAgent) {
-        try {
-            Method ___getBridge = XWalkView.class.getDeclaredMethod("getBridge");
-            ___getBridge.setAccessible(true);
-            XWalkViewBridge xWalkViewBridge = null;
-            xWalkViewBridge = (XWalkViewBridge) ___getBridge.invoke(webView);
-            XWalkSettings xWalkSettings = xWalkViewBridge.getSettings();
-            xWalkSettings.setUserAgentString(userAgent);
-        } catch (Exception e) {
-            // Could not set user agent
-            e.printStackTrace();
-        }
-    }
-
 }
