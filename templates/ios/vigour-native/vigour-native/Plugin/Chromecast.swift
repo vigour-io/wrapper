@@ -101,9 +101,9 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
                     message: JSValue(
                         [
                             "id":device.deviceID,
-                            "name":device.friendlyName,
-                            "modelName":device.modelName,
-                            "manufacturer":device.manufacturer
+                            "name":device.friendlyName == nil ? "" : device.friendlyName,
+                            "modelName":device.modelName == nil ? "" : device.modelName,
+                            "manufacturer":(device.manufacturer == nil) ? "" : device.manufacturer
                         ]
                     ),
                     pluginId: Chromecast.pluginId
