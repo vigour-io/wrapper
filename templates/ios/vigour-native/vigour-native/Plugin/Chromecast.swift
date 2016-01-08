@@ -193,6 +193,11 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
         if (error != nil) {
             sendError(error)
         }
+        else {
+            if let completionHandler = castingActionCompletionHandler {
+                completionHandler(nil, JSValue(true))
+            }
+        }
         deviceDisconnected()
     }
     
