@@ -23,3 +23,5 @@ local.properties
 test-runner.html
 tmp
 templates/ios/vigour-native/vigour-native.xcodeproj/project.xcworkspace/xcshareddata/vigour-native.xccheckout
+templates/ios/vigour-native/Pods
+templates/ios/vigour-native/Podfile.lock

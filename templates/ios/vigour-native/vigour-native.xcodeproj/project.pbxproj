@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E404765261EF3EB6BC2AC67 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8414C2504FED5E5C93D7927 /* Pods.framework */; };
 		49044F441C28196C008392C5 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F431C28196C008392C5 /* Orientation.swift */; };
 		49044F461C29612F008392C5 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49044F451C29612F008392C5 /* Purchase.swift */; };
 		49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49044F471C2967DA008392C5 /* StoreKit.framework */; };
@@ -36,16 +37,6 @@
 		4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */; };
 		4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4959BE761BF3DE2800F7B310 /* WebKit.framework */; };
 		49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD242E1C3DAF5800D192FC /* Chromecast.swift */; };
-		49FD24451C3DBFB400D192FC /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24441C3DBFB400D192FC /* Accelerate.framework */; };
-		49FD24471C3DBFBC00D192FC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */; };
-		49FD24491C3DBFC600D192FC /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */; };
-		49FD244B1C3DBFCC00D192FC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244A1C3DBFCC00D192FC /* CoreText.framework */; };
-		49FD244D1C3DBFD700D192FC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244C1C3DBFD700D192FC /* libc++.tbd */; };
-		49FD244F1C3DBFDE00D192FC /* MediaAccessibility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */; };
-		49FD24511C3DBFE500D192FC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24501C3DBFE500D192FC /* MediaPlayer.framework */; };
-		49FD24531C3DBFEA00D192FC /* MediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */; };
-		49FD24551C3DBFF100D192FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */; };
-		49FD24591C3DCC1600D192FC /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49FD24581C3DCC1600D192FC /* GoogleCast.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,16 +93,9 @@
 		4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4959BE761BF3DE2800F7B310 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		49FD242E1C3DAF5800D192FC /* Chromecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromecast.swift; sourceTree = "<group>"; };
-		49FD24441C3DBFB400D192FC /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		49FD244A1C3DBFCC00D192FC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		49FD244C1C3DBFD700D192FC /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaAccessibility.framework; path = System/Library/Frameworks/MediaAccessibility.framework; sourceTree = SDKROOT; };
-		49FD24501C3DBFE500D192FC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
-		49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		49FD24581C3DCC1600D192FC /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = "vigour-native/Vendor/GoogleCast.framework"; sourceTree = "<group>"; };
+		7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D8414C2504FED5E5C93D7927 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,23 +103,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FD24551C3DBFF100D192FC /* SystemConfiguration.framework in Frameworks */,
-				49FD24531C3DBFEA00D192FC /* MediaToolbox.framework in Frameworks */,
-				49FD24511C3DBFE500D192FC /* MediaPlayer.framework in Frameworks */,
-				49FD244F1C3DBFDE00D192FC /* MediaAccessibility.framework in Frameworks */,
-				49FD244D1C3DBFD700D192FC /* libc++.tbd in Frameworks */,
-				49FD244B1C3DBFCC00D192FC /* CoreText.framework in Frameworks */,
-				49FD24491C3DBFC600D192FC /* CoreBluetooth.framework in Frameworks */,
-				49FD24471C3DBFBC00D192FC /* AudioToolbox.framework in Frameworks */,
-				49FD24451C3DBFB400D192FC /* Accelerate.framework in Frameworks */,
 				49044F481C2967DA008392C5 /* StoreKit.framework in Frameworks */,
 				4905E41A1C14CD26001E4026 /* AVFoundation.framework in Frameworks */,
 				4905E4181C14CD12001E4026 /* CoreTelephony.framework in Frameworks */,
 				492195371BFE821900EB8AF5 /* FBSDKShareKit.framework in Frameworks */,
 				4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */,
-				49FD24591C3DCC1600D192FC /* GoogleCast.framework in Frameworks */,
 				492195351BFE821900EB8AF5 /* FBSDKCoreKit.framework in Frameworks */,
 				492195361BFE821900EB8AF5 /* FBSDKLoginKit.framework in Frameworks */,
+				2E404765261EF3EB6BC2AC67 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +153,7 @@
 				4959BE341BF3DC1F00F7B310 /* vigour-nativeTests */,
 				4959BE3F1BF3DC1F00F7B310 /* vigour-nativeUITests */,
 				4959BE1E1BF3DC1F00F7B310 /* Products */,
+				E9DCDA5DEE15A7E0A452AC79 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,22 +231,22 @@
 		4959BE751BF3DDF800F7B310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				49FD24581C3DCC1600D192FC /* GoogleCast.framework */,
-				49FD24541C3DBFF100D192FC /* SystemConfiguration.framework */,
-				49FD24521C3DBFEA00D192FC /* MediaToolbox.framework */,
-				49FD24501C3DBFE500D192FC /* MediaPlayer.framework */,
-				49FD244E1C3DBFDE00D192FC /* MediaAccessibility.framework */,
-				49FD244C1C3DBFD700D192FC /* libc++.tbd */,
-				49FD244A1C3DBFCC00D192FC /* CoreText.framework */,
-				49FD24481C3DBFC600D192FC /* CoreBluetooth.framework */,
-				49FD24461C3DBFBC00D192FC /* AudioToolbox.framework */,
-				49FD24441C3DBFB400D192FC /* Accelerate.framework */,
 				49044F471C2967DA008392C5 /* StoreKit.framework */,
 				4905E4191C14CD26001E4026 /* AVFoundation.framework */,
 				4905E4171C14CD12001E4026 /* CoreTelephony.framework */,
 				4959BE761BF3DE2800F7B310 /* WebKit.framework */,
+				D8414C2504FED5E5C93D7927 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9DCDA5DEE15A7E0A452AC79 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */,
+				7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +256,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4959BE451BF3DC1F00F7B310 /* Build configuration list for PBXNativeTarget "vigour-native" */;
 			buildPhases = (
+				BF231B75F2E4C80104D8AE80 /* Check Pods Manifest.lock */,
 				4959BE191BF3DC1F00F7B310 /* Sources */,
 				4959BE1A1BF3DC1F00F7B310 /* Frameworks */,
 				4959BE1B1BF3DC1F00F7B310 /* Resources */,
+				B42B29570FAC3D1B3C834D85 /* Embed Pods Frameworks */,
+				F238E225EA6B6A2062ABF840 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -398,6 +377,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B42B29570FAC3D1B3C834D85 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF231B75F2E4C80104D8AE80 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F238E225EA6B6A2062ABF840 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4959BE191BF3DC1F00F7B310 /* Sources */ = {
@@ -552,6 +579,7 @@
 		};
 		4959BE461BF3DC1F00F7B310 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -564,7 +592,7 @@
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "${inherited}";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,6 +603,7 @@
 		};
 		4959BE471BF3DC1F00F7B310 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -587,7 +616,7 @@
 				INFOPLIST_FILE = "vigour-native/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "${inherited}";
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
