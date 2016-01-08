@@ -189,6 +189,18 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
         deviceDisconnected()
     }
     
+    func deviceManager(deviceManager: GCKDeviceManager!, didDisconnectFromApplicationWithError error: NSError!) {
+        if (error != nil) {
+            sendError(error)
+        }
+        else {
+            if let completionHandler = castingActionCompletionHandler {
+                completionHandler(nil, JSValue(true))
+            }
+        }
+        deviceDisconnected()
+    }
+    
     func deviceManager(deviceManager: GCKDeviceManager!, didDisconnectWithError error: NSError!) {
         if (error != nil) {
             sendError(error)
