@@ -189,6 +189,24 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
         deviceDisconnected()
     }
     
+    func deviceManager(deviceManager: GCKDeviceManager!, didFailToStopApplicationWithError error: NSError!) {
+        #if DEBUG
+            print("Did fail to stop: \(error.localizedDescription)")
+        #endif
+    }
+    
+    func deviceManagerDidStopApplication(deviceManager: GCKDeviceManager!) {
+        #if DEBUG
+            print("Did stop")
+        #endif
+    }
+    
+    func deviceManager(deviceManager: GCKDeviceManager!, didSuspendConnectionWithReason reason: GCKConnectionSuspendReason) {
+        #if DEBUG
+            print("Suspend")
+        #endif
+    }
+    
     func deviceManager(deviceManager: GCKDeviceManager!, didDisconnectFromApplicationWithError error: NSError!) {
         if (error != nil) {
             sendError(error)
