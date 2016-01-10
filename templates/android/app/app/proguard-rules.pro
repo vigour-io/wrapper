@@ -15,3 +15,9 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-verbose
+
+-printseeds seeds.txt
+-printusage unused.txt
+-printmapping mapping.txt
