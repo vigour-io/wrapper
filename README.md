@@ -9,6 +9,7 @@ Builds a set of native apps from a single javascript codebase.
 ## Dependencies
 
 - npm 2@ˆ2
+- cocoapods, see http://guides.cocoapods.org/using/getting-started.html (some plugins might require it)
 
 ## Install
 - Add `git+ssh://git@github.com:vigour-io/vigour-native.git#master` to dependencies in package.json
