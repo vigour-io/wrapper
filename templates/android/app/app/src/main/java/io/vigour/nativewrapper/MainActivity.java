@@ -14,9 +14,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.webkit.ValueCallback;
 import android.widget.TextView;
 
 import org.xwalk.core.XWalkPreferences;
+import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.internal.XWalkSettings;
 import org.xwalk.core.internal.XWalkViewBridge;
@@ -31,6 +33,17 @@ import io.vigour.nativewrapper.plugin.core.PluginManager;
 //-- end plugin imports
 
 public class MainActivity extends ActionBarActivity {
+
+    private static final String SET_VIGOUR_VAL =
+            "console.log('setting window.vigour.native.webview = true')\n" +
+            "if (!window.vigour) {\n" +
+            "  window.vigour = {native: {webview: true}}\n" +
+            "} else if (!window.vigour.native) {\n" +
+            "  window.vigour.native = {webview: true}\n" +
+            "} else {\n" +
+            "  window.vigour.native.webview = true\n" +
+            "}\n" +
+            "console.log('after setting vigour = ' + JSON.stringify(window.vigour))\n";
 
     private XWalkView webview;
     private ViewGroup webViewContainer;
@@ -150,12 +163,22 @@ public class MainActivity extends ActionBarActivity {
 
         pluginManager = new PluginManager(bridgeInterface);
 
-        XWalkView webview = new XWalkView(this, this);
+        final XWalkView webview = new XWalkView(this, this);
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
         webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
         String url = getResources().getString(R.string.index_path);
         webview.load("file:///android_asset/" + url, null);
+        webview.setUIClient(new XWalkUIClient(webview) {
+            @Override public void onPageLoadStarted(XWalkView view, String url) {
+                super.onPageLoadStarted(view, url);
+                webview.evaluateJavascript(SET_VIGOUR_VAL, new ValueCallback<String>() {
+                    @Override public void onReceiveValue(String value) {
+                        Log.d("js", value);
+                    }
+                });
+            }
+        });
 
         registerPlugins(pluginManager, webview);
         return webview;
