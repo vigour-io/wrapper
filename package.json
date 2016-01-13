@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -72,6 +72,7 @@
     "vigour-fs-promised": "^2.0.0",
     "vigour-js": "~0.3.0",
     "vigour-shutter": "^2.0.2",
+    "vigour-spawn": "^1.0.3",
     "vigour-ua": "^0.0.3",
     "xcode": "^0.8.2"
   },
@@ -191,8 +192,5 @@
         }
       }
     }
-  },
-  "devDependencies": {
-    "vigour-spawn": "^1.0.0"
   }
 }
