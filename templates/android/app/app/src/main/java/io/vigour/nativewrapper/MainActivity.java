@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -216,6 +217,11 @@ public class MainActivity extends ActionBarActivity {
             webview.onHide();
         }
         pluginManager.onPause();
+    }
+
+    @Override public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        pluginManager.onResume();
     }
 
     @Override
