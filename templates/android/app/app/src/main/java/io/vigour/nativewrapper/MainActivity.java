@@ -17,12 +17,15 @@ import android.view.ViewParent;
 import android.webkit.ValueCallback;
 import android.widget.TextView;
 
+import com.fasterxml.jackson.jr.ob.JSON;
+
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
 import org.xwalk.core.internal.XWalkSettings;
 import org.xwalk.core.internal.XWalkViewBridge;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 import io.vigour.nativewrapper.plugin.NativeInterface;
@@ -51,38 +54,50 @@ public class MainActivity extends ActionBarActivity {
 
     BridgeInterface bridgeInterface = new BridgeInterface() {
         @Override
-        public void result(final int callId, final String error, final String response) {
-            Log.i("Sending result:", String.format("{ callId: %d, error: '%s', response: '%s' }", callId, error, response));
+        public void result(final int callId, final String error, final Object responseRaw) {
+            final String response = stringify(responseRaw);
+            Log.i("Sending result:", String.format("{ callId: %d, error: '%s', response: %s }", callId, error, response));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', '%s')", callId, error, response), null);
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.result(%d, '%s', %s)", callId, error, response), null);
                 }
             });
         }
 
         @Override
-        public void ready(final String error, final String response, final String pluginId) {
-            Log.i("Sending ready:", String.format("{ error: '%s', response: '%s', pluginId: '%s' }", error, response, pluginId));
+        public void ready(final String error, final Object dataRaw, final String pluginId) {
+            final String data = stringify(dataRaw);
+            Log.i("Sending ready:", String.format("{ error: '%s', data: %s, pluginId: '%s' }", error, data, pluginId));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.ready('%s', '%s', '%s')", error, response, pluginId), null);
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.ready('%s', %s, '%s')", error, data, pluginId), null);
                 }
             });
         }
 
         @Override
-        public void receive(final String error, final String message, final String pluginId) {
-            Log.i("Sending receive:", String.format("{ error: '%s', message: '%s', pluginId: '%s' }", error, message, pluginId));
+        public void receive(final String event, final Object dataRaw, final String pluginId) {
+            final String data = stringify(dataRaw);
+            Log.i("Sending receive:", String.format("{ event: '%s', data: %s, pluginId: '%s' }", event, data, pluginId));
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.receive('%s', '%s', '%s')", error, message, pluginId), null);
+                    webview.evaluateJavascript(String.format("window.vigour.native.bridge.receive('%s', %s, '%s')", event, data, pluginId), null);
                 }
             });
         }
     };
+
+    private String stringify(Object responseRaw) {
+        try {
+            return JSON.std.asString(responseRaw);
+        } catch (IOException e) {
+            return responseRaw.toString();
+        }
+    }
+
     private PluginManager pluginManager;
 
     @Override

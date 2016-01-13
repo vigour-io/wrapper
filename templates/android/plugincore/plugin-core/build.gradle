@@ -21,7 +21,7 @@ ext {
     siteUrl = 'https://github.com/vigour-io/wrapper'
     gitUrl = 'https://github.com/vigour-io/wrapper.git'
 
-    libraryVersion = '0.6.4'
+    libraryVersion = '0.7.0'
 
     developerId = 'vigour'
     developerName = 'Michiel van Liempt'
