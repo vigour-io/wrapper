@@ -4,73 +4,73 @@ var Plugin = require('../../../lib/plugin')
 var bridgeInject = require('../../../lib/bridge/inject')
 var bridge = require('../../../lib/bridge')
 
-describe('Working with Plugins: InverterBoy', function () {
-  var inverterBoy = new Plugin({
-    _platform: {
-      on: {
-        init: {
-          mock (data, event) {
-            setTimeout(() => {
-              this.parent.ready.val = true
-            }, 100)
-          }
-        },
-        invert: {
-          mock (data, event) {
-            var type = typeof data
-            if (type === 'string') {
-              var string = this.lookUp(type)
-              string.set(data.split('').reverse().join(''), event)
-            }
-          }
-        }
-      }
-    },
-    string: {
-      on: {
-        data (data, event) {
-          this._platform.emit('invert', this.val, event)
-        }
-      }
-    }
-  })
+// describe('Working with Plugins: InverterBoy', function () {
+//   var inverterBoy = new Plugin({
+//     _platform: {
+//       on: {
+//         init: {
+//           mock (data, event) {
+//             setTimeout(() => {
+//               this.parent.ready.val = true
+//             }, 100)
+//           }
+//         },
+//         invert: {
+//           mock (data, event) {
+//             var type = typeof data
+//             if (type === 'string') {
+//               var string = this.lookUp(type)
+//               string.set(data.split('').reverse().join(''), event)
+//             }
+//           }
+//         }
+//       }
+//     },
+//     string: {
+//       on: {
+//         data (data, event) {
+//           this._platform.emit('invert', this.val, event)
+//         }
+//       }
+//     }
+//   })
 
-  it('set a string', function (done) {
-    inverterBoy.string.val = 'helloworld'
-    expect(inverterBoy.string.val).equals('helloworld')
-    expect(inverterBoy.initialised.val === true).ok
-    expect(inverterBoy.ready.val === false).ok
-    expect(inverterBoy.loading.val).ok
+//   it('set a string', function (done) {
+//     inverterBoy.string.val = 'helloworld'
+//     expect(inverterBoy.string.val).equals('helloworld')
+//     expect(inverterBoy.initialised.val === true).ok
+//     expect(inverterBoy.ready.val === false).ok
+//     expect(inverterBoy.loading.val).ok
 
-    inverterBoy.string.once(function (data) {
-      expect(inverterBoy.string.val === 'dlrowolleh').ok
-      expect(inverterBoy.loading.val).to.be.false
-      expect(inverterBoy.ready.val).to.be.true
-      done()
-    })
-  })
+//     inverterBoy.string.once(function (data) {
+//       expect(inverterBoy.string.val === 'dlrowolleh').ok
+//       expect(inverterBoy.loading.val).to.be.false
+//       expect(inverterBoy.ready.val).to.be.true
+//       done()
+//     })
+//   })
 
-  it('set another string', function () {
-    inverterBoy.string.val = '123'
-    expect(inverterBoy.string.val).to.equal('321')
-  })
+//   it('set another string', function () {
+//     inverterBoy.string.val = '123'
+//     expect(inverterBoy.string.val).to.equal('321')
+//   })
 
-  it('set initialised to false => plugin needs to reinitialise', function (done) {
-    inverterBoy.initialised.val = false
-    inverterBoy.string.val = 'helloworld'
-    expect(inverterBoy.string.val !== 'dlrowolleh').ok
-    expect(inverterBoy.initialised.val === true).ok
-    expect(inverterBoy.ready.val === false).ok
-    expect(inverterBoy.loading.val).ok
+//   it('set initialised to false => plugin needs to reinitialise', function (done) {
+//     inverterBoy.initialised.val = false
+//     inverterBoy.string.val = 'helloworld'
+//     expect(inverterBoy.string.val !== 'dlrowolleh').ok
+//     expect(inverterBoy.initialised.val === true).ok
+//     expect(inverterBoy.ready.val === false).ok
+//     expect(inverterBoy.loading.val).ok
 
-    inverterBoy.string.once(function (data) {
-      expect(inverterBoy.string.val === 'dlrowolleh').ok
-      expect(inverterBoy.loading.val).to.be.false
-      expect(inverterBoy.ready.val).to.be.true
-      done()
-    })
-  })
-})
+//     inverterBoy.string.once(function (data) {
+//       expect(inverterBoy.string.val === 'dlrowolleh').ok
+//       expect(inverterBoy.loading.val).to.be.false
+//       expect(inverterBoy.ready.val).to.be.true
+//       done()
+//     })
+//   })
+// })
 
 describe('Working with Plugins: Social', function () {
   console.clear()
