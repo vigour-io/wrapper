@@ -133,7 +133,12 @@ class Chromecast:NSObject, VigourPluginProtocol, GCKDeviceScannerListener, GCKDe
     }
     
     private func disconnectFromCurrentDevice() {
-        deviceManager!.disconnect()
+        if let d = deviceManager {
+            d.disconnect()
+        }
+        else if let completionHandler = castingActionCompletionHandler {
+            completionHandler(JSError(title:"Chromecast error", description: "No session to stop", todo:"Start session first!"), JSValue(false))
+        }
     }
     
     private func deviceDisconnected() {
