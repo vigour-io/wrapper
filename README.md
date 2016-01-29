@@ -40,9 +40,10 @@ If you want to test your project on the TV, you will need to download the [Tizen
 
 It May help :
   
-    [Tizen develop mode](http://www.samsungdforum.com/TizenGuide/tizen3511/index.html)
-    
-    [Tizen Tv Emulator](http://www.samsungdforum.com/TizenGuide/tizen2911/index.html)  
+  
+- [Tizen develop mode](http://www.samsungdforum.com/TizenGuide/tizen3511/index.html)
+
+- [Tizen Tv Emulator](http://www.samsungdforum.com/TizenGuide/tizen2911/index.html)  
   
 
 
