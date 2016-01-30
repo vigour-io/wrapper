@@ -38,7 +38,12 @@ If you want to test your project on the TV, you will need to download the [Tizen
 
   - After the step above ^^^; you will need to run ```npm run tizentv``` and import the wgt file on the IDE. Once your peoject was imported, click on the 'remote device manager' in the connection tab. Then insert your TV IP address and do not change the default port. Right click on the project and choose '''run as''' and select your TV.
 
+It May help :
   
+  
+- [Tizen develop mode](http://www.samsungdforum.com/TizenGuide/tizen3511/index.html)
+
+- [Tizen Tv Emulator](http://www.samsungdforum.com/TizenGuide/tizen2911/index.html)  
   
 
 
