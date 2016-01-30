@@ -9,4 +9,5 @@ var service = new Service(config)
 service.start()
   .catch(function (reason) {
     console.error('Noooo', reason, reason.stack)
+    process.exit(1)
   })
