@@ -38,6 +38,19 @@ If you want to test your project on the TV, you will need to download the [Tizen
 
   - After the step above ^^^; you will need to run ```npm run tizentv``` and import the wgt file on the IDE. Once your peoject was imported, click on the 'remote device manager' in the connection tab. Then insert your TV IP address and do not change the default port. Right click on the project and choose '''run as''' and select your TV.
 
+######Tizen info in package.json:
+| Key  |Value   |
+|---|---|
+| appName  | The name that will be displayed as your app on the tv  |
+| iconPath  | The app icon, must be  512x423 pixel JPG or PNG format icon  |
+| yourDomain | The web site domain, Tizen uses it as a kind of identifier (ID) |
+| appVersion | Application version number |
+| category | Video, Games etc. |
+| Location | Object that contains name and description for the contries that the app will be available |
+
+More info : [config.xml](http://www.samsungdforum.com/Support/Distribution)
+
+
 It May help :
   
   
