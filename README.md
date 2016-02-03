@@ -44,8 +44,7 @@ If you want to test your project on the TV, you will need to download the [Tizen
 | appName  | The name that will be displayed as your app on the tv  |
 | iconPath  | The app icon, must be  512x423 pixel JPG or PNG format icon  |
 | yourDomain | The web site domain, Tizen uses it as a kind of identifier (ID) |
-| appVersion | Application version number |
-| category | Video, Games etc. |
+| appVersion | Application version number. e.g 1.0.0 |
 | Location | Object that contains name and description for the contries that the app will be available |
 
 More info : [config.xml](http://www.samsungdforum.com/Support/Distribution)
