@@ -135,6 +135,11 @@
             "yourDomain":"http://vigour.io/",
             "entryPoint": "build.html",
 
+            "author":{
+              "name": "Renan Carvalho",
+              "mail": "renan@vigour.io",
+              "url": "www.vigour.io"
+            },
             "appVersion": "1.0.0",
             "requiredVersion": "1.0.0",
             "locations":[

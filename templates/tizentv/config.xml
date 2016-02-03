@@ -10,6 +10,8 @@
     <access origin="*" subdomains="true"></access>
     <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 
+    <author href="{{author.url}}" email="{{author.mail}}">{{author.name}}</author>
+
     {{#locations}}
     <name xml:lang="{{language}}">{{name}}</name>
     <description xml:lang="{{language}}">{{description}}</description>
