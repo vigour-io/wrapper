@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://{{yourdomain}}/{{appName}}" version="1.0.0" viewmodes="maximized">
-    <tizen:application id="7vsjs1lLE0.{{appName}}" package="7vsjs1lLE0" required_version="2.3"/>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://{{yourdomain}}/{{appName}}" version="{{appVersion}}" viewmodes="maximized">
+    <tizen:application id="7vsjs1lLE0.{{appName}}" package="7vsjs1lLE0" required_version="{{requiredVersion}}"/>
     <content src="{{entryPoint}}"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
-    <icon src="{{iconPath}}"/>
     <name>{{appName}}</name>
+    <icon src="{{iconPath}}"/>
     <tizen:privilege name="http://developer.samsung.com/privilege/adstreamingfw"/>
     <tizen:profile name="tv-samsung-public"/>
     <access origin="*" subdomains="true"></access>
+    <tizen:setting screen-orientation="landscape" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+
+    {{#locations}}
+    <name xml:lang="{{language}}">{{name}}</name>
+    <description xml:lang="{{language}}">{{description}}</description>
+    {{/locations}}
 </widget>

@@ -130,10 +130,26 @@
             "BigListIcon": "assets/img/appIcon.png"
           },
           "config":{
-            "appName":"vigourexample",
+            "appName":"MTVPlaytest",
             "iconPath":"icons/ThumbIcon.png",
             "yourDomain":"http://vigour.io/",
-            "entryPoint": "build.html"
+            "entryPoint": "build.html",
+
+            "appVersion": "1.0.0",
+            "requiredVersion": "1.0.0",
+            "locations":[
+              {
+                "language":"pt-br",
+                "name":"MTV Play",
+                "description":"MTV Play descrição em portugues"
+
+              },
+              {
+                "language":"en-gb",
+                "name":"MTV Play",
+                "description":"MTV Play description in english"
+              }
+            ]
           }
         },
         "netcasttv": {
