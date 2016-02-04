@@ -120,7 +120,7 @@ public class MainActivity extends ActionBarActivity {
         webViewContainer.addView(webview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         // show the version for debugging
-        // TextView versionView = (TextView) findViewById(R.id.versionView);
+        TextView versionView = (TextView) findViewById(R.id.versionView);
         // if (BuildConfig.DEBUG) {
         //     PackageInfo pInfo = null;
         //     try {
@@ -133,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
         //         versionView.setText("can't find version: " + e.getCause().getMessage());
         //     }
         // } else {
-            versionView.setVisibility(View.GONE);
+        versionView.setVisibility(View.GONE);
         // }
 
         registerReceiver(new BroadcastReceiver() {
