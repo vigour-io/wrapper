@@ -120,21 +120,21 @@ public class MainActivity extends ActionBarActivity {
         webViewContainer.addView(webview, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         // show the version for debugging
-        TextView versionView = (TextView) findViewById(R.id.versionView);
-        if (BuildConfig.DEBUG) {
-            PackageInfo pInfo = null;
-            try {
-                String name = getPackageName();
-                pInfo = getPackageManager().getPackageInfo(name, 0);
-                String info = String.format("%s version %s (%d)", name, pInfo.versionName, pInfo.versionCode);
-                versionView.setText(info);
-            } catch (Exception e) {
-                e.printStackTrace();
-                versionView.setText("can't find version: " + e.getCause().getMessage());
-            }
-        } else {
+        // TextView versionView = (TextView) findViewById(R.id.versionView);
+        // if (BuildConfig.DEBUG) {
+        //     PackageInfo pInfo = null;
+        //     try {
+        //         String name = getPackageName();
+        //         pInfo = getPackageManager().getPackageInfo(name, 0);
+        //         String info = String.format("%s version %s (%d)", name, pInfo.versionName, pInfo.versionCode);
+        //         versionView.setText(info);
+        //     } catch (Exception e) {
+        //         e.printStackTrace();
+        //         versionView.setText("can't find version: " + e.getCause().getMessage());
+        //     }
+        // } else {
             versionView.setVisibility(View.GONE);
-        }
+        // }
 
         registerReceiver(new BroadcastReceiver() {
             @Override public void onReceive(Context context, Intent intent) {
