@@ -7,36 +7,32 @@
 
   <category>video</category>
   <autoUpdate>y</autoUpdate>
-  <deleteJS>Uninstall</deleteJS>
 
-  <cpname>{{name}}</cpname>
-  <runTitle>{{name}}</runTitle>
-	<cpauthjs/>
+  <cpname>{{companyProvider}}</cpname>
 	<login>n</login>
 
-  <ver>0.0.0</ver>
+  <ver>{{version}}</ver>
 	<mgrver>2.250</mgrver>
 
 	<fullwidget>y</fullwidget>
 	<srcctl>y</srcctl>
 	<ticker>n</ticker>
-	<childlock>n</childlock>
+	<childlock>{{childLock}}</childlock>
 	<audiomute>y</audiomute>
 	<videomute>y</videomute>
 	<dcont>y</dcont>
 	<movie>y</movie>
-	<mouse>y</mouse>
 
-  <widgetname>{{name}}</widgetname>
-  <description></description>
+  <widgetname>{{appName}}</widgetname>
+  <description>{{description}}</description>
 
 	<width>1280</width>
 	<height>720</height>
 
 	<author>
-    <name></name>
-    <email></email>
-    <link></link>
-    <organization></organization>
+    <name>{{author.name}}</name>
+    <email>{{author.mail}}</email>
+    <link>{{author.url}}</link>
+    <organization>{{organization}}</organization>
 	</author>
 </widget>
