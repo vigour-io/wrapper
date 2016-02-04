@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rsp stat="ok">
   <list>
-    <widget id="{{name}}">
-      <title>{{name}}</title>
+    <widget id="{{appName}}">
+      <title>{{appName}}</title>
       <compression size="{{size}}" type="zip"/>
-      <description>{{name}}</description>
+      <description>{{appName}}</description>
       <download>http://{{ip}}/samsung.zip</download>
     </widget>
 </list>
