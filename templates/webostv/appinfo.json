@@ -1,11 +1,12 @@
 {
     "id": "{{domain}}",
-    "version": "0.0.1",
-    "vendor": "My Company",
+    "version": "{{appVersion}}",
+    "vendor": "{{companyName}}",
     "type": "web",
     "main": "build.html",
-    "title": "{{name}}",
-    "icon": "icon.png",
-    "largeIcon": "largeIcon.png",
-    "uiRevision":2
+    "title": "{{appName}}",
+    "icon": "{{icon}}",
+    "largeIcon": "{{largeIcon}}",
+    "uiRevision":2,
+    "appDescription": "{{appDescription}}"
 }
