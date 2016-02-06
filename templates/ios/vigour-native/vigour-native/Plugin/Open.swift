@@ -41,7 +41,7 @@ class Open: NSObject, VigourPluginProtocol {
             switch method {
             case .Init:
                 completionHandler(nil, JSValue([
-                    "name": "outside",
+                    "name": "outside"
                   ]
                   )
                 )
