@@ -36,6 +36,7 @@
 		4959BE721BF3DD2300F7B310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE701BF3DD2300F7B310 /* Main.storyboard */; };
 		4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */; };
 		4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4959BE761BF3DE2800F7B310 /* WebKit.framework */; };
+		49D6491E1C66AB9800FCBAE1 /* Open.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D6491D1C66AB9800FCBAE1 /* Open.swift */; };
 		49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD242E1C3DAF5800D192FC /* Chromecast.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +93,7 @@
 		4959BE711BF3DD2300F7B310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4959BE761BF3DE2800F7B310 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		49D6491D1C66AB9800FCBAE1 /* Open.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Open.swift; sourceTree = "<group>"; };
 		49FD242E1C3DAF5800D192FC /* Chromecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromecast.swift; sourceTree = "<group>"; };
 		7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		4959BE5F1BF3DD1700F7B310 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				49D6491D1C66AB9800FCBAE1 /* Open.swift */,
 				4959BE601BF3DD1700F7B310 /* Logger.swift */,
 				4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */,
 				4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */,
@@ -436,6 +439,7 @@
 				4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */,
 				4934C7861C10E182007BD728 /* Env.swift in Sources */,
 				49044F461C29612F008392C5 /* Purchase.swift in Sources */,
+				49D6491E1C66AB9800FCBAE1 /* Open.swift in Sources */,
 				49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */,
 				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,

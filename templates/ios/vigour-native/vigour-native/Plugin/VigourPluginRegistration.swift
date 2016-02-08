@@ -21,5 +21,6 @@ extension VigourPluginManager {
         VigourPluginManager.registerPlugin(Orientation.self)
         VigourPluginManager.registerPlugin(Purchase.self)
         VigourPluginManager.registerPlugin(Chromecast.self)
+        VigourPluginManager.registerPlugin(Open.self)
     }
 }
