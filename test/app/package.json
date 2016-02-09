@@ -95,26 +95,30 @@
           }
         },
         "samsungtv": {
-          "productName": "Vigour Samsung Test App",
-          "xmlConfig": {
-            "category": "video",
-            "name": "Vigour",
-            "author": "Vigour",
-            "description": "Vigour",
-            "version": "1.0.0",
-            "icons": {
-              "ThumbIcon": "assets/img/appIcon.png",
-              "BigThumbIcon": "assets/img/appIcon.png",
-              "ListIcon": "assets/img/appIcon.png",
-              "BigListIcon": "assets/img/appIcon.png"
-            }
+          "companyProvider":"MTV",
+          "childLock":"n",
+          "description":"App description..",
+          "organization":"Vigour",
+          "category": "video",
+          "appName": "MTV Play",
+          "author": "Vigour",
+          "description": "Vigour",
+          "version": "1.0.0",
+          "author":{
+            "name": "Renan Carvalho",
+            "mail": "renan@vigour.io",
+            "url": "www.vigour.io"
+          },
+          "icons": {
+            "ThumbIcon": "assets/img/appIcon.png",
+            "BigThumbIcon": "assets/img/appIcon.png",
+            "ListIcon": "assets/img/appIcon.png",
+            "BigListIcon": "assets/img/appIcon.png"
           },
           "assets": {
             "build.html": true,
             "build.js": true,
-            "build.css": true,
-            "mocha.js": true,
-            "mocha.css": true
+            "build.css": true
           }
         },
          "tizentv":{
