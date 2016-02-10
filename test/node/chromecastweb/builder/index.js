@@ -18,7 +18,7 @@ var options = JSON.stringify(opts)
 var timeout = 5 * 60 * 1000
 
 describe('chromecastweb build', function () {
-  it('chromecastweb should succeed in under ' + timeout + ' milliseconds!'
+  it.skip('chromecastweb should succeed in under ' + timeout + ' milliseconds!'
   , function () {
     this.timeout(timeout)
     var _options = JSON.parse(options)
