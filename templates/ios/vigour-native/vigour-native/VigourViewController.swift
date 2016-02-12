@@ -74,7 +74,7 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
     
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)        
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -94,6 +94,21 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
         webView?.navigationDelegate = self
         webView?.scrollView.bounces = false
         view.addSubview(webView!)
+        
+        //extend user agent
+        webView?.evaluateJavaScript("navigator.userAgent", completionHandler: {[weak self] (result, error) -> Void in
+            var device = ""
+            switch UIDevice.currentDevice().userInterfaceIdiom {
+            case .Phone:
+                device = "phone"
+            case .Pad:
+                device = "tablet"
+            default:break
+            }
+            if let agent = result, let weakSelf = self, let view = weakSelf.webView {
+                view.customUserAgent! = "\(agent) vigour-wrapper \(device)"
+            }
+        })
         
         webView!.translatesAutoresizingMaskIntoConstraints = false
         let height = NSLayoutConstraint(item: webView!, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1, constant: 0)
