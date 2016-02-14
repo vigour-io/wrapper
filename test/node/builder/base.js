@@ -89,17 +89,14 @@ describe('base', function () {
         return copyAssets.call(builderStub_emptyAssets)
           .then(thenSpy)
       })
-      it('should throw a useful error if no assets are specified', function () {
+      it('should succeed if no assets are specified', function () {
         var builderStub_noAssets = _cloneDeep(builderStub)
         delete builderStub_noAssets.assets
         return copyAssets.call(builderStub_noAssets)
-          .then(thenSpy, function (reason) {
-            expect(reason.message).to.equal('Invalid configuration')
-            expect(reason.info).to.equal('Missing `vigour.native.platforms.<platform>.assets`')
-          })
+          .then(thenSpy)
       })
       after(function () {
-        expect(thenSpy).calledOnce
+        expect(thenSpy).calledTwice
       })
     })
   })
