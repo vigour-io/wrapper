@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -180,6 +179,8 @@ public class MainActivity extends ActionBarActivity {
         pluginManager = new PluginManager(bridgeInterface);
 
         final XWalkView webview = new XWalkView(this, this);
+        String userAgent = getResources().getString(R.string.uaAppendix);
+        appendWebViewUserAgent(webview, userAgent);
         NativeInterface nativeInterface = new NativeInterface(this, webview, pluginManager, bridgeInterface);
         webview.addJavascriptInterface(nativeInterface, "NativeInterface");
 
@@ -271,4 +272,21 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    private void appendWebViewUserAgent(XWalkView webView, String appendix) {
+        try {
+            Method ___getBridge = XWalkView.class.getDeclaredMethod("getBridge");
+            ___getBridge.setAccessible(true);
+            XWalkViewBridge xWalkViewBridge = null;
+            xWalkViewBridge = (XWalkViewBridge) ___getBridge.invoke(webView);
+            XWalkSettings xWalkSettings = xWalkViewBridge.getSettings();
+            String uaString = xWalkSettings.getUserAgentString() + " " + appendix;
+            Log.d("ua", "setting ua string to: " + uaString);
+            xWalkSettings.setUserAgentString(uaString);
+        } catch (Exception e) {
+            // Could not set user agent
+            e.printStackTrace();
+        }
+    }
+
 }
