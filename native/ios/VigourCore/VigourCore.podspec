@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "VigourCore"
-  s.version      = "1.0.0"
+  s.version      = "3.0.6"
   s.summary      = "Wraps iOS native stuff to JS."
   s.description  = <<-DESC
   Builds a set of native apps from a single javascript codebase.
@@ -19,9 +19,9 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Alexander van der Werff" => "avdwerff@gmail.com" }
   s.platform     = :ios, "9.0"
-  s.source       = { :git => "https://github.com/vigour-io/wrapper.git", :branch => "feature/core-framework" }
+  s.source       = { :git => "https://github.com/vigour-io/wrapper.git", :branch => "feature/core-framework", :tag => "v3.0.6" }
   
-  s.source_files = "VigourCore/**/*.{swift}"
+  s.source_files = "**/VigourCore/**/*.{swift}"
   s.requires_arc = true
 
 end
