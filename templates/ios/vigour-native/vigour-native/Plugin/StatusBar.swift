@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import VigourCore
 
 enum VigourStatusBarMethod: String {
     case Init="init", Background="background", Display="display"

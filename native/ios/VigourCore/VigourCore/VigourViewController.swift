@@ -15,26 +15,26 @@ private let webApplicationRootFolderName = NSBundle.mainBundle().pathForResource
 
 let webAplicationFolderPath = ""
 
-class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDelegate, WKNavigationDelegate {
+public class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDelegate, WKNavigationDelegate {
     
-    var vigourBridge:VigourBridge = VigourBridge()
+    public var vigourBridge:VigourBridge = VigourBridge()
     
-    var statusBarHidden = true {
+    public var statusBarHidden = true {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    var statusBarStyle: UIStatusBarStyle = .Default {
+    public var statusBarStyle: UIStatusBarStyle = .Default {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    var autoRotate = true
+    public var autoRotate = true
     
     //wrapper for web app
-    var webView: WKWebView?
+    public var webView: WKWebView?
     
     lazy var userContentController: WKUserContentController = { [unowned self] in
         let controller = WKUserContentController()
@@ -73,17 +73,17 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
     }()
     
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         loadApp()
     }
     
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
@@ -123,26 +123,26 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
         webView!.loadFileURL(url, allowingReadAccessToURL: url)
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override public func prefersStatusBarHidden() -> Bool {
         return statusBarHidden
     }
     
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+    override public func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
         return UIStatusBarAnimation.Slide
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+    override public func preferredStatusBarStyle() -> UIStatusBarStyle {
         return statusBarStyle
     }
     
-    override func shouldAutorotate() -> Bool {
+    override public func shouldAutorotate() -> Bool {
         return autoRotate
     }
     
     
     //MARK: - WKNavigationDelegate
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         //TODO: maybe wait for some js event...
         //vigourBridge.activate()
     }
@@ -150,7 +150,7 @@ class VigourViewController: UIViewController, VigourBridgeViewController, WKUIDe
     
     //MARK: - WKUIDelegate
     
-    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
+    public func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
         let alertController = UIAlertController(title: webView.URL?.host, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             completionHandler()

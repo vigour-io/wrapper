@@ -21,13 +21,13 @@ internal let scriptMessageReceiveCallbackTpl = "%@; window.vigour.native.bridge.
 internal let scriptMessageTpl = "(function() { %@ }())"
 
 protocol JSStringProtocol {
-     func jsString() -> String
+    func jsString() -> String
 }
 
 /**
     VigourBridgeSendMessage enum for sending different types to the bridge
  */
-enum VigourBridgeSendMessage: JSStringProtocol {
+public enum VigourBridgeSendMessage: JSStringProtocol {
     case Receive(error: JSError?, event: String, message: JSValue, pluginId: String?)
     case Result(error: JSError?, calbackId: Int, response: JSValue)
     case Ready(error: JSError?, response: JSValue, pluginId: String?)
@@ -75,10 +75,17 @@ enum VigourBridgeSendMessage: JSStringProtocol {
     
 }
 
-struct JSError: JSStringProtocol {
+public struct JSError: JSStringProtocol {
     let title: String
     let description: String
     let todo: String?
+    
+    public init(title: String, description: String, todo: String?) {
+        self.title = title
+        self.description = description
+        self.todo = todo
+    }
+    
     func jsString() -> String {
         var error = "var error = new Error('\(title)');"
         error += "error.info = {description:'\(description)'"
@@ -92,24 +99,11 @@ struct JSError: JSStringProtocol {
     }
 }
 
-struct JSPrimitiveValue: JSStringProtocol {
 
+public struct JSValue: JSStringProtocol {
     let value:AnyObject
     
-    init(_ value:AnyObject) {
-        self.value = value
-    }
-    
-    func jsString() -> String {
-        return "\(value)"
-    }
-    
-}
-
-struct JSValue: JSStringProtocol {
-    let value:AnyObject
-    
-    init(_ value: AnyObject) {
+    public init(_ value: AnyObject) {
         self.value = value
     }
     

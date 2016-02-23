@@ -3,5 +3,5 @@ platform :ios, '9.0'
 use_frameworks!
 
 pod 'google-cast-sdk'
-pod 'vigour-core', :path => '/Development/Clients/Vigour.io/vigour-native/native/ios/VigourCore'
-#pod 'vigour-core', '~> 1.0'
+pod 'VigourCore', :path => '/Development/Clients/Vigour.io/vigour-native/native/ios/VigourCore'
+#pod 'VigourCore', '~> 1.0'

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import VigourCore
 
 enum ChromecastMethod: String {
     case Init="init", StartCasting="startCasting", StopCasting="stopCasting"

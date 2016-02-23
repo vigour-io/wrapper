@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import VigourCore
 
 struct FacebookShareLinkValue {
     let title:String?

@@ -9,6 +9,7 @@
 import Foundation
 import CoreTelephony.CTTelephonyNetworkInfo
 import AVFoundation
+import VigourCore
 
 extension UIDevice {
     

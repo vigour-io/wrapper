@@ -8,6 +8,7 @@
 
 
 import UIKit
+import VigourCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         /** -- PLACEHOLDER FOR PLUGIN GENERATING CODE -- **/
+
+
         VigourPluginManager.registerPlugin(Logger.self)
         VigourPluginManager.registerPlugin(Facebook.self)
         VigourPluginManager.registerPlugin(Env.self)

@@ -10,9 +10,9 @@
 import Foundation
 
 
-typealias PluginResult = (JSError?, JSValue) -> Void
+public typealias PluginResult = (JSError?, JSValue) -> Void
 
-protocol VigourPluginProtocol {
+public protocol VigourPluginProtocol {
     weak var delegate:VigourBridgeViewController? { get set }
     static var pluginId:String { get }
     func callMethodWithName(name: String, andArguments args:NSDictionary?, completionHandler:PluginResult) throws

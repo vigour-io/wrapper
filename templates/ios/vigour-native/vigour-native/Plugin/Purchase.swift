@@ -8,6 +8,7 @@
 
 import Foundation
 import StoreKit
+import VigourCore
 
 enum PurchaseMethod: String {
     case Init="init", GetProducts="getProducts", Buy="buy"
@@ -78,7 +79,7 @@ class ProductFetcher:NSObject, SKProductsRequestDelegate {
     
 }
 
-public class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtocol {
+class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtocol {
     
     private var productsLookup = [String:SKProduct]()
     

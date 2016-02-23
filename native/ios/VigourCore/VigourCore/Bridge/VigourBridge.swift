@@ -10,7 +10,7 @@ import Foundation
 import WebKit
 
 
-protocol VigourBridgeViewController:WKUIDelegate, WKNavigationDelegate {
+public protocol VigourBridgeViewController:WKUIDelegate, WKNavigationDelegate {
     var vigourBridge:VigourBridge {get set}
     var webView: WKWebView? {get set}
     var statusBarHidden: Bool {get set}
@@ -21,12 +21,12 @@ protocol VigourBridgeViewController:WKUIDelegate, WKNavigationDelegate {
 internal let scriptMessageHandlerString = "vigourBridgeHandler"
 
 
-enum VigourBridgeError: ErrorType {
+public enum VigourBridgeError: ErrorType {
     case BridgeError(String)
     case PluginError(String, pluginId:String)
 }
 
-final class VigourBridge: NSObject, WKScriptMessageHandler {
+public final class VigourBridge: NSObject, WKScriptMessageHandler {
 
   
     weak var delegate: VigourViewController? {
@@ -90,7 +90,7 @@ final class VigourBridge: NSObject, WKScriptMessageHandler {
         Sends evaluates a js message and insert it in the web js context
         @param VigourBridgeSendMessage
      */
-    internal final func sendJSMessage(message: VigourBridgeSendMessage) {
+    public final func sendJSMessage(message: VigourBridgeSendMessage) {
         #if DEBUG
             print("Sending")
             print(message.jsString())
@@ -185,7 +185,7 @@ final class VigourBridge: NSObject, WKScriptMessageHandler {
 
     //MARK: - WKScriptMessageHandler
 
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+    public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
 
         if let messageObject = message.body as? NSDictionary where messageObject.count >= 1
             && message.name == self.dynamicType.scriptMessageHandlerName() {

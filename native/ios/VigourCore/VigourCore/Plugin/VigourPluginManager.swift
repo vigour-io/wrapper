@@ -9,11 +9,11 @@
 import Foundation
 
 
-struct VigourPluginManager {
+public struct VigourPluginManager {
 
     static var pluginTypeMap:[String:VigourPluginProtocol.Type] = [:]
     
-    static func registerPlugin<T:VigourPluginProtocol>(type: T.Type) {
+    public static func registerPlugin<T:VigourPluginProtocol>(type: T.Type) {
         
         VigourPluginManager.pluginTypeMap[T.pluginId] = type
         #if DEBUG

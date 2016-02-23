@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import VigourCore
 
 enum VigourOrientationMethod: String {
     case Init="init", Orientation="orientation", Locked="locked"
