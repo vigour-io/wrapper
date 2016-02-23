@@ -17,7 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         /** -- PLACEHOLDER FOR PLUGIN GENERATING CODE -- **/
-        
+        VigourPluginManager.registerPlugin(Logger.self)
+        VigourPluginManager.registerPlugin(Facebook.self)
+        VigourPluginManager.registerPlugin(Env.self)
+        VigourPluginManager.registerPlugin(StatusBar.self)
+        VigourPluginManager.registerPlugin(Orientation.self)
+        VigourPluginManager.registerPlugin(Purchase.self)
+        VigourPluginManager.registerPlugin(Chromecast.self)
+        VigourPluginManager.registerPlugin(Open.self)
+      
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true

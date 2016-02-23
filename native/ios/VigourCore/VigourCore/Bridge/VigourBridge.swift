@@ -26,15 +26,9 @@ enum VigourBridgeError: ErrorType {
     case PluginError(String, pluginId:String)
 }
 
-class VigourBridge: NSObject, WKScriptMessageHandler {
+final class VigourBridge: NSObject, WKScriptMessageHandler {
 
-    var pluginManager:VigourPluginManager = {
-        #if DEBUG
-            print("*****CREATE PLUGIN MANAGER*****")
-        #endif
-        return VigourPluginManager()
-    }()
-
+  
     weak var delegate: VigourViewController? {
         didSet {
 

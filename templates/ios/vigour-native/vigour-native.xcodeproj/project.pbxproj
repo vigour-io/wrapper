@@ -24,15 +24,8 @@
 		4959BE361BF3DC1F00F7B310 /* vigour_nativeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE351BF3DC1F00F7B310 /* vigour_nativeTests.swift */; };
 		4959BE411BF3DC1F00F7B310 /* vigour_nativeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */; };
 		4959BE4F1BF3DC4E00F7B310 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE4E1BF3DC4E00F7B310 /* www */; };
-		4959BE661BF3DD1700F7B310 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */; };
-		4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */; };
-		4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */; };
 		4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE601BF3DD1700F7B310 /* Logger.swift */; };
-		4959BE6B1BF3DD1700F7B310 /* VigourPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */; };
-		4959BE6C1BF3DD1700F7B310 /* VigourPluginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */; };
-		4959BE6D1BF3DD1700F7B310 /* VigourPluginRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */; };
 		4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE641BF3DD1700F7B310 /* Utils.swift */; };
-		4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE651BF3DD1700F7B310 /* VigourViewController.swift */; };
 		4959BE721BF3DD2300F7B310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4959BE701BF3DD2300F7B310 /* Main.storyboard */; };
 		4959BE741BF3DD4A00F7B310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */; };
 		4959BE771BF3DE2800F7B310 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4959BE761BF3DE2800F7B310 /* WebKit.framework */; };
@@ -81,15 +74,8 @@
 		4959BE401BF3DC1F00F7B310 /* vigour_nativeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vigour_nativeUITests.swift; sourceTree = "<group>"; };
 		4959BE421BF3DC1F00F7B310 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4959BE4E1BF3DC4E00F7B310 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
-		4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridge.swift; sourceTree = "<group>"; };
-		4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeReceiveMessage.swift; sourceTree = "<group>"; };
-		4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeSendMessage.swift; sourceTree = "<group>"; };
 		4959BE601BF3DD1700F7B310 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPlugin.swift; sourceTree = "<group>"; };
-		4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPluginManager.swift; sourceTree = "<group>"; };
-		4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourPluginRegistration.swift; sourceTree = "<group>"; };
 		4959BE641BF3DD1700F7B310 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		4959BE651BF3DD1700F7B310 /* VigourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourViewController.swift; sourceTree = "<group>"; };
 		4959BE711BF3DD2300F7B310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4959BE731BF3DD4A00F7B310 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4959BE761BF3DE2800F7B310 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -177,7 +163,6 @@
 				4959BE5A1BF3DD1700F7B310 /* Bridge */,
 				4959BE5F1BF3DD1700F7B310 /* Plugin */,
 				4959BE641BF3DD1700F7B310 /* Utils.swift */,
-				4959BE651BF3DD1700F7B310 /* VigourViewController.swift */,
 				4959BE271BF3DC1F00F7B310 /* Assets.xcassets */,
 				4959BE2C1BF3DC1F00F7B310 /* Info.plist */,
 			);
@@ -205,9 +190,6 @@
 		4959BE5A1BF3DD1700F7B310 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
-				4959BE5B1BF3DD1700F7B310 /* VigourBridge.swift */,
-				4959BE5C1BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift */,
-				4959BE5D1BF3DD1700F7B310 /* VigourBridgeSendMessage.swift */,
 			);
 			path = Bridge;
 			sourceTree = "<group>";
@@ -217,9 +199,6 @@
 			children = (
 				49D6491D1C66AB9800FCBAE1 /* Open.swift */,
 				4959BE601BF3DD1700F7B310 /* Logger.swift */,
-				4959BE611BF3DD1700F7B310 /* VigourPlugin.swift */,
-				4959BE621BF3DD1700F7B310 /* VigourPluginManager.swift */,
-				4959BE631BF3DD1700F7B310 /* VigourPluginRegistration.swift */,
 				492195391BFE88C200EB8AF5 /* Facebook.swift */,
 				4934C7851C10E182007BD728 /* Env.swift */,
 				494419451C137F57003946A7 /* Reachability.swift */,
@@ -441,17 +420,10 @@
 				49044F461C29612F008392C5 /* Purchase.swift in Sources */,
 				49D6491E1C66AB9800FCBAE1 /* Open.swift in Sources */,
 				49FD242F1C3DAF5800D192FC /* Chromecast.swift in Sources */,
-				4959BE6F1BF3DD1700F7B310 /* VigourViewController.swift in Sources */,
 				4959BE6A1BF3DD1700F7B310 /* Logger.swift in Sources */,
 				4959BE6E1BF3DD1700F7B310 /* Utils.swift in Sources */,
 				49044F441C28196C008392C5 /* Orientation.swift in Sources */,
-				4959BE671BF3DD1700F7B310 /* VigourBridgeReceiveMessage.swift in Sources */,
-				4959BE681BF3DD1700F7B310 /* VigourBridgeSendMessage.swift in Sources */,
 				4921953A1BFE88C200EB8AF5 /* Facebook.swift in Sources */,
-				4959BE6B1BF3DD1700F7B310 /* VigourPlugin.swift in Sources */,
-				4959BE6C1BF3DD1700F7B310 /* VigourPluginManager.swift in Sources */,
-				4959BE661BF3DD1700F7B310 /* VigourBridge.swift in Sources */,
-				4959BE6D1BF3DD1700F7B310 /* VigourPluginRegistration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

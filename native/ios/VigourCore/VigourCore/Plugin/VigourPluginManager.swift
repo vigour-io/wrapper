@@ -13,14 +13,6 @@ struct VigourPluginManager {
 
     static var pluginTypeMap:[String:VigourPluginProtocol.Type] = [:]
     
-    init() {
-        setup()
-    }
-    
-    private func setup() {
-        VigourPluginManager.register()
-    }
-    
     static func registerPlugin<T:VigourPluginProtocol>(type: T.Type) {
         
         VigourPluginManager.pluginTypeMap[T.pluginId] = type
