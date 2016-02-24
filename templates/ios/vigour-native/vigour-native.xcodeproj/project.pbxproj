@@ -79,8 +79,8 @@
 		4959BE761BF3DE2800F7B310 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		49D6491D1C66AB9800FCBAE1 /* Open.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Open.swift; sourceTree = "<group>"; };
 		49FD242E1C3DAF5800D192FC /* Chromecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chromecast.swift; sourceTree = "<group>"; };
-		7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		95D2155308CD3021894CD38F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D3F086E8B9E3894AEC0E3EA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D8414C2504FED5E5C93D7927 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -222,8 +222,8 @@
 		E9DCDA5DEE15A7E0A452AC79 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */,
-				7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */,
+				95D2155308CD3021894CD38F /* Pods.debug.xcconfig */,
+				D3F086E8B9E3894AEC0E3EA4 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -551,7 +551,7 @@
 		};
 		4959BE461BF3DC1F00F7B310 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA4A4AB24BBF8CE2C505D681 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 95D2155308CD3021894CD38F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -566,7 +566,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "${inherited}";
-				OTHER_SWIFT_FLAGS = "-D DEBUG";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
@@ -576,7 +576,7 @@
 		};
 		4959BE471BF3DC1F00F7B310 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7A43D812913C64BEB71BFD67 /* Pods.release.xcconfig */;
+			baseConfigurationReference = D3F086E8B9E3894AEC0E3EA4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -591,7 +591,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "${inherited}";
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Vigour-Native-Bridging-Header.h";
