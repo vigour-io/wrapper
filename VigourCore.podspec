@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "VigourCore"
-  s.version      = "3.0.8"
+  s.version      = "3.0.9"
   s.summary      = "Wraps iOS native stuff to JS."
 
   # This description is used to generate tags and improve search results.
@@ -82,7 +82,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/vigour-io/wrapper.git", :branch => "feature/core-framework", :tag => "v3.0.8" }
+  s.source       = { :git => "https://github.com/vigour-io/wrapper.git", :branch => "feature/core-framework", :tag => "v3.0.9" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
