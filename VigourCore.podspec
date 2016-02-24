@@ -93,8 +93,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "native/ios/VigourCore/VigourCore/**/*.swift"
-  # s.exclude_files = "Classes/Exclude"
+  s.source_files  = "native/ios/VigourCore/**/*.{h,swift}"
+  s.exclude_files = "native/ios/VigourCore/VigourCoreTests/**"
 
   # s.public_header_files = "Classes/**/*.h"
 
