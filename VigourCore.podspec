@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/vigour-io/wrapper.git", :branch => "feature/core-framework", :tag => "v3.0.7" }
   
-  s.source_files = "**/VigourCore/**/*.{swift}"
+  s.source_files = "native/ios/VigourCore/**/*.{swift}"
   s.requires_arc = true
 
 end
