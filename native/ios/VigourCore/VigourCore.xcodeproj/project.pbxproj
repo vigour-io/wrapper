@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		49945EAB1C7C44CD001F0782 /* VigourCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 49945EAA1C7C44CD001F0782 /* VigourCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49945EB21C7C44CD001F0782 /* VigourCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49945EA71C7C44CD001F0782 /* VigourCore.framework */; };
-		49945EB71C7C44CD001F0782 /* VigourCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49945EB61C7C44CD001F0782 /* VigourCoreTests.swift */; };
 		49945ECB1C7C44E1001F0782 /* VigourBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49945EC21C7C44E1001F0782 /* VigourBridge.swift */; };
 		49945ECC1C7C44E1001F0782 /* VigourBridgeReceiveMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49945EC31C7C44E1001F0782 /* VigourBridgeReceiveMessage.swift */; };
 		49945ECD1C7C44E1001F0782 /* VigourBridgeSendMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49945EC41C7C44E1001F0782 /* VigourBridgeSendMessage.swift */; };
@@ -19,23 +17,10 @@
 		49945ED21C7C44E1001F0782 /* VigourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49945ECA1C7C44E1001F0782 /* VigourViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		49945EB31C7C44CD001F0782 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49945E9E1C7C44CD001F0782 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 49945EA61C7C44CD001F0782;
-			remoteInfo = VigourCore;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		49945EA71C7C44CD001F0782 /* VigourCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VigourCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49945EAA1C7C44CD001F0782 /* VigourCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VigourCore.h; sourceTree = "<group>"; };
 		49945EAC1C7C44CD001F0782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		49945EB11C7C44CD001F0782 /* VigourCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VigourCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49945EB61C7C44CD001F0782 /* VigourCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VigourCoreTests.swift; sourceTree = "<group>"; };
-		49945EB81C7C44CD001F0782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49945EC21C7C44E1001F0782 /* VigourBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridge.swift; sourceTree = "<group>"; };
 		49945EC31C7C44E1001F0782 /* VigourBridgeReceiveMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeReceiveMessage.swift; sourceTree = "<group>"; };
 		49945EC41C7C44E1001F0782 /* VigourBridgeSendMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VigourBridgeSendMessage.swift; sourceTree = "<group>"; };
@@ -53,14 +38,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49945EAE1C7C44CD001F0782 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49945EB21C7C44CD001F0782 /* VigourCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -68,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				49945EA91C7C44CD001F0782 /* VigourCore */,
-				49945EB51C7C44CD001F0782 /* VigourCoreTests */,
 				49945EA81C7C44CD001F0782 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				49945EA71C7C44CD001F0782 /* VigourCore.framework */,
-				49945EB11C7C44CD001F0782 /* VigourCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,15 +68,6 @@
 				49945EAC1C7C44CD001F0782 /* Info.plist */,
 			);
 			path = VigourCore;
-			sourceTree = "<group>";
-		};
-		49945EB51C7C44CD001F0782 /* VigourCoreTests */ = {
-			isa = PBXGroup;
-			children = (
-				49945EB61C7C44CD001F0782 /* VigourCoreTests.swift */,
-				49945EB81C7C44CD001F0782 /* Info.plist */,
-			);
-			path = VigourCoreTests;
 			sourceTree = "<group>";
 		};
 		49945EC11C7C44E1001F0782 /* Bridge */ = {
@@ -155,24 +121,6 @@
 			productReference = 49945EA71C7C44CD001F0782 /* VigourCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		49945EB01C7C44CD001F0782 /* VigourCoreTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 49945EBE1C7C44CD001F0782 /* Build configuration list for PBXNativeTarget "VigourCoreTests" */;
-			buildPhases = (
-				49945EAD1C7C44CD001F0782 /* Sources */,
-				49945EAE1C7C44CD001F0782 /* Frameworks */,
-				49945EAF1C7C44CD001F0782 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				49945EB41C7C44CD001F0782 /* PBXTargetDependency */,
-			);
-			name = VigourCoreTests;
-			productName = VigourCoreTests;
-			productReference = 49945EB11C7C44CD001F0782 /* VigourCoreTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,9 +132,6 @@
 				ORGANIZATIONNAME = Vigour;
 				TargetAttributes = {
 					49945EA61C7C44CD001F0782 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
-					49945EB01C7C44CD001F0782 = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
 				};
@@ -204,20 +149,12 @@
 			projectRoot = "";
 			targets = (
 				49945EA61C7C44CD001F0782 /* VigourCore */,
-				49945EB01C7C44CD001F0782 /* VigourCoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		49945EA51C7C44CD001F0782 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		49945EAF1C7C44CD001F0782 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,23 +178,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49945EAD1C7C44CD001F0782 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				49945EB71C7C44CD001F0782 /* VigourCoreTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		49945EB41C7C44CD001F0782 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 49945EA61C7C44CD001F0782 /* VigourCore */;
-			targetProxy = 49945EB31C7C44CD001F0782 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		49945EB91C7C44CD001F0782 /* Debug */ = {
@@ -386,26 +307,6 @@
 			};
 			name = Release;
 		};
-		49945EBF1C7C44CD001F0782 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = VigourCoreTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.native.VigourCoreTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		49945EC01C7C44CD001F0782 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = VigourCoreTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.native.VigourCoreTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -423,15 +324,6 @@
 			buildConfigurations = (
 				49945EBC1C7C44CD001F0782 /* Debug */,
 				49945EBD1C7C44CD001F0782 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		49945EBE1C7C44CD001F0782 /* Build configuration list for PBXNativeTarget "VigourCoreTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				49945EBF1C7C44CD001F0782 /* Debug */,
-				49945EC01C7C44CD001F0782 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
