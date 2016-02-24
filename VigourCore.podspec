@@ -53,7 +53,8 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "Thomas Vervest" => "thomas@squarewolf.nl" }
+  s.author             = { "Thomas Vervest" => "thomas@squarewolf.nl",
+                           "Alexander van der Werff" => "avdwerff@gmail.com" }
   # Or just: s.author    = "Thomas Vervest"
   # s.authors            = { "Thomas Vervest" => "thomas@squarewolf.nl" }
   # s.social_media_url   = "http://twitter.com/Thomas Vervest"
@@ -92,7 +93,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "native/ios/VigourCore/**/*.{swift}"
+  s.source_files  = "native/ios/VigourCore/VigourCore/**/*.swift"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
