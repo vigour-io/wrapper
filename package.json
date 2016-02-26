@@ -77,6 +77,7 @@
     "vigour-shutter": "^2.0.2",
     "vigour-spawn": "^1.0.3",
     "vigour-ua": "^0.0.5",
+    "vigour-wrapper-bridge": "^1.0.0",
     "xcode": "^0.8.2"
   },
   "keywords": [
