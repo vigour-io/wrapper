@@ -108,6 +108,10 @@
     }
   },
   "vigour": {
+    "doExternalAssets": {
+      "val": true,
+      "description": "Whether to handle external assets"
+    },
     "native": {
       "builds": {
         "val": true,
