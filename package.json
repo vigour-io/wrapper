@@ -161,7 +161,7 @@
           "versionCode": {
             "val": 1,
             "env": "WRAPPER_VERSIONCODE",
-            "description": "version code (integer) to be used for the andriod apk"
+            "description": "version code (integer) to be used for the android apk"
           },
           "appIndexPath": {
             "val": "src/index.html",
