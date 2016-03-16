@@ -8,7 +8,7 @@ var path = require('path')
 var cleanUp
 var buildDir = path.join(__dirname + '../../../../app/build/lgtv/webos/')
 
-test('Should call cleanUp',function (assert) {
+test('Should call cleanUp just once',(assert) => {
    cleanUp = proxyquire('../../../../lib/builder/cleanup', {
     'vigour-fs-promised': { removeAsync: removeStub }
   })

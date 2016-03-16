@@ -7,7 +7,7 @@ var createStub = sinon.stub()
 var path = require('path')
 var createStructure
 
-test('Should call createStructure',function (assert) {
+test('Should call createStructure',(assert) => {
   var buildDir = path.join(__dirname + '../../../../app/build/lgtv/webos/')
   createStructure = proxyquire('../../../../lib/builder/webostv/createStructure', {
     'vigour-fs-promised': { mkdirp: createStub }
