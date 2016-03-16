@@ -171,7 +171,10 @@
           }
         },
         "webostv": {
+          "location": "http://sbs-staging.dev.vigour.io",
           "productName": "Vigour LG Example",
+          "icon": "appIcon.png",
+          "largeIcon": "appIcon.png",
           "appinfo": {
             "domain": "com.vigour11.io",
             "name": "Vigour Example new build"
@@ -180,8 +183,7 @@
             "build.html": true,
             "build.js": true,
             "build.css": true,
-            "mocha.js": true,
-            "mocha.css": true
+            "assets": true
           }
         },
         "chromecastweb": {}
