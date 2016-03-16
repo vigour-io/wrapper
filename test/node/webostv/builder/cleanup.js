@@ -17,6 +17,6 @@ test('Should call cleanUp just once',(assert) => {
   assert.plan(2)
 
   assert.equal(removeStub.callCount, 1)
-  assert.equal(removeStub.firstCall.args[0],buildDir)
+  assert.equal(removeStub.firstCall.args[0], buildDir)
   assert.end()
 })

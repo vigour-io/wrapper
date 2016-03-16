@@ -18,7 +18,7 @@ var data = {
 }
 
 test('Should generate the appinfo.json from the template and the passed data', (assert) => {
-  var util = require('../../../../lib/util/index.js')
+  var util = require('../../../../lib/util/index')
   var fs = require('vigour-fs-promised')
   var mustache = require('mustache')
   var callback = sinon.spy(util ,'transform_template')
@@ -34,6 +34,6 @@ test('Should generate the appinfo.json from the template and the passed data', (
     assert.equal(callback.callCount, 1, 'should be called just once')
     assert.equal(callback.firstCall.args[0], templateDir +'/appinfo.json' , 'should be called with the correct argument')
     assert.equal(outputCallback.callCount, 1, 'should generate just one output file')
-    assert.equal(mustacheCallback.firstCall.args[1], fakeAppinfo, 'should call mustache passing the correct params')
+    assert.equal(mustacheCallback.firstCall.args[1], fakeAppinfo, 'should call mustache render passing the correct params')
   })
 })
