@@ -27,7 +27,9 @@ test('Should clean the folder',function (assert) {
   cleanUp.apply({"buildDir":buildDir})
 
   try {
-    fs.lstatSync(buildDir).isDirectory()
+    folder = fs.lstatSync(buildDir)
+    if(folder.isDirectory()) {
+    }
   }
   catch (e) {
     assert.equal(e.code, 'ENOENT')
