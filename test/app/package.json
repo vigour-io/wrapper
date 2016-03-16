@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "Test app for vigour-native",
   "scripts": {
-    "test": "gaston test",
+    "test": "cd ../node/webostv/builder/ && node index.js",
     "build": "gaston bundle -t -s src -o . -i",
     "all": "npm run build && ../../bin/build.js build",
     "ios": "npm run build && ../../bin/build.js build --native.selectedPlatforms ios",
