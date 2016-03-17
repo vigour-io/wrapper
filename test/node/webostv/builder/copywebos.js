@@ -10,7 +10,7 @@ var copyWebOs
 var fs = require('vigour-fs/lib/server')
 
 var resolveStub = sinon.stub(fs, 'createReadStream' , () => {
-   return Promise.resolve()
+  return Promise.resolve()
 })
 
 var fakeData = {

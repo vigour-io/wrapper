@@ -95,20 +95,18 @@
           }
         },
         "samsungtv": {
-          "companyProvider":"MTV",
-          "childLock":"n",
-          "description":"App description..",
-          "organization":"Vigour",
+          "companyProvider": "MTV",
+          "childLock": "n",
+          "description": "Vigour",
+          "organization": "Vigour",
           "category": "video",
           "appName": "MTV Play",
-          "author": "Vigour",
-          "description": "Vigour",
-          "version": "1.0.0",
-          "author":{
+          "author": {
             "name": "Renan Carvalho",
             "mail": "renan@vigour.io",
             "url": "www.vigour.io"
           },
+          "version": "1.0.0",
           "icons": {
             "ThumbIcon": "assets/img/appIcon.png",
             "BigThumbIcon": "assets/img/appIcon.png",
@@ -121,7 +119,7 @@
             "build.css": true
           }
         },
-         "tizentv":{
+        "tizentv": {
           "assets": {
             "build.html": true,
             "build.js": true,
@@ -133,30 +131,28 @@
             "ListIcon": "assets/img/appIcon.png",
             "BigListIcon": "assets/img/appIcon.png"
           },
-          "config":{
-            "appName":"MTVPlaytest",
-            "iconPath":"icons/ThumbIcon.png",
-            "yourDomain":"http://vigour.io/",
+          "config": {
+            "appName": "MTVPlaytest",
+            "iconPath": "icons/ThumbIcon.png",
+            "yourDomain": "http://vigour.io/",
             "entryPoint": "build.html",
-
-            "author":{
+            "author": {
               "name": "Renan Carvalho",
               "mail": "renan@vigour.io",
               "url": "www.vigour.io"
             },
             "appVersion": "1.0.0",
             "requiredVersion": "1.0.0",
-            "locations":[
+            "locations": [
               {
-                "language":"pt-br",
-                "name":"MTV Play",
-                "description":"MTV Play descrição em portugues"
-
+                "language": "pt-br",
+                "name": "MTV Play",
+                "description": "MTV Play descrição em portugues"
               },
               {
-                "language":"en-gb",
-                "name":"MTV Play",
-                "description":"MTV Play description in english"
+                "language": "en-gb",
+                "name": "MTV Play",
+                "description": "MTV Play description in english"
               }
             ]
           }
@@ -207,5 +203,6 @@
     "source-maps": true,
     "remote-logging": true,
     "require-paths": {}
-  }
+  },
+  "devDependencies": {}
 }
