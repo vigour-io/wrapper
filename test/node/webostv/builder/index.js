@@ -3,6 +3,7 @@ require('./createstructure')
 require('./appinfo')
 require('./copyassets')
 require('./uselocation')
+require('./copywebos')
 
 
 
