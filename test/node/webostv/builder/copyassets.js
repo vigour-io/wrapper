@@ -16,11 +16,11 @@ test('Copying assets', (assert) => {
     'vigour-fs/lib/server': { expandStars: resolveStub }
   })
   assert.plan(3)
-  copyAsset.call(stubData)
+  copyAsset.apply(stubData)
   assert.equal(resolveStub.callCount, 0, 'should not copy the assets if not specified')
 
   stubData.assets = true
-  copyAsset.call(stubData)
+  copyAsset.apply(stubData)
   assert.equal(resolveStub.firstCall.args[1], 'fakePath', 'should pass the folder root')
   assert.equal(resolveStub.callCount, 1, 'should copy the assets if specified')
   assert.end()
