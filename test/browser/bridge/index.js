@@ -1,6 +1,6 @@
 'use strict'
 
-var bridge
+var bridge 
 var pluginId = 'vigour-testing'
 var pluginFn = 'doSomething'
 var pluginOptsOne = { key: 'valueOne' }
@@ -10,7 +10,7 @@ var customPlatform = require('../../helpers/customplatform')
 
 describe('bridge', function () {
   it('should be requireable', function () {
-    bridge = require('../../../lib/bridge')
+    bridge = require('vigour-wrapper-bridge')
     expect(typeof bridge).equal('object')
   })
 

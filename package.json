@@ -1,6 +1,6 @@
 {
   "name": "vigour-wrapper",
-  "version": "2.2.28",
+  "version": "4.0.6",
   "author": "Vigour.io <dev@vigour.io>",
   "repository": {
     "type": "git",
@@ -67,13 +67,17 @@
     "rimraf": "^2.3.2",
     "source-map": "0.1.32",
     "through": "^2.3.4",
-    "vigour-config": "^0.0.9",
+    "vigour-config": "^0.1.0",
     "vigour-fs": "^3.0.0",
     "vigour-fs-promised": "^2.0.0",
-    "vigour-js": "^0.4.4",
+    "vigour-util": "^1.0.1",
+    "vigour-event": "^1.0.1",
+    "vigour-base": "^1.0.3",
+    "vigour-observable": "^1.0.3",
     "vigour-shutter": "^2.0.2",
     "vigour-spawn": "^1.0.3",
     "vigour-ua": "^0.0.5",
+    "vigour-wrapper-bridge": "^1.0.0",
     "xcode": "^0.8.2"
   },
   "keywords": [
@@ -104,6 +108,10 @@
     }
   },
   "vigour": {
+    "doExternalAssets": {
+      "val": true,
+      "description": "Whether to handle external assets"
+    },
     "native": {
       "builds": {
         "val": true,
@@ -153,7 +161,7 @@
           "versionCode": {
             "val": 1,
             "env": "WRAPPER_VERSIONCODE",
-            "description": "version code (integer) to be used for the andriod apk"
+            "description": "version code (integer) to be used for the android apk"
           },
           "appIndexPath": {
             "val": "src/index.html",
