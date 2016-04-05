@@ -163,7 +163,7 @@ class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtocol {
     
     //MARK:- SKPaymentTransactionObserver
     
-    public func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+    internal func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
             switch (transaction.transactionState) {
             case .Purchased:
@@ -211,15 +211,15 @@ class Purchase:NSObject, SKPaymentTransactionObserver, VigourPluginProtocol {
             
             var errorTitle = ""
             switch error.code {
-            case SKErrorClientInvalid:
+            case SKErrorCode.ClientInvalid.rawValue:
                 errorTitle = "Client Invalid"
-            case SKErrorPaymentCancelled:
+            case SKErrorCode.PaymentCancelled.rawValue:
                 errorTitle = "Payment Cancelled"
-            case SKErrorPaymentInvalid:
+            case SKErrorCode.PaymentInvalid.rawValue:
                 errorTitle = "Payment Invalid"
-            case SKErrorPaymentNotAllowed:
+            case SKErrorCode.PaymentNotAllowed.rawValue:
                 errorTitle = "Payment Not Allowed"
-            case SKErrorStoreProductNotAvailable:
+            case SKErrorCode.StoreProductNotAvailable.rawValue:
                 errorTitle = "Product Not Available"
             default:
                 errorTitle = "Unknown Transaction Error"
