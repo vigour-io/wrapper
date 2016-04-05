@@ -1,8 +1,8 @@
 'use strict'
 
-var Plugin = require('../../../lib/plugin')
-var bridgeInject = require('../../../lib/bridge/inject')
-var bridge = require('../../../lib/bridge')
+var Plugin = require('vigour-wrapper-bridge/lib/plugin')
+var bridgeInject = require('vigour-wrapper-bridge/lib/plugin/injection')
+var bridge = require('vigour-wrapper-bridge')
 
 describe('Working with Plugins: InverterBoy', function () {
   var inverterBoy = new Plugin({

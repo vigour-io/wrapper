@@ -26,5 +26,3 @@ templates/ios/vigour-native/vigour-native.xcodeproj/
 templates/ios/vigour-native/Pods
 templates/ios/vigour-native/Podfile.lock
 templates/ios/vigour-native/vigour-native.xcworkspace/
-
-.npmrc

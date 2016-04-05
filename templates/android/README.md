@@ -34,4 +34,4 @@ For the *plugins* we will make library projects. So a user-project will define a
 
 ### java to javascript interface
 
-The plugin manager of the app project handles calling plugin methods and responses are sent to a javascript function defined in the [bridge](../../lib/bridge). We use `WebView#addJavascriptInterface()` to allow calling native functions. We still have to check if the security risks described [here](https://labs.mwrinfosecurity.com/blog/2013/09/24/webview-addjavascriptinterface-remote-code-execution) are valid for our setup. (It might not be because we use XWalkView and compile for a higher SDK)
+The plugin manager of the app project handles calling plugin methods and responses are sent to a javascript function defined in the [bridge](github.com/vigour-io/vigour-wrapper-bridge). We use `WebView#addJavascriptInterface()` to allow calling native functions. We still have to check if the security risks described [here](https://labs.mwrinfosecurity.com/blog/2013/09/24/webview-addjavascriptinterface-remote-code-execution) are valid for our setup. (It might not be because we use XWalkView and compile for a higher SDK)
