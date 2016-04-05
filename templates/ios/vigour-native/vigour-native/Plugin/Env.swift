@@ -98,16 +98,16 @@ class Env:NSObject, VigourPluginProtocol {
 
         
         //resign event
-        notificationCenter.addObserver(self, selector: Selector("appWillResignActive"), name: UIApplicationWillResignActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appWillResignActive), name: UIApplicationWillResignActiveNotification, object: nil)
         
         //will enter foreground
-        notificationCenter.addObserver(self, selector: Selector("appwillEnterForeground"), name: UIApplicationWillEnterForegroundNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appwillEnterForeground), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         //active event
-        notificationCenter.addObserver(self, selector: Selector("appDidBecomeActive"), name: UIApplicationDidBecomeActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplicationDidBecomeActiveNotification, object: nil)
         
         //radio change events
-        notificationCenter.addObserver(self, selector: Selector("radioAccessChanged"), name: CTRadioAccessTechnologyDidChangeNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(radioAccessChanged), name: CTRadioAccessTechnologyDidChangeNotification, object: nil)
         
         
         do {
