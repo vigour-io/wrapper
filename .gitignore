@@ -27,3 +27,4 @@ templates/ios/vigour-native/Pods
 templates/ios/vigour-native/Podfile.lock
 templates/ios/vigour-native/vigour-native.xcworkspace/
 native/ios/VigourCore/VigourCore.xcodeproj/xcuserdata/alexandervanderwerff.xcuserdatad/xcschemes/xcschememanagement.plist
+native/ios/VigourCore/VigourCore.xcodeproj/project.xcworkspace/xcuserdata/alexandervanderwerff.xcuserdatad/UserInterfaceState.xcuserstate

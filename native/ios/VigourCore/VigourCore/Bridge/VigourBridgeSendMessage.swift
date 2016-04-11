@@ -129,7 +129,7 @@ public struct JSValue: JSStringProtocol {
             js += "{"
             var count = 0
             for (key, value) in o {
-                count++
+                count += 1
                 js += "'\(key)':"
                 traverse(value, js: &js)
                 if count < o.count {
