@@ -67,6 +67,35 @@
     public <init>(android.content.Context);
 }
 
+-keep class android.net.http.** { *; }
+-keepclassmembers class android.net.http.** {*;}
+-dontwarn android.net.**
+
+##--------------- Proguard configuration for Joda time ----------
+-dontwarn org.joda.convert.**
+-dontwarn org.joda.time.**
+-keep class org.joda.time.** { *; }
+-keep interface org.joda.time.** { *; }
+
+##--------------- Proguard configuration for RxJava ----------
+-dontwarn sun.misc.**
+
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode producerNode;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueConsumerNodeRef {
+    rx.internal.util.atomic.LinkedQueueNode consumerNode;
+}
+
+##--------------- Proguard configuration for apache libraries ----------
+-keep class org.apache.http.** { *; }
+-keepclassmembers class org.apache.http.** {*;}
+-dontwarn org.apache.**
+
 # DESIGN
 -keep class android.support.design.** { *; }
 -keep interface android.support.design.** { *; }
