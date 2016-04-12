@@ -40,9 +40,8 @@
 -keep class com.crashlytics.android.**
 
 ##--------------- Proguard configuration for Google APIs ----------
-
-##-keep public class com.google.android.gms.* { public *; }
-##-dontwarn com.google.android.gms.**
+-keep public class com.google.android.gms.* { public *; }
+-dontwarn com.google.android.gms.**
 
 ##--------------- Proguard configuration for classes using slf4j (like JDeferred) ----------
 
