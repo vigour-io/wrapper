@@ -128,14 +128,16 @@ public final class VigourBridge: NSObject, WKScriptMessageHandler {
             //call the method
             do {
                 try p.callMethodWithName(message.pluginMethod, andArguments: message.arguments, completionHandler: { [weak self] (error, result) -> Void in
-
+                    
+                    guard let strongSelf = self else { return }
+                    
                     if error != nil {
                         #if DEBUG
                             print(error)
                         #endif
                     }
                     if let callbackId = message.callbackId {
-                        self?.sendJSMessage(VigourBridgeSendMessage.Result(error: error, calbackId: callbackId, response: result))
+                        strongSelf.sendJSMessage(VigourBridgeSendMessage.Result(error: error, calbackId: callbackId, response: result))
                     }
                 })
             }
@@ -144,9 +146,9 @@ public final class VigourBridge: NSObject, WKScriptMessageHandler {
             }
             catch let error as NSError {
                 sendJSMessage(VigourBridgeSendMessage.Receive(error: JSError(title:"Error", description: error.localizedDescription, todo:error.localizedRecoverySuggestion), event:"error", message:JSValue(false), pluginId: nil))
-                #if DEBUG
-                    print(error.localizedDescription)
-                #endif
+                
+                    print("BRDIGE ERROR", error.localizedDescription)
+                
             }
 
         }
