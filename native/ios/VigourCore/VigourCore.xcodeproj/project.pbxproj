@@ -383,6 +383,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.vigour.native.VigourCore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
 		};
@@ -434,6 +435,7 @@
 				E96223DF1C7E2DDC0074151D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
