@@ -100,16 +100,23 @@ public struct JSError: JSStringProtocol {
 }
 
 
-public struct JSValue: JSStringProtocol {
+public struct JSValue: JSStringProtocol, CustomStringConvertible {
     let value:AnyObject
     
     public init(_ value: AnyObject) {
         self.value = value
     }
     
+    public var description: String {
+        return "JSVALUE:: \(value)"
+    }
+    
     func jsString() -> String {
+        #if DEBUG
+            print("Stringify ", value)
+        #endif
         var s = ""
-        if value is Dictionary<String, NSObject> {
+        if value is Dictionary<String, AnyObject> {
             traverse(value, js: &s)
         }
         else if value is String {
@@ -125,7 +132,7 @@ public struct JSValue: JSStringProtocol {
     }
     
     func traverse<T>(obj:T, inout js:String) {
-        if let o = obj as? Dictionary<String, NSObject> {
+        if let o = obj as? Dictionary<String, AnyObject> {
             js += "{"
             var count = 0
             for (key, value) in o {
