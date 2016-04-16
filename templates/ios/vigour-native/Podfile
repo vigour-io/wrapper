@@ -3,3 +3,6 @@ platform :ios, '9.0'
 use_frameworks!
 
 pod 'google-cast-sdk', '2.10.2'
+#pod 'VigourCore', :path => '/Development/Clients/Vigour.io/vigour-native/native/ios/VigourCore'
+pod 'VigourCore', :git => 'https://github.com/vigour-io/wrapper.git', :branch => 'feature/issue-#198'
+#pod 'VigourCore', :podspec => 'https://github.com/vigour-io/wrapper/tree/feature/core-framework/native/ios/VigourCore/VigourCore.podspec', :branch => 'feature/core-framework'
