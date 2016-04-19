@@ -95,6 +95,55 @@
 -keepclassmembers class org.apache.http.** {*;}
 -dontwarn org.apache.**
 
+##--------------- Proguard configuration for CrossWalk ----------
+-keep class org.xwalk.**{ *; }
+-keep interface org.xwalk.**{ *; }
+-keep class com.example.extension.**{ *; }
+-keep class org.crosswalkproject.**{ *; }
+
+# Keep native & callbacks
+-keepclasseswithmembernames class *{
+    native <methods>;
+}
+
+-keepattributes JNINamespace
+-keepattributes CalledByNative
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+
+-keepattributes InnerClasses
+-keep class **.R
+-keep class **.R$* {
+    <fields>;
+}
+
+##--------------- Proguard configuration for Chromium ----------
+# Keep annotations used by chromium to keep members referenced by native code
+-keep class org.chromium.base.*Native*
+-keep class org.chromium.base.annotations.JNINamespace
+-keepclasseswithmembers class org.chromium.** {
+    @org.chromium.base.AccessedByNative <fields>;
+}
+-keepclasseswithmembers class org.chromium.** {
+    @org.chromium.base.*Native* <methods>;
+}
+
+-keep class org.chromium.** {
+    native <methods>;
+}
+
+# Keep methods used by reflection and native code
+-keep class org.chromium.base.UsedBy*
+-keep @org.chromium.base.UsedBy* class *
+-keepclassmembers class * {
+    @org.chromium.base.UsedBy* *;
+}
+
+-keep @org.chromium.base.annotations.JNINamespace* class *
+-keepclassmembers class * {
+    @org.chromium.base.annotations.CalledByNative* *;
+}
+
 # DESIGN
 -keep class android.support.design.** { *; }
 -keep interface android.support.design.** { *; }

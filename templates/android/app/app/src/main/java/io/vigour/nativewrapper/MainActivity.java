@@ -22,7 +22,7 @@ import com.fasterxml.jackson.jr.ob.JSON;
 import org.xwalk.core.XWalkPreferences;
 import org.xwalk.core.XWalkUIClient;
 import org.xwalk.core.XWalkView;
-import org.xwalk.core.internal.XWalkSettings;
+import org.xwalk.core.internal.XWalkSettingsInternal;
 import org.xwalk.core.internal.XWalkViewBridge;
 
 import java.io.IOException;
@@ -279,7 +279,7 @@ public class MainActivity extends ActionBarActivity {
             ___getBridge.setAccessible(true);
             XWalkViewBridge xWalkViewBridge = null;
             xWalkViewBridge = (XWalkViewBridge) ___getBridge.invoke(webView);
-            XWalkSettings xWalkSettings = xWalkViewBridge.getSettings();
+            XWalkSettingsInternal xWalkSettings = xWalkViewBridge.getSettings();
             String uaString = xWalkSettings.getUserAgentString() + " " + appendix;
             Log.d("ua", "setting ua string to: " + uaString);
             xWalkSettings.setUserAgentString(uaString);
