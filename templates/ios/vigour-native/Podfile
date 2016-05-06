@@ -7,3 +7,11 @@ pod 'google-cast-sdk', '2.10.2'
 #pod 'VigourCore', :git => 'https://github.com/vigour-io/wrapper.git', :branch => 'feature/issue-#198'
 pod 'VigourCore', :git => 'https://github.com/vigour-io/wrapper.git', :branch => 'develop'
 #pod 'VigourCore', :podspec => 'https://github.com/vigour-io/wrapper/tree/feature/core-framework/native/ios/VigourCore/VigourCore.podspec', :branch => 'feature/core-framework'
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Onone'
+        end
+    end
+end
