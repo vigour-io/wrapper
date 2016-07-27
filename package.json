@@ -58,6 +58,7 @@
     "globby": "^3.0.1",
     "lodash": "^4.8.2",
     "lodash.flatten": "^4.1.1",
+    "lodash.keys": "^4.0.7",
     "mocha": "2.2.x",
     "mocha-phantomjs": "*",
     "mustache": "~0.8.1",
